@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+message GetStatsRequest {
+    string uuid = 1;
+    string game = 2;
+}
+
+message GetStatsResponse {
+    bytes data = 1;
+}
+
+message UpdateStatsRequest {
+    string uuid = 1;
+    string game = 2;
+    bytes data = 3;
+}
+
+message UpdateStatsResponse {}
+
+service StatsService {
+    rpc GetStats (GetStatsRequest) returns (GetStatsResponse);
+    rpc UpdateStats (UpdateStatsRequest) returns (UpdateStatsResponse);
+}

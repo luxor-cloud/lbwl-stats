@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+
+
+message StatisticCompound {
+    GameStatistic game_summary = 1;
+    repeated MapStatistic map_summary = 2;
+}
+
+message GameStatistic {
+    uint32 wins = 1;
+    uint32 deaths = 2;
+    uint32 games_played = 3;
+    uint32 instant_deaths = 4;
+    uint32 checkpoints = 5;
+}
+
+message MapStatistic {
+    string name = 1;
+    uint64 time_needed = 2;
+    uint64 record_time = 3;
+    repeated CheckpointStatistic checkpoints = 4;
+}
+
+message CheckpointStatistic {
+    sfixed32 checkpoint = 1;
+    uint64 time_needed = 2;
+    uint64 record_time = 3;
+}
