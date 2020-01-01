@@ -19,40 +19,40 @@ public final class Flash {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.FlashGameStatistic game_summary = 1;</code>
+     * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      * @return Whether the gameSummary field is set.
      */
     boolean hasGameSummary();
     /**
-     * <code>.FlashGameStatistic game_summary = 1;</code>
+     * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      * @return The gameSummary.
      */
     dev.freggy.stats.model.Flash.FlashGameStatistic getGameSummary();
     /**
-     * <code>.FlashGameStatistic game_summary = 1;</code>
+     * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      */
     dev.freggy.stats.model.Flash.FlashGameStatisticOrBuilder getGameSummaryOrBuilder();
 
     /**
-     * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+     * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      */
     java.util.List<dev.freggy.stats.model.Flash.FlashMapStatistic> 
         getMapSummaryList();
     /**
-     * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+     * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      */
     dev.freggy.stats.model.Flash.FlashMapStatistic getMapSummary(int index);
     /**
-     * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+     * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      */
     int getMapSummaryCount();
     /**
-     * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+     * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      */
     java.util.List<? extends dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder> 
         getMapSummaryOrBuilderList();
     /**
-     * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+     * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      */
     dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder getMapSummaryOrBuilder(
         int index);
@@ -164,21 +164,21 @@ public final class Flash {
     public static final int GAME_SUMMARY_FIELD_NUMBER = 1;
     private dev.freggy.stats.model.Flash.FlashGameStatistic gameSummary_;
     /**
-     * <code>.FlashGameStatistic game_summary = 1;</code>
+     * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      * @return Whether the gameSummary field is set.
      */
     public boolean hasGameSummary() {
       return gameSummary_ != null;
     }
     /**
-     * <code>.FlashGameStatistic game_summary = 1;</code>
+     * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      * @return The gameSummary.
      */
     public dev.freggy.stats.model.Flash.FlashGameStatistic getGameSummary() {
       return gameSummary_ == null ? dev.freggy.stats.model.Flash.FlashGameStatistic.getDefaultInstance() : gameSummary_;
     }
     /**
-     * <code>.FlashGameStatistic game_summary = 1;</code>
+     * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      */
     public dev.freggy.stats.model.Flash.FlashGameStatisticOrBuilder getGameSummaryOrBuilder() {
       return getGameSummary();
@@ -187,32 +187,32 @@ public final class Flash {
     public static final int MAP_SUMMARY_FIELD_NUMBER = 2;
     private java.util.List<dev.freggy.stats.model.Flash.FlashMapStatistic> mapSummary_;
     /**
-     * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+     * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      */
     public java.util.List<dev.freggy.stats.model.Flash.FlashMapStatistic> getMapSummaryList() {
       return mapSummary_;
     }
     /**
-     * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+     * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      */
     public java.util.List<? extends dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder> 
         getMapSummaryOrBuilderList() {
       return mapSummary_;
     }
     /**
-     * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+     * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      */
     public int getMapSummaryCount() {
       return mapSummary_.size();
     }
     /**
-     * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+     * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      */
     public dev.freggy.stats.model.Flash.FlashMapStatistic getMapSummary(int index) {
       return mapSummary_.get(index);
     }
     /**
-     * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+     * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
      */
     public dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder getMapSummaryOrBuilder(
         int index) {
@@ -595,14 +595,14 @@ public final class Flash {
       private com.google.protobuf.SingleFieldBuilderV3<
           dev.freggy.stats.model.Flash.FlashGameStatistic, dev.freggy.stats.model.Flash.FlashGameStatistic.Builder, dev.freggy.stats.model.Flash.FlashGameStatisticOrBuilder> gameSummaryBuilder_;
       /**
-       * <code>.FlashGameStatistic game_summary = 1;</code>
+       * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        * @return Whether the gameSummary field is set.
        */
       public boolean hasGameSummary() {
         return gameSummaryBuilder_ != null || gameSummary_ != null;
       }
       /**
-       * <code>.FlashGameStatistic game_summary = 1;</code>
+       * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        * @return The gameSummary.
        */
       public dev.freggy.stats.model.Flash.FlashGameStatistic getGameSummary() {
@@ -613,7 +613,7 @@ public final class Flash {
         }
       }
       /**
-       * <code>.FlashGameStatistic game_summary = 1;</code>
+       * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public Builder setGameSummary(dev.freggy.stats.model.Flash.FlashGameStatistic value) {
         if (gameSummaryBuilder_ == null) {
@@ -629,7 +629,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>.FlashGameStatistic game_summary = 1;</code>
+       * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public Builder setGameSummary(
           dev.freggy.stats.model.Flash.FlashGameStatistic.Builder builderForValue) {
@@ -643,7 +643,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>.FlashGameStatistic game_summary = 1;</code>
+       * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public Builder mergeGameSummary(dev.freggy.stats.model.Flash.FlashGameStatistic value) {
         if (gameSummaryBuilder_ == null) {
@@ -661,7 +661,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>.FlashGameStatistic game_summary = 1;</code>
+       * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public Builder clearGameSummary() {
         if (gameSummaryBuilder_ == null) {
@@ -675,7 +675,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>.FlashGameStatistic game_summary = 1;</code>
+       * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public dev.freggy.stats.model.Flash.FlashGameStatistic.Builder getGameSummaryBuilder() {
         
@@ -683,7 +683,7 @@ public final class Flash {
         return getGameSummaryFieldBuilder().getBuilder();
       }
       /**
-       * <code>.FlashGameStatistic game_summary = 1;</code>
+       * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public dev.freggy.stats.model.Flash.FlashGameStatisticOrBuilder getGameSummaryOrBuilder() {
         if (gameSummaryBuilder_ != null) {
@@ -694,7 +694,7 @@ public final class Flash {
         }
       }
       /**
-       * <code>.FlashGameStatistic game_summary = 1;</code>
+       * <code>.FlashGameStatistic game_summary = 1 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           dev.freggy.stats.model.Flash.FlashGameStatistic, dev.freggy.stats.model.Flash.FlashGameStatistic.Builder, dev.freggy.stats.model.Flash.FlashGameStatisticOrBuilder> 
@@ -723,7 +723,7 @@ public final class Flash {
           dev.freggy.stats.model.Flash.FlashMapStatistic, dev.freggy.stats.model.Flash.FlashMapStatistic.Builder, dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder> mapSummaryBuilder_;
 
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public java.util.List<dev.freggy.stats.model.Flash.FlashMapStatistic> getMapSummaryList() {
         if (mapSummaryBuilder_ == null) {
@@ -733,7 +733,7 @@ public final class Flash {
         }
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public int getMapSummaryCount() {
         if (mapSummaryBuilder_ == null) {
@@ -743,7 +743,7 @@ public final class Flash {
         }
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public dev.freggy.stats.model.Flash.FlashMapStatistic getMapSummary(int index) {
         if (mapSummaryBuilder_ == null) {
@@ -753,7 +753,7 @@ public final class Flash {
         }
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public Builder setMapSummary(
           int index, dev.freggy.stats.model.Flash.FlashMapStatistic value) {
@@ -770,7 +770,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public Builder setMapSummary(
           int index, dev.freggy.stats.model.Flash.FlashMapStatistic.Builder builderForValue) {
@@ -784,7 +784,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public Builder addMapSummary(dev.freggy.stats.model.Flash.FlashMapStatistic value) {
         if (mapSummaryBuilder_ == null) {
@@ -800,7 +800,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public Builder addMapSummary(
           int index, dev.freggy.stats.model.Flash.FlashMapStatistic value) {
@@ -817,7 +817,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public Builder addMapSummary(
           dev.freggy.stats.model.Flash.FlashMapStatistic.Builder builderForValue) {
@@ -831,7 +831,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public Builder addMapSummary(
           int index, dev.freggy.stats.model.Flash.FlashMapStatistic.Builder builderForValue) {
@@ -845,7 +845,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public Builder addAllMapSummary(
           java.lang.Iterable<? extends dev.freggy.stats.model.Flash.FlashMapStatistic> values) {
@@ -860,7 +860,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public Builder clearMapSummary() {
         if (mapSummaryBuilder_ == null) {
@@ -873,7 +873,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public Builder removeMapSummary(int index) {
         if (mapSummaryBuilder_ == null) {
@@ -886,14 +886,14 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public dev.freggy.stats.model.Flash.FlashMapStatistic.Builder getMapSummaryBuilder(
           int index) {
         return getMapSummaryFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder getMapSummaryOrBuilder(
           int index) {
@@ -903,7 +903,7 @@ public final class Flash {
         }
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public java.util.List<? extends dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder> 
            getMapSummaryOrBuilderList() {
@@ -914,14 +914,14 @@ public final class Flash {
         }
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public dev.freggy.stats.model.Flash.FlashMapStatistic.Builder addMapSummaryBuilder() {
         return getMapSummaryFieldBuilder().addBuilder(
             dev.freggy.stats.model.Flash.FlashMapStatistic.getDefaultInstance());
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public dev.freggy.stats.model.Flash.FlashMapStatistic.Builder addMapSummaryBuilder(
           int index) {
@@ -929,7 +929,7 @@ public final class Flash {
             index, dev.freggy.stats.model.Flash.FlashMapStatistic.getDefaultInstance());
       }
       /**
-       * <code>repeated .FlashMapStatistic map_summary = 2;</code>
+       * <code>repeated .FlashMapStatistic map_summary = 2 [(.gogoproto.moretags) = "db:&#92;"game_summary&#92;""];</code>
        */
       public java.util.List<dev.freggy.stats.model.Flash.FlashMapStatistic.Builder> 
            getMapSummaryBuilderList() {
@@ -3487,23 +3487,26 @@ public final class Flash {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013flash.proto\"l\n\026FlashStatisticCompound\022" +
-      ")\n\014game_summary\030\001 \001(\0132\023.FlashGameStatist" +
-      "ic\022\'\n\013map_summary\030\002 \003(\0132\022.FlashMapStatis" +
-      "tic\"u\n\022FlashGameStatistic\022\014\n\004wins\030\001 \001(\r\022" +
-      "\016\n\006deaths\030\002 \001(\r\022\024\n\014games_played\030\003 \001(\r\022\026\n" +
-      "\016instant_deaths\030\004 \001(\r\022\023\n\013checkpoints\030\005 \001" +
-      "(\r\"{\n\021FlashMapStatistic\022\014\n\004name\030\001 \001(\t\022\023\n" +
-      "\013time_needed\030\002 \001(\004\022\023\n\013record_time\030\003 \001(\004\022" +
-      ".\n\013checkpoints\030\004 \003(\0132\031.FlashCheckpointSt" +
-      "atistic\"X\n\030FlashCheckpointStatistic\022\022\n\nc" +
-      "heckpoint\030\001 \001(\017\022\023\n\013time_needed\030\002 \001(\004\022\023\n\013" +
-      "record_time\030\003 \001(\004B\037\n\026dev.freggy.stats.mo" +
-      "delZ\005modelb\006proto3"
+      "\n\013flash.proto\032-github.com/gogo/protobuf/" +
+      "gogoproto/gogo.proto\"\232\001\n\026FlashStatisticC" +
+      "ompound\022@\n\014game_summary\030\001 \001(\0132\023.FlashGam" +
+      "eStatisticB\025\362\336\037\021db:\"game_summary\"\022>\n\013map" +
+      "_summary\030\002 \003(\0132\022.FlashMapStatisticB\025\362\336\037\021" +
+      "db:\"game_summary\"\"u\n\022FlashGameStatistic\022" +
+      "\014\n\004wins\030\001 \001(\r\022\016\n\006deaths\030\002 \001(\r\022\024\n\014games_p" +
+      "layed\030\003 \001(\r\022\026\n\016instant_deaths\030\004 \001(\r\022\023\n\013c" +
+      "heckpoints\030\005 \001(\r\"{\n\021FlashMapStatistic\022\014\n" +
+      "\004name\030\001 \001(\t\022\023\n\013time_needed\030\002 \001(\004\022\023\n\013reco" +
+      "rd_time\030\003 \001(\004\022.\n\013checkpoints\030\004 \003(\0132\031.Fla" +
+      "shCheckpointStatistic\"X\n\030FlashCheckpoint" +
+      "Statistic\022\022\n\ncheckpoint\030\001 \001(\017\022\023\n\013time_ne" +
+      "eded\030\002 \001(\004\022\023\n\013record_time\030\003 \001(\004B\037\n\026dev.f" +
+      "reggy.stats.modelZ\005modelb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.google.protobuf.GoGoProtos.getDescriptor(),
         });
     internal_static_FlashStatisticCompound_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -3529,6 +3532,12 @@ public final class Flash {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FlashCheckpointStatistic_descriptor,
         new java.lang.String[] { "Checkpoint", "TimeNeeded", "RecordTime", });
+    com.google.protobuf.ExtensionRegistry registry =
+        com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(com.google.protobuf.GoGoProtos.moretags);
+    com.google.protobuf.Descriptors.FileDescriptor
+        .internalUpdateFileDescriptor(descriptor, registry);
+    com.google.protobuf.GoGoProtos.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
