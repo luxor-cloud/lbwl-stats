@@ -27,7 +27,7 @@ CREATE TABLE checkpoint_records (
 	checkpoint TINYINT UNSIGNED NOT NULL,
 	record_time BIGINT UNSIGNED NOT NULL,
 	accomplished_at DATETIME NOT NULL,
-	INDEX index (map, checkpoint, uuid)
+	INDEX i (map, checkpoint, uuid),
     CONSTRAINT FK_checkpoint_records_global_game_data FOREIGN KEY (uuid) REFERENCES global_game_data (uuid),
 	CONSTRAINT FK_checkpoint_records_map_records FOREIGN KEY (map) REFERENCglobal_game_dataES map_records (map)
 )

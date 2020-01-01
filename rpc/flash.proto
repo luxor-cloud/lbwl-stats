@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
-
 option java_package = "dev.freggy.stats.model";
 option go_package = "model";
 
@@ -11,22 +9,22 @@ message FlashStatisticCompound {
 }
 
 message FlashGameStatistic {
-    uint32 wins            = 1 [(gogoproto.moretags) = "db:\"wins\""];
-    uint32 deaths          = 2 [(gogoproto.moretags) = "db:\"deaths\""];
-    uint32 games_played    = 3 [(gogoproto.moretags) = "db:\"games_played\""];
-    uint32 instant_deaths  = 4 [(gogoproto.moretags) = "db:\"instant_deaths\""];
-    uint32 checkpoints     = 5 [(gogoproto.moretags) = "db:\"checkpoints\""];
+    uint32 wins            = 1;
+    uint32 deaths          = 2;
+    uint32 games_played    = 3;
+    uint32 instant_deaths  = 4;
+    uint32 checkpoints     = 5;
 }
 
 message FlashMapStatistic {
-    string name                                    = 1 [(gogoproto.moretags) = "db:\"name\""];
-    uint64 time_needed                             = 2 [(gogoproto.moretags) = "db:\"time_needed\""];
-    uint64 record_time                             = 3 [(gogoproto.moretags) = "db:\"record_time\""];
-    repeated FlashCheckpointStatistic checkpoints  = 4 [(gogoproto.moretags) = "db:\"-\""];
+    string name                                    = 1;
+    uint64 time_needed                             = 2;
+    uint64 record_time                             = 3;
+    repeated FlashCheckpointStatistic checkpoints  = 4;
 }
 
 message FlashCheckpointStatistic {
-    sfixed32 checkpoint  = 1 [(gogoproto.moretags) = "db:\"checkpoint\""];
-    uint64 time_needed   = 2 [(gogoproto.moretags) = "db:\"time_needed\""];
-    uint64 record_time   = 3 [(gogoproto.moretags) = "db:\"record_time\""];
+    sfixed32 checkpoint  = 1;
+    uint64 time_needed   = 2;
+    uint64 record_time   = 3;
 }
