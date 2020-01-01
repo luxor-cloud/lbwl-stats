@@ -6,16 +6,16 @@ option java_package = "dev.freggy.stats.model";
 option go_package = "model";
 
 message FlashStatisticCompound {
-    FlashGameStatistic game_summary         = 1;
-    repeated FlashMapStatistic map_summary  = 2;
+    FlashGameStatistic         game_summary  = 1;
+    repeated FlashMapStatistic map_summary   = 2;
 }
 
 message FlashGameStatistic {
-    uint32 wins            = 1; [(gogoproto.moretags) = "db:\"wins\""];
-    uint32 deaths          = 2; [(gogoproto.moretags) = "db:\"deaths\""];
-    uint32 games_played    = 3; [(gogoproto.moretags) = "db:\"games_played\""];
-    uint32 instant_deaths  = 4; [(gogoproto.moretags) = "db:\"instant_deaths\""];
-    uint32 checkpoints     = 5; [(gogoproto.moretags) = "db:\"checkpoints\""];
+    uint32 wins            = 1 [(gogoproto.moretags) = "db:\"wins\""];
+    uint32 deaths          = 2 [(gogoproto.moretags) = "db:\"deaths\""];
+    uint32 games_played    = 3 [(gogoproto.moretags) = "db:\"games_played\""];
+    uint32 instant_deaths  = 4 [(gogoproto.moretags) = "db:\"instant_deaths\""];
+    uint32 checkpoints     = 5 [(gogoproto.moretags) = "db:\"checkpoints\""];
 }
 
 message FlashMapStatistic {
