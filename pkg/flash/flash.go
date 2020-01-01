@@ -1,31 +1,33 @@
 package flash
 
-import flash "freggy.dev/stats/pkg/flash/model"
+import (
+	"freggy.dev/stats/rpc/go/model"
+)
 
 type DataAccess interface {
-	GetMapStatistic(id string) *flash.GameStatistic
-	GetGameStatistic(id string) *flash.MapStatistic
+	GetMapStatistic(id string) *model.FlashGameStatistic
+	GetGameStatistic(id string) *model.FlashMapStatistic
 
-	UpdateGameStatistic(id string, game *flash.GameStatistic)
-	UpdateMapStatistic(id string, game *flash.MapStatistic)
+	UpdateGameStatistic(id string, game *model.FlashGameStatistic)
+	UpdateMapStatistic(id string, game *model.FlashMapStatistic)
 }
 
 type CassandraDataAccess struct {
 
 }
 
-func (cda *CassandraDataAccess) GetMapStatistic(id string) *flash.MapStatistic {
+func (cda *CassandraDataAccess) GetMapStatistic(id string) *model.FlashMapStatistic {
 
 }
 
-func (cda *CassandraDataAccess) GetGameStatistic(id string) *flash.GameStatistic {
+func (cda *CassandraDataAccess) GetGameStatistic(id string) *model.FlashGameStatistic {
 
 }
 
-func (cda *CassandraDataAccess) UpdateGameStatistic(id string, game *flash.GameStatistic) {
+func (cda *CassandraDataAccess) UpdateGameStatistic(id string, game *model.FlashGameStatistic) {
 
 }
 
-func (cda *CassandraDataAccess) UpdateMapStatistic(id string, game *flash.MapStatistic) {
+func (cda *CassandraDataAccess) UpdateMapStatistic(id string, game *model.FlashMapStatistic) {
 
 }

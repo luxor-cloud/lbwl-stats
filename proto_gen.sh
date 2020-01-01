@@ -3,5 +3,10 @@
 [[ ! -d internal ]] && mkdir internal
 [[ ! -d internal/service ]] && mkdir internal/service
 
-protoc --proto_path=./rpc --twirp_out=./rpc --go_out=./rpc service.proto
-protoc --proto_path=./pkg/flash/model --twirp_out=./pkg/flash/model --go_out=./pkg/flash/model flash.proto
+# Generate service libraries
+protoc --proto_path=rpc --twirp_out=rpc/go/service --go_out=rpc/go/service service.proto
+protoc --proto_path=rpc --java_out=rpc/jvm/src/main/java --twirp_java_jaxrs_out=rpc/jvm/src/main/java service.proto
+
+# Generate data models
+protoc --proto_path=rpc --java_out=rpc/jvm/src/main/java flash.proto
+protoc --proto_path=rpc --go_out=rpc/go/model flash.proto

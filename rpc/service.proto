@@ -1,5 +1,8 @@
 syntax = "proto3";
 
+option java_package = "dev.freggy.stats.service";
+option go_package = "service";
+
 message GetStatsRequest {
     string uuid = 1;
     string game = 2;
