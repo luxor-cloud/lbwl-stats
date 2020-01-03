@@ -17,6 +17,9 @@ type DataAccess interface {
 	UpdateMapStatistic(id string, stats *model.FlashMapStatistic) error
 }
 
+
+// Maybe read queries from files provided in the container?
+// This way we would not have to rebuild the entire application if we make database changes
 const (
 	GetCheckpointStats   = `SELECT checkpoint, record_time, accomplished_at FROM checkpoint_records WHERE uuid = ? AND map = ?`
 
@@ -140,6 +143,7 @@ func (sda *SQLDataAccess) UpdateMapStatistic(id string, stats *model.FlashMapSta
 		if err != nil {
 			if err := tx.Rollback(); err != nil {
 				log.Printf("Could not rollback transaction: %v", err)
+				return
 			}
 		}
 		err = tx.Commit()
@@ -177,7 +181,7 @@ func (sda *SQLDataAccess) UpdateMapStatistic(id string, stats *model.FlashMapSta
 		)
 	}
 
-	query.WriteString("ON DUPLICATE KEY UPDATE record_time = VALUES(record_time), accomplished_at = VALUES(accomplished_at)")
+	query.WriteString(" ON DUPLICATE KEY UPDATE record_time = VALUES(record_time), accomplished_at = VALUES(accomplished_at)")
 
 	if _, err := tx.Exec(query.String()); err != nil {
 		return nil
