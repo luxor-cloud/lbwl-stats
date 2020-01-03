@@ -51,6 +51,18 @@ func TestSQLDataAccess_GetMapStatistic_Map_And_ID_Non_Existent(t *testing.T) {
 	checkMapStatisticNonExistent(t, access, "abc", "Map42")
 }
 
+func TestSQLDataAccess_GetGameStatistic_Successfully(t *testing.T) {
+	access, db := connectMariaDB(t)
+	defer db.Close()
+	checkGameStatisticPayloadSuccessfully(t, access)
+}
+
+func TestSQLDataAccess_GetGameStatistic_ID_Non_Existent(t *testing.T) {
+	access, db := connectMariaDB(t)
+	defer db.Close()
+	checkEmptyGameStatisticPayload(t, access, "abc")
+}
+
 //
 // MongoDB specific checks
 //
@@ -106,3 +118,28 @@ func getMapStatistic(t *testing.T, access DataAccess, id string, mapName string)
 // Game statistic payload checks
 //
 
+func checkGameStatisticPayloadSuccessfully(t *testing.T, access DataAccess) {
+	m := getGameStatistic(t, access, UUID)
+	assert.Equal(t, uint32(1337), m.GetWins())
+	assert.Equal(t, uint32(12315252), m.GetDeaths())
+	assert.Equal(t, uint32(245245), m.GetCheckpoints())
+	assert.Equal(t, uint32(5245245), m.GetGamesPlayed())
+	assert.Equal(t, uint32(3534535), m.GetInstantDeaths())
+}
+
+func checkEmptyGameStatisticPayload(t *testing.T, access DataAccess, id string) {
+	m := getGameStatistic(t, access, id)
+	assert.Equal(t, uint32(0), m.GetWins())
+	assert.Equal(t, uint32(0), m.GetDeaths())
+	assert.Equal(t, uint32(0), m.GetCheckpoints())
+	assert.Equal(t, uint32(0), m.GetGamesPlayed())
+	assert.Equal(t, uint32(0), m.GetInstantDeaths())
+}
+
+func getGameStatistic(t *testing.T, access DataAccess, id string) *model.FlashGameStatistic {
+	m, err := access.GetGameStatistic(id)
+	if err != nil {
+		t.Errorf("%v", err)
+	}
+	return m
+}
