@@ -15,30 +15,30 @@ VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map3', 40304034, '2018-03-05 13
 
 
 INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at)
-VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map1', 1, 23424, '2018-03-05 14:00:23.145890');
+VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map1', 1, 13424, '2018-03-05 14:00:23.145890');
 
 INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at)
-VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map1', 2, 23424, '2018-03-05 15:00:23.145890');
+VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map1', 2, 33424, '2018-03-05 15:00:23.145890');
 
 INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at)
-VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map1', 3, 23424, '2018-03-05 16:00:23.145890');
-
-
-INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at)
-VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map2', 1, 23424, '2018-03-05 17:00:23.145890');
-
-INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at)
-VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map2', 2, 23424, '2018-03-05 18:00:23.145890');
-
-INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at)
-VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map2', 3, 23424, '2018-03-05 19:00:23.145890');
+VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map1', 3, 53424, '2018-03-05 16:00:23.145890');
 
 
 INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at)
-VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map3', 1, 23424, '2018-03-05 20:00:23.145890');
+VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map2', 1, 83424, '2018-03-05 17:00:23.145890');
 
 INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at)
-VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map3', 2, 23424, '2018-03-05 21:00:23.145890');
+VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map2', 2, 93424, '2018-03-05 18:00:23.145890');
 
 INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at)
-VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map3', 3, 23424, '2018-03-05 22:00:23.145890');
+VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map2', 3, 123424, '2018-03-05 19:00:23.145890');
+
+
+INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at)
+VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map3', 1, 143424, '2018-03-05 20:00:23.145890');
+
+INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at)
+VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map3', 2, 183424, '2018-03-05 21:00:23.145890');
+
+INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at)
+VALUES ('92de217b-8b2b-403b-86a5-fe26fa3a9b5f', 'Map3', 3, 253424, '2018-03-05 22:00:23.145890');

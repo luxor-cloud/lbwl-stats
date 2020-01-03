@@ -3,6 +3,7 @@ package flash
 import (
 	"database/sql"
 	"freggy.dev/stats/rpc/go/model"
+	"time"
 )
 
 type DataAccess interface {
@@ -14,8 +15,8 @@ type DataAccess interface {
 }
 
 const (
-	GetCheckpointStats = `SELECT checkpoint, record_time FROM checkpoint_records WHERE id = ? AND map = ?`
-	GetMapStats        = `SELECT record_time, accomplished_at FROM map_records WHERE id = ? AND map = ?`
+	GetCheckpointStats = `SELECT checkpoint, record_time, accomplished_at FROM checkpoint_records WHERE uuid = ? AND map = ?`
+	GetMapStats        = `SELECT record_time, accomplished_at FROM map_records WHERE uuid = ? AND map = ?`
 )
 
 type SQLDataAccess struct {
@@ -32,22 +33,24 @@ func (sda *SQLDataAccess) GetMapStatistic(id string, mapName string) (*model.Fla
 	checkpoints := make([]*model.FlashCheckpointStatistic, 0)
 
 	for {
+		if !rows.Next() {
+			break
+		}
+
 		var recordTime uint64
 		var checkpoint int32
+		var accomplishedAt time.Time
 
-		if err := rows.Scan(&recordTime, &checkpoint); err != nil {
+		if err := rows.Scan(&checkpoint, &recordTime, &accomplishedAt); err != nil {
 			return nil, err
 		}
 
 		checkpoints = append(checkpoints, &model.FlashCheckpointStatistic{
 			Checkpoint: checkpoint,
+			AccomplishedAt: accomplishedAt.String(),
 			TimeNeeded: 0,
 			RecordTime: recordTime,
 		})
-
-		if !rows.Next() {
-			break
-		}
 	}
 
 	rows.Close() // Close before new assignment
@@ -60,27 +63,30 @@ func (sda *SQLDataAccess) GetMapStatistic(id string, mapName string) (*model.Fla
 	defer rows.Close()
 
 	var recordTime uint64
-	var accomplishedAt uint64
+	var accomplishedAt time.Time
 
-	if err := rows.Scan(&recordTime, &accomplishedAt); err != nil {
-		return nil, err
+	if rows.Next() {
+		if err := rows.Scan(&recordTime, &accomplishedAt); err != nil {
+			return nil, err
+		}
 	}
 
 	return &model.FlashMapStatistic{
 		Name:        mapName,
 		RecordTime:  recordTime,
+		AccomplishedAt: accomplishedAt.String(),
 		Checkpoints: checkpoints,
 	}, nil
 }
 
 func (sda *SQLDataAccess) GetGameStatistic(id string) (*model.FlashGameStatistic, error) {
-
+	return &model.FlashGameStatistic{}, nil
 }
 
-func (sda *SQLDataAccess) UpdateGameStatistic(id string, stats *model.FlashGameStatistic) {
-
+func (sda *SQLDataAccess) UpdateGameStatistic(id string, stats *model.FlashGameStatistic) error {
+	return nil
 }
 
-func (cda *SQLDataAccess) UpdateMapStatistic(id string, stats *model.FlashMapStatistic) {
-
+func (cda *SQLDataAccess) UpdateMapStatistic(id string, stats *model.FlashMapStatistic) error {
+	return nil
 }

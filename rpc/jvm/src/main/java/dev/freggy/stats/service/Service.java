@@ -20,24 +20,20 @@ public final class Service {
 
     /**
      * <code>string uuid = 1;</code>
-     * @return The uuid.
      */
     java.lang.String getUuid();
     /**
      * <code>string uuid = 1;</code>
-     * @return The bytes for uuid.
      */
     com.google.protobuf.ByteString
         getUuidBytes();
 
     /**
      * <code>string game = 2;</code>
-     * @return The game.
      */
     java.lang.String getGame();
     /**
      * <code>string game = 2;</code>
-     * @return The bytes for game.
      */
     com.google.protobuf.ByteString
         getGameBytes();
@@ -60,13 +56,6 @@ public final class Service {
     }
 
     @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new GetStatsRequest();
-    }
-
-    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -79,6 +68,7 @@ public final class Service {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -102,7 +92,7 @@ public final class Service {
               break;
             }
             default: {
-              if (!parseUnknownField(
+              if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -137,7 +127,6 @@ public final class Service {
     private volatile java.lang.Object uuid_;
     /**
      * <code>string uuid = 1;</code>
-     * @return The uuid.
      */
     public java.lang.String getUuid() {
       java.lang.Object ref = uuid_;
@@ -153,7 +142,6 @@ public final class Service {
     }
     /**
      * <code>string uuid = 1;</code>
-     * @return The bytes for uuid.
      */
     public com.google.protobuf.ByteString
         getUuidBytes() {
@@ -173,7 +161,6 @@ public final class Service {
     private volatile java.lang.Object game_;
     /**
      * <code>string game = 2;</code>
-     * @return The game.
      */
     public java.lang.String getGame() {
       java.lang.Object ref = game_;
@@ -189,7 +176,6 @@ public final class Service {
     }
     /**
      * <code>string game = 2;</code>
-     * @return The bytes for game.
      */
     public com.google.protobuf.ByteString
         getGameBytes() {
@@ -255,12 +241,13 @@ public final class Service {
       }
       dev.freggy.stats.service.Service.GetStatsRequest other = (dev.freggy.stats.service.Service.GetStatsRequest) obj;
 
-      if (!getUuid()
-          .equals(other.getUuid())) return false;
-      if (!getGame()
-          .equals(other.getGame())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      boolean result = true;
+      result = result && getUuid()
+          .equals(other.getUuid());
+      result = result && getGame()
+          .equals(other.getGame());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
     }
 
     @java.lang.Override
@@ -445,35 +432,35 @@ public final class Service {
 
       @java.lang.Override
       public Builder clone() {
-        return super.clone();
+        return (Builder) super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return super.setField(field, value);
+        return (Builder) super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
+        return (Builder) super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
+        return (Builder) super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
+        return (Builder) super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return super.addRepeatedField(field, value);
+        return (Builder) super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -527,7 +514,6 @@ public final class Service {
       private java.lang.Object uuid_ = "";
       /**
        * <code>string uuid = 1;</code>
-       * @return The uuid.
        */
       public java.lang.String getUuid() {
         java.lang.Object ref = uuid_;
@@ -543,7 +529,6 @@ public final class Service {
       }
       /**
        * <code>string uuid = 1;</code>
-       * @return The bytes for uuid.
        */
       public com.google.protobuf.ByteString
           getUuidBytes() {
@@ -560,8 +545,6 @@ public final class Service {
       }
       /**
        * <code>string uuid = 1;</code>
-       * @param value The uuid to set.
-       * @return This builder for chaining.
        */
       public Builder setUuid(
           java.lang.String value) {
@@ -575,7 +558,6 @@ public final class Service {
       }
       /**
        * <code>string uuid = 1;</code>
-       * @return This builder for chaining.
        */
       public Builder clearUuid() {
         
@@ -585,8 +567,6 @@ public final class Service {
       }
       /**
        * <code>string uuid = 1;</code>
-       * @param value The bytes for uuid to set.
-       * @return This builder for chaining.
        */
       public Builder setUuidBytes(
           com.google.protobuf.ByteString value) {
@@ -603,7 +583,6 @@ public final class Service {
       private java.lang.Object game_ = "";
       /**
        * <code>string game = 2;</code>
-       * @return The game.
        */
       public java.lang.String getGame() {
         java.lang.Object ref = game_;
@@ -619,7 +598,6 @@ public final class Service {
       }
       /**
        * <code>string game = 2;</code>
-       * @return The bytes for game.
        */
       public com.google.protobuf.ByteString
           getGameBytes() {
@@ -636,8 +614,6 @@ public final class Service {
       }
       /**
        * <code>string game = 2;</code>
-       * @param value The game to set.
-       * @return This builder for chaining.
        */
       public Builder setGame(
           java.lang.String value) {
@@ -651,7 +627,6 @@ public final class Service {
       }
       /**
        * <code>string game = 2;</code>
-       * @return This builder for chaining.
        */
       public Builder clearGame() {
         
@@ -661,8 +636,6 @@ public final class Service {
       }
       /**
        * <code>string game = 2;</code>
-       * @param value The bytes for game to set.
-       * @return This builder for chaining.
        */
       public Builder setGameBytes(
           com.google.protobuf.ByteString value) {
@@ -678,7 +651,7 @@ public final class Service {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       @java.lang.Override
@@ -734,7 +707,6 @@ public final class Service {
 
     /**
      * <code>bytes data = 1;</code>
-     * @return The data.
      */
     com.google.protobuf.ByteString getData();
   }
@@ -755,13 +727,6 @@ public final class Service {
     }
 
     @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new GetStatsResponse();
-    }
-
-    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -774,6 +739,7 @@ public final class Service {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -790,7 +756,7 @@ public final class Service {
               break;
             }
             default: {
-              if (!parseUnknownField(
+              if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -825,7 +791,6 @@ public final class Service {
     private com.google.protobuf.ByteString data_;
     /**
      * <code>bytes data = 1;</code>
-     * @return The data.
      */
     public com.google.protobuf.ByteString getData() {
       return data_;
@@ -876,10 +841,11 @@ public final class Service {
       }
       dev.freggy.stats.service.Service.GetStatsResponse other = (dev.freggy.stats.service.Service.GetStatsResponse) obj;
 
-      if (!getData()
-          .equals(other.getData())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      boolean result = true;
+      result = result && getData()
+          .equals(other.getData());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
     }
 
     @java.lang.Override
@@ -1059,35 +1025,35 @@ public final class Service {
 
       @java.lang.Override
       public Builder clone() {
-        return super.clone();
+        return (Builder) super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return super.setField(field, value);
+        return (Builder) super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
+        return (Builder) super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
+        return (Builder) super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
+        return (Builder) super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return super.addRepeatedField(field, value);
+        return (Builder) super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1136,15 +1102,12 @@ public final class Service {
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes data = 1;</code>
-       * @return The data.
        */
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
       /**
        * <code>bytes data = 1;</code>
-       * @param value The data to set.
-       * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1157,7 +1120,6 @@ public final class Service {
       }
       /**
        * <code>bytes data = 1;</code>
-       * @return This builder for chaining.
        */
       public Builder clearData() {
         
@@ -1168,7 +1130,7 @@ public final class Service {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       @java.lang.Override
@@ -1224,31 +1186,26 @@ public final class Service {
 
     /**
      * <code>string uuid = 1;</code>
-     * @return The uuid.
      */
     java.lang.String getUuid();
     /**
      * <code>string uuid = 1;</code>
-     * @return The bytes for uuid.
      */
     com.google.protobuf.ByteString
         getUuidBytes();
 
     /**
      * <code>string game = 2;</code>
-     * @return The game.
      */
     java.lang.String getGame();
     /**
      * <code>string game = 2;</code>
-     * @return The bytes for game.
      */
     com.google.protobuf.ByteString
         getGameBytes();
 
     /**
      * <code>bytes data = 3;</code>
-     * @return The data.
      */
     com.google.protobuf.ByteString getData();
   }
@@ -1271,13 +1228,6 @@ public final class Service {
     }
 
     @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new UpdateStatsRequest();
-    }
-
-    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1290,6 +1240,7 @@ public final class Service {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1318,7 +1269,7 @@ public final class Service {
               break;
             }
             default: {
-              if (!parseUnknownField(
+              if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -1353,7 +1304,6 @@ public final class Service {
     private volatile java.lang.Object uuid_;
     /**
      * <code>string uuid = 1;</code>
-     * @return The uuid.
      */
     public java.lang.String getUuid() {
       java.lang.Object ref = uuid_;
@@ -1369,7 +1319,6 @@ public final class Service {
     }
     /**
      * <code>string uuid = 1;</code>
-     * @return The bytes for uuid.
      */
     public com.google.protobuf.ByteString
         getUuidBytes() {
@@ -1389,7 +1338,6 @@ public final class Service {
     private volatile java.lang.Object game_;
     /**
      * <code>string game = 2;</code>
-     * @return The game.
      */
     public java.lang.String getGame() {
       java.lang.Object ref = game_;
@@ -1405,7 +1353,6 @@ public final class Service {
     }
     /**
      * <code>string game = 2;</code>
-     * @return The bytes for game.
      */
     public com.google.protobuf.ByteString
         getGameBytes() {
@@ -1425,7 +1372,6 @@ public final class Service {
     private com.google.protobuf.ByteString data_;
     /**
      * <code>bytes data = 3;</code>
-     * @return The data.
      */
     public com.google.protobuf.ByteString getData() {
       return data_;
@@ -1488,14 +1434,15 @@ public final class Service {
       }
       dev.freggy.stats.service.Service.UpdateStatsRequest other = (dev.freggy.stats.service.Service.UpdateStatsRequest) obj;
 
-      if (!getUuid()
-          .equals(other.getUuid())) return false;
-      if (!getGame()
-          .equals(other.getGame())) return false;
-      if (!getData()
-          .equals(other.getData())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      boolean result = true;
+      result = result && getUuid()
+          .equals(other.getUuid());
+      result = result && getGame()
+          .equals(other.getGame());
+      result = result && getData()
+          .equals(other.getData());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
     }
 
     @java.lang.Override
@@ -1685,35 +1632,35 @@ public final class Service {
 
       @java.lang.Override
       public Builder clone() {
-        return super.clone();
+        return (Builder) super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return super.setField(field, value);
+        return (Builder) super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
+        return (Builder) super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
+        return (Builder) super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
+        return (Builder) super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return super.addRepeatedField(field, value);
+        return (Builder) super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1770,7 +1717,6 @@ public final class Service {
       private java.lang.Object uuid_ = "";
       /**
        * <code>string uuid = 1;</code>
-       * @return The uuid.
        */
       public java.lang.String getUuid() {
         java.lang.Object ref = uuid_;
@@ -1786,7 +1732,6 @@ public final class Service {
       }
       /**
        * <code>string uuid = 1;</code>
-       * @return The bytes for uuid.
        */
       public com.google.protobuf.ByteString
           getUuidBytes() {
@@ -1803,8 +1748,6 @@ public final class Service {
       }
       /**
        * <code>string uuid = 1;</code>
-       * @param value The uuid to set.
-       * @return This builder for chaining.
        */
       public Builder setUuid(
           java.lang.String value) {
@@ -1818,7 +1761,6 @@ public final class Service {
       }
       /**
        * <code>string uuid = 1;</code>
-       * @return This builder for chaining.
        */
       public Builder clearUuid() {
         
@@ -1828,8 +1770,6 @@ public final class Service {
       }
       /**
        * <code>string uuid = 1;</code>
-       * @param value The bytes for uuid to set.
-       * @return This builder for chaining.
        */
       public Builder setUuidBytes(
           com.google.protobuf.ByteString value) {
@@ -1846,7 +1786,6 @@ public final class Service {
       private java.lang.Object game_ = "";
       /**
        * <code>string game = 2;</code>
-       * @return The game.
        */
       public java.lang.String getGame() {
         java.lang.Object ref = game_;
@@ -1862,7 +1801,6 @@ public final class Service {
       }
       /**
        * <code>string game = 2;</code>
-       * @return The bytes for game.
        */
       public com.google.protobuf.ByteString
           getGameBytes() {
@@ -1879,8 +1817,6 @@ public final class Service {
       }
       /**
        * <code>string game = 2;</code>
-       * @param value The game to set.
-       * @return This builder for chaining.
        */
       public Builder setGame(
           java.lang.String value) {
@@ -1894,7 +1830,6 @@ public final class Service {
       }
       /**
        * <code>string game = 2;</code>
-       * @return This builder for chaining.
        */
       public Builder clearGame() {
         
@@ -1904,8 +1839,6 @@ public final class Service {
       }
       /**
        * <code>string game = 2;</code>
-       * @param value The bytes for game to set.
-       * @return This builder for chaining.
        */
       public Builder setGameBytes(
           com.google.protobuf.ByteString value) {
@@ -1922,15 +1855,12 @@ public final class Service {
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes data = 3;</code>
-       * @return The data.
        */
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
       /**
        * <code>bytes data = 3;</code>
-       * @param value The data to set.
-       * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1943,7 +1873,6 @@ public final class Service {
       }
       /**
        * <code>bytes data = 3;</code>
-       * @return This builder for chaining.
        */
       public Builder clearData() {
         
@@ -1954,7 +1883,7 @@ public final class Service {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       @java.lang.Override
@@ -2024,13 +1953,6 @@ public final class Service {
     }
 
     @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new UpdateStatsResponse();
-    }
-
-    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -2054,7 +1976,7 @@ public final class Service {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(
+              if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -2123,8 +2045,9 @@ public final class Service {
       }
       dev.freggy.stats.service.Service.UpdateStatsResponse other = (dev.freggy.stats.service.Service.UpdateStatsResponse) obj;
 
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      boolean result = true;
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
     }
 
     @java.lang.Override
@@ -2299,35 +2222,35 @@ public final class Service {
 
       @java.lang.Override
       public Builder clone() {
-        return super.clone();
+        return (Builder) super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return super.setField(field, value);
+        return (Builder) super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
+        return (Builder) super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
+        return (Builder) super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
+        return (Builder) super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return super.addRepeatedField(field, value);
+        return (Builder) super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -2372,7 +2295,7 @@ public final class Service {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
+        return super.setUnknownFieldsProto3(unknownFields);
       }
 
       @java.lang.Override
@@ -2461,10 +2384,18 @@ public final class Service {
       "uest\032\024.UpdateStatsResponseB#\n\030dev.freggy" +
       ".stats.serviceZ\007serviceb\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
+    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
+    com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
+        }, assigner);
     internal_static_GetStatsRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_GetStatsRequest_fieldAccessorTable = new
