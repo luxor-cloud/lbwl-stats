@@ -165,14 +165,14 @@ func mapStatisticWithCheckpointsAlreadyExisting() *model.FlashMapStatistic {
 	c := make([]*model.FlashCheckpointStatistic, 0)
 	c = append(c, &model.FlashCheckpointStatistic{
 		Checkpoint:     1,
-		AccomplishedAt: time.Now().Format("2006-01-02 15:04:05"),
+		AccomplishedAt: time.Now().Format(SqlDateTimeLayout),
 		RecordTime:     25565,
 	})
 
 	return &model.FlashMapStatistic{
 		Name:           "Map1",
 		RecordTime:     128,
-		AccomplishedAt: time.Now().Format("2006-01-02 15:04:05"),
+		AccomplishedAt: time.Now().Format(SqlDateTimeLayout),
 		Checkpoints:    c,
 	}
 }
@@ -181,18 +181,18 @@ func mapStatisticWithCheckpointsNotExisting() *model.FlashMapStatistic {
 	c := make([]*model.FlashCheckpointStatistic, 0)
 	c = append(c, &model.FlashCheckpointStatistic{
 		Checkpoint:     1,
-		AccomplishedAt: time.Now().Format("2006-01-02 15:04:05"),
+		AccomplishedAt: time.Now().Format(SqlDateTimeLayout),
 		RecordTime:     255234,
 	})
 	c = append(c, &model.FlashCheckpointStatistic{
 		Checkpoint:     2,
-		AccomplishedAt: time.Now().Format("2006-01-02 15:04:05"),
+		AccomplishedAt: time.Now().Format(SqlDateTimeLayout),
 		RecordTime:     25565,
 	})
 	return &model.FlashMapStatistic{
 		Name:           "Map3",
 		RecordTime:     128,
-		AccomplishedAt: time.Now().Format("2006-01-02 15:04:05"),
+		AccomplishedAt: time.Now().Format("SqlDateTimeLayout"),
 		Checkpoints:    c,
 	}
 }

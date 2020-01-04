@@ -45,6 +45,10 @@ const (
 	`
 )
 
+// TODO: pass context to functions
+
+const SqlDateTimeLayout = "2006-01-02 15:04:05"
+
 type SQLDataAccess struct {
 	db *sql.DB
 }
@@ -73,7 +77,7 @@ func (sda *SQLDataAccess) GetMapStatistic(id string, mapName string) (*model.Fla
 
 		checkpoints = append(checkpoints, &model.FlashCheckpointStatistic{
 			Checkpoint:     checkpoint,
-			AccomplishedAt: accomplishedAt.Format("2006-01-02 15:04:05"),
+			AccomplishedAt: accomplishedAt.Format(SqlDateTimeLayout),
 			TimeNeeded:     0,
 			RecordTime:     recordTime,
 		})
@@ -90,7 +94,7 @@ func (sda *SQLDataAccess) GetMapStatistic(id string, mapName string) (*model.Fla
 	return &model.FlashMapStatistic{
 		Name:           mapName,
 		RecordTime:     recordTime,
-		AccomplishedAt: accomplishedAt.Format("2006-01-02 15:04:05"),
+		AccomplishedAt: accomplishedAt.Format(SqlDateTimeLayout),
 		Checkpoints:    checkpoints,
 	}, nil
 }
