@@ -10,5 +10,6 @@ require (
 	github.com/pkg/errors v0.8.1 // indirect
 	github.com/stretchr/testify v1.4.0
 	github.com/twitchtv/twirp v5.10.0+incompatible
+	golang.org/x/text v0.3.2
 	google.golang.org/appengine v1.6.5 // indirect
 )

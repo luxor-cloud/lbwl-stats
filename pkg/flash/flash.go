@@ -73,7 +73,7 @@ func (sda *SQLDataAccess) GetMapStatistic(id string, mapName string) (*model.Fla
 
 		checkpoints = append(checkpoints, &model.FlashCheckpointStatistic{
 			Checkpoint:     checkpoint,
-			AccomplishedAt: accomplishedAt.String(),
+			AccomplishedAt: accomplishedAt.Format("2006-01-02 15:04:05"),
 			TimeNeeded:     0,
 			RecordTime:     recordTime,
 		})
@@ -90,7 +90,7 @@ func (sda *SQLDataAccess) GetMapStatistic(id string, mapName string) (*model.Fla
 	return &model.FlashMapStatistic{
 		Name:           mapName,
 		RecordTime:     recordTime,
-		AccomplishedAt: accomplishedAt.String(),
+		AccomplishedAt: accomplishedAt.Format("2006-01-02 15:04:05"),
 		Checkpoints:    checkpoints,
 	}, nil
 }
@@ -146,7 +146,9 @@ func (sda *SQLDataAccess) UpdateMapStatistic(id string, stats *model.FlashMapSta
 				return
 			}
 		}
-		err = tx.Commit()
+		if err := tx.Commit(); err != nil {
+			log.Printf("Could not commit transaction: %v", err)
+		}
 	}()
 
 	if _, err = tx.Exec(
@@ -157,6 +159,11 @@ func (sda *SQLDataAccess) UpdateMapStatistic(id string, stats *model.FlashMapSta
 		stats.GetAccomplishedAt(),
 	); err != nil {
 		return err
+	}
+
+
+	if len(stats.GetCheckpoints()) <= 0 {
+		return nil
 	}
 
 	// The string that will be built must have the following format.
@@ -172,19 +179,21 @@ func (sda *SQLDataAccess) UpdateMapStatistic(id string, stats *model.FlashMapSta
 	query.WriteString("INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at) VALUES")
 
 	for i, checkpoint := range stats.GetCheckpoints() {
-		s := "(%s, %s, %d, %d, %s),"
+		s := "('%s', '%s', %d, %d, '%s'),"
 		if i == len(stats.GetCheckpoints())-1 { // last entry must not have a comma at the end
-			s = "(%s, %s, %d, %d, %s)"
+			s = "('%s', '%s', %d, %d, '%s')"
 		}
 		query.WriteString(
-			fmt.Sprintf(s, id, stats.GetName(), checkpoint.GetRecordTime(), checkpoint.GetAccomplishedAt()),
+			fmt.Sprintf(s, id, stats.GetName(), checkpoint.GetCheckpoint(), checkpoint.GetRecordTime(), checkpoint.GetAccomplishedAt()),
 		)
 	}
 
 	query.WriteString(" ON DUPLICATE KEY UPDATE record_time = VALUES(record_time), accomplished_at = VALUES(accomplished_at)")
 
+	log.Println(query.String())
+
 	if _, err := tx.Exec(query.String()); err != nil {
-		return nil
+		return err
 	}
 
 	return nil
