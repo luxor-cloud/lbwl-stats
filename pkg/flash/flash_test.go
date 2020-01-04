@@ -79,6 +79,7 @@ func TestSQLDataAccess_UpdateGameStatistic_Where_DataSet_Does_Not_Exist(t *testi
 	defer db.Close()
 	// Expected behavior: New row should be inserted
 	checkGameStatisticUpdateChanges(t, access, "99f5efbb-046f-4086-9a57-647959953d1f", gameStatistic())
+	db.Exec("DELETE FROM test.map_records WHERE uuid = '99f5efbb-046f-4086-9a57-647959953d1f'")
 }
 
 func TestSQLDataAccess_UpdateMapStatistic_Where_DataSet_Already_Exists(t *testing.T) {
