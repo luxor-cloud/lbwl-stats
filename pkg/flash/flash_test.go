@@ -11,10 +11,10 @@ import (
 )
 
 // UUID that should be used to test retrieval functions
-const RETRIEVAL_UUID = "92de217b-8b2b-403b-86a5-fe26fa3a9b5f"
+const RetrievalUuid = "92de217b-8b2b-403b-86a5-fe26fa3a9b5f"
 
 // UUID that should be used to test update functions
-const UPDATE_UUID = "aabb023c-66ef-4168-9bf9-b898bee9f73f"
+const UpdateUuid = "aabb023c-66ef-4168-9bf9-b898bee9f73f"
 
 //
 // Connect methods for different databases
@@ -47,7 +47,7 @@ func TestSQLDataAccess_GetMapStatistic_ID_Non_Existent(t *testing.T) {
 func TestSQLDataAccess_GetMapStatistic_Map_Non_Existent(t *testing.T) {
 	access, db := connectMariaDB(t)
 	defer db.Close()
-	checkMapStatisticNonExistent(t, access, RETRIEVAL_UUID, "Map42")
+	checkMapStatisticNonExistent(t, access, RetrievalUuid, "Map42")
 }
 
 func TestSQLDataAccess_GetMapStatistic_Map_And_ID_Non_Existent(t *testing.T) {
@@ -71,7 +71,7 @@ func TestSQLDataAccess_GetGameStatistic_ID_Non_Existent(t *testing.T) {
 func TestSQLDataAccess_UpdateGameStatistic_Where_DataSet_Already_Exists(t *testing.T) {
 	access, db := connectMariaDB(t)
 	defer db.Close()
-	checkGameStatisticUpdateChanges(t, access, UPDATE_UUID, gameStatistic())
+	checkGameStatisticUpdateChanges(t, access, UpdateUuid, gameStatistic())
 }
 
 func TestSQLDataAccess_UpdateGameStatistic_Where_DataSet_Does_Not_Exist(t *testing.T) {
@@ -86,18 +86,18 @@ func TestSQLDataAccess_UpdateMapStatistic_Where_DataSet_Already_Exists(t *testin
 	access, db := connectMariaDB(t)
 	defer db.Close()
 	m := mapStatisticWithCheckpointsAlreadyExisting()
-	checkMapStatisticUpdateChanges(t, access, UPDATE_UUID, m.GetName(), m)
+	checkMapStatisticUpdateChanges(t, access, UpdateUuid, m.GetName(), m)
 }
 
 func TestSQLDataAccess_UpdateMapStatistic_Where_DataSet_Does_Not_Exist(t *testing.T) {
 	access, db := connectMariaDB(t)
 	defer db.Close()
 	m := mapStatisticWithCheckpointsNotExisting()
-	checkMapStatisticUpdateChanges(t, access, UPDATE_UUID, m.GetName(), m)
+	checkMapStatisticUpdateChanges(t, access, UpdateUuid, m.GetName(), m)
 
 	// Cleanup
-	db.Exec("DELETE FROM test.map_records WHERE uuid = ? AND map = ?", UPDATE_UUID, m.GetName())
-	db.Exec("DELETE FROM test.checkpoint_records WHERE uuid = ? AND map = ?", UPDATE_UUID, m.GetName())
+	db.Exec("DELETE FROM test.map_records WHERE uuid = ? AND map = ?", UpdateUuid, m.GetName())
+	db.Exec("DELETE FROM test.checkpoint_records WHERE uuid = ? AND map = ?", UpdateUuid, m.GetName())
 }
 
 //
@@ -119,7 +119,7 @@ func checkMapStatisticNonExistent(t *testing.T, access DataAccess, id string, ma
 }
 
 func checkMapStatisticPlayloadSuccessfully(t *testing.T, access DataAccess) {
-	m := getMapStatistic(t, access, RETRIEVAL_UUID, "Map1")
+	m := getMapStatistic(t, access, RetrievalUuid, "Map1")
 
 	assert.Equal(t, uint64(22324234), m.GetRecordTime())
 	assert.Equal(t, "2019-01-01 02:59:23", m.GetAccomplishedAt())
@@ -210,7 +210,7 @@ func getMapStatistic(t *testing.T, access DataAccess, id string, mapName string)
 //
 
 func checkGameStatisticPayloadSuccessfully(t *testing.T, access DataAccess) {
-	m := getGameStatistic(t, access, RETRIEVAL_UUID)
+	m := getGameStatistic(t, access, RetrievalUuid)
 	assert.Equal(t, uint32(1337), m.GetWins())
 	assert.Equal(t, uint32(12315252), m.GetDeaths())
 	assert.Equal(t, uint32(245245), m.GetCheckpoints())
