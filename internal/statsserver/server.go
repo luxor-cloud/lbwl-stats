@@ -1,4 +1,4 @@
-package stats
+package statsserver
 
 import (
 	"context"
@@ -14,6 +14,15 @@ type handler interface {
 	GetGame() string
 	GetStats(req *service.GetStatsRequest) (*service.GetStatsResponse, error)
 	UpdateStats(req *service.UpdateStatsRequest) (*service.UpdateStatsResponse, error)
+}
+
+func NewServer(handlers ...handler) *Server {
+	handlerMap := make(map[string]handler)
+	for _, h := range handlers {
+		handlerMap[h.GetGame()] = h
+	}
+
+	return &Server{handler: handlerMap}
 }
 
 func (s *Server) GetStats(ctx context.Context, req *service.GetStatsRequest) (*service.GetStatsResponse, error) {
