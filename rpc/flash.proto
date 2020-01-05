@@ -4,8 +4,8 @@ option java_package = "dev.freggy.stats.model";
 option go_package = "model";
 
 message FlashStatisticCompound {
-    FlashGameStatistic         game_summary  = 1;
-    repeated FlashMapStatistic map_summary   = 2;
+    FlashGameStatistic         gameSummary  = 1;
+    repeated FlashMapStatistic mapSummary   = 2;
 }
 
 message FlashGameStatistic {

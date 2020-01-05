@@ -33,9 +33,11 @@ import url "net/url"
 // ======================
 
 type StatsService interface {
-	GetStats(context.Context, *GetStatsRequest) (*GetStatsResponse, error)
+	GetFlashMapStats(context.Context, *FlashMapStatsRequest) (*flash.FlashStatisticCompound, error)
 
-	UpdateStats(context.Context, *UpdateStatsRequest) (*UpdateStatsResponse, error)
+	GetFlashGameStats(context.Context, *FlashGameStatsRequest) (*flash.FlashStatisticCompound, error)
+
+	GetFlashStats(context.Context, *FlashStatsCompoundRequest) (*flash.FlashStatisticCompound, error)
 }
 
 // ============================
@@ -44,7 +46,7 @@ type StatsService interface {
 
 type statsServiceProtobufClient struct {
 	client HTTPClient
-	urls   [2]string
+	urls   [3]string
 	opts   twirp.ClientOptions
 }
 
@@ -61,9 +63,10 @@ func NewStatsServiceProtobufClient(addr string, client HTTPClient, opts ...twirp
 	}
 
 	prefix := urlBase(addr) + StatsServicePathPrefix
-	urls := [2]string{
-		prefix + "GetStats",
-		prefix + "UpdateStats",
+	urls := [3]string{
+		prefix + "GetFlashMapStats",
+		prefix + "GetFlashGameStats",
+		prefix + "GetFlashStats",
 	}
 
 	return &statsServiceProtobufClient{
@@ -73,11 +76,11 @@ func NewStatsServiceProtobufClient(addr string, client HTTPClient, opts ...twirp
 	}
 }
 
-func (c *statsServiceProtobufClient) GetStats(ctx context.Context, in *GetStatsRequest) (*GetStatsResponse, error) {
+func (c *statsServiceProtobufClient) GetFlashMapStats(ctx context.Context, in *FlashMapStatsRequest) (*flash.FlashStatisticCompound, error) {
 	ctx = ctxsetters.WithPackageName(ctx, "")
 	ctx = ctxsetters.WithServiceName(ctx, "StatsService")
-	ctx = ctxsetters.WithMethodName(ctx, "GetStats")
-	out := new(GetStatsResponse)
+	ctx = ctxsetters.WithMethodName(ctx, "GetFlashMapStats")
+	out := new(flash.FlashStatisticCompound)
 	err := doProtobufRequest(ctx, c.client, c.opts.Hooks, c.urls[0], in, out)
 	if err != nil {
 		twerr, ok := err.(twirp.Error)
@@ -93,12 +96,32 @@ func (c *statsServiceProtobufClient) GetStats(ctx context.Context, in *GetStatsR
 	return out, nil
 }
 
-func (c *statsServiceProtobufClient) UpdateStats(ctx context.Context, in *UpdateStatsRequest) (*UpdateStatsResponse, error) {
+func (c *statsServiceProtobufClient) GetFlashGameStats(ctx context.Context, in *FlashGameStatsRequest) (*flash.FlashStatisticCompound, error) {
 	ctx = ctxsetters.WithPackageName(ctx, "")
 	ctx = ctxsetters.WithServiceName(ctx, "StatsService")
-	ctx = ctxsetters.WithMethodName(ctx, "UpdateStats")
-	out := new(UpdateStatsResponse)
+	ctx = ctxsetters.WithMethodName(ctx, "GetFlashGameStats")
+	out := new(flash.FlashStatisticCompound)
 	err := doProtobufRequest(ctx, c.client, c.opts.Hooks, c.urls[1], in, out)
+	if err != nil {
+		twerr, ok := err.(twirp.Error)
+		if !ok {
+			twerr = twirp.InternalErrorWith(err)
+		}
+		callClientError(ctx, c.opts.Hooks, twerr)
+		return nil, err
+	}
+
+	callClientResponseReceived(ctx, c.opts.Hooks)
+
+	return out, nil
+}
+
+func (c *statsServiceProtobufClient) GetFlashStats(ctx context.Context, in *FlashStatsCompoundRequest) (*flash.FlashStatisticCompound, error) {
+	ctx = ctxsetters.WithPackageName(ctx, "")
+	ctx = ctxsetters.WithServiceName(ctx, "StatsService")
+	ctx = ctxsetters.WithMethodName(ctx, "GetFlashStats")
+	out := new(flash.FlashStatisticCompound)
+	err := doProtobufRequest(ctx, c.client, c.opts.Hooks, c.urls[2], in, out)
 	if err != nil {
 		twerr, ok := err.(twirp.Error)
 		if !ok {
@@ -119,7 +142,7 @@ func (c *statsServiceProtobufClient) UpdateStats(ctx context.Context, in *Update
 
 type statsServiceJSONClient struct {
 	client HTTPClient
-	urls   [2]string
+	urls   [3]string
 	opts   twirp.ClientOptions
 }
 
@@ -136,9 +159,10 @@ func NewStatsServiceJSONClient(addr string, client HTTPClient, opts ...twirp.Cli
 	}
 
 	prefix := urlBase(addr) + StatsServicePathPrefix
-	urls := [2]string{
-		prefix + "GetStats",
-		prefix + "UpdateStats",
+	urls := [3]string{
+		prefix + "GetFlashMapStats",
+		prefix + "GetFlashGameStats",
+		prefix + "GetFlashStats",
 	}
 
 	return &statsServiceJSONClient{
@@ -148,11 +172,11 @@ func NewStatsServiceJSONClient(addr string, client HTTPClient, opts ...twirp.Cli
 	}
 }
 
-func (c *statsServiceJSONClient) GetStats(ctx context.Context, in *GetStatsRequest) (*GetStatsResponse, error) {
+func (c *statsServiceJSONClient) GetFlashMapStats(ctx context.Context, in *FlashMapStatsRequest) (*flash.FlashStatisticCompound, error) {
 	ctx = ctxsetters.WithPackageName(ctx, "")
 	ctx = ctxsetters.WithServiceName(ctx, "StatsService")
-	ctx = ctxsetters.WithMethodName(ctx, "GetStats")
-	out := new(GetStatsResponse)
+	ctx = ctxsetters.WithMethodName(ctx, "GetFlashMapStats")
+	out := new(flash.FlashStatisticCompound)
 	err := doJSONRequest(ctx, c.client, c.opts.Hooks, c.urls[0], in, out)
 	if err != nil {
 		twerr, ok := err.(twirp.Error)
@@ -168,12 +192,32 @@ func (c *statsServiceJSONClient) GetStats(ctx context.Context, in *GetStatsReque
 	return out, nil
 }
 
-func (c *statsServiceJSONClient) UpdateStats(ctx context.Context, in *UpdateStatsRequest) (*UpdateStatsResponse, error) {
+func (c *statsServiceJSONClient) GetFlashGameStats(ctx context.Context, in *FlashGameStatsRequest) (*flash.FlashStatisticCompound, error) {
 	ctx = ctxsetters.WithPackageName(ctx, "")
 	ctx = ctxsetters.WithServiceName(ctx, "StatsService")
-	ctx = ctxsetters.WithMethodName(ctx, "UpdateStats")
-	out := new(UpdateStatsResponse)
+	ctx = ctxsetters.WithMethodName(ctx, "GetFlashGameStats")
+	out := new(flash.FlashStatisticCompound)
 	err := doJSONRequest(ctx, c.client, c.opts.Hooks, c.urls[1], in, out)
+	if err != nil {
+		twerr, ok := err.(twirp.Error)
+		if !ok {
+			twerr = twirp.InternalErrorWith(err)
+		}
+		callClientError(ctx, c.opts.Hooks, twerr)
+		return nil, err
+	}
+
+	callClientResponseReceived(ctx, c.opts.Hooks)
+
+	return out, nil
+}
+
+func (c *statsServiceJSONClient) GetFlashStats(ctx context.Context, in *FlashStatsCompoundRequest) (*flash.FlashStatisticCompound, error) {
+	ctx = ctxsetters.WithPackageName(ctx, "")
+	ctx = ctxsetters.WithServiceName(ctx, "StatsService")
+	ctx = ctxsetters.WithMethodName(ctx, "GetFlashStats")
+	out := new(flash.FlashStatisticCompound)
+	err := doJSONRequest(ctx, c.client, c.opts.Hooks, c.urls[2], in, out)
 	if err != nil {
 		twerr, ok := err.(twirp.Error)
 		if !ok {
@@ -236,11 +280,14 @@ func (s *statsServiceServer) ServeHTTP(resp http.ResponseWriter, req *http.Reque
 	}
 
 	switch req.URL.Path {
-	case "/twirp/StatsService/GetStats":
-		s.serveGetStats(ctx, resp, req)
+	case "/twirp/StatsService/GetFlashMapStats":
+		s.serveGetFlashMapStats(ctx, resp, req)
 		return
-	case "/twirp/StatsService/UpdateStats":
-		s.serveUpdateStats(ctx, resp, req)
+	case "/twirp/StatsService/GetFlashGameStats":
+		s.serveGetFlashGameStats(ctx, resp, req)
+		return
+	case "/twirp/StatsService/GetFlashStats":
+		s.serveGetFlashStats(ctx, resp, req)
 		return
 	default:
 		msg := fmt.Sprintf("no handler for path %q", req.URL.Path)
@@ -250,7 +297,7 @@ func (s *statsServiceServer) ServeHTTP(resp http.ResponseWriter, req *http.Reque
 	}
 }
 
-func (s *statsServiceServer) serveGetStats(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
+func (s *statsServiceServer) serveGetFlashMapStats(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
 	header := req.Header.Get("Content-Type")
 	i := strings.Index(header, ";")
 	if i == -1 {
@@ -258,9 +305,9 @@ func (s *statsServiceServer) serveGetStats(ctx context.Context, resp http.Respon
 	}
 	switch strings.TrimSpace(strings.ToLower(header[:i])) {
 	case "application/json":
-		s.serveGetStatsJSON(ctx, resp, req)
+		s.serveGetFlashMapStatsJSON(ctx, resp, req)
 	case "application/protobuf":
-		s.serveGetStatsProtobuf(ctx, resp, req)
+		s.serveGetFlashMapStatsProtobuf(ctx, resp, req)
 	default:
 		msg := fmt.Sprintf("unexpected Content-Type: %q", req.Header.Get("Content-Type"))
 		twerr := badRouteError(msg, req.Method, req.URL.Path)
@@ -268,16 +315,16 @@ func (s *statsServiceServer) serveGetStats(ctx context.Context, resp http.Respon
 	}
 }
 
-func (s *statsServiceServer) serveGetStatsJSON(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
+func (s *statsServiceServer) serveGetFlashMapStatsJSON(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
 	var err error
-	ctx = ctxsetters.WithMethodName(ctx, "GetStats")
+	ctx = ctxsetters.WithMethodName(ctx, "GetFlashMapStats")
 	ctx, err = callRequestRouted(ctx, s.hooks)
 	if err != nil {
 		s.writeError(ctx, resp, err)
 		return
 	}
 
-	reqContent := new(GetStatsRequest)
+	reqContent := new(FlashMapStatsRequest)
 	unmarshaler := jsonpb.Unmarshaler{AllowUnknownFields: true}
 	if err = unmarshaler.Unmarshal(req.Body, reqContent); err != nil {
 		s.writeError(ctx, resp, malformedRequestError("the json request could not be decoded"))
@@ -285,10 +332,10 @@ func (s *statsServiceServer) serveGetStatsJSON(ctx context.Context, resp http.Re
 	}
 
 	// Call service method
-	var respContent *GetStatsResponse
+	var respContent *flash.FlashStatisticCompound
 	func() {
 		defer ensurePanicResponses(ctx, resp, s.hooks)
-		respContent, err = s.StatsService.GetStats(ctx, reqContent)
+		respContent, err = s.StatsService.GetFlashMapStats(ctx, reqContent)
 	}()
 
 	if err != nil {
@@ -296,7 +343,7 @@ func (s *statsServiceServer) serveGetStatsJSON(ctx context.Context, resp http.Re
 		return
 	}
 	if respContent == nil {
-		s.writeError(ctx, resp, twirp.InternalError("received a nil *GetStatsResponse and nil error while calling GetStats. nil responses are not supported"))
+		s.writeError(ctx, resp, twirp.InternalError("received a nil *flash.FlashStatisticCompound and nil error while calling GetFlashMapStats. nil responses are not supported"))
 		return
 	}
 
@@ -323,9 +370,9 @@ func (s *statsServiceServer) serveGetStatsJSON(ctx context.Context, resp http.Re
 	callResponseSent(ctx, s.hooks)
 }
 
-func (s *statsServiceServer) serveGetStatsProtobuf(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
+func (s *statsServiceServer) serveGetFlashMapStatsProtobuf(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
 	var err error
-	ctx = ctxsetters.WithMethodName(ctx, "GetStats")
+	ctx = ctxsetters.WithMethodName(ctx, "GetFlashMapStats")
 	ctx, err = callRequestRouted(ctx, s.hooks)
 	if err != nil {
 		s.writeError(ctx, resp, err)
@@ -337,17 +384,17 @@ func (s *statsServiceServer) serveGetStatsProtobuf(ctx context.Context, resp htt
 		s.writeError(ctx, resp, wrapInternal(err, "failed to read request body"))
 		return
 	}
-	reqContent := new(GetStatsRequest)
+	reqContent := new(FlashMapStatsRequest)
 	if err = proto.Unmarshal(buf, reqContent); err != nil {
 		s.writeError(ctx, resp, malformedRequestError("the protobuf request could not be decoded"))
 		return
 	}
 
 	// Call service method
-	var respContent *GetStatsResponse
+	var respContent *flash.FlashStatisticCompound
 	func() {
 		defer ensurePanicResponses(ctx, resp, s.hooks)
-		respContent, err = s.StatsService.GetStats(ctx, reqContent)
+		respContent, err = s.StatsService.GetFlashMapStats(ctx, reqContent)
 	}()
 
 	if err != nil {
@@ -355,7 +402,7 @@ func (s *statsServiceServer) serveGetStatsProtobuf(ctx context.Context, resp htt
 		return
 	}
 	if respContent == nil {
-		s.writeError(ctx, resp, twirp.InternalError("received a nil *GetStatsResponse and nil error while calling GetStats. nil responses are not supported"))
+		s.writeError(ctx, resp, twirp.InternalError("received a nil *flash.FlashStatisticCompound and nil error while calling GetFlashMapStats. nil responses are not supported"))
 		return
 	}
 
@@ -379,7 +426,7 @@ func (s *statsServiceServer) serveGetStatsProtobuf(ctx context.Context, resp htt
 	callResponseSent(ctx, s.hooks)
 }
 
-func (s *statsServiceServer) serveUpdateStats(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
+func (s *statsServiceServer) serveGetFlashGameStats(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
 	header := req.Header.Get("Content-Type")
 	i := strings.Index(header, ";")
 	if i == -1 {
@@ -387,9 +434,9 @@ func (s *statsServiceServer) serveUpdateStats(ctx context.Context, resp http.Res
 	}
 	switch strings.TrimSpace(strings.ToLower(header[:i])) {
 	case "application/json":
-		s.serveUpdateStatsJSON(ctx, resp, req)
+		s.serveGetFlashGameStatsJSON(ctx, resp, req)
 	case "application/protobuf":
-		s.serveUpdateStatsProtobuf(ctx, resp, req)
+		s.serveGetFlashGameStatsProtobuf(ctx, resp, req)
 	default:
 		msg := fmt.Sprintf("unexpected Content-Type: %q", req.Header.Get("Content-Type"))
 		twerr := badRouteError(msg, req.Method, req.URL.Path)
@@ -397,16 +444,16 @@ func (s *statsServiceServer) serveUpdateStats(ctx context.Context, resp http.Res
 	}
 }
 
-func (s *statsServiceServer) serveUpdateStatsJSON(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
+func (s *statsServiceServer) serveGetFlashGameStatsJSON(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
 	var err error
-	ctx = ctxsetters.WithMethodName(ctx, "UpdateStats")
+	ctx = ctxsetters.WithMethodName(ctx, "GetFlashGameStats")
 	ctx, err = callRequestRouted(ctx, s.hooks)
 	if err != nil {
 		s.writeError(ctx, resp, err)
 		return
 	}
 
-	reqContent := new(UpdateStatsRequest)
+	reqContent := new(FlashGameStatsRequest)
 	unmarshaler := jsonpb.Unmarshaler{AllowUnknownFields: true}
 	if err = unmarshaler.Unmarshal(req.Body, reqContent); err != nil {
 		s.writeError(ctx, resp, malformedRequestError("the json request could not be decoded"))
@@ -414,10 +461,10 @@ func (s *statsServiceServer) serveUpdateStatsJSON(ctx context.Context, resp http
 	}
 
 	// Call service method
-	var respContent *UpdateStatsResponse
+	var respContent *flash.FlashStatisticCompound
 	func() {
 		defer ensurePanicResponses(ctx, resp, s.hooks)
-		respContent, err = s.StatsService.UpdateStats(ctx, reqContent)
+		respContent, err = s.StatsService.GetFlashGameStats(ctx, reqContent)
 	}()
 
 	if err != nil {
@@ -425,7 +472,7 @@ func (s *statsServiceServer) serveUpdateStatsJSON(ctx context.Context, resp http
 		return
 	}
 	if respContent == nil {
-		s.writeError(ctx, resp, twirp.InternalError("received a nil *UpdateStatsResponse and nil error while calling UpdateStats. nil responses are not supported"))
+		s.writeError(ctx, resp, twirp.InternalError("received a nil *flash.FlashStatisticCompound and nil error while calling GetFlashGameStats. nil responses are not supported"))
 		return
 	}
 
@@ -452,9 +499,9 @@ func (s *statsServiceServer) serveUpdateStatsJSON(ctx context.Context, resp http
 	callResponseSent(ctx, s.hooks)
 }
 
-func (s *statsServiceServer) serveUpdateStatsProtobuf(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
+func (s *statsServiceServer) serveGetFlashGameStatsProtobuf(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
 	var err error
-	ctx = ctxsetters.WithMethodName(ctx, "UpdateStats")
+	ctx = ctxsetters.WithMethodName(ctx, "GetFlashGameStats")
 	ctx, err = callRequestRouted(ctx, s.hooks)
 	if err != nil {
 		s.writeError(ctx, resp, err)
@@ -466,17 +513,17 @@ func (s *statsServiceServer) serveUpdateStatsProtobuf(ctx context.Context, resp 
 		s.writeError(ctx, resp, wrapInternal(err, "failed to read request body"))
 		return
 	}
-	reqContent := new(UpdateStatsRequest)
+	reqContent := new(FlashGameStatsRequest)
 	if err = proto.Unmarshal(buf, reqContent); err != nil {
 		s.writeError(ctx, resp, malformedRequestError("the protobuf request could not be decoded"))
 		return
 	}
 
 	// Call service method
-	var respContent *UpdateStatsResponse
+	var respContent *flash.FlashStatisticCompound
 	func() {
 		defer ensurePanicResponses(ctx, resp, s.hooks)
-		respContent, err = s.StatsService.UpdateStats(ctx, reqContent)
+		respContent, err = s.StatsService.GetFlashGameStats(ctx, reqContent)
 	}()
 
 	if err != nil {
@@ -484,7 +531,136 @@ func (s *statsServiceServer) serveUpdateStatsProtobuf(ctx context.Context, resp 
 		return
 	}
 	if respContent == nil {
-		s.writeError(ctx, resp, twirp.InternalError("received a nil *UpdateStatsResponse and nil error while calling UpdateStats. nil responses are not supported"))
+		s.writeError(ctx, resp, twirp.InternalError("received a nil *flash.FlashStatisticCompound and nil error while calling GetFlashGameStats. nil responses are not supported"))
+		return
+	}
+
+	ctx = callResponsePrepared(ctx, s.hooks)
+
+	respBytes, err := proto.Marshal(respContent)
+	if err != nil {
+		s.writeError(ctx, resp, wrapInternal(err, "failed to marshal proto response"))
+		return
+	}
+
+	ctx = ctxsetters.WithStatusCode(ctx, http.StatusOK)
+	resp.Header().Set("Content-Type", "application/protobuf")
+	resp.Header().Set("Content-Length", strconv.Itoa(len(respBytes)))
+	resp.WriteHeader(http.StatusOK)
+	if n, err := resp.Write(respBytes); err != nil {
+		msg := fmt.Sprintf("failed to write response, %d of %d bytes written: %s", n, len(respBytes), err.Error())
+		twerr := twirp.NewError(twirp.Unknown, msg)
+		callError(ctx, s.hooks, twerr)
+	}
+	callResponseSent(ctx, s.hooks)
+}
+
+func (s *statsServiceServer) serveGetFlashStats(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
+	header := req.Header.Get("Content-Type")
+	i := strings.Index(header, ";")
+	if i == -1 {
+		i = len(header)
+	}
+	switch strings.TrimSpace(strings.ToLower(header[:i])) {
+	case "application/json":
+		s.serveGetFlashStatsJSON(ctx, resp, req)
+	case "application/protobuf":
+		s.serveGetFlashStatsProtobuf(ctx, resp, req)
+	default:
+		msg := fmt.Sprintf("unexpected Content-Type: %q", req.Header.Get("Content-Type"))
+		twerr := badRouteError(msg, req.Method, req.URL.Path)
+		s.writeError(ctx, resp, twerr)
+	}
+}
+
+func (s *statsServiceServer) serveGetFlashStatsJSON(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
+	var err error
+	ctx = ctxsetters.WithMethodName(ctx, "GetFlashStats")
+	ctx, err = callRequestRouted(ctx, s.hooks)
+	if err != nil {
+		s.writeError(ctx, resp, err)
+		return
+	}
+
+	reqContent := new(FlashStatsCompoundRequest)
+	unmarshaler := jsonpb.Unmarshaler{AllowUnknownFields: true}
+	if err = unmarshaler.Unmarshal(req.Body, reqContent); err != nil {
+		s.writeError(ctx, resp, malformedRequestError("the json request could not be decoded"))
+		return
+	}
+
+	// Call service method
+	var respContent *flash.FlashStatisticCompound
+	func() {
+		defer ensurePanicResponses(ctx, resp, s.hooks)
+		respContent, err = s.StatsService.GetFlashStats(ctx, reqContent)
+	}()
+
+	if err != nil {
+		s.writeError(ctx, resp, err)
+		return
+	}
+	if respContent == nil {
+		s.writeError(ctx, resp, twirp.InternalError("received a nil *flash.FlashStatisticCompound and nil error while calling GetFlashStats. nil responses are not supported"))
+		return
+	}
+
+	ctx = callResponsePrepared(ctx, s.hooks)
+
+	var buf bytes.Buffer
+	marshaler := &jsonpb.Marshaler{OrigName: true}
+	if err = marshaler.Marshal(&buf, respContent); err != nil {
+		s.writeError(ctx, resp, wrapInternal(err, "failed to marshal json response"))
+		return
+	}
+
+	ctx = ctxsetters.WithStatusCode(ctx, http.StatusOK)
+	respBytes := buf.Bytes()
+	resp.Header().Set("Content-Type", "application/json")
+	resp.Header().Set("Content-Length", strconv.Itoa(len(respBytes)))
+	resp.WriteHeader(http.StatusOK)
+
+	if n, err := resp.Write(respBytes); err != nil {
+		msg := fmt.Sprintf("failed to write response, %d of %d bytes written: %s", n, len(respBytes), err.Error())
+		twerr := twirp.NewError(twirp.Unknown, msg)
+		callError(ctx, s.hooks, twerr)
+	}
+	callResponseSent(ctx, s.hooks)
+}
+
+func (s *statsServiceServer) serveGetFlashStatsProtobuf(ctx context.Context, resp http.ResponseWriter, req *http.Request) {
+	var err error
+	ctx = ctxsetters.WithMethodName(ctx, "GetFlashStats")
+	ctx, err = callRequestRouted(ctx, s.hooks)
+	if err != nil {
+		s.writeError(ctx, resp, err)
+		return
+	}
+
+	buf, err := ioutil.ReadAll(req.Body)
+	if err != nil {
+		s.writeError(ctx, resp, wrapInternal(err, "failed to read request body"))
+		return
+	}
+	reqContent := new(FlashStatsCompoundRequest)
+	if err = proto.Unmarshal(buf, reqContent); err != nil {
+		s.writeError(ctx, resp, malformedRequestError("the protobuf request could not be decoded"))
+		return
+	}
+
+	// Call service method
+	var respContent *flash.FlashStatisticCompound
+	func() {
+		defer ensurePanicResponses(ctx, resp, s.hooks)
+		respContent, err = s.StatsService.GetFlashStats(ctx, reqContent)
+	}()
+
+	if err != nil {
+		s.writeError(ctx, resp, err)
+		return
+	}
+	if respContent == nil {
+		s.writeError(ctx, resp, twirp.InternalError("received a nil *flash.FlashStatisticCompound and nil error while calling GetFlashStats. nil responses are not supported"))
 		return
 	}
 
@@ -1033,18 +1209,20 @@ func callClientError(ctx context.Context, h *twirp.ClientHooks, err twirp.Error)
 }
 
 var twirpFileDescriptor0 = []byte{
-	// 208 bytes of a gzipped FileDescriptorProto
+	// 235 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2d, 0x4e, 0x2d, 0x2a,
-	0xcb, 0x4c, 0x4e, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x57, 0xb2, 0xe4, 0xe2, 0x77, 0x4f, 0x2d,
-	0x09, 0x2e, 0x49, 0x2c, 0x29, 0x0e, 0x4a, 0x2d, 0x2c, 0x4d, 0x2d, 0x2e, 0x11, 0x12, 0xe2, 0x62,
-	0x29, 0x2d, 0xcd, 0x4c, 0x91, 0x60, 0x54, 0x60, 0xd4, 0xe0, 0x0c, 0x02, 0xb3, 0x41, 0x62, 0xe9,
-	0x89, 0xb9, 0xa9, 0x12, 0x4c, 0x10, 0x31, 0x10, 0x5b, 0x49, 0x8d, 0x4b, 0x00, 0xa1, 0xb5, 0xb8,
-	0x20, 0x3f, 0xaf, 0x38, 0x15, 0xa4, 0x2e, 0x25, 0xb1, 0x24, 0x11, 0xac, 0x97, 0x27, 0x08, 0xcc,
-	0x56, 0x0a, 0xe0, 0x12, 0x0a, 0x2d, 0x48, 0x49, 0x2c, 0x49, 0x25, 0xc7, 0x16, 0xb8, 0x89, 0xcc,
-	0x48, 0x26, 0x8a, 0x72, 0x09, 0xa3, 0x98, 0x08, 0xb1, 0xdc, 0xa8, 0x92, 0x8b, 0x07, 0x2c, 0x10,
-	0x0c, 0xf1, 0xa1, 0x90, 0x3e, 0x17, 0x07, 0xcc, 0x81, 0x42, 0x02, 0x7a, 0x68, 0xde, 0x94, 0x12,
-	0xd4, 0xc3, 0x70, 0xbd, 0x05, 0x17, 0x37, 0x92, 0xb9, 0x42, 0xc2, 0x7a, 0x98, 0xee, 0x96, 0x12,
-	0xd1, 0xc3, 0x62, 0xb5, 0x93, 0x32, 0x97, 0x44, 0x4a, 0x6a, 0x99, 0x5e, 0x5a, 0x51, 0x6a, 0x7a,
-	0x7a, 0xa5, 0x5e, 0x31, 0x48, 0x4e, 0x0f, 0x1a, 0xd0, 0x51, 0xec, 0x50, 0x46, 0x12, 0x1b, 0x38,
-	0xc8, 0x8d, 0x01, 0x01, 0x00, 0x00, 0xff, 0xff, 0xd3, 0x1f, 0x8d, 0x29, 0x83, 0x01, 0x00, 0x00,
+	0xcb, 0x4c, 0x4e, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x97, 0xe2, 0x4e, 0xcb, 0x49, 0x2c, 0xce,
+	0x80, 0x70, 0x94, 0xdc, 0xb8, 0x44, 0xdc, 0x40, 0x5c, 0xdf, 0xc4, 0x82, 0xe0, 0x92, 0xc4, 0x92,
+	0xe2, 0xa0, 0xd4, 0xc2, 0xd2, 0xd4, 0xe2, 0x12, 0x21, 0x29, 0x2e, 0x8e, 0x82, 0x9c, 0xc4, 0xca,
+	0xd4, 0x22, 0xcf, 0x14, 0x09, 0x46, 0x05, 0x46, 0x0d, 0xce, 0x20, 0x38, 0x5f, 0x48, 0x88, 0x8b,
+	0x25, 0x37, 0xb1, 0xa0, 0x58, 0x82, 0x49, 0x81, 0x59, 0x83, 0x33, 0x08, 0xcc, 0x56, 0x32, 0xe6,
+	0x12, 0x05, 0x9b, 0xe3, 0x9e, 0x98, 0x9b, 0x4a, 0xac, 0x41, 0x4a, 0xde, 0x5c, 0x92, 0x60, 0x4d,
+	0x60, 0x0d, 0xce, 0xf9, 0xb9, 0x05, 0xf9, 0xa5, 0x79, 0x29, 0x64, 0xba, 0xc0, 0xe8, 0x1e, 0x23,
+	0x17, 0x0f, 0xd8, 0xa0, 0x60, 0x88, 0x6f, 0x85, 0x9c, 0xb8, 0x04, 0xdc, 0x53, 0x4b, 0x50, 0x7c,
+	0x27, 0x24, 0xaa, 0x87, 0xcd, 0xb7, 0x52, 0xe2, 0x7a, 0x70, 0x77, 0x64, 0x16, 0x97, 0x64, 0x26,
+	0xc3, 0xdc, 0x22, 0xe4, 0xc2, 0x25, 0x08, 0x33, 0x03, 0xee, 0x33, 0x21, 0x31, 0x3d, 0xac, 0x5e,
+	0xc5, 0x67, 0x0a, 0x2f, 0xcc, 0x14, 0x88, 0x09, 0x52, 0x7a, 0x38, 0xfd, 0x8d, 0xd3, 0x14, 0x27,
+	0x65, 0x2e, 0x89, 0x94, 0xd4, 0x32, 0xbd, 0xb4, 0xa2, 0xd4, 0xf4, 0xf4, 0x4a, 0xbd, 0x62, 0x90,
+	0x5e, 0x3d, 0x68, 0xcc, 0x46, 0xb1, 0x43, 0x19, 0x49, 0x6c, 0xe0, 0x68, 0x35, 0x06, 0x04, 0x00,
+	0x00, 0xff, 0xff, 0x27, 0xae, 0x3b, 0x7b, 0xf4, 0x01, 0x00, 0x00,
 }

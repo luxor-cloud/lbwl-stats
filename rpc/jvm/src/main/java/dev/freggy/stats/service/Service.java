@@ -14,45 +14,54 @@ public final class Service {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface GetStatsRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GetStatsRequest)
+  public interface FlashMapStatsRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:FlashMapStatsRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string uuid = 1;</code>
+     * <code>string playerId = 1;</code>
      */
-    java.lang.String getUuid();
+    java.lang.String getPlayerId();
     /**
-     * <code>string uuid = 1;</code>
+     * <code>string playerId = 1;</code>
      */
     com.google.protobuf.ByteString
-        getUuidBytes();
+        getPlayerIdBytes();
 
     /**
-     * <code>string game = 2;</code>
+     * <code>repeated string maps = 2;</code>
      */
-    java.lang.String getGame();
+    java.util.List<java.lang.String>
+        getMapsList();
     /**
-     * <code>string game = 2;</code>
+     * <code>repeated string maps = 2;</code>
+     */
+    int getMapsCount();
+    /**
+     * <code>repeated string maps = 2;</code>
+     */
+    java.lang.String getMaps(int index);
+    /**
+     * <code>repeated string maps = 2;</code>
      */
     com.google.protobuf.ByteString
-        getGameBytes();
+        getMapsBytes(int index);
   }
   /**
-   * Protobuf type {@code GetStatsRequest}
+   * Protobuf type {@code FlashMapStatsRequest}
    */
-  public  static final class GetStatsRequest extends
+  public  static final class FlashMapStatsRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:GetStatsRequest)
-      GetStatsRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:FlashMapStatsRequest)
+      FlashMapStatsRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use GetStatsRequest.newBuilder() to construct.
-    private GetStatsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use FlashMapStatsRequest.newBuilder() to construct.
+    private FlashMapStatsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private GetStatsRequest() {
-      uuid_ = "";
-      game_ = "";
+    private FlashMapStatsRequest() {
+      playerId_ = "";
+      maps_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
@@ -60,7 +69,7 @@ public final class Service {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private GetStatsRequest(
+    private FlashMapStatsRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -82,13 +91,16 @@ public final class Service {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              uuid_ = s;
+              playerId_ = s;
               break;
             }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
-
-              game_ = s;
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                maps_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              maps_.add(s);
               break;
             }
             default: {
@@ -106,89 +118,88 @@ public final class Service {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          maps_ = maps_.getUnmodifiableView();
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.freggy.stats.service.Service.internal_static_GetStatsRequest_descriptor;
+      return dev.freggy.stats.service.Service.internal_static_FlashMapStatsRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.freggy.stats.service.Service.internal_static_GetStatsRequest_fieldAccessorTable
+      return dev.freggy.stats.service.Service.internal_static_FlashMapStatsRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              dev.freggy.stats.service.Service.GetStatsRequest.class, dev.freggy.stats.service.Service.GetStatsRequest.Builder.class);
+              dev.freggy.stats.service.Service.FlashMapStatsRequest.class, dev.freggy.stats.service.Service.FlashMapStatsRequest.Builder.class);
     }
 
-    public static final int UUID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object uuid_;
+    private int bitField0_;
+    public static final int PLAYERID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object playerId_;
     /**
-     * <code>string uuid = 1;</code>
+     * <code>string playerId = 1;</code>
      */
-    public java.lang.String getUuid() {
-      java.lang.Object ref = uuid_;
+    public java.lang.String getPlayerId() {
+      java.lang.Object ref = playerId_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        uuid_ = s;
+        playerId_ = s;
         return s;
       }
     }
     /**
-     * <code>string uuid = 1;</code>
+     * <code>string playerId = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getUuidBytes() {
-      java.lang.Object ref = uuid_;
+        getPlayerIdBytes() {
+      java.lang.Object ref = playerId_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        uuid_ = b;
+        playerId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int GAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object game_;
+    public static final int MAPS_FIELD_NUMBER = 2;
+    private com.google.protobuf.LazyStringList maps_;
     /**
-     * <code>string game = 2;</code>
+     * <code>repeated string maps = 2;</code>
      */
-    public java.lang.String getGame() {
-      java.lang.Object ref = game_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        game_ = s;
-        return s;
-      }
+    public com.google.protobuf.ProtocolStringList
+        getMapsList() {
+      return maps_;
     }
     /**
-     * <code>string game = 2;</code>
+     * <code>repeated string maps = 2;</code>
+     */
+    public int getMapsCount() {
+      return maps_.size();
+    }
+    /**
+     * <code>repeated string maps = 2;</code>
+     */
+    public java.lang.String getMaps(int index) {
+      return maps_.get(index);
+    }
+    /**
+     * <code>repeated string maps = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getGameBytes() {
-      java.lang.Object ref = game_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        game_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+        getMapsBytes(int index) {
+      return maps_.getByteString(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -205,11 +216,11 @@ public final class Service {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getUuidBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, uuid_);
+      if (!getPlayerIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerId_);
       }
-      if (!getGameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, game_);
+      for (int i = 0; i < maps_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, maps_.getRaw(i));
       }
       unknownFields.writeTo(output);
     }
@@ -220,11 +231,16 @@ public final class Service {
       if (size != -1) return size;
 
       size = 0;
-      if (!getUuidBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, uuid_);
+      if (!getPlayerIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerId_);
       }
-      if (!getGameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, game_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < maps_.size(); i++) {
+          dataSize += computeStringSizeNoTag(maps_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getMapsList().size();
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -236,16 +252,16 @@ public final class Service {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof dev.freggy.stats.service.Service.GetStatsRequest)) {
+      if (!(obj instanceof dev.freggy.stats.service.Service.FlashMapStatsRequest)) {
         return super.equals(obj);
       }
-      dev.freggy.stats.service.Service.GetStatsRequest other = (dev.freggy.stats.service.Service.GetStatsRequest) obj;
+      dev.freggy.stats.service.Service.FlashMapStatsRequest other = (dev.freggy.stats.service.Service.FlashMapStatsRequest) obj;
 
       boolean result = true;
-      result = result && getUuid()
-          .equals(other.getUuid());
-      result = result && getGame()
-          .equals(other.getGame());
+      result = result && getPlayerId()
+          .equals(other.getPlayerId());
+      result = result && getMapsList()
+          .equals(other.getMapsList());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -257,78 +273,80 @@ public final class Service {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + UUID_FIELD_NUMBER;
-      hash = (53 * hash) + getUuid().hashCode();
-      hash = (37 * hash) + GAME_FIELD_NUMBER;
-      hash = (53 * hash) + getGame().hashCode();
+      hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerId().hashCode();
+      if (getMapsCount() > 0) {
+        hash = (37 * hash) + MAPS_FIELD_NUMBER;
+        hash = (53 * hash) + getMapsList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static dev.freggy.stats.service.Service.GetStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.GetStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.GetStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.GetStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.GetStatsRequest parseFrom(byte[] data)
+    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.GetStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.GetStatsRequest parseFrom(java.io.InputStream input)
+    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.GetStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.GetStatsRequest parseDelimitedFrom(java.io.InputStream input)
+    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.GetStatsRequest parseDelimitedFrom(
+    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.GetStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.GetStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -341,7 +359,7 @@ public final class Service {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(dev.freggy.stats.service.Service.GetStatsRequest prototype) {
+    public static Builder newBuilder(dev.freggy.stats.service.Service.FlashMapStatsRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -357,26 +375,26 @@ public final class Service {
       return builder;
     }
     /**
-     * Protobuf type {@code GetStatsRequest}
+     * Protobuf type {@code FlashMapStatsRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GetStatsRequest)
-        dev.freggy.stats.service.Service.GetStatsRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:FlashMapStatsRequest)
+        dev.freggy.stats.service.Service.FlashMapStatsRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.freggy.stats.service.Service.internal_static_GetStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_FlashMapStatsRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.freggy.stats.service.Service.internal_static_GetStatsRequest_fieldAccessorTable
+        return dev.freggy.stats.service.Service.internal_static_FlashMapStatsRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                dev.freggy.stats.service.Service.GetStatsRequest.class, dev.freggy.stats.service.Service.GetStatsRequest.Builder.class);
+                dev.freggy.stats.service.Service.FlashMapStatsRequest.class, dev.freggy.stats.service.Service.FlashMapStatsRequest.Builder.class);
       }
 
-      // Construct using dev.freggy.stats.service.Service.GetStatsRequest.newBuilder()
+      // Construct using dev.freggy.stats.service.Service.FlashMapStatsRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -394,27 +412,27 @@ public final class Service {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        uuid_ = "";
+        playerId_ = "";
 
-        game_ = "";
-
+        maps_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.freggy.stats.service.Service.internal_static_GetStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_FlashMapStatsRequest_descriptor;
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.GetStatsRequest getDefaultInstanceForType() {
-        return dev.freggy.stats.service.Service.GetStatsRequest.getDefaultInstance();
+      public dev.freggy.stats.service.Service.FlashMapStatsRequest getDefaultInstanceForType() {
+        return dev.freggy.stats.service.Service.FlashMapStatsRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.GetStatsRequest build() {
-        dev.freggy.stats.service.Service.GetStatsRequest result = buildPartial();
+      public dev.freggy.stats.service.Service.FlashMapStatsRequest build() {
+        dev.freggy.stats.service.Service.FlashMapStatsRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -422,10 +440,17 @@ public final class Service {
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.GetStatsRequest buildPartial() {
-        dev.freggy.stats.service.Service.GetStatsRequest result = new dev.freggy.stats.service.Service.GetStatsRequest(this);
-        result.uuid_ = uuid_;
-        result.game_ = game_;
+      public dev.freggy.stats.service.Service.FlashMapStatsRequest buildPartial() {
+        dev.freggy.stats.service.Service.FlashMapStatsRequest result = new dev.freggy.stats.service.Service.FlashMapStatsRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.playerId_ = playerId_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          maps_ = maps_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.maps_ = maps_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -464,22 +489,28 @@ public final class Service {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof dev.freggy.stats.service.Service.GetStatsRequest) {
-          return mergeFrom((dev.freggy.stats.service.Service.GetStatsRequest)other);
+        if (other instanceof dev.freggy.stats.service.Service.FlashMapStatsRequest) {
+          return mergeFrom((dev.freggy.stats.service.Service.FlashMapStatsRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(dev.freggy.stats.service.Service.GetStatsRequest other) {
-        if (other == dev.freggy.stats.service.Service.GetStatsRequest.getDefaultInstance()) return this;
-        if (!other.getUuid().isEmpty()) {
-          uuid_ = other.uuid_;
+      public Builder mergeFrom(dev.freggy.stats.service.Service.FlashMapStatsRequest other) {
+        if (other == dev.freggy.stats.service.Service.FlashMapStatsRequest.getDefaultInstance()) return this;
+        if (!other.getPlayerId().isEmpty()) {
+          playerId_ = other.playerId_;
           onChanged();
         }
-        if (!other.getGame().isEmpty()) {
-          game_ = other.game_;
+        if (!other.maps_.isEmpty()) {
+          if (maps_.isEmpty()) {
+            maps_ = other.maps_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureMapsIsMutable();
+            maps_.addAll(other.maps_);
+          }
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -497,11 +528,11 @@ public final class Service {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        dev.freggy.stats.service.Service.GetStatsRequest parsedMessage = null;
+        dev.freggy.stats.service.Service.FlashMapStatsRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (dev.freggy.stats.service.Service.GetStatsRequest) e.getUnfinishedMessage();
+          parsedMessage = (dev.freggy.stats.service.Service.FlashMapStatsRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -510,141 +541,167 @@ public final class Service {
         }
         return this;
       }
+      private int bitField0_;
 
-      private java.lang.Object uuid_ = "";
+      private java.lang.Object playerId_ = "";
       /**
-       * <code>string uuid = 1;</code>
+       * <code>string playerId = 1;</code>
        */
-      public java.lang.String getUuid() {
-        java.lang.Object ref = uuid_;
+      public java.lang.String getPlayerId() {
+        java.lang.Object ref = playerId_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          uuid_ = s;
+          playerId_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string uuid = 1;</code>
+       * <code>string playerId = 1;</code>
        */
       public com.google.protobuf.ByteString
-          getUuidBytes() {
-        java.lang.Object ref = uuid_;
+          getPlayerIdBytes() {
+        java.lang.Object ref = playerId_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          uuid_ = b;
+          playerId_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string uuid = 1;</code>
+       * <code>string playerId = 1;</code>
        */
-      public Builder setUuid(
+      public Builder setPlayerId(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        uuid_ = value;
+        playerId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string uuid = 1;</code>
+       * <code>string playerId = 1;</code>
        */
-      public Builder clearUuid() {
+      public Builder clearPlayerId() {
         
-        uuid_ = getDefaultInstance().getUuid();
+        playerId_ = getDefaultInstance().getPlayerId();
         onChanged();
         return this;
       }
       /**
-       * <code>string uuid = 1;</code>
+       * <code>string playerId = 1;</code>
        */
-      public Builder setUuidBytes(
+      public Builder setPlayerIdBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        uuid_ = value;
+        playerId_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object game_ = "";
-      /**
-       * <code>string game = 2;</code>
-       */
-      public java.lang.String getGame() {
-        java.lang.Object ref = game_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          game_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      private com.google.protobuf.LazyStringList maps_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureMapsIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          maps_ = new com.google.protobuf.LazyStringArrayList(maps_);
+          bitField0_ |= 0x00000002;
+         }
       }
       /**
-       * <code>string game = 2;</code>
+       * <code>repeated string maps = 2;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getMapsList() {
+        return maps_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string maps = 2;</code>
+       */
+      public int getMapsCount() {
+        return maps_.size();
+      }
+      /**
+       * <code>repeated string maps = 2;</code>
+       */
+      public java.lang.String getMaps(int index) {
+        return maps_.get(index);
+      }
+      /**
+       * <code>repeated string maps = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getGameBytes() {
-        java.lang.Object ref = game_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          game_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+          getMapsBytes(int index) {
+        return maps_.getByteString(index);
       }
       /**
-       * <code>string game = 2;</code>
+       * <code>repeated string maps = 2;</code>
        */
-      public Builder setGame(
+      public Builder setMaps(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureMapsIsMutable();
+        maps_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string maps = 2;</code>
+       */
+      public Builder addMaps(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
-        game_ = value;
+  ensureMapsIsMutable();
+        maps_.add(value);
         onChanged();
         return this;
       }
       /**
-       * <code>string game = 2;</code>
+       * <code>repeated string maps = 2;</code>
        */
-      public Builder clearGame() {
-        
-        game_ = getDefaultInstance().getGame();
+      public Builder addAllMaps(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureMapsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, maps_);
         onChanged();
         return this;
       }
       /**
-       * <code>string game = 2;</code>
+       * <code>repeated string maps = 2;</code>
        */
-      public Builder setGameBytes(
+      public Builder clearMaps() {
+        maps_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string maps = 2;</code>
+       */
+      public Builder addMapsBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
-        game_ = value;
+        ensureMapsIsMutable();
+        maps_.add(value);
         onChanged();
         return this;
       }
@@ -661,69 +718,74 @@ public final class Service {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:GetStatsRequest)
+      // @@protoc_insertion_point(builder_scope:FlashMapStatsRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:GetStatsRequest)
-    private static final dev.freggy.stats.service.Service.GetStatsRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:FlashMapStatsRequest)
+    private static final dev.freggy.stats.service.Service.FlashMapStatsRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.GetStatsRequest();
+      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.FlashMapStatsRequest();
     }
 
-    public static dev.freggy.stats.service.Service.GetStatsRequest getDefaultInstance() {
+    public static dev.freggy.stats.service.Service.FlashMapStatsRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<GetStatsRequest>
-        PARSER = new com.google.protobuf.AbstractParser<GetStatsRequest>() {
+    private static final com.google.protobuf.Parser<FlashMapStatsRequest>
+        PARSER = new com.google.protobuf.AbstractParser<FlashMapStatsRequest>() {
       @java.lang.Override
-      public GetStatsRequest parsePartialFrom(
+      public FlashMapStatsRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetStatsRequest(input, extensionRegistry);
+        return new FlashMapStatsRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<GetStatsRequest> parser() {
+    public static com.google.protobuf.Parser<FlashMapStatsRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GetStatsRequest> getParserForType() {
+    public com.google.protobuf.Parser<FlashMapStatsRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public dev.freggy.stats.service.Service.GetStatsRequest getDefaultInstanceForType() {
+    public dev.freggy.stats.service.Service.FlashMapStatsRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface GetStatsResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GetStatsResponse)
+  public interface FlashGameStatsRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:FlashGameStatsRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bytes data = 1;</code>
+     * <code>string playerId = 1;</code>
      */
-    com.google.protobuf.ByteString getData();
+    java.lang.String getPlayerId();
+    /**
+     * <code>string playerId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getPlayerIdBytes();
   }
   /**
-   * Protobuf type {@code GetStatsResponse}
+   * Protobuf type {@code FlashGameStatsRequest}
    */
-  public  static final class GetStatsResponse extends
+  public  static final class FlashGameStatsRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:GetStatsResponse)
-      GetStatsResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:FlashGameStatsRequest)
+      FlashGameStatsRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use GetStatsResponse.newBuilder() to construct.
-    private GetStatsResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use FlashGameStatsRequest.newBuilder() to construct.
+    private FlashGameStatsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private GetStatsResponse() {
-      data_ = com.google.protobuf.ByteString.EMPTY;
+    private FlashGameStatsRequest() {
+      playerId_ = "";
     }
 
     @java.lang.Override
@@ -731,508 +793,7 @@ public final class Service {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private GetStatsResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-
-              data_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return dev.freggy.stats.service.Service.internal_static_GetStatsResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return dev.freggy.stats.service.Service.internal_static_GetStatsResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              dev.freggy.stats.service.Service.GetStatsResponse.class, dev.freggy.stats.service.Service.GetStatsResponse.Builder.class);
-    }
-
-    public static final int DATA_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString data_;
-    /**
-     * <code>bytes data = 1;</code>
-     */
-    public com.google.protobuf.ByteString getData() {
-      return data_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!data_.isEmpty()) {
-        output.writeBytes(1, data_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!data_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, data_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof dev.freggy.stats.service.Service.GetStatsResponse)) {
-        return super.equals(obj);
-      }
-      dev.freggy.stats.service.Service.GetStatsResponse other = (dev.freggy.stats.service.Service.GetStatsResponse) obj;
-
-      boolean result = true;
-      result = result && getData()
-          .equals(other.getData());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + DATA_FIELD_NUMBER;
-      hash = (53 * hash) + getData().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static dev.freggy.stats.service.Service.GetStatsResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static dev.freggy.stats.service.Service.GetStatsResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static dev.freggy.stats.service.Service.GetStatsResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static dev.freggy.stats.service.Service.GetStatsResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static dev.freggy.stats.service.Service.GetStatsResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static dev.freggy.stats.service.Service.GetStatsResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static dev.freggy.stats.service.Service.GetStatsResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static dev.freggy.stats.service.Service.GetStatsResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static dev.freggy.stats.service.Service.GetStatsResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static dev.freggy.stats.service.Service.GetStatsResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static dev.freggy.stats.service.Service.GetStatsResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static dev.freggy.stats.service.Service.GetStatsResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(dev.freggy.stats.service.Service.GetStatsResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code GetStatsResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GetStatsResponse)
-        dev.freggy.stats.service.Service.GetStatsResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return dev.freggy.stats.service.Service.internal_static_GetStatsResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return dev.freggy.stats.service.Service.internal_static_GetStatsResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                dev.freggy.stats.service.Service.GetStatsResponse.class, dev.freggy.stats.service.Service.GetStatsResponse.Builder.class);
-      }
-
-      // Construct using dev.freggy.stats.service.Service.GetStatsResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        data_ = com.google.protobuf.ByteString.EMPTY;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return dev.freggy.stats.service.Service.internal_static_GetStatsResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public dev.freggy.stats.service.Service.GetStatsResponse getDefaultInstanceForType() {
-        return dev.freggy.stats.service.Service.GetStatsResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public dev.freggy.stats.service.Service.GetStatsResponse build() {
-        dev.freggy.stats.service.Service.GetStatsResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public dev.freggy.stats.service.Service.GetStatsResponse buildPartial() {
-        dev.freggy.stats.service.Service.GetStatsResponse result = new dev.freggy.stats.service.Service.GetStatsResponse(this);
-        result.data_ = data_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof dev.freggy.stats.service.Service.GetStatsResponse) {
-          return mergeFrom((dev.freggy.stats.service.Service.GetStatsResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(dev.freggy.stats.service.Service.GetStatsResponse other) {
-        if (other == dev.freggy.stats.service.Service.GetStatsResponse.getDefaultInstance()) return this;
-        if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
-          setData(other.getData());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        dev.freggy.stats.service.Service.GetStatsResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (dev.freggy.stats.service.Service.GetStatsResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>bytes data = 1;</code>
-       */
-      public com.google.protobuf.ByteString getData() {
-        return data_;
-      }
-      /**
-       * <code>bytes data = 1;</code>
-       */
-      public Builder setData(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        data_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bytes data = 1;</code>
-       */
-      public Builder clearData() {
-        
-        data_ = getDefaultInstance().getData();
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:GetStatsResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:GetStatsResponse)
-    private static final dev.freggy.stats.service.Service.GetStatsResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.GetStatsResponse();
-    }
-
-    public static dev.freggy.stats.service.Service.GetStatsResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<GetStatsResponse>
-        PARSER = new com.google.protobuf.AbstractParser<GetStatsResponse>() {
-      @java.lang.Override
-      public GetStatsResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetStatsResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<GetStatsResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<GetStatsResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public dev.freggy.stats.service.Service.GetStatsResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface UpdateStatsRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UpdateStatsRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string uuid = 1;</code>
-     */
-    java.lang.String getUuid();
-    /**
-     * <code>string uuid = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getUuidBytes();
-
-    /**
-     * <code>string game = 2;</code>
-     */
-    java.lang.String getGame();
-    /**
-     * <code>string game = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getGameBytes();
-
-    /**
-     * <code>bytes data = 3;</code>
-     */
-    com.google.protobuf.ByteString getData();
-  }
-  /**
-   * Protobuf type {@code UpdateStatsRequest}
-   */
-  public  static final class UpdateStatsRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UpdateStatsRequest)
-      UpdateStatsRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use UpdateStatsRequest.newBuilder() to construct.
-    private UpdateStatsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private UpdateStatsRequest() {
-      uuid_ = "";
-      game_ = "";
-      data_ = com.google.protobuf.ByteString.EMPTY;
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private UpdateStatsRequest(
+    private FlashGameStatsRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1254,18 +815,586 @@ public final class Service {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              uuid_ = s;
+              playerId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return dev.freggy.stats.service.Service.internal_static_FlashGameStatsRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return dev.freggy.stats.service.Service.internal_static_FlashGameStatsRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              dev.freggy.stats.service.Service.FlashGameStatsRequest.class, dev.freggy.stats.service.Service.FlashGameStatsRequest.Builder.class);
+    }
+
+    public static final int PLAYERID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object playerId_;
+    /**
+     * <code>string playerId = 1;</code>
+     */
+    public java.lang.String getPlayerId() {
+      java.lang.Object ref = playerId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        playerId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string playerId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPlayerIdBytes() {
+      java.lang.Object ref = playerId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        playerId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getPlayerIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getPlayerIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.freggy.stats.service.Service.FlashGameStatsRequest)) {
+        return super.equals(obj);
+      }
+      dev.freggy.stats.service.Service.FlashGameStatsRequest other = (dev.freggy.stats.service.Service.FlashGameStatsRequest) obj;
+
+      boolean result = true;
+      result = result && getPlayerId()
+          .equals(other.getPlayerId());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(dev.freggy.stats.service.Service.FlashGameStatsRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code FlashGameStatsRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:FlashGameStatsRequest)
+        dev.freggy.stats.service.Service.FlashGameStatsRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return dev.freggy.stats.service.Service.internal_static_FlashGameStatsRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return dev.freggy.stats.service.Service.internal_static_FlashGameStatsRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                dev.freggy.stats.service.Service.FlashGameStatsRequest.class, dev.freggy.stats.service.Service.FlashGameStatsRequest.Builder.class);
+      }
+
+      // Construct using dev.freggy.stats.service.Service.FlashGameStatsRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        playerId_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return dev.freggy.stats.service.Service.internal_static_FlashGameStatsRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.service.Service.FlashGameStatsRequest getDefaultInstanceForType() {
+        return dev.freggy.stats.service.Service.FlashGameStatsRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.service.Service.FlashGameStatsRequest build() {
+        dev.freggy.stats.service.Service.FlashGameStatsRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.service.Service.FlashGameStatsRequest buildPartial() {
+        dev.freggy.stats.service.Service.FlashGameStatsRequest result = new dev.freggy.stats.service.Service.FlashGameStatsRequest(this);
+        result.playerId_ = playerId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.freggy.stats.service.Service.FlashGameStatsRequest) {
+          return mergeFrom((dev.freggy.stats.service.Service.FlashGameStatsRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.freggy.stats.service.Service.FlashGameStatsRequest other) {
+        if (other == dev.freggy.stats.service.Service.FlashGameStatsRequest.getDefaultInstance()) return this;
+        if (!other.getPlayerId().isEmpty()) {
+          playerId_ = other.playerId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        dev.freggy.stats.service.Service.FlashGameStatsRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (dev.freggy.stats.service.Service.FlashGameStatsRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object playerId_ = "";
+      /**
+       * <code>string playerId = 1;</code>
+       */
+      public java.lang.String getPlayerId() {
+        java.lang.Object ref = playerId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          playerId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string playerId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPlayerIdBytes() {
+        java.lang.Object ref = playerId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          playerId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string playerId = 1;</code>
+       */
+      public Builder setPlayerId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        playerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string playerId = 1;</code>
+       */
+      public Builder clearPlayerId() {
+        
+        playerId_ = getDefaultInstance().getPlayerId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string playerId = 1;</code>
+       */
+      public Builder setPlayerIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        playerId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:FlashGameStatsRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:FlashGameStatsRequest)
+    private static final dev.freggy.stats.service.Service.FlashGameStatsRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.FlashGameStatsRequest();
+    }
+
+    public static dev.freggy.stats.service.Service.FlashGameStatsRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FlashGameStatsRequest>
+        PARSER = new com.google.protobuf.AbstractParser<FlashGameStatsRequest>() {
+      @java.lang.Override
+      public FlashGameStatsRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FlashGameStatsRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<FlashGameStatsRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FlashGameStatsRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public dev.freggy.stats.service.Service.FlashGameStatsRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FlashStatsCompoundRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:FlashStatsCompoundRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string playerId = 1;</code>
+     */
+    java.lang.String getPlayerId();
+    /**
+     * <code>string playerId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getPlayerIdBytes();
+
+    /**
+     * <code>repeated string maps = 2;</code>
+     */
+    java.util.List<java.lang.String>
+        getMapsList();
+    /**
+     * <code>repeated string maps = 2;</code>
+     */
+    int getMapsCount();
+    /**
+     * <code>repeated string maps = 2;</code>
+     */
+    java.lang.String getMaps(int index);
+    /**
+     * <code>repeated string maps = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getMapsBytes(int index);
+  }
+  /**
+   * Protobuf type {@code FlashStatsCompoundRequest}
+   */
+  public  static final class FlashStatsCompoundRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:FlashStatsCompoundRequest)
+      FlashStatsCompoundRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FlashStatsCompoundRequest.newBuilder() to construct.
+    private FlashStatsCompoundRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FlashStatsCompoundRequest() {
+      playerId_ = "";
+      maps_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FlashStatsCompoundRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              playerId_ = s;
               break;
             }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
-
-              game_ = s;
-              break;
-            }
-            case 26: {
-
-              data_ = input.readBytes();
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                maps_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              maps_.add(s);
               break;
             }
             default: {
@@ -1283,98 +1412,88 @@ public final class Service {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          maps_ = maps_.getUnmodifiableView();
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.freggy.stats.service.Service.internal_static_UpdateStatsRequest_descriptor;
+      return dev.freggy.stats.service.Service.internal_static_FlashStatsCompoundRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.freggy.stats.service.Service.internal_static_UpdateStatsRequest_fieldAccessorTable
+      return dev.freggy.stats.service.Service.internal_static_FlashStatsCompoundRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              dev.freggy.stats.service.Service.UpdateStatsRequest.class, dev.freggy.stats.service.Service.UpdateStatsRequest.Builder.class);
+              dev.freggy.stats.service.Service.FlashStatsCompoundRequest.class, dev.freggy.stats.service.Service.FlashStatsCompoundRequest.Builder.class);
     }
 
-    public static final int UUID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object uuid_;
+    private int bitField0_;
+    public static final int PLAYERID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object playerId_;
     /**
-     * <code>string uuid = 1;</code>
+     * <code>string playerId = 1;</code>
      */
-    public java.lang.String getUuid() {
-      java.lang.Object ref = uuid_;
+    public java.lang.String getPlayerId() {
+      java.lang.Object ref = playerId_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        uuid_ = s;
+        playerId_ = s;
         return s;
       }
     }
     /**
-     * <code>string uuid = 1;</code>
+     * <code>string playerId = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getUuidBytes() {
-      java.lang.Object ref = uuid_;
+        getPlayerIdBytes() {
+      java.lang.Object ref = playerId_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        uuid_ = b;
+        playerId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int GAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object game_;
+    public static final int MAPS_FIELD_NUMBER = 2;
+    private com.google.protobuf.LazyStringList maps_;
     /**
-     * <code>string game = 2;</code>
+     * <code>repeated string maps = 2;</code>
      */
-    public java.lang.String getGame() {
-      java.lang.Object ref = game_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        game_ = s;
-        return s;
-      }
+    public com.google.protobuf.ProtocolStringList
+        getMapsList() {
+      return maps_;
     }
     /**
-     * <code>string game = 2;</code>
+     * <code>repeated string maps = 2;</code>
+     */
+    public int getMapsCount() {
+      return maps_.size();
+    }
+    /**
+     * <code>repeated string maps = 2;</code>
+     */
+    public java.lang.String getMaps(int index) {
+      return maps_.get(index);
+    }
+    /**
+     * <code>repeated string maps = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getGameBytes() {
-      java.lang.Object ref = game_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        game_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DATA_FIELD_NUMBER = 3;
-    private com.google.protobuf.ByteString data_;
-    /**
-     * <code>bytes data = 3;</code>
-     */
-    public com.google.protobuf.ByteString getData() {
-      return data_;
+        getMapsBytes(int index) {
+      return maps_.getByteString(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1391,14 +1510,11 @@ public final class Service {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getUuidBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, uuid_);
+      if (!getPlayerIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerId_);
       }
-      if (!getGameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, game_);
-      }
-      if (!data_.isEmpty()) {
-        output.writeBytes(3, data_);
+      for (int i = 0; i < maps_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, maps_.getRaw(i));
       }
       unknownFields.writeTo(output);
     }
@@ -1409,15 +1525,16 @@ public final class Service {
       if (size != -1) return size;
 
       size = 0;
-      if (!getUuidBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, uuid_);
+      if (!getPlayerIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerId_);
       }
-      if (!getGameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, game_);
-      }
-      if (!data_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, data_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < maps_.size(); i++) {
+          dataSize += computeStringSizeNoTag(maps_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getMapsList().size();
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1429,18 +1546,16 @@ public final class Service {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof dev.freggy.stats.service.Service.UpdateStatsRequest)) {
+      if (!(obj instanceof dev.freggy.stats.service.Service.FlashStatsCompoundRequest)) {
         return super.equals(obj);
       }
-      dev.freggy.stats.service.Service.UpdateStatsRequest other = (dev.freggy.stats.service.Service.UpdateStatsRequest) obj;
+      dev.freggy.stats.service.Service.FlashStatsCompoundRequest other = (dev.freggy.stats.service.Service.FlashStatsCompoundRequest) obj;
 
       boolean result = true;
-      result = result && getUuid()
-          .equals(other.getUuid());
-      result = result && getGame()
-          .equals(other.getGame());
-      result = result && getData()
-          .equals(other.getData());
+      result = result && getPlayerId()
+          .equals(other.getPlayerId());
+      result = result && getMapsList()
+          .equals(other.getMapsList());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -1452,80 +1567,80 @@ public final class Service {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + UUID_FIELD_NUMBER;
-      hash = (53 * hash) + getUuid().hashCode();
-      hash = (37 * hash) + GAME_FIELD_NUMBER;
-      hash = (53 * hash) + getGame().hashCode();
-      hash = (37 * hash) + DATA_FIELD_NUMBER;
-      hash = (53 * hash) + getData().hashCode();
+      hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerId().hashCode();
+      if (getMapsCount() > 0) {
+        hash = (37 * hash) + MAPS_FIELD_NUMBER;
+        hash = (53 * hash) + getMapsList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static dev.freggy.stats.service.Service.UpdateStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.UpdateStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.UpdateStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.UpdateStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.UpdateStatsRequest parseFrom(byte[] data)
+    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.UpdateStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.UpdateStatsRequest parseFrom(java.io.InputStream input)
+    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.UpdateStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.UpdateStatsRequest parseDelimitedFrom(java.io.InputStream input)
+    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.UpdateStatsRequest parseDelimitedFrom(
+    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.UpdateStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.UpdateStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1538,7 +1653,7 @@ public final class Service {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(dev.freggy.stats.service.Service.UpdateStatsRequest prototype) {
+    public static Builder newBuilder(dev.freggy.stats.service.Service.FlashStatsCompoundRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1554,26 +1669,26 @@ public final class Service {
       return builder;
     }
     /**
-     * Protobuf type {@code UpdateStatsRequest}
+     * Protobuf type {@code FlashStatsCompoundRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UpdateStatsRequest)
-        dev.freggy.stats.service.Service.UpdateStatsRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:FlashStatsCompoundRequest)
+        dev.freggy.stats.service.Service.FlashStatsCompoundRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.freggy.stats.service.Service.internal_static_UpdateStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_FlashStatsCompoundRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.freggy.stats.service.Service.internal_static_UpdateStatsRequest_fieldAccessorTable
+        return dev.freggy.stats.service.Service.internal_static_FlashStatsCompoundRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                dev.freggy.stats.service.Service.UpdateStatsRequest.class, dev.freggy.stats.service.Service.UpdateStatsRequest.Builder.class);
+                dev.freggy.stats.service.Service.FlashStatsCompoundRequest.class, dev.freggy.stats.service.Service.FlashStatsCompoundRequest.Builder.class);
       }
 
-      // Construct using dev.freggy.stats.service.Service.UpdateStatsRequest.newBuilder()
+      // Construct using dev.freggy.stats.service.Service.FlashStatsCompoundRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1591,29 +1706,27 @@ public final class Service {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        uuid_ = "";
+        playerId_ = "";
 
-        game_ = "";
-
-        data_ = com.google.protobuf.ByteString.EMPTY;
-
+        maps_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.freggy.stats.service.Service.internal_static_UpdateStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_FlashStatsCompoundRequest_descriptor;
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.UpdateStatsRequest getDefaultInstanceForType() {
-        return dev.freggy.stats.service.Service.UpdateStatsRequest.getDefaultInstance();
+      public dev.freggy.stats.service.Service.FlashStatsCompoundRequest getDefaultInstanceForType() {
+        return dev.freggy.stats.service.Service.FlashStatsCompoundRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.UpdateStatsRequest build() {
-        dev.freggy.stats.service.Service.UpdateStatsRequest result = buildPartial();
+      public dev.freggy.stats.service.Service.FlashStatsCompoundRequest build() {
+        dev.freggy.stats.service.Service.FlashStatsCompoundRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1621,11 +1734,17 @@ public final class Service {
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.UpdateStatsRequest buildPartial() {
-        dev.freggy.stats.service.Service.UpdateStatsRequest result = new dev.freggy.stats.service.Service.UpdateStatsRequest(this);
-        result.uuid_ = uuid_;
-        result.game_ = game_;
-        result.data_ = data_;
+      public dev.freggy.stats.service.Service.FlashStatsCompoundRequest buildPartial() {
+        dev.freggy.stats.service.Service.FlashStatsCompoundRequest result = new dev.freggy.stats.service.Service.FlashStatsCompoundRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.playerId_ = playerId_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          maps_ = maps_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.maps_ = maps_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1664,26 +1783,29 @@ public final class Service {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof dev.freggy.stats.service.Service.UpdateStatsRequest) {
-          return mergeFrom((dev.freggy.stats.service.Service.UpdateStatsRequest)other);
+        if (other instanceof dev.freggy.stats.service.Service.FlashStatsCompoundRequest) {
+          return mergeFrom((dev.freggy.stats.service.Service.FlashStatsCompoundRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(dev.freggy.stats.service.Service.UpdateStatsRequest other) {
-        if (other == dev.freggy.stats.service.Service.UpdateStatsRequest.getDefaultInstance()) return this;
-        if (!other.getUuid().isEmpty()) {
-          uuid_ = other.uuid_;
+      public Builder mergeFrom(dev.freggy.stats.service.Service.FlashStatsCompoundRequest other) {
+        if (other == dev.freggy.stats.service.Service.FlashStatsCompoundRequest.getDefaultInstance()) return this;
+        if (!other.getPlayerId().isEmpty()) {
+          playerId_ = other.playerId_;
           onChanged();
         }
-        if (!other.getGame().isEmpty()) {
-          game_ = other.game_;
+        if (!other.maps_.isEmpty()) {
+          if (maps_.isEmpty()) {
+            maps_ = other.maps_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureMapsIsMutable();
+            maps_.addAll(other.maps_);
+          }
           onChanged();
-        }
-        if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
-          setData(other.getData());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1700,11 +1822,11 @@ public final class Service {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        dev.freggy.stats.service.Service.UpdateStatsRequest parsedMessage = null;
+        dev.freggy.stats.service.Service.FlashStatsCompoundRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (dev.freggy.stats.service.Service.UpdateStatsRequest) e.getUnfinishedMessage();
+          parsedMessage = (dev.freggy.stats.service.Service.FlashStatsCompoundRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1713,170 +1835,167 @@ public final class Service {
         }
         return this;
       }
+      private int bitField0_;
 
-      private java.lang.Object uuid_ = "";
+      private java.lang.Object playerId_ = "";
       /**
-       * <code>string uuid = 1;</code>
+       * <code>string playerId = 1;</code>
        */
-      public java.lang.String getUuid() {
-        java.lang.Object ref = uuid_;
+      public java.lang.String getPlayerId() {
+        java.lang.Object ref = playerId_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          uuid_ = s;
+          playerId_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string uuid = 1;</code>
+       * <code>string playerId = 1;</code>
        */
       public com.google.protobuf.ByteString
-          getUuidBytes() {
-        java.lang.Object ref = uuid_;
+          getPlayerIdBytes() {
+        java.lang.Object ref = playerId_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          uuid_ = b;
+          playerId_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string uuid = 1;</code>
+       * <code>string playerId = 1;</code>
        */
-      public Builder setUuid(
+      public Builder setPlayerId(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        uuid_ = value;
+        playerId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string uuid = 1;</code>
+       * <code>string playerId = 1;</code>
        */
-      public Builder clearUuid() {
+      public Builder clearPlayerId() {
         
-        uuid_ = getDefaultInstance().getUuid();
+        playerId_ = getDefaultInstance().getPlayerId();
         onChanged();
         return this;
       }
       /**
-       * <code>string uuid = 1;</code>
+       * <code>string playerId = 1;</code>
        */
-      public Builder setUuidBytes(
+      public Builder setPlayerIdBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        uuid_ = value;
+        playerId_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object game_ = "";
-      /**
-       * <code>string game = 2;</code>
-       */
-      public java.lang.String getGame() {
-        java.lang.Object ref = game_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          game_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      private com.google.protobuf.LazyStringList maps_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureMapsIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          maps_ = new com.google.protobuf.LazyStringArrayList(maps_);
+          bitField0_ |= 0x00000002;
+         }
       }
       /**
-       * <code>string game = 2;</code>
+       * <code>repeated string maps = 2;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getMapsList() {
+        return maps_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string maps = 2;</code>
+       */
+      public int getMapsCount() {
+        return maps_.size();
+      }
+      /**
+       * <code>repeated string maps = 2;</code>
+       */
+      public java.lang.String getMaps(int index) {
+        return maps_.get(index);
+      }
+      /**
+       * <code>repeated string maps = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getGameBytes() {
-        java.lang.Object ref = game_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          game_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+          getMapsBytes(int index) {
+        return maps_.getByteString(index);
       }
       /**
-       * <code>string game = 2;</code>
+       * <code>repeated string maps = 2;</code>
        */
-      public Builder setGame(
+      public Builder setMaps(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureMapsIsMutable();
+        maps_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string maps = 2;</code>
+       */
+      public Builder addMaps(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
-        game_ = value;
+  ensureMapsIsMutable();
+        maps_.add(value);
         onChanged();
         return this;
       }
       /**
-       * <code>string game = 2;</code>
+       * <code>repeated string maps = 2;</code>
        */
-      public Builder clearGame() {
-        
-        game_ = getDefaultInstance().getGame();
+      public Builder addAllMaps(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureMapsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, maps_);
         onChanged();
         return this;
       }
       /**
-       * <code>string game = 2;</code>
+       * <code>repeated string maps = 2;</code>
        */
-      public Builder setGameBytes(
+      public Builder clearMaps() {
+        maps_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string maps = 2;</code>
+       */
+      public Builder addMapsBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
-        game_ = value;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>bytes data = 3;</code>
-       */
-      public com.google.protobuf.ByteString getData() {
-        return data_;
-      }
-      /**
-       * <code>bytes data = 3;</code>
-       */
-      public Builder setData(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        data_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bytes data = 3;</code>
-       */
-      public Builder clearData() {
-        
-        data_ = getDefaultInstance().getData();
+        ensureMapsIsMutable();
+        maps_.add(value);
         onChanged();
         return this;
       }
@@ -1893,478 +2012,61 @@ public final class Service {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UpdateStatsRequest)
+      // @@protoc_insertion_point(builder_scope:FlashStatsCompoundRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:UpdateStatsRequest)
-    private static final dev.freggy.stats.service.Service.UpdateStatsRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:FlashStatsCompoundRequest)
+    private static final dev.freggy.stats.service.Service.FlashStatsCompoundRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.UpdateStatsRequest();
+      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.FlashStatsCompoundRequest();
     }
 
-    public static dev.freggy.stats.service.Service.UpdateStatsRequest getDefaultInstance() {
+    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UpdateStatsRequest>
-        PARSER = new com.google.protobuf.AbstractParser<UpdateStatsRequest>() {
+    private static final com.google.protobuf.Parser<FlashStatsCompoundRequest>
+        PARSER = new com.google.protobuf.AbstractParser<FlashStatsCompoundRequest>() {
       @java.lang.Override
-      public UpdateStatsRequest parsePartialFrom(
+      public FlashStatsCompoundRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UpdateStatsRequest(input, extensionRegistry);
+        return new FlashStatsCompoundRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UpdateStatsRequest> parser() {
+    public static com.google.protobuf.Parser<FlashStatsCompoundRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UpdateStatsRequest> getParserForType() {
+    public com.google.protobuf.Parser<FlashStatsCompoundRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public dev.freggy.stats.service.Service.UpdateStatsRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface UpdateStatsResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UpdateStatsResponse)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code UpdateStatsResponse}
-   */
-  public  static final class UpdateStatsResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UpdateStatsResponse)
-      UpdateStatsResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use UpdateStatsResponse.newBuilder() to construct.
-    private UpdateStatsResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private UpdateStatsResponse() {
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private UpdateStatsResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return dev.freggy.stats.service.Service.internal_static_UpdateStatsResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return dev.freggy.stats.service.Service.internal_static_UpdateStatsResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              dev.freggy.stats.service.Service.UpdateStatsResponse.class, dev.freggy.stats.service.Service.UpdateStatsResponse.Builder.class);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof dev.freggy.stats.service.Service.UpdateStatsResponse)) {
-        return super.equals(obj);
-      }
-      dev.freggy.stats.service.Service.UpdateStatsResponse other = (dev.freggy.stats.service.Service.UpdateStatsResponse) obj;
-
-      boolean result = true;
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static dev.freggy.stats.service.Service.UpdateStatsResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static dev.freggy.stats.service.Service.UpdateStatsResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static dev.freggy.stats.service.Service.UpdateStatsResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static dev.freggy.stats.service.Service.UpdateStatsResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static dev.freggy.stats.service.Service.UpdateStatsResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static dev.freggy.stats.service.Service.UpdateStatsResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static dev.freggy.stats.service.Service.UpdateStatsResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static dev.freggy.stats.service.Service.UpdateStatsResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static dev.freggy.stats.service.Service.UpdateStatsResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static dev.freggy.stats.service.Service.UpdateStatsResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static dev.freggy.stats.service.Service.UpdateStatsResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static dev.freggy.stats.service.Service.UpdateStatsResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(dev.freggy.stats.service.Service.UpdateStatsResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code UpdateStatsResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UpdateStatsResponse)
-        dev.freggy.stats.service.Service.UpdateStatsResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return dev.freggy.stats.service.Service.internal_static_UpdateStatsResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return dev.freggy.stats.service.Service.internal_static_UpdateStatsResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                dev.freggy.stats.service.Service.UpdateStatsResponse.class, dev.freggy.stats.service.Service.UpdateStatsResponse.Builder.class);
-      }
-
-      // Construct using dev.freggy.stats.service.Service.UpdateStatsResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return dev.freggy.stats.service.Service.internal_static_UpdateStatsResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public dev.freggy.stats.service.Service.UpdateStatsResponse getDefaultInstanceForType() {
-        return dev.freggy.stats.service.Service.UpdateStatsResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public dev.freggy.stats.service.Service.UpdateStatsResponse build() {
-        dev.freggy.stats.service.Service.UpdateStatsResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public dev.freggy.stats.service.Service.UpdateStatsResponse buildPartial() {
-        dev.freggy.stats.service.Service.UpdateStatsResponse result = new dev.freggy.stats.service.Service.UpdateStatsResponse(this);
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof dev.freggy.stats.service.Service.UpdateStatsResponse) {
-          return mergeFrom((dev.freggy.stats.service.Service.UpdateStatsResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(dev.freggy.stats.service.Service.UpdateStatsResponse other) {
-        if (other == dev.freggy.stats.service.Service.UpdateStatsResponse.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        dev.freggy.stats.service.Service.UpdateStatsResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (dev.freggy.stats.service.Service.UpdateStatsResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:UpdateStatsResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:UpdateStatsResponse)
-    private static final dev.freggy.stats.service.Service.UpdateStatsResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.UpdateStatsResponse();
-    }
-
-    public static dev.freggy.stats.service.Service.UpdateStatsResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<UpdateStatsResponse>
-        PARSER = new com.google.protobuf.AbstractParser<UpdateStatsResponse>() {
-      @java.lang.Override
-      public UpdateStatsResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UpdateStatsResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<UpdateStatsResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<UpdateStatsResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public dev.freggy.stats.service.Service.UpdateStatsResponse getDefaultInstanceForType() {
+    public dev.freggy.stats.service.Service.FlashStatsCompoundRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GetStatsRequest_descriptor;
+    internal_static_FlashMapStatsRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GetStatsRequest_fieldAccessorTable;
+      internal_static_FlashMapStatsRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GetStatsResponse_descriptor;
+    internal_static_FlashGameStatsRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GetStatsResponse_fieldAccessorTable;
+      internal_static_FlashGameStatsRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UpdateStatsRequest_descriptor;
+    internal_static_FlashStatsCompoundRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UpdateStatsRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UpdateStatsResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UpdateStatsResponse_fieldAccessorTable;
+      internal_static_FlashStatsCompoundRequest_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2374,15 +2076,18 @@ public final class Service {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rservice.proto\"-\n\017GetStatsRequest\022\014\n\004uu" +
-      "id\030\001 \001(\t\022\014\n\004game\030\002 \001(\t\" \n\020GetStatsRespon" +
-      "se\022\014\n\004data\030\001 \001(\014\">\n\022UpdateStatsRequest\022\014" +
-      "\n\004uuid\030\001 \001(\t\022\014\n\004game\030\002 \001(\t\022\014\n\004data\030\003 \001(\014" +
-      "\"\025\n\023UpdateStatsResponse2y\n\014StatsService\022" +
-      "/\n\010GetStats\022\020.GetStatsRequest\032\021.GetStats" +
-      "Response\0228\n\013UpdateStats\022\023.UpdateStatsReq" +
-      "uest\032\024.UpdateStatsResponseB#\n\030dev.freggy" +
-      ".stats.serviceZ\007serviceb\006proto3"
+      "\n\rservice.proto\032\013flash.proto\"6\n\024FlashMap" +
+      "StatsRequest\022\020\n\010playerId\030\001 \001(\t\022\014\n\004maps\030\002" +
+      " \003(\t\")\n\025FlashGameStatsRequest\022\020\n\010playerI" +
+      "d\030\001 \001(\t\";\n\031FlashStatsCompoundRequest\022\020\n\010" +
+      "playerId\030\001 \001(\t\022\014\n\004maps\030\002 \003(\t2\336\001\n\014StatsSe" +
+      "rvice\022B\n\020GetFlashMapStats\022\025.FlashMapStat" +
+      "sRequest\032\027.FlashStatisticCompound\022D\n\021Get" +
+      "FlashGameStats\022\026.FlashGameStatsRequest\032\027" +
+      ".FlashStatisticCompound\022D\n\rGetFlashStats" +
+      "\022\032.FlashStatsCompoundRequest\032\027.FlashStat" +
+      "isticCompoundB#\n\030dev.freggy.stats.servic" +
+      "eZ\007serviceb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2395,31 +2100,27 @@ public final class Service {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          dev.freggy.stats.model.Flash.getDescriptor(),
         }, assigner);
-    internal_static_GetStatsRequest_descriptor =
+    internal_static_FlashMapStatsRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_GetStatsRequest_fieldAccessorTable = new
+    internal_static_FlashMapStatsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GetStatsRequest_descriptor,
-        new java.lang.String[] { "Uuid", "Game", });
-    internal_static_GetStatsResponse_descriptor =
+        internal_static_FlashMapStatsRequest_descriptor,
+        new java.lang.String[] { "PlayerId", "Maps", });
+    internal_static_FlashGameStatsRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_GetStatsResponse_fieldAccessorTable = new
+    internal_static_FlashGameStatsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GetStatsResponse_descriptor,
-        new java.lang.String[] { "Data", });
-    internal_static_UpdateStatsRequest_descriptor =
+        internal_static_FlashGameStatsRequest_descriptor,
+        new java.lang.String[] { "PlayerId", });
+    internal_static_FlashStatsCompoundRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_UpdateStatsRequest_fieldAccessorTable = new
+    internal_static_FlashStatsCompoundRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UpdateStatsRequest_descriptor,
-        new java.lang.String[] { "Uuid", "Game", "Data", });
-    internal_static_UpdateStatsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_UpdateStatsResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UpdateStatsResponse_descriptor,
-        new java.lang.String[] { });
+        internal_static_FlashStatsCompoundRequest_descriptor,
+        new java.lang.String[] { "PlayerId", "Maps", });
+    dev.freggy.stats.model.Flash.getDescriptor();
   }
 
   @javax.ws.rs.ext.Provider
@@ -2489,15 +2190,20 @@ public final class Service {
   @javax.ws.rs.Path( "/StatsService" )
   public interface StatsService {
     @javax.ws.rs.POST
-    @javax.ws.rs.Path( "/GetStats" )
+    @javax.ws.rs.Path( "/GetFlashMapStats" )
     @javax.ws.rs.Consumes({"application/protobuf", "application/json"})
     @javax.ws.rs.Produces({"application/protobuf", "application/json"})
-    dev.freggy.stats.service.Service.GetStatsResponse getStats(dev.freggy.stats.service.Service.GetStatsRequest request);
+    dev.freggy.stats.service.Service.FlashStatisticCompound getFlashMapStats(dev.freggy.stats.service.Service.FlashMapStatsRequest request);
     @javax.ws.rs.POST
-    @javax.ws.rs.Path( "/UpdateStats" )
+    @javax.ws.rs.Path( "/GetFlashGameStats" )
     @javax.ws.rs.Consumes({"application/protobuf", "application/json"})
     @javax.ws.rs.Produces({"application/protobuf", "application/json"})
-    dev.freggy.stats.service.Service.UpdateStatsResponse updateStats(dev.freggy.stats.service.Service.UpdateStatsRequest request);
+    dev.freggy.stats.service.Service.FlashStatisticCompound getFlashGameStats(dev.freggy.stats.service.Service.FlashGameStatsRequest request);
+    @javax.ws.rs.POST
+    @javax.ws.rs.Path( "/GetFlashStats" )
+    @javax.ws.rs.Consumes({"application/protobuf", "application/json"})
+    @javax.ws.rs.Produces({"application/protobuf", "application/json"})
+    dev.freggy.stats.service.Service.FlashStatisticCompound getFlashStats(dev.freggy.stats.service.Service.FlashStatsCompoundRequest request);
   }
   
   public static class StatsServiceClient implements dev.freggy.stats.service.Service.StatsService {
@@ -2523,13 +2229,18 @@ public final class Service {
   
   
     @Override
-    public dev.freggy.stats.service.Service.GetStatsResponse getStats(dev.freggy.stats.service.Service.GetStatsRequest request) {
-      return call("/GetStats", request, dev.freggy.stats.service.Service.GetStatsResponse.class);
+    public dev.freggy.stats.service.Service.FlashStatisticCompound getFlashMapStats(dev.freggy.stats.service.Service.FlashMapStatsRequest request) {
+      return call("/GetFlashMapStats", request, dev.freggy.stats.service.Service.FlashStatisticCompound.class);
     }
   
     @Override
-    public dev.freggy.stats.service.Service.UpdateStatsResponse updateStats(dev.freggy.stats.service.Service.UpdateStatsRequest request) {
-      return call("/UpdateStats", request, dev.freggy.stats.service.Service.UpdateStatsResponse.class);
+    public dev.freggy.stats.service.Service.FlashStatisticCompound getFlashGameStats(dev.freggy.stats.service.Service.FlashGameStatsRequest request) {
+      return call("/GetFlashGameStats", request, dev.freggy.stats.service.Service.FlashStatisticCompound.class);
+    }
+  
+    @Override
+    public dev.freggy.stats.service.Service.FlashStatisticCompound getFlashStats(dev.freggy.stats.service.Service.FlashStatsCompoundRequest request) {
+      return call("/GetFlashStats", request, dev.freggy.stats.service.Service.FlashStatisticCompound.class);
     }
   }
   

@@ -1,15 +1,20 @@
 package statsserver
 
 import (
-	"context"
-	"freggy.dev/stats/rpc/go/service"
-	"github.com/twitchtv/twirp"
+	"freggy.dev/stats/pkg/flash"
 )
 
 type Server struct {
-	handler map[string]handler
+	flashDAO flash.DataAccess
 }
 
+
+func NewServer(flashDAO flash.DataAccess) *Server {
+	return &Server{flashDAO: flashDAO}
+}
+
+
+/*
 type handler interface {
 	GetGame() string
 	GetStats(req *service.GetStatsRequest) (*service.GetStatsResponse, error)
@@ -51,7 +56,7 @@ func (s *Server) UpdateStats(ctx context.Context, req *service.UpdateStatsReques
 	}
 
 	return resp, nil
-}
+}*/
 
 
 

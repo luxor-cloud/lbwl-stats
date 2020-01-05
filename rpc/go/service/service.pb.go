@@ -20,200 +20,162 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type GetStatsRequest struct {
-	Uuid                 string   `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Game                 string   `protobuf:"bytes,2,opt,name=game,proto3" json:"game,omitempty"`
+type FlashMapStatsRequest struct {
+	PlayerId             string   `protobuf:"bytes,1,opt,name=playerId,proto3" json:"playerId,omitempty"`
+	Maps                 []string `protobuf:"bytes,2,rep,name=maps,proto3" json:"maps,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetStatsRequest) Reset()         { *m = GetStatsRequest{} }
-func (m *GetStatsRequest) String() string { return proto.CompactTextString(m) }
-func (*GetStatsRequest) ProtoMessage()    {}
-func (*GetStatsRequest) Descriptor() ([]byte, []int) {
+func (m *FlashMapStatsRequest) Reset()         { *m = FlashMapStatsRequest{} }
+func (m *FlashMapStatsRequest) String() string { return proto.CompactTextString(m) }
+func (*FlashMapStatsRequest) ProtoMessage()    {}
+func (*FlashMapStatsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a0b84a42fa06f626, []int{0}
 }
 
-func (m *GetStatsRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetStatsRequest.Unmarshal(m, b)
+func (m *FlashMapStatsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FlashMapStatsRequest.Unmarshal(m, b)
 }
-func (m *GetStatsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetStatsRequest.Marshal(b, m, deterministic)
+func (m *FlashMapStatsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FlashMapStatsRequest.Marshal(b, m, deterministic)
 }
-func (m *GetStatsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetStatsRequest.Merge(m, src)
+func (m *FlashMapStatsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FlashMapStatsRequest.Merge(m, src)
 }
-func (m *GetStatsRequest) XXX_Size() int {
-	return xxx_messageInfo_GetStatsRequest.Size(m)
+func (m *FlashMapStatsRequest) XXX_Size() int {
+	return xxx_messageInfo_FlashMapStatsRequest.Size(m)
 }
-func (m *GetStatsRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetStatsRequest.DiscardUnknown(m)
+func (m *FlashMapStatsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_FlashMapStatsRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetStatsRequest proto.InternalMessageInfo
+var xxx_messageInfo_FlashMapStatsRequest proto.InternalMessageInfo
 
-func (m *GetStatsRequest) GetUuid() string {
+func (m *FlashMapStatsRequest) GetPlayerId() string {
 	if m != nil {
-		return m.Uuid
+		return m.PlayerId
 	}
 	return ""
 }
 
-func (m *GetStatsRequest) GetGame() string {
+func (m *FlashMapStatsRequest) GetMaps() []string {
 	if m != nil {
-		return m.Game
+		return m.Maps
 	}
-	return ""
+	return nil
 }
 
-type GetStatsResponse struct {
-	Data                 []byte   `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
+type FlashGameStatsRequest struct {
+	PlayerId             string   `protobuf:"bytes,1,opt,name=playerId,proto3" json:"playerId,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetStatsResponse) Reset()         { *m = GetStatsResponse{} }
-func (m *GetStatsResponse) String() string { return proto.CompactTextString(m) }
-func (*GetStatsResponse) ProtoMessage()    {}
-func (*GetStatsResponse) Descriptor() ([]byte, []int) {
+func (m *FlashGameStatsRequest) Reset()         { *m = FlashGameStatsRequest{} }
+func (m *FlashGameStatsRequest) String() string { return proto.CompactTextString(m) }
+func (*FlashGameStatsRequest) ProtoMessage()    {}
+func (*FlashGameStatsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a0b84a42fa06f626, []int{1}
 }
 
-func (m *GetStatsResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetStatsResponse.Unmarshal(m, b)
+func (m *FlashGameStatsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FlashGameStatsRequest.Unmarshal(m, b)
 }
-func (m *GetStatsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetStatsResponse.Marshal(b, m, deterministic)
+func (m *FlashGameStatsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FlashGameStatsRequest.Marshal(b, m, deterministic)
 }
-func (m *GetStatsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetStatsResponse.Merge(m, src)
+func (m *FlashGameStatsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FlashGameStatsRequest.Merge(m, src)
 }
-func (m *GetStatsResponse) XXX_Size() int {
-	return xxx_messageInfo_GetStatsResponse.Size(m)
+func (m *FlashGameStatsRequest) XXX_Size() int {
+	return xxx_messageInfo_FlashGameStatsRequest.Size(m)
 }
-func (m *GetStatsResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetStatsResponse.DiscardUnknown(m)
+func (m *FlashGameStatsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_FlashGameStatsRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetStatsResponse proto.InternalMessageInfo
+var xxx_messageInfo_FlashGameStatsRequest proto.InternalMessageInfo
 
-func (m *GetStatsResponse) GetData() []byte {
+func (m *FlashGameStatsRequest) GetPlayerId() string {
 	if m != nil {
-		return m.Data
+		return m.PlayerId
 	}
-	return nil
+	return ""
 }
 
-type UpdateStatsRequest struct {
-	Uuid                 string   `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Game                 string   `protobuf:"bytes,2,opt,name=game,proto3" json:"game,omitempty"`
-	Data                 []byte   `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+type FlashStatsCompoundRequest struct {
+	PlayerId             string   `protobuf:"bytes,1,opt,name=playerId,proto3" json:"playerId,omitempty"`
+	Maps                 []string `protobuf:"bytes,2,rep,name=maps,proto3" json:"maps,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *UpdateStatsRequest) Reset()         { *m = UpdateStatsRequest{} }
-func (m *UpdateStatsRequest) String() string { return proto.CompactTextString(m) }
-func (*UpdateStatsRequest) ProtoMessage()    {}
-func (*UpdateStatsRequest) Descriptor() ([]byte, []int) {
+func (m *FlashStatsCompoundRequest) Reset()         { *m = FlashStatsCompoundRequest{} }
+func (m *FlashStatsCompoundRequest) String() string { return proto.CompactTextString(m) }
+func (*FlashStatsCompoundRequest) ProtoMessage()    {}
+func (*FlashStatsCompoundRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a0b84a42fa06f626, []int{2}
 }
 
-func (m *UpdateStatsRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdateStatsRequest.Unmarshal(m, b)
+func (m *FlashStatsCompoundRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FlashStatsCompoundRequest.Unmarshal(m, b)
 }
-func (m *UpdateStatsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdateStatsRequest.Marshal(b, m, deterministic)
+func (m *FlashStatsCompoundRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FlashStatsCompoundRequest.Marshal(b, m, deterministic)
 }
-func (m *UpdateStatsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateStatsRequest.Merge(m, src)
+func (m *FlashStatsCompoundRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FlashStatsCompoundRequest.Merge(m, src)
 }
-func (m *UpdateStatsRequest) XXX_Size() int {
-	return xxx_messageInfo_UpdateStatsRequest.Size(m)
+func (m *FlashStatsCompoundRequest) XXX_Size() int {
+	return xxx_messageInfo_FlashStatsCompoundRequest.Size(m)
 }
-func (m *UpdateStatsRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateStatsRequest.DiscardUnknown(m)
+func (m *FlashStatsCompoundRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_FlashStatsCompoundRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_UpdateStatsRequest proto.InternalMessageInfo
+var xxx_messageInfo_FlashStatsCompoundRequest proto.InternalMessageInfo
 
-func (m *UpdateStatsRequest) GetUuid() string {
+func (m *FlashStatsCompoundRequest) GetPlayerId() string {
 	if m != nil {
-		return m.Uuid
+		return m.PlayerId
 	}
 	return ""
 }
 
-func (m *UpdateStatsRequest) GetGame() string {
+func (m *FlashStatsCompoundRequest) GetMaps() []string {
 	if m != nil {
-		return m.Game
-	}
-	return ""
-}
-
-func (m *UpdateStatsRequest) GetData() []byte {
-	if m != nil {
-		return m.Data
+		return m.Maps
 	}
 	return nil
 }
 
-type UpdateStatsResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *UpdateStatsResponse) Reset()         { *m = UpdateStatsResponse{} }
-func (m *UpdateStatsResponse) String() string { return proto.CompactTextString(m) }
-func (*UpdateStatsResponse) ProtoMessage()    {}
-func (*UpdateStatsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_a0b84a42fa06f626, []int{3}
-}
-
-func (m *UpdateStatsResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdateStatsResponse.Unmarshal(m, b)
-}
-func (m *UpdateStatsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdateStatsResponse.Marshal(b, m, deterministic)
-}
-func (m *UpdateStatsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateStatsResponse.Merge(m, src)
-}
-func (m *UpdateStatsResponse) XXX_Size() int {
-	return xxx_messageInfo_UpdateStatsResponse.Size(m)
-}
-func (m *UpdateStatsResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateStatsResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UpdateStatsResponse proto.InternalMessageInfo
-
 func init() {
-	proto.RegisterType((*GetStatsRequest)(nil), "GetStatsRequest")
-	proto.RegisterType((*GetStatsResponse)(nil), "GetStatsResponse")
-	proto.RegisterType((*UpdateStatsRequest)(nil), "UpdateStatsRequest")
-	proto.RegisterType((*UpdateStatsResponse)(nil), "UpdateStatsResponse")
+	proto.RegisterType((*FlashMapStatsRequest)(nil), "FlashMapStatsRequest")
+	proto.RegisterType((*FlashGameStatsRequest)(nil), "FlashGameStatsRequest")
+	proto.RegisterType((*FlashStatsCompoundRequest)(nil), "FlashStatsCompoundRequest")
 }
 
 func init() { proto.RegisterFile("service.proto", fileDescriptor_a0b84a42fa06f626) }
 
 var fileDescriptor_a0b84a42fa06f626 = []byte{
-	// 208 bytes of a gzipped FileDescriptorProto
+	// 235 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2d, 0x4e, 0x2d, 0x2a,
-	0xcb, 0x4c, 0x4e, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x57, 0xb2, 0xe4, 0xe2, 0x77, 0x4f, 0x2d,
-	0x09, 0x2e, 0x49, 0x2c, 0x29, 0x0e, 0x4a, 0x2d, 0x2c, 0x4d, 0x2d, 0x2e, 0x11, 0x12, 0xe2, 0x62,
-	0x29, 0x2d, 0xcd, 0x4c, 0x91, 0x60, 0x54, 0x60, 0xd4, 0xe0, 0x0c, 0x02, 0xb3, 0x41, 0x62, 0xe9,
-	0x89, 0xb9, 0xa9, 0x12, 0x4c, 0x10, 0x31, 0x10, 0x5b, 0x49, 0x8d, 0x4b, 0x00, 0xa1, 0xb5, 0xb8,
-	0x20, 0x3f, 0xaf, 0x38, 0x15, 0xa4, 0x2e, 0x25, 0xb1, 0x24, 0x11, 0xac, 0x97, 0x27, 0x08, 0xcc,
-	0x56, 0x0a, 0xe0, 0x12, 0x0a, 0x2d, 0x48, 0x49, 0x2c, 0x49, 0x25, 0xc7, 0x16, 0xb8, 0x89, 0xcc,
-	0x48, 0x26, 0x8a, 0x72, 0x09, 0xa3, 0x98, 0x08, 0xb1, 0xdc, 0xa8, 0x92, 0x8b, 0x07, 0x2c, 0x10,
-	0x0c, 0xf1, 0xa1, 0x90, 0x3e, 0x17, 0x07, 0xcc, 0x81, 0x42, 0x02, 0x7a, 0x68, 0xde, 0x94, 0x12,
-	0xd4, 0xc3, 0x70, 0xbd, 0x05, 0x17, 0x37, 0x92, 0xb9, 0x42, 0xc2, 0x7a, 0x98, 0xee, 0x96, 0x12,
-	0xd1, 0xc3, 0x62, 0xb5, 0x93, 0x32, 0x97, 0x44, 0x4a, 0x6a, 0x99, 0x5e, 0x5a, 0x51, 0x6a, 0x7a,
-	0x7a, 0xa5, 0x5e, 0x31, 0x48, 0x4e, 0x0f, 0x1a, 0xd0, 0x51, 0xec, 0x50, 0x46, 0x12, 0x1b, 0x38,
-	0xc8, 0x8d, 0x01, 0x01, 0x00, 0x00, 0xff, 0xff, 0xd3, 0x1f, 0x8d, 0x29, 0x83, 0x01, 0x00, 0x00,
+	0xcb, 0x4c, 0x4e, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x97, 0xe2, 0x4e, 0xcb, 0x49, 0x2c, 0xce,
+	0x80, 0x70, 0x94, 0xdc, 0xb8, 0x44, 0xdc, 0x40, 0x5c, 0xdf, 0xc4, 0x82, 0xe0, 0x92, 0xc4, 0x92,
+	0xe2, 0xa0, 0xd4, 0xc2, 0xd2, 0xd4, 0xe2, 0x12, 0x21, 0x29, 0x2e, 0x8e, 0x82, 0x9c, 0xc4, 0xca,
+	0xd4, 0x22, 0xcf, 0x14, 0x09, 0x46, 0x05, 0x46, 0x0d, 0xce, 0x20, 0x38, 0x5f, 0x48, 0x88, 0x8b,
+	0x25, 0x37, 0xb1, 0xa0, 0x58, 0x82, 0x49, 0x81, 0x59, 0x83, 0x33, 0x08, 0xcc, 0x56, 0x32, 0xe6,
+	0x12, 0x05, 0x9b, 0xe3, 0x9e, 0x98, 0x9b, 0x4a, 0xac, 0x41, 0x4a, 0xde, 0x5c, 0x92, 0x60, 0x4d,
+	0x60, 0x0d, 0xce, 0xf9, 0xb9, 0x05, 0xf9, 0xa5, 0x79, 0x29, 0x64, 0xba, 0xc0, 0xe8, 0x1e, 0x23,
+	0x17, 0x0f, 0xd8, 0xa0, 0x60, 0x88, 0x6f, 0x85, 0x9c, 0xb8, 0x04, 0xdc, 0x53, 0x4b, 0x50, 0x7c,
+	0x27, 0x24, 0xaa, 0x87, 0xcd, 0xb7, 0x52, 0xe2, 0x7a, 0x70, 0x77, 0x64, 0x16, 0x97, 0x64, 0x26,
+	0xc3, 0xdc, 0x22, 0xe4, 0xc2, 0x25, 0x08, 0x33, 0x03, 0xee, 0x33, 0x21, 0x31, 0x3d, 0xac, 0x5e,
+	0xc5, 0x67, 0x0a, 0x2f, 0xcc, 0x14, 0x88, 0x09, 0x52, 0x7a, 0x38, 0xfd, 0x8d, 0xd3, 0x14, 0x27,
+	0x65, 0x2e, 0x89, 0x94, 0xd4, 0x32, 0xbd, 0xb4, 0xa2, 0xd4, 0xf4, 0xf4, 0x4a, 0xbd, 0x62, 0x90,
+	0x5e, 0x3d, 0x68, 0xcc, 0x46, 0xb1, 0x43, 0x19, 0x49, 0x6c, 0xe0, 0x68, 0x35, 0x06, 0x04, 0x00,
+	0x00, 0xff, 0xff, 0x27, 0xae, 0x3b, 0x7b, 0xf4, 0x01, 0x00, 0x00,
 }
