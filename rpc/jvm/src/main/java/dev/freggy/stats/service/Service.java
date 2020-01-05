@@ -14,8 +14,615 @@ public final class Service {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface FlashMapStatsRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:FlashMapStatsRequest)
+  public interface GetFlashStatsResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GetFlashStatsResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.FlashStatisticCompound stats = 1;</code>
+     */
+    boolean hasStats();
+    /**
+     * <code>.FlashStatisticCompound stats = 1;</code>
+     */
+    dev.freggy.stats.model.Flash.FlashStatisticCompound getStats();
+    /**
+     * <code>.FlashStatisticCompound stats = 1;</code>
+     */
+    dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder getStatsOrBuilder();
+  }
+  /**
+   * Protobuf type {@code GetFlashStatsResponse}
+   */
+  public  static final class GetFlashStatsResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:GetFlashStatsResponse)
+      GetFlashStatsResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GetFlashStatsResponse.newBuilder() to construct.
+    private GetFlashStatsResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GetFlashStatsResponse() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GetFlashStatsResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder subBuilder = null;
+              if (stats_ != null) {
+                subBuilder = stats_.toBuilder();
+              }
+              stats_ = input.readMessage(dev.freggy.stats.model.Flash.FlashStatisticCompound.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(stats_);
+                stats_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return dev.freggy.stats.service.Service.internal_static_GetFlashStatsResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return dev.freggy.stats.service.Service.internal_static_GetFlashStatsResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              dev.freggy.stats.service.Service.GetFlashStatsResponse.class, dev.freggy.stats.service.Service.GetFlashStatsResponse.Builder.class);
+    }
+
+    public static final int STATS_FIELD_NUMBER = 1;
+    private dev.freggy.stats.model.Flash.FlashStatisticCompound stats_;
+    /**
+     * <code>.FlashStatisticCompound stats = 1;</code>
+     */
+    public boolean hasStats() {
+      return stats_ != null;
+    }
+    /**
+     * <code>.FlashStatisticCompound stats = 1;</code>
+     */
+    public dev.freggy.stats.model.Flash.FlashStatisticCompound getStats() {
+      return stats_ == null ? dev.freggy.stats.model.Flash.FlashStatisticCompound.getDefaultInstance() : stats_;
+    }
+    /**
+     * <code>.FlashStatisticCompound stats = 1;</code>
+     */
+    public dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder getStatsOrBuilder() {
+      return getStats();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (stats_ != null) {
+        output.writeMessage(1, getStats());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (stats_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getStats());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.freggy.stats.service.Service.GetFlashStatsResponse)) {
+        return super.equals(obj);
+      }
+      dev.freggy.stats.service.Service.GetFlashStatsResponse other = (dev.freggy.stats.service.Service.GetFlashStatsResponse) obj;
+
+      boolean result = true;
+      result = result && (hasStats() == other.hasStats());
+      if (hasStats()) {
+        result = result && getStats()
+            .equals(other.getStats());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasStats()) {
+        hash = (37 * hash) + STATS_FIELD_NUMBER;
+        hash = (53 * hash) + getStats().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static dev.freggy.stats.service.Service.GetFlashStatsResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.service.Service.GetFlashStatsResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.GetFlashStatsResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.service.Service.GetFlashStatsResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.GetFlashStatsResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.service.Service.GetFlashStatsResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.GetFlashStatsResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.service.Service.GetFlashStatsResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.GetFlashStatsResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.service.Service.GetFlashStatsResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.GetFlashStatsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.service.Service.GetFlashStatsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(dev.freggy.stats.service.Service.GetFlashStatsResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code GetFlashStatsResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GetFlashStatsResponse)
+        dev.freggy.stats.service.Service.GetFlashStatsResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return dev.freggy.stats.service.Service.internal_static_GetFlashStatsResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return dev.freggy.stats.service.Service.internal_static_GetFlashStatsResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                dev.freggy.stats.service.Service.GetFlashStatsResponse.class, dev.freggy.stats.service.Service.GetFlashStatsResponse.Builder.class);
+      }
+
+      // Construct using dev.freggy.stats.service.Service.GetFlashStatsResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (statsBuilder_ == null) {
+          stats_ = null;
+        } else {
+          stats_ = null;
+          statsBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return dev.freggy.stats.service.Service.internal_static_GetFlashStatsResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.service.Service.GetFlashStatsResponse getDefaultInstanceForType() {
+        return dev.freggy.stats.service.Service.GetFlashStatsResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.service.Service.GetFlashStatsResponse build() {
+        dev.freggy.stats.service.Service.GetFlashStatsResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.service.Service.GetFlashStatsResponse buildPartial() {
+        dev.freggy.stats.service.Service.GetFlashStatsResponse result = new dev.freggy.stats.service.Service.GetFlashStatsResponse(this);
+        if (statsBuilder_ == null) {
+          result.stats_ = stats_;
+        } else {
+          result.stats_ = statsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.freggy.stats.service.Service.GetFlashStatsResponse) {
+          return mergeFrom((dev.freggy.stats.service.Service.GetFlashStatsResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.freggy.stats.service.Service.GetFlashStatsResponse other) {
+        if (other == dev.freggy.stats.service.Service.GetFlashStatsResponse.getDefaultInstance()) return this;
+        if (other.hasStats()) {
+          mergeStats(other.getStats());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        dev.freggy.stats.service.Service.GetFlashStatsResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (dev.freggy.stats.service.Service.GetFlashStatsResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private dev.freggy.stats.model.Flash.FlashStatisticCompound stats_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          dev.freggy.stats.model.Flash.FlashStatisticCompound, dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder, dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder> statsBuilder_;
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public boolean hasStats() {
+        return statsBuilder_ != null || stats_ != null;
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashStatisticCompound getStats() {
+        if (statsBuilder_ == null) {
+          return stats_ == null ? dev.freggy.stats.model.Flash.FlashStatisticCompound.getDefaultInstance() : stats_;
+        } else {
+          return statsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public Builder setStats(dev.freggy.stats.model.Flash.FlashStatisticCompound value) {
+        if (statsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          stats_ = value;
+          onChanged();
+        } else {
+          statsBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public Builder setStats(
+          dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder builderForValue) {
+        if (statsBuilder_ == null) {
+          stats_ = builderForValue.build();
+          onChanged();
+        } else {
+          statsBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public Builder mergeStats(dev.freggy.stats.model.Flash.FlashStatisticCompound value) {
+        if (statsBuilder_ == null) {
+          if (stats_ != null) {
+            stats_ =
+              dev.freggy.stats.model.Flash.FlashStatisticCompound.newBuilder(stats_).mergeFrom(value).buildPartial();
+          } else {
+            stats_ = value;
+          }
+          onChanged();
+        } else {
+          statsBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public Builder clearStats() {
+        if (statsBuilder_ == null) {
+          stats_ = null;
+          onChanged();
+        } else {
+          stats_ = null;
+          statsBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder getStatsBuilder() {
+        
+        onChanged();
+        return getStatsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder getStatsOrBuilder() {
+        if (statsBuilder_ != null) {
+          return statsBuilder_.getMessageOrBuilder();
+        } else {
+          return stats_ == null ?
+              dev.freggy.stats.model.Flash.FlashStatisticCompound.getDefaultInstance() : stats_;
+        }
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          dev.freggy.stats.model.Flash.FlashStatisticCompound, dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder, dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder> 
+          getStatsFieldBuilder() {
+        if (statsBuilder_ == null) {
+          statsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              dev.freggy.stats.model.Flash.FlashStatisticCompound, dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder, dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder>(
+                  getStats(),
+                  getParentForChildren(),
+                  isClean());
+          stats_ = null;
+        }
+        return statsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:GetFlashStatsResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:GetFlashStatsResponse)
+    private static final dev.freggy.stats.service.Service.GetFlashStatsResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.GetFlashStatsResponse();
+    }
+
+    public static dev.freggy.stats.service.Service.GetFlashStatsResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GetFlashStatsResponse>
+        PARSER = new com.google.protobuf.AbstractParser<GetFlashStatsResponse>() {
+      @java.lang.Override
+      public GetFlashStatsResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GetFlashStatsResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GetFlashStatsResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetFlashStatsResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public dev.freggy.stats.service.Service.GetFlashStatsResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GetFlashMapStatsRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GetFlashMapStatsRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -48,18 +655,18 @@ public final class Service {
         getMapsBytes(int index);
   }
   /**
-   * Protobuf type {@code FlashMapStatsRequest}
+   * Protobuf type {@code GetFlashMapStatsRequest}
    */
-  public  static final class FlashMapStatsRequest extends
+  public  static final class GetFlashMapStatsRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:FlashMapStatsRequest)
-      FlashMapStatsRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:GetFlashMapStatsRequest)
+      GetFlashMapStatsRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use FlashMapStatsRequest.newBuilder() to construct.
-    private FlashMapStatsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use GetFlashMapStatsRequest.newBuilder() to construct.
+    private GetFlashMapStatsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private FlashMapStatsRequest() {
+    private GetFlashMapStatsRequest() {
       playerId_ = "";
       maps_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
@@ -69,7 +676,7 @@ public final class Service {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private FlashMapStatsRequest(
+    private GetFlashMapStatsRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -127,15 +734,15 @@ public final class Service {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.freggy.stats.service.Service.internal_static_FlashMapStatsRequest_descriptor;
+      return dev.freggy.stats.service.Service.internal_static_GetFlashMapStatsRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.freggy.stats.service.Service.internal_static_FlashMapStatsRequest_fieldAccessorTable
+      return dev.freggy.stats.service.Service.internal_static_GetFlashMapStatsRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              dev.freggy.stats.service.Service.FlashMapStatsRequest.class, dev.freggy.stats.service.Service.FlashMapStatsRequest.Builder.class);
+              dev.freggy.stats.service.Service.GetFlashMapStatsRequest.class, dev.freggy.stats.service.Service.GetFlashMapStatsRequest.Builder.class);
     }
 
     private int bitField0_;
@@ -252,10 +859,10 @@ public final class Service {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof dev.freggy.stats.service.Service.FlashMapStatsRequest)) {
+      if (!(obj instanceof dev.freggy.stats.service.Service.GetFlashMapStatsRequest)) {
         return super.equals(obj);
       }
-      dev.freggy.stats.service.Service.FlashMapStatsRequest other = (dev.freggy.stats.service.Service.FlashMapStatsRequest) obj;
+      dev.freggy.stats.service.Service.GetFlashMapStatsRequest other = (dev.freggy.stats.service.Service.GetFlashMapStatsRequest) obj;
 
       boolean result = true;
       result = result && getPlayerId()
@@ -284,69 +891,69 @@ public final class Service {
       return hash;
     }
 
-    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashMapStatsRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashMapStatsRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashMapStatsRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashMapStatsRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(byte[] data)
+    public static dev.freggy.stats.service.Service.GetFlashMapStatsRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashMapStatsRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(java.io.InputStream input)
+    public static dev.freggy.stats.service.Service.GetFlashMapStatsRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashMapStatsRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseDelimitedFrom(java.io.InputStream input)
+    public static dev.freggy.stats.service.Service.GetFlashMapStatsRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseDelimitedFrom(
+    public static dev.freggy.stats.service.Service.GetFlashMapStatsRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashMapStatsRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.FlashMapStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashMapStatsRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -359,7 +966,7 @@ public final class Service {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(dev.freggy.stats.service.Service.FlashMapStatsRequest prototype) {
+    public static Builder newBuilder(dev.freggy.stats.service.Service.GetFlashMapStatsRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -375,26 +982,26 @@ public final class Service {
       return builder;
     }
     /**
-     * Protobuf type {@code FlashMapStatsRequest}
+     * Protobuf type {@code GetFlashMapStatsRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:FlashMapStatsRequest)
-        dev.freggy.stats.service.Service.FlashMapStatsRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:GetFlashMapStatsRequest)
+        dev.freggy.stats.service.Service.GetFlashMapStatsRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.freggy.stats.service.Service.internal_static_FlashMapStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_GetFlashMapStatsRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.freggy.stats.service.Service.internal_static_FlashMapStatsRequest_fieldAccessorTable
+        return dev.freggy.stats.service.Service.internal_static_GetFlashMapStatsRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                dev.freggy.stats.service.Service.FlashMapStatsRequest.class, dev.freggy.stats.service.Service.FlashMapStatsRequest.Builder.class);
+                dev.freggy.stats.service.Service.GetFlashMapStatsRequest.class, dev.freggy.stats.service.Service.GetFlashMapStatsRequest.Builder.class);
       }
 
-      // Construct using dev.freggy.stats.service.Service.FlashMapStatsRequest.newBuilder()
+      // Construct using dev.freggy.stats.service.Service.GetFlashMapStatsRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -422,17 +1029,17 @@ public final class Service {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.freggy.stats.service.Service.internal_static_FlashMapStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_GetFlashMapStatsRequest_descriptor;
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.FlashMapStatsRequest getDefaultInstanceForType() {
-        return dev.freggy.stats.service.Service.FlashMapStatsRequest.getDefaultInstance();
+      public dev.freggy.stats.service.Service.GetFlashMapStatsRequest getDefaultInstanceForType() {
+        return dev.freggy.stats.service.Service.GetFlashMapStatsRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.FlashMapStatsRequest build() {
-        dev.freggy.stats.service.Service.FlashMapStatsRequest result = buildPartial();
+      public dev.freggy.stats.service.Service.GetFlashMapStatsRequest build() {
+        dev.freggy.stats.service.Service.GetFlashMapStatsRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -440,8 +1047,8 @@ public final class Service {
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.FlashMapStatsRequest buildPartial() {
-        dev.freggy.stats.service.Service.FlashMapStatsRequest result = new dev.freggy.stats.service.Service.FlashMapStatsRequest(this);
+      public dev.freggy.stats.service.Service.GetFlashMapStatsRequest buildPartial() {
+        dev.freggy.stats.service.Service.GetFlashMapStatsRequest result = new dev.freggy.stats.service.Service.GetFlashMapStatsRequest(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.playerId_ = playerId_;
@@ -489,16 +1096,16 @@ public final class Service {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof dev.freggy.stats.service.Service.FlashMapStatsRequest) {
-          return mergeFrom((dev.freggy.stats.service.Service.FlashMapStatsRequest)other);
+        if (other instanceof dev.freggy.stats.service.Service.GetFlashMapStatsRequest) {
+          return mergeFrom((dev.freggy.stats.service.Service.GetFlashMapStatsRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(dev.freggy.stats.service.Service.FlashMapStatsRequest other) {
-        if (other == dev.freggy.stats.service.Service.FlashMapStatsRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(dev.freggy.stats.service.Service.GetFlashMapStatsRequest other) {
+        if (other == dev.freggy.stats.service.Service.GetFlashMapStatsRequest.getDefaultInstance()) return this;
         if (!other.getPlayerId().isEmpty()) {
           playerId_ = other.playerId_;
           onChanged();
@@ -528,11 +1135,11 @@ public final class Service {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        dev.freggy.stats.service.Service.FlashMapStatsRequest parsedMessage = null;
+        dev.freggy.stats.service.Service.GetFlashMapStatsRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (dev.freggy.stats.service.Service.FlashMapStatsRequest) e.getUnfinishedMessage();
+          parsedMessage = (dev.freggy.stats.service.Service.GetFlashMapStatsRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -718,48 +1325,48 @@ public final class Service {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:FlashMapStatsRequest)
+      // @@protoc_insertion_point(builder_scope:GetFlashMapStatsRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:FlashMapStatsRequest)
-    private static final dev.freggy.stats.service.Service.FlashMapStatsRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:GetFlashMapStatsRequest)
+    private static final dev.freggy.stats.service.Service.GetFlashMapStatsRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.FlashMapStatsRequest();
+      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.GetFlashMapStatsRequest();
     }
 
-    public static dev.freggy.stats.service.Service.FlashMapStatsRequest getDefaultInstance() {
+    public static dev.freggy.stats.service.Service.GetFlashMapStatsRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<FlashMapStatsRequest>
-        PARSER = new com.google.protobuf.AbstractParser<FlashMapStatsRequest>() {
+    private static final com.google.protobuf.Parser<GetFlashMapStatsRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GetFlashMapStatsRequest>() {
       @java.lang.Override
-      public FlashMapStatsRequest parsePartialFrom(
+      public GetFlashMapStatsRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new FlashMapStatsRequest(input, extensionRegistry);
+        return new GetFlashMapStatsRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<FlashMapStatsRequest> parser() {
+    public static com.google.protobuf.Parser<GetFlashMapStatsRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<FlashMapStatsRequest> getParserForType() {
+    public com.google.protobuf.Parser<GetFlashMapStatsRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public dev.freggy.stats.service.Service.FlashMapStatsRequest getDefaultInstanceForType() {
+    public dev.freggy.stats.service.Service.GetFlashMapStatsRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface FlashGameStatsRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:FlashGameStatsRequest)
+  public interface GetFlashGameStatsRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GetFlashGameStatsRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -773,18 +1380,18 @@ public final class Service {
         getPlayerIdBytes();
   }
   /**
-   * Protobuf type {@code FlashGameStatsRequest}
+   * Protobuf type {@code GetFlashGameStatsRequest}
    */
-  public  static final class FlashGameStatsRequest extends
+  public  static final class GetFlashGameStatsRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:FlashGameStatsRequest)
-      FlashGameStatsRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:GetFlashGameStatsRequest)
+      GetFlashGameStatsRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use FlashGameStatsRequest.newBuilder() to construct.
-    private FlashGameStatsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use GetFlashGameStatsRequest.newBuilder() to construct.
+    private GetFlashGameStatsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private FlashGameStatsRequest() {
+    private GetFlashGameStatsRequest() {
       playerId_ = "";
     }
 
@@ -793,7 +1400,7 @@ public final class Service {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private FlashGameStatsRequest(
+    private GetFlashGameStatsRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -839,15 +1446,15 @@ public final class Service {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.freggy.stats.service.Service.internal_static_FlashGameStatsRequest_descriptor;
+      return dev.freggy.stats.service.Service.internal_static_GetFlashGameStatsRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.freggy.stats.service.Service.internal_static_FlashGameStatsRequest_fieldAccessorTable
+      return dev.freggy.stats.service.Service.internal_static_GetFlashGameStatsRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              dev.freggy.stats.service.Service.FlashGameStatsRequest.class, dev.freggy.stats.service.Service.FlashGameStatsRequest.Builder.class);
+              dev.freggy.stats.service.Service.GetFlashGameStatsRequest.class, dev.freggy.stats.service.Service.GetFlashGameStatsRequest.Builder.class);
     }
 
     public static final int PLAYERID_FIELD_NUMBER = 1;
@@ -923,10 +1530,10 @@ public final class Service {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof dev.freggy.stats.service.Service.FlashGameStatsRequest)) {
+      if (!(obj instanceof dev.freggy.stats.service.Service.GetFlashGameStatsRequest)) {
         return super.equals(obj);
       }
-      dev.freggy.stats.service.Service.FlashGameStatsRequest other = (dev.freggy.stats.service.Service.FlashGameStatsRequest) obj;
+      dev.freggy.stats.service.Service.GetFlashGameStatsRequest other = (dev.freggy.stats.service.Service.GetFlashGameStatsRequest) obj;
 
       boolean result = true;
       result = result && getPlayerId()
@@ -949,69 +1556,69 @@ public final class Service {
       return hash;
     }
 
-    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashGameStatsRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashGameStatsRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashGameStatsRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashGameStatsRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(byte[] data)
+    public static dev.freggy.stats.service.Service.GetFlashGameStatsRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashGameStatsRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(java.io.InputStream input)
+    public static dev.freggy.stats.service.Service.GetFlashGameStatsRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashGameStatsRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseDelimitedFrom(java.io.InputStream input)
+    public static dev.freggy.stats.service.Service.GetFlashGameStatsRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseDelimitedFrom(
+    public static dev.freggy.stats.service.Service.GetFlashGameStatsRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashGameStatsRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.FlashGameStatsRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashGameStatsRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1024,7 +1631,7 @@ public final class Service {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(dev.freggy.stats.service.Service.FlashGameStatsRequest prototype) {
+    public static Builder newBuilder(dev.freggy.stats.service.Service.GetFlashGameStatsRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1040,26 +1647,26 @@ public final class Service {
       return builder;
     }
     /**
-     * Protobuf type {@code FlashGameStatsRequest}
+     * Protobuf type {@code GetFlashGameStatsRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:FlashGameStatsRequest)
-        dev.freggy.stats.service.Service.FlashGameStatsRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:GetFlashGameStatsRequest)
+        dev.freggy.stats.service.Service.GetFlashGameStatsRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.freggy.stats.service.Service.internal_static_FlashGameStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_GetFlashGameStatsRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.freggy.stats.service.Service.internal_static_FlashGameStatsRequest_fieldAccessorTable
+        return dev.freggy.stats.service.Service.internal_static_GetFlashGameStatsRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                dev.freggy.stats.service.Service.FlashGameStatsRequest.class, dev.freggy.stats.service.Service.FlashGameStatsRequest.Builder.class);
+                dev.freggy.stats.service.Service.GetFlashGameStatsRequest.class, dev.freggy.stats.service.Service.GetFlashGameStatsRequest.Builder.class);
       }
 
-      // Construct using dev.freggy.stats.service.Service.FlashGameStatsRequest.newBuilder()
+      // Construct using dev.freggy.stats.service.Service.GetFlashGameStatsRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1085,17 +1692,17 @@ public final class Service {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.freggy.stats.service.Service.internal_static_FlashGameStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_GetFlashGameStatsRequest_descriptor;
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.FlashGameStatsRequest getDefaultInstanceForType() {
-        return dev.freggy.stats.service.Service.FlashGameStatsRequest.getDefaultInstance();
+      public dev.freggy.stats.service.Service.GetFlashGameStatsRequest getDefaultInstanceForType() {
+        return dev.freggy.stats.service.Service.GetFlashGameStatsRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.FlashGameStatsRequest build() {
-        dev.freggy.stats.service.Service.FlashGameStatsRequest result = buildPartial();
+      public dev.freggy.stats.service.Service.GetFlashGameStatsRequest build() {
+        dev.freggy.stats.service.Service.GetFlashGameStatsRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1103,8 +1710,8 @@ public final class Service {
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.FlashGameStatsRequest buildPartial() {
-        dev.freggy.stats.service.Service.FlashGameStatsRequest result = new dev.freggy.stats.service.Service.FlashGameStatsRequest(this);
+      public dev.freggy.stats.service.Service.GetFlashGameStatsRequest buildPartial() {
+        dev.freggy.stats.service.Service.GetFlashGameStatsRequest result = new dev.freggy.stats.service.Service.GetFlashGameStatsRequest(this);
         result.playerId_ = playerId_;
         onBuilt();
         return result;
@@ -1144,16 +1751,16 @@ public final class Service {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof dev.freggy.stats.service.Service.FlashGameStatsRequest) {
-          return mergeFrom((dev.freggy.stats.service.Service.FlashGameStatsRequest)other);
+        if (other instanceof dev.freggy.stats.service.Service.GetFlashGameStatsRequest) {
+          return mergeFrom((dev.freggy.stats.service.Service.GetFlashGameStatsRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(dev.freggy.stats.service.Service.FlashGameStatsRequest other) {
-        if (other == dev.freggy.stats.service.Service.FlashGameStatsRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(dev.freggy.stats.service.Service.GetFlashGameStatsRequest other) {
+        if (other == dev.freggy.stats.service.Service.GetFlashGameStatsRequest.getDefaultInstance()) return this;
         if (!other.getPlayerId().isEmpty()) {
           playerId_ = other.playerId_;
           onChanged();
@@ -1173,11 +1780,11 @@ public final class Service {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        dev.freggy.stats.service.Service.FlashGameStatsRequest parsedMessage = null;
+        dev.freggy.stats.service.Service.GetFlashGameStatsRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (dev.freggy.stats.service.Service.FlashGameStatsRequest) e.getUnfinishedMessage();
+          parsedMessage = (dev.freggy.stats.service.Service.GetFlashGameStatsRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1268,48 +1875,48 @@ public final class Service {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:FlashGameStatsRequest)
+      // @@protoc_insertion_point(builder_scope:GetFlashGameStatsRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:FlashGameStatsRequest)
-    private static final dev.freggy.stats.service.Service.FlashGameStatsRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:GetFlashGameStatsRequest)
+    private static final dev.freggy.stats.service.Service.GetFlashGameStatsRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.FlashGameStatsRequest();
+      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.GetFlashGameStatsRequest();
     }
 
-    public static dev.freggy.stats.service.Service.FlashGameStatsRequest getDefaultInstance() {
+    public static dev.freggy.stats.service.Service.GetFlashGameStatsRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<FlashGameStatsRequest>
-        PARSER = new com.google.protobuf.AbstractParser<FlashGameStatsRequest>() {
+    private static final com.google.protobuf.Parser<GetFlashGameStatsRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GetFlashGameStatsRequest>() {
       @java.lang.Override
-      public FlashGameStatsRequest parsePartialFrom(
+      public GetFlashGameStatsRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new FlashGameStatsRequest(input, extensionRegistry);
+        return new GetFlashGameStatsRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<FlashGameStatsRequest> parser() {
+    public static com.google.protobuf.Parser<GetFlashGameStatsRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<FlashGameStatsRequest> getParserForType() {
+    public com.google.protobuf.Parser<GetFlashGameStatsRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public dev.freggy.stats.service.Service.FlashGameStatsRequest getDefaultInstanceForType() {
+    public dev.freggy.stats.service.Service.GetFlashGameStatsRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface FlashStatsCompoundRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:FlashStatsCompoundRequest)
+  public interface GetFlashStatsCompoundRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GetFlashStatsCompoundRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1342,18 +1949,18 @@ public final class Service {
         getMapsBytes(int index);
   }
   /**
-   * Protobuf type {@code FlashStatsCompoundRequest}
+   * Protobuf type {@code GetFlashStatsCompoundRequest}
    */
-  public  static final class FlashStatsCompoundRequest extends
+  public  static final class GetFlashStatsCompoundRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:FlashStatsCompoundRequest)
-      FlashStatsCompoundRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:GetFlashStatsCompoundRequest)
+      GetFlashStatsCompoundRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use FlashStatsCompoundRequest.newBuilder() to construct.
-    private FlashStatsCompoundRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use GetFlashStatsCompoundRequest.newBuilder() to construct.
+    private GetFlashStatsCompoundRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private FlashStatsCompoundRequest() {
+    private GetFlashStatsCompoundRequest() {
       playerId_ = "";
       maps_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
@@ -1363,7 +1970,7 @@ public final class Service {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private FlashStatsCompoundRequest(
+    private GetFlashStatsCompoundRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1421,15 +2028,15 @@ public final class Service {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.freggy.stats.service.Service.internal_static_FlashStatsCompoundRequest_descriptor;
+      return dev.freggy.stats.service.Service.internal_static_GetFlashStatsCompoundRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.freggy.stats.service.Service.internal_static_FlashStatsCompoundRequest_fieldAccessorTable
+      return dev.freggy.stats.service.Service.internal_static_GetFlashStatsCompoundRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              dev.freggy.stats.service.Service.FlashStatsCompoundRequest.class, dev.freggy.stats.service.Service.FlashStatsCompoundRequest.Builder.class);
+              dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest.class, dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest.Builder.class);
     }
 
     private int bitField0_;
@@ -1546,10 +2153,10 @@ public final class Service {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof dev.freggy.stats.service.Service.FlashStatsCompoundRequest)) {
+      if (!(obj instanceof dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest)) {
         return super.equals(obj);
       }
-      dev.freggy.stats.service.Service.FlashStatsCompoundRequest other = (dev.freggy.stats.service.Service.FlashStatsCompoundRequest) obj;
+      dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest other = (dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest) obj;
 
       boolean result = true;
       result = result && getPlayerId()
@@ -1578,69 +2185,69 @@ public final class Service {
       return hash;
     }
 
-    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(byte[] data)
+    public static dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(java.io.InputStream input)
+    public static dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseDelimitedFrom(java.io.InputStream input)
+    public static dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseDelimitedFrom(
+    public static dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest parseFrom(
+    public static dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1653,7 +2260,7 @@ public final class Service {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(dev.freggy.stats.service.Service.FlashStatsCompoundRequest prototype) {
+    public static Builder newBuilder(dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1669,26 +2276,26 @@ public final class Service {
       return builder;
     }
     /**
-     * Protobuf type {@code FlashStatsCompoundRequest}
+     * Protobuf type {@code GetFlashStatsCompoundRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:FlashStatsCompoundRequest)
-        dev.freggy.stats.service.Service.FlashStatsCompoundRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:GetFlashStatsCompoundRequest)
+        dev.freggy.stats.service.Service.GetFlashStatsCompoundRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.freggy.stats.service.Service.internal_static_FlashStatsCompoundRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_GetFlashStatsCompoundRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.freggy.stats.service.Service.internal_static_FlashStatsCompoundRequest_fieldAccessorTable
+        return dev.freggy.stats.service.Service.internal_static_GetFlashStatsCompoundRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                dev.freggy.stats.service.Service.FlashStatsCompoundRequest.class, dev.freggy.stats.service.Service.FlashStatsCompoundRequest.Builder.class);
+                dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest.class, dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest.Builder.class);
       }
 
-      // Construct using dev.freggy.stats.service.Service.FlashStatsCompoundRequest.newBuilder()
+      // Construct using dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1716,17 +2323,17 @@ public final class Service {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.freggy.stats.service.Service.internal_static_FlashStatsCompoundRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_GetFlashStatsCompoundRequest_descriptor;
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.FlashStatsCompoundRequest getDefaultInstanceForType() {
-        return dev.freggy.stats.service.Service.FlashStatsCompoundRequest.getDefaultInstance();
+      public dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest getDefaultInstanceForType() {
+        return dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.FlashStatsCompoundRequest build() {
-        dev.freggy.stats.service.Service.FlashStatsCompoundRequest result = buildPartial();
+      public dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest build() {
+        dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1734,8 +2341,8 @@ public final class Service {
       }
 
       @java.lang.Override
-      public dev.freggy.stats.service.Service.FlashStatsCompoundRequest buildPartial() {
-        dev.freggy.stats.service.Service.FlashStatsCompoundRequest result = new dev.freggy.stats.service.Service.FlashStatsCompoundRequest(this);
+      public dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest buildPartial() {
+        dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest result = new dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.playerId_ = playerId_;
@@ -1783,16 +2390,16 @@ public final class Service {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof dev.freggy.stats.service.Service.FlashStatsCompoundRequest) {
-          return mergeFrom((dev.freggy.stats.service.Service.FlashStatsCompoundRequest)other);
+        if (other instanceof dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest) {
+          return mergeFrom((dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(dev.freggy.stats.service.Service.FlashStatsCompoundRequest other) {
-        if (other == dev.freggy.stats.service.Service.FlashStatsCompoundRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest other) {
+        if (other == dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest.getDefaultInstance()) return this;
         if (!other.getPlayerId().isEmpty()) {
           playerId_ = other.playerId_;
           onChanged();
@@ -1822,11 +2429,11 @@ public final class Service {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        dev.freggy.stats.service.Service.FlashStatsCompoundRequest parsedMessage = null;
+        dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (dev.freggy.stats.service.Service.FlashStatsCompoundRequest) e.getUnfinishedMessage();
+          parsedMessage = (dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2012,61 +2619,1095 @@ public final class Service {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:FlashStatsCompoundRequest)
+      // @@protoc_insertion_point(builder_scope:GetFlashStatsCompoundRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:FlashStatsCompoundRequest)
-    private static final dev.freggy.stats.service.Service.FlashStatsCompoundRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:GetFlashStatsCompoundRequest)
+    private static final dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.FlashStatsCompoundRequest();
+      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest();
     }
 
-    public static dev.freggy.stats.service.Service.FlashStatsCompoundRequest getDefaultInstance() {
+    public static dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<FlashStatsCompoundRequest>
-        PARSER = new com.google.protobuf.AbstractParser<FlashStatsCompoundRequest>() {
+    private static final com.google.protobuf.Parser<GetFlashStatsCompoundRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GetFlashStatsCompoundRequest>() {
       @java.lang.Override
-      public FlashStatsCompoundRequest parsePartialFrom(
+      public GetFlashStatsCompoundRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new FlashStatsCompoundRequest(input, extensionRegistry);
+        return new GetFlashStatsCompoundRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<FlashStatsCompoundRequest> parser() {
+    public static com.google.protobuf.Parser<GetFlashStatsCompoundRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<FlashStatsCompoundRequest> getParserForType() {
+    public com.google.protobuf.Parser<GetFlashStatsCompoundRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public dev.freggy.stats.service.Service.FlashStatsCompoundRequest getDefaultInstanceForType() {
+    public dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UpdateFlashStatsRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:UpdateFlashStatsRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.FlashStatisticCompound stats = 1;</code>
+     */
+    boolean hasStats();
+    /**
+     * <code>.FlashStatisticCompound stats = 1;</code>
+     */
+    dev.freggy.stats.model.Flash.FlashStatisticCompound getStats();
+    /**
+     * <code>.FlashStatisticCompound stats = 1;</code>
+     */
+    dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder getStatsOrBuilder();
+  }
+  /**
+   * Protobuf type {@code UpdateFlashStatsRequest}
+   */
+  public  static final class UpdateFlashStatsRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:UpdateFlashStatsRequest)
+      UpdateFlashStatsRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use UpdateFlashStatsRequest.newBuilder() to construct.
+    private UpdateFlashStatsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private UpdateFlashStatsRequest() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UpdateFlashStatsRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder subBuilder = null;
+              if (stats_ != null) {
+                subBuilder = stats_.toBuilder();
+              }
+              stats_ = input.readMessage(dev.freggy.stats.model.Flash.FlashStatisticCompound.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(stats_);
+                stats_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              dev.freggy.stats.service.Service.UpdateFlashStatsRequest.class, dev.freggy.stats.service.Service.UpdateFlashStatsRequest.Builder.class);
+    }
+
+    public static final int STATS_FIELD_NUMBER = 1;
+    private dev.freggy.stats.model.Flash.FlashStatisticCompound stats_;
+    /**
+     * <code>.FlashStatisticCompound stats = 1;</code>
+     */
+    public boolean hasStats() {
+      return stats_ != null;
+    }
+    /**
+     * <code>.FlashStatisticCompound stats = 1;</code>
+     */
+    public dev.freggy.stats.model.Flash.FlashStatisticCompound getStats() {
+      return stats_ == null ? dev.freggy.stats.model.Flash.FlashStatisticCompound.getDefaultInstance() : stats_;
+    }
+    /**
+     * <code>.FlashStatisticCompound stats = 1;</code>
+     */
+    public dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder getStatsOrBuilder() {
+      return getStats();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (stats_ != null) {
+        output.writeMessage(1, getStats());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (stats_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getStats());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.freggy.stats.service.Service.UpdateFlashStatsRequest)) {
+        return super.equals(obj);
+      }
+      dev.freggy.stats.service.Service.UpdateFlashStatsRequest other = (dev.freggy.stats.service.Service.UpdateFlashStatsRequest) obj;
+
+      boolean result = true;
+      result = result && (hasStats() == other.hasStats());
+      if (hasStats()) {
+        result = result && getStats()
+            .equals(other.getStats());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasStats()) {
+        hash = (37 * hash) + STATS_FIELD_NUMBER;
+        hash = (53 * hash) + getStats().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(dev.freggy.stats.service.Service.UpdateFlashStatsRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code UpdateFlashStatsRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:UpdateFlashStatsRequest)
+        dev.freggy.stats.service.Service.UpdateFlashStatsRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                dev.freggy.stats.service.Service.UpdateFlashStatsRequest.class, dev.freggy.stats.service.Service.UpdateFlashStatsRequest.Builder.class);
+      }
+
+      // Construct using dev.freggy.stats.service.Service.UpdateFlashStatsRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (statsBuilder_ == null) {
+          stats_ = null;
+        } else {
+          stats_ = null;
+          statsBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.service.Service.UpdateFlashStatsRequest getDefaultInstanceForType() {
+        return dev.freggy.stats.service.Service.UpdateFlashStatsRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.service.Service.UpdateFlashStatsRequest build() {
+        dev.freggy.stats.service.Service.UpdateFlashStatsRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.service.Service.UpdateFlashStatsRequest buildPartial() {
+        dev.freggy.stats.service.Service.UpdateFlashStatsRequest result = new dev.freggy.stats.service.Service.UpdateFlashStatsRequest(this);
+        if (statsBuilder_ == null) {
+          result.stats_ = stats_;
+        } else {
+          result.stats_ = statsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.freggy.stats.service.Service.UpdateFlashStatsRequest) {
+          return mergeFrom((dev.freggy.stats.service.Service.UpdateFlashStatsRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.freggy.stats.service.Service.UpdateFlashStatsRequest other) {
+        if (other == dev.freggy.stats.service.Service.UpdateFlashStatsRequest.getDefaultInstance()) return this;
+        if (other.hasStats()) {
+          mergeStats(other.getStats());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        dev.freggy.stats.service.Service.UpdateFlashStatsRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (dev.freggy.stats.service.Service.UpdateFlashStatsRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private dev.freggy.stats.model.Flash.FlashStatisticCompound stats_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          dev.freggy.stats.model.Flash.FlashStatisticCompound, dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder, dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder> statsBuilder_;
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public boolean hasStats() {
+        return statsBuilder_ != null || stats_ != null;
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashStatisticCompound getStats() {
+        if (statsBuilder_ == null) {
+          return stats_ == null ? dev.freggy.stats.model.Flash.FlashStatisticCompound.getDefaultInstance() : stats_;
+        } else {
+          return statsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public Builder setStats(dev.freggy.stats.model.Flash.FlashStatisticCompound value) {
+        if (statsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          stats_ = value;
+          onChanged();
+        } else {
+          statsBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public Builder setStats(
+          dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder builderForValue) {
+        if (statsBuilder_ == null) {
+          stats_ = builderForValue.build();
+          onChanged();
+        } else {
+          statsBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public Builder mergeStats(dev.freggy.stats.model.Flash.FlashStatisticCompound value) {
+        if (statsBuilder_ == null) {
+          if (stats_ != null) {
+            stats_ =
+              dev.freggy.stats.model.Flash.FlashStatisticCompound.newBuilder(stats_).mergeFrom(value).buildPartial();
+          } else {
+            stats_ = value;
+          }
+          onChanged();
+        } else {
+          statsBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public Builder clearStats() {
+        if (statsBuilder_ == null) {
+          stats_ = null;
+          onChanged();
+        } else {
+          stats_ = null;
+          statsBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder getStatsBuilder() {
+        
+        onChanged();
+        return getStatsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder getStatsOrBuilder() {
+        if (statsBuilder_ != null) {
+          return statsBuilder_.getMessageOrBuilder();
+        } else {
+          return stats_ == null ?
+              dev.freggy.stats.model.Flash.FlashStatisticCompound.getDefaultInstance() : stats_;
+        }
+      }
+      /**
+       * <code>.FlashStatisticCompound stats = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          dev.freggy.stats.model.Flash.FlashStatisticCompound, dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder, dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder> 
+          getStatsFieldBuilder() {
+        if (statsBuilder_ == null) {
+          statsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              dev.freggy.stats.model.Flash.FlashStatisticCompound, dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder, dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder>(
+                  getStats(),
+                  getParentForChildren(),
+                  isClean());
+          stats_ = null;
+        }
+        return statsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:UpdateFlashStatsRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:UpdateFlashStatsRequest)
+    private static final dev.freggy.stats.service.Service.UpdateFlashStatsRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.UpdateFlashStatsRequest();
+    }
+
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UpdateFlashStatsRequest>
+        PARSER = new com.google.protobuf.AbstractParser<UpdateFlashStatsRequest>() {
+      @java.lang.Override
+      public UpdateFlashStatsRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UpdateFlashStatsRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UpdateFlashStatsRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UpdateFlashStatsRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public dev.freggy.stats.service.Service.UpdateFlashStatsRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UpdateFlashStatsResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:UpdateFlashStatsResponse)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code UpdateFlashStatsResponse}
+   */
+  public  static final class UpdateFlashStatsResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:UpdateFlashStatsResponse)
+      UpdateFlashStatsResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use UpdateFlashStatsResponse.newBuilder() to construct.
+    private UpdateFlashStatsResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private UpdateFlashStatsResponse() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UpdateFlashStatsResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              dev.freggy.stats.service.Service.UpdateFlashStatsResponse.class, dev.freggy.stats.service.Service.UpdateFlashStatsResponse.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.freggy.stats.service.Service.UpdateFlashStatsResponse)) {
+        return super.equals(obj);
+      }
+      dev.freggy.stats.service.Service.UpdateFlashStatsResponse other = (dev.freggy.stats.service.Service.UpdateFlashStatsResponse) obj;
+
+      boolean result = true;
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(dev.freggy.stats.service.Service.UpdateFlashStatsResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code UpdateFlashStatsResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:UpdateFlashStatsResponse)
+        dev.freggy.stats.service.Service.UpdateFlashStatsResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                dev.freggy.stats.service.Service.UpdateFlashStatsResponse.class, dev.freggy.stats.service.Service.UpdateFlashStatsResponse.Builder.class);
+      }
+
+      // Construct using dev.freggy.stats.service.Service.UpdateFlashStatsResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.service.Service.UpdateFlashStatsResponse getDefaultInstanceForType() {
+        return dev.freggy.stats.service.Service.UpdateFlashStatsResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.service.Service.UpdateFlashStatsResponse build() {
+        dev.freggy.stats.service.Service.UpdateFlashStatsResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.service.Service.UpdateFlashStatsResponse buildPartial() {
+        dev.freggy.stats.service.Service.UpdateFlashStatsResponse result = new dev.freggy.stats.service.Service.UpdateFlashStatsResponse(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.freggy.stats.service.Service.UpdateFlashStatsResponse) {
+          return mergeFrom((dev.freggy.stats.service.Service.UpdateFlashStatsResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.freggy.stats.service.Service.UpdateFlashStatsResponse other) {
+        if (other == dev.freggy.stats.service.Service.UpdateFlashStatsResponse.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        dev.freggy.stats.service.Service.UpdateFlashStatsResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (dev.freggy.stats.service.Service.UpdateFlashStatsResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:UpdateFlashStatsResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:UpdateFlashStatsResponse)
+    private static final dev.freggy.stats.service.Service.UpdateFlashStatsResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.UpdateFlashStatsResponse();
+    }
+
+    public static dev.freggy.stats.service.Service.UpdateFlashStatsResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UpdateFlashStatsResponse>
+        PARSER = new com.google.protobuf.AbstractParser<UpdateFlashStatsResponse>() {
+      @java.lang.Override
+      public UpdateFlashStatsResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UpdateFlashStatsResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UpdateFlashStatsResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UpdateFlashStatsResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public dev.freggy.stats.service.Service.UpdateFlashStatsResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_FlashMapStatsRequest_descriptor;
+    internal_static_GetFlashStatsResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_FlashMapStatsRequest_fieldAccessorTable;
+      internal_static_GetFlashStatsResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_FlashGameStatsRequest_descriptor;
+    internal_static_GetFlashMapStatsRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_FlashGameStatsRequest_fieldAccessorTable;
+      internal_static_GetFlashMapStatsRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_FlashStatsCompoundRequest_descriptor;
+    internal_static_GetFlashGameStatsRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_FlashStatsCompoundRequest_fieldAccessorTable;
+      internal_static_GetFlashGameStatsRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetFlashStatsCompoundRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetFlashStatsCompoundRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UpdateFlashStatsRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_UpdateFlashStatsRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UpdateFlashStatsResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_UpdateFlashStatsResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2076,18 +3717,24 @@ public final class Service {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rservice.proto\032\013flash.proto\"6\n\024FlashMap" +
-      "StatsRequest\022\020\n\010playerId\030\001 \001(\t\022\014\n\004maps\030\002" +
-      " \003(\t\")\n\025FlashGameStatsRequest\022\020\n\010playerI" +
-      "d\030\001 \001(\t\";\n\031FlashStatsCompoundRequest\022\020\n\010" +
-      "playerId\030\001 \001(\t\022\014\n\004maps\030\002 \003(\t2\336\001\n\014StatsSe" +
-      "rvice\022B\n\020GetFlashMapStats\022\025.FlashMapStat" +
-      "sRequest\032\027.FlashStatisticCompound\022D\n\021Get" +
-      "FlashGameStats\022\026.FlashGameStatsRequest\032\027" +
-      ".FlashStatisticCompound\022D\n\rGetFlashStats" +
-      "\022\032.FlashStatsCompoundRequest\032\027.FlashStat" +
-      "isticCompoundB#\n\030dev.freggy.stats.servic" +
-      "eZ\007serviceb\006proto3"
+      "\n\rservice.proto\032\013flash.proto\"?\n\025GetFlash" +
+      "StatsResponse\022&\n\005stats\030\001 \001(\0132\027.FlashStat" +
+      "isticCompound\"9\n\027GetFlashMapStatsRequest" +
+      "\022\020\n\010playerId\030\001 \001(\t\022\014\n\004maps\030\002 \003(\t\",\n\030GetF" +
+      "lashGameStatsRequest\022\020\n\010playerId\030\001 \001(\t\">" +
+      "\n\034GetFlashStatsCompoundRequest\022\020\n\010player" +
+      "Id\030\001 \001(\t\022\014\n\004maps\030\002 \003(\t\"A\n\027UpdateFlashSta" +
+      "tsRequest\022&\n\005stats\030\001 \001(\0132\027.FlashStatisti" +
+      "cCompound\"\032\n\030UpdateFlashStatsResponse2\255\002" +
+      "\n\014StatsService\022D\n\020GetFlashMapStats\022\030.Get" +
+      "FlashMapStatsRequest\032\026.GetFlashStatsResp" +
+      "onse\022F\n\021GetFlashGameStats\022\031.GetFlashGame" +
+      "StatsRequest\032\026.GetFlashStatsResponse\022F\n\r" +
+      "GetFlashStats\022\035.GetFlashStatsCompoundReq" +
+      "uest\032\026.GetFlashStatsResponse\022G\n\020UpdateFl" +
+      "ashStats\022\030.UpdateFlashStatsRequest\032\031.Upd" +
+      "ateFlashStatsResponseB#\n\030dev.freggy.stat" +
+      "s.serviceZ\007serviceb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2102,24 +3749,42 @@ public final class Service {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           dev.freggy.stats.model.Flash.getDescriptor(),
         }, assigner);
-    internal_static_FlashMapStatsRequest_descriptor =
+    internal_static_GetFlashStatsResponse_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_FlashMapStatsRequest_fieldAccessorTable = new
+    internal_static_GetFlashStatsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_FlashMapStatsRequest_descriptor,
-        new java.lang.String[] { "PlayerId", "Maps", });
-    internal_static_FlashGameStatsRequest_descriptor =
+        internal_static_GetFlashStatsResponse_descriptor,
+        new java.lang.String[] { "Stats", });
+    internal_static_GetFlashMapStatsRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_FlashGameStatsRequest_fieldAccessorTable = new
+    internal_static_GetFlashMapStatsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_FlashGameStatsRequest_descriptor,
-        new java.lang.String[] { "PlayerId", });
-    internal_static_FlashStatsCompoundRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_FlashStatsCompoundRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_FlashStatsCompoundRequest_descriptor,
+        internal_static_GetFlashMapStatsRequest_descriptor,
         new java.lang.String[] { "PlayerId", "Maps", });
+    internal_static_GetFlashGameStatsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_GetFlashGameStatsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetFlashGameStatsRequest_descriptor,
+        new java.lang.String[] { "PlayerId", });
+    internal_static_GetFlashStatsCompoundRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_GetFlashStatsCompoundRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetFlashStatsCompoundRequest_descriptor,
+        new java.lang.String[] { "PlayerId", "Maps", });
+    internal_static_UpdateFlashStatsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_UpdateFlashStatsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_UpdateFlashStatsRequest_descriptor,
+        new java.lang.String[] { "Stats", });
+    internal_static_UpdateFlashStatsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_UpdateFlashStatsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_UpdateFlashStatsResponse_descriptor,
+        new java.lang.String[] { });
     dev.freggy.stats.model.Flash.getDescriptor();
   }
 
@@ -2193,17 +3858,22 @@ public final class Service {
     @javax.ws.rs.Path( "/GetFlashMapStats" )
     @javax.ws.rs.Consumes({"application/protobuf", "application/json"})
     @javax.ws.rs.Produces({"application/protobuf", "application/json"})
-    dev.freggy.stats.service.Service.FlashStatisticCompound getFlashMapStats(dev.freggy.stats.service.Service.FlashMapStatsRequest request);
+    dev.freggy.stats.service.Service.GetFlashStatsResponse getFlashMapStats(dev.freggy.stats.service.Service.GetFlashMapStatsRequest request);
     @javax.ws.rs.POST
     @javax.ws.rs.Path( "/GetFlashGameStats" )
     @javax.ws.rs.Consumes({"application/protobuf", "application/json"})
     @javax.ws.rs.Produces({"application/protobuf", "application/json"})
-    dev.freggy.stats.service.Service.FlashStatisticCompound getFlashGameStats(dev.freggy.stats.service.Service.FlashGameStatsRequest request);
+    dev.freggy.stats.service.Service.GetFlashStatsResponse getFlashGameStats(dev.freggy.stats.service.Service.GetFlashGameStatsRequest request);
     @javax.ws.rs.POST
     @javax.ws.rs.Path( "/GetFlashStats" )
     @javax.ws.rs.Consumes({"application/protobuf", "application/json"})
     @javax.ws.rs.Produces({"application/protobuf", "application/json"})
-    dev.freggy.stats.service.Service.FlashStatisticCompound getFlashStats(dev.freggy.stats.service.Service.FlashStatsCompoundRequest request);
+    dev.freggy.stats.service.Service.GetFlashStatsResponse getFlashStats(dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest request);
+    @javax.ws.rs.POST
+    @javax.ws.rs.Path( "/UpdateFlashStats" )
+    @javax.ws.rs.Consumes({"application/protobuf", "application/json"})
+    @javax.ws.rs.Produces({"application/protobuf", "application/json"})
+    dev.freggy.stats.service.Service.UpdateFlashStatsResponse updateFlashStats(dev.freggy.stats.service.Service.UpdateFlashStatsRequest request);
   }
   
   public static class StatsServiceClient implements dev.freggy.stats.service.Service.StatsService {
@@ -2229,18 +3899,23 @@ public final class Service {
   
   
     @Override
-    public dev.freggy.stats.service.Service.FlashStatisticCompound getFlashMapStats(dev.freggy.stats.service.Service.FlashMapStatsRequest request) {
-      return call("/GetFlashMapStats", request, dev.freggy.stats.service.Service.FlashStatisticCompound.class);
+    public dev.freggy.stats.service.Service.GetFlashStatsResponse getFlashMapStats(dev.freggy.stats.service.Service.GetFlashMapStatsRequest request) {
+      return call("/GetFlashMapStats", request, dev.freggy.stats.service.Service.GetFlashStatsResponse.class);
     }
   
     @Override
-    public dev.freggy.stats.service.Service.FlashStatisticCompound getFlashGameStats(dev.freggy.stats.service.Service.FlashGameStatsRequest request) {
-      return call("/GetFlashGameStats", request, dev.freggy.stats.service.Service.FlashStatisticCompound.class);
+    public dev.freggy.stats.service.Service.GetFlashStatsResponse getFlashGameStats(dev.freggy.stats.service.Service.GetFlashGameStatsRequest request) {
+      return call("/GetFlashGameStats", request, dev.freggy.stats.service.Service.GetFlashStatsResponse.class);
     }
   
     @Override
-    public dev.freggy.stats.service.Service.FlashStatisticCompound getFlashStats(dev.freggy.stats.service.Service.FlashStatsCompoundRequest request) {
-      return call("/GetFlashStats", request, dev.freggy.stats.service.Service.FlashStatisticCompound.class);
+    public dev.freggy.stats.service.Service.GetFlashStatsResponse getFlashStats(dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest request) {
+      return call("/GetFlashStats", request, dev.freggy.stats.service.Service.GetFlashStatsResponse.class);
+    }
+  
+    @Override
+    public dev.freggy.stats.service.Service.UpdateFlashStatsResponse updateFlashStats(dev.freggy.stats.service.Service.UpdateFlashStatsRequest request) {
+      return call("/UpdateFlashStats", request, dev.freggy.stats.service.Service.UpdateFlashStatsResponse.class);
     }
   }
   

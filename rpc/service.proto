@@ -9,23 +9,40 @@ import "flash.proto";
 // Flash
 //
 
-message FlashMapStatsRequest {
+message GetFlashStatsResponse {
+    FlashStatisticCompound stats = 1;
+}
+
+message GetFlashMapStatsRequest {
     string playerId = 1;
     repeated string maps = 2;
 }
 
-message FlashGameStatsRequest {
+message GetFlashGameStatsRequest {
     string playerId = 1;
 }
 
-message FlashStatsCompoundRequest {
+message GetFlashStatsCompoundRequest {
     string playerId = 1;
     repeated string maps = 2;
 }
+
+message UpdateFlashStatsRequest {
+    FlashStatisticCompound stats = 1;
+}
+
+message UpdateFlashStatsResponse {}
+
+//
+// TryJump
+//
+
+// ...
 
 
 service StatsService {
-    rpc GetFlashMapStats (FlashMapStatsRequest) returns (FlashStatisticCompound);
-    rpc GetFlashGameStats (FlashGameStatsRequest) returns (FlashStatisticCompound);
-    rpc GetFlashStats (FlashStatsCompoundRequest) returns (FlashStatisticCompound);
+    rpc GetFlashMapStats (GetFlashMapStatsRequest) returns (GetFlashStatsResponse);
+    rpc GetFlashGameStats (GetFlashGameStatsRequest) returns (GetFlashStatsResponse);
+    rpc GetFlashStats (GetFlashStatsCompoundRequest) returns (GetFlashStatsResponse);
+    rpc UpdateFlashStats (UpdateFlashStatsRequest) returns (UpdateFlashStatsResponse);
 }
