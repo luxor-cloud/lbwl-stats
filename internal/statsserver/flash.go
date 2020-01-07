@@ -15,7 +15,10 @@ func (s *Server) GetFlashMapStats(ctx context.Context, mapReq *service.GetFlashM
 		if err != nil {
 			return nil, err
 		}
-		maps = append(maps, stats)
+
+		if stats != nil {
+			maps = append(maps, stats)
+		}
 	}
 
 	return &service.GetFlashStatsResponse{
@@ -26,9 +29,9 @@ func (s *Server) GetFlashMapStats(ctx context.Context, mapReq *service.GetFlashM
 }
 
 func (s *Server) GetFlashGameStats(ctx context.Context, gameReq *service.GetFlashGameStatsRequest) (*service.GetFlashStatsResponse, error) {
-
+	return nil, nil
 }
 
 func (s *Server) GetFlashStats(ctx context.Context, compReq *service.GetFlashStatsCompoundRequest) (*service.GetFlashStatsResponse, error) {
-
+	return nil, nil
 }
