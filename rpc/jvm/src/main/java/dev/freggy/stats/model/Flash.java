@@ -3690,8 +3690,9 @@ public final class Flash {
       " \003(\0132\031.FlashCheckpointStatistic\"q\n\030Flash" +
       "CheckpointStatistic\022\022\n\ncheckpoint\030\001 \001(\017\022" +
       "\023\n\013time_needed\030\002 \001(\004\022\027\n\017accomplished_at\030" +
-      "\003 \001(\t\022\023\n\013record_time\030\004 \001(\004B\037\n\026dev.freggy" +
-      ".stats.modelZ\005modelb\006proto3"
+      "\003 \001(\t\022\023\n\013record_time\030\004 \001(\004B7\n\026dev.freggy" +
+      ".stats.modelZ\035freggy.dev/stats/rpc/go/mo" +
+      "delb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

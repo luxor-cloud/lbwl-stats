@@ -1,9 +1,10 @@
 syntax = "proto3";
 
+package service;
 option java_package = "dev.freggy.stats.service";
 option go_package = "service";
 
-import "flash.proto";
+import "model/flash.proto";
 
 //
 // Flash

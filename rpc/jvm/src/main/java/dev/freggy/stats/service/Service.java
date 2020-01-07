@@ -15,7 +15,7 @@ public final class Service {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface GetFlashStatsResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GetFlashStatsResponse)
+      // @@protoc_insertion_point(interface_extends:service.GetFlashStatsResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -32,11 +32,11 @@ public final class Service {
     dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder getStatsOrBuilder();
   }
   /**
-   * Protobuf type {@code GetFlashStatsResponse}
+   * Protobuf type {@code service.GetFlashStatsResponse}
    */
   public  static final class GetFlashStatsResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:GetFlashStatsResponse)
+      // @@protoc_insertion_point(message_implements:service.GetFlashStatsResponse)
       GetFlashStatsResponseOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use GetFlashStatsResponse.newBuilder() to construct.
@@ -104,13 +104,13 @@ public final class Service {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.freggy.stats.service.Service.internal_static_GetFlashStatsResponse_descriptor;
+      return dev.freggy.stats.service.Service.internal_static_service_GetFlashStatsResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.freggy.stats.service.Service.internal_static_GetFlashStatsResponse_fieldAccessorTable
+      return dev.freggy.stats.service.Service.internal_static_service_GetFlashStatsResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               dev.freggy.stats.service.Service.GetFlashStatsResponse.class, dev.freggy.stats.service.Service.GetFlashStatsResponse.Builder.class);
     }
@@ -298,21 +298,21 @@ public final class Service {
       return builder;
     }
     /**
-     * Protobuf type {@code GetFlashStatsResponse}
+     * Protobuf type {@code service.GetFlashStatsResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GetFlashStatsResponse)
+        // @@protoc_insertion_point(builder_implements:service.GetFlashStatsResponse)
         dev.freggy.stats.service.Service.GetFlashStatsResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.freggy.stats.service.Service.internal_static_GetFlashStatsResponse_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_service_GetFlashStatsResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.freggy.stats.service.Service.internal_static_GetFlashStatsResponse_fieldAccessorTable
+        return dev.freggy.stats.service.Service.internal_static_service_GetFlashStatsResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 dev.freggy.stats.service.Service.GetFlashStatsResponse.class, dev.freggy.stats.service.Service.GetFlashStatsResponse.Builder.class);
       }
@@ -347,7 +347,7 @@ public final class Service {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.freggy.stats.service.Service.internal_static_GetFlashStatsResponse_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_service_GetFlashStatsResponse_descriptor;
       }
 
       @java.lang.Override
@@ -581,10 +581,10 @@ public final class Service {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:GetFlashStatsResponse)
+      // @@protoc_insertion_point(builder_scope:service.GetFlashStatsResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:GetFlashStatsResponse)
+    // @@protoc_insertion_point(class_scope:service.GetFlashStatsResponse)
     private static final dev.freggy.stats.service.Service.GetFlashStatsResponse DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.GetFlashStatsResponse();
@@ -622,7 +622,7 @@ public final class Service {
   }
 
   public interface GetFlashMapStatsRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GetFlashMapStatsRequest)
+      // @@protoc_insertion_point(interface_extends:service.GetFlashMapStatsRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -655,11 +655,11 @@ public final class Service {
         getMapsBytes(int index);
   }
   /**
-   * Protobuf type {@code GetFlashMapStatsRequest}
+   * Protobuf type {@code service.GetFlashMapStatsRequest}
    */
   public  static final class GetFlashMapStatsRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:GetFlashMapStatsRequest)
+      // @@protoc_insertion_point(message_implements:service.GetFlashMapStatsRequest)
       GetFlashMapStatsRequestOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use GetFlashMapStatsRequest.newBuilder() to construct.
@@ -734,13 +734,13 @@ public final class Service {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.freggy.stats.service.Service.internal_static_GetFlashMapStatsRequest_descriptor;
+      return dev.freggy.stats.service.Service.internal_static_service_GetFlashMapStatsRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.freggy.stats.service.Service.internal_static_GetFlashMapStatsRequest_fieldAccessorTable
+      return dev.freggy.stats.service.Service.internal_static_service_GetFlashMapStatsRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               dev.freggy.stats.service.Service.GetFlashMapStatsRequest.class, dev.freggy.stats.service.Service.GetFlashMapStatsRequest.Builder.class);
     }
@@ -982,21 +982,21 @@ public final class Service {
       return builder;
     }
     /**
-     * Protobuf type {@code GetFlashMapStatsRequest}
+     * Protobuf type {@code service.GetFlashMapStatsRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GetFlashMapStatsRequest)
+        // @@protoc_insertion_point(builder_implements:service.GetFlashMapStatsRequest)
         dev.freggy.stats.service.Service.GetFlashMapStatsRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.freggy.stats.service.Service.internal_static_GetFlashMapStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_service_GetFlashMapStatsRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.freggy.stats.service.Service.internal_static_GetFlashMapStatsRequest_fieldAccessorTable
+        return dev.freggy.stats.service.Service.internal_static_service_GetFlashMapStatsRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 dev.freggy.stats.service.Service.GetFlashMapStatsRequest.class, dev.freggy.stats.service.Service.GetFlashMapStatsRequest.Builder.class);
       }
@@ -1029,7 +1029,7 @@ public final class Service {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.freggy.stats.service.Service.internal_static_GetFlashMapStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_service_GetFlashMapStatsRequest_descriptor;
       }
 
       @java.lang.Override
@@ -1325,10 +1325,10 @@ public final class Service {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:GetFlashMapStatsRequest)
+      // @@protoc_insertion_point(builder_scope:service.GetFlashMapStatsRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:GetFlashMapStatsRequest)
+    // @@protoc_insertion_point(class_scope:service.GetFlashMapStatsRequest)
     private static final dev.freggy.stats.service.Service.GetFlashMapStatsRequest DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.GetFlashMapStatsRequest();
@@ -1366,7 +1366,7 @@ public final class Service {
   }
 
   public interface GetFlashGameStatsRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GetFlashGameStatsRequest)
+      // @@protoc_insertion_point(interface_extends:service.GetFlashGameStatsRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1380,11 +1380,11 @@ public final class Service {
         getPlayerIdBytes();
   }
   /**
-   * Protobuf type {@code GetFlashGameStatsRequest}
+   * Protobuf type {@code service.GetFlashGameStatsRequest}
    */
   public  static final class GetFlashGameStatsRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:GetFlashGameStatsRequest)
+      // @@protoc_insertion_point(message_implements:service.GetFlashGameStatsRequest)
       GetFlashGameStatsRequestOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use GetFlashGameStatsRequest.newBuilder() to construct.
@@ -1446,13 +1446,13 @@ public final class Service {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.freggy.stats.service.Service.internal_static_GetFlashGameStatsRequest_descriptor;
+      return dev.freggy.stats.service.Service.internal_static_service_GetFlashGameStatsRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.freggy.stats.service.Service.internal_static_GetFlashGameStatsRequest_fieldAccessorTable
+      return dev.freggy.stats.service.Service.internal_static_service_GetFlashGameStatsRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               dev.freggy.stats.service.Service.GetFlashGameStatsRequest.class, dev.freggy.stats.service.Service.GetFlashGameStatsRequest.Builder.class);
     }
@@ -1647,21 +1647,21 @@ public final class Service {
       return builder;
     }
     /**
-     * Protobuf type {@code GetFlashGameStatsRequest}
+     * Protobuf type {@code service.GetFlashGameStatsRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GetFlashGameStatsRequest)
+        // @@protoc_insertion_point(builder_implements:service.GetFlashGameStatsRequest)
         dev.freggy.stats.service.Service.GetFlashGameStatsRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.freggy.stats.service.Service.internal_static_GetFlashGameStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_service_GetFlashGameStatsRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.freggy.stats.service.Service.internal_static_GetFlashGameStatsRequest_fieldAccessorTable
+        return dev.freggy.stats.service.Service.internal_static_service_GetFlashGameStatsRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 dev.freggy.stats.service.Service.GetFlashGameStatsRequest.class, dev.freggy.stats.service.Service.GetFlashGameStatsRequest.Builder.class);
       }
@@ -1692,7 +1692,7 @@ public final class Service {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.freggy.stats.service.Service.internal_static_GetFlashGameStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_service_GetFlashGameStatsRequest_descriptor;
       }
 
       @java.lang.Override
@@ -1875,10 +1875,10 @@ public final class Service {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:GetFlashGameStatsRequest)
+      // @@protoc_insertion_point(builder_scope:service.GetFlashGameStatsRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:GetFlashGameStatsRequest)
+    // @@protoc_insertion_point(class_scope:service.GetFlashGameStatsRequest)
     private static final dev.freggy.stats.service.Service.GetFlashGameStatsRequest DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.GetFlashGameStatsRequest();
@@ -1916,7 +1916,7 @@ public final class Service {
   }
 
   public interface GetFlashStatsCompoundRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GetFlashStatsCompoundRequest)
+      // @@protoc_insertion_point(interface_extends:service.GetFlashStatsCompoundRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1949,11 +1949,11 @@ public final class Service {
         getMapsBytes(int index);
   }
   /**
-   * Protobuf type {@code GetFlashStatsCompoundRequest}
+   * Protobuf type {@code service.GetFlashStatsCompoundRequest}
    */
   public  static final class GetFlashStatsCompoundRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:GetFlashStatsCompoundRequest)
+      // @@protoc_insertion_point(message_implements:service.GetFlashStatsCompoundRequest)
       GetFlashStatsCompoundRequestOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use GetFlashStatsCompoundRequest.newBuilder() to construct.
@@ -2028,13 +2028,13 @@ public final class Service {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.freggy.stats.service.Service.internal_static_GetFlashStatsCompoundRequest_descriptor;
+      return dev.freggy.stats.service.Service.internal_static_service_GetFlashStatsCompoundRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.freggy.stats.service.Service.internal_static_GetFlashStatsCompoundRequest_fieldAccessorTable
+      return dev.freggy.stats.service.Service.internal_static_service_GetFlashStatsCompoundRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest.class, dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest.Builder.class);
     }
@@ -2276,21 +2276,21 @@ public final class Service {
       return builder;
     }
     /**
-     * Protobuf type {@code GetFlashStatsCompoundRequest}
+     * Protobuf type {@code service.GetFlashStatsCompoundRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GetFlashStatsCompoundRequest)
+        // @@protoc_insertion_point(builder_implements:service.GetFlashStatsCompoundRequest)
         dev.freggy.stats.service.Service.GetFlashStatsCompoundRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.freggy.stats.service.Service.internal_static_GetFlashStatsCompoundRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_service_GetFlashStatsCompoundRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.freggy.stats.service.Service.internal_static_GetFlashStatsCompoundRequest_fieldAccessorTable
+        return dev.freggy.stats.service.Service.internal_static_service_GetFlashStatsCompoundRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest.class, dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest.Builder.class);
       }
@@ -2323,7 +2323,7 @@ public final class Service {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.freggy.stats.service.Service.internal_static_GetFlashStatsCompoundRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_service_GetFlashStatsCompoundRequest_descriptor;
       }
 
       @java.lang.Override
@@ -2619,10 +2619,10 @@ public final class Service {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:GetFlashStatsCompoundRequest)
+      // @@protoc_insertion_point(builder_scope:service.GetFlashStatsCompoundRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:GetFlashStatsCompoundRequest)
+    // @@protoc_insertion_point(class_scope:service.GetFlashStatsCompoundRequest)
     private static final dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.GetFlashStatsCompoundRequest();
@@ -2660,7 +2660,7 @@ public final class Service {
   }
 
   public interface UpdateFlashStatsRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UpdateFlashStatsRequest)
+      // @@protoc_insertion_point(interface_extends:service.UpdateFlashStatsRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2677,11 +2677,11 @@ public final class Service {
     dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder getStatsOrBuilder();
   }
   /**
-   * Protobuf type {@code UpdateFlashStatsRequest}
+   * Protobuf type {@code service.UpdateFlashStatsRequest}
    */
   public  static final class UpdateFlashStatsRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UpdateFlashStatsRequest)
+      // @@protoc_insertion_point(message_implements:service.UpdateFlashStatsRequest)
       UpdateFlashStatsRequestOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use UpdateFlashStatsRequest.newBuilder() to construct.
@@ -2749,13 +2749,13 @@ public final class Service {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsRequest_descriptor;
+      return dev.freggy.stats.service.Service.internal_static_service_UpdateFlashStatsRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsRequest_fieldAccessorTable
+      return dev.freggy.stats.service.Service.internal_static_service_UpdateFlashStatsRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               dev.freggy.stats.service.Service.UpdateFlashStatsRequest.class, dev.freggy.stats.service.Service.UpdateFlashStatsRequest.Builder.class);
     }
@@ -2943,21 +2943,21 @@ public final class Service {
       return builder;
     }
     /**
-     * Protobuf type {@code UpdateFlashStatsRequest}
+     * Protobuf type {@code service.UpdateFlashStatsRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UpdateFlashStatsRequest)
+        // @@protoc_insertion_point(builder_implements:service.UpdateFlashStatsRequest)
         dev.freggy.stats.service.Service.UpdateFlashStatsRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_service_UpdateFlashStatsRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsRequest_fieldAccessorTable
+        return dev.freggy.stats.service.Service.internal_static_service_UpdateFlashStatsRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 dev.freggy.stats.service.Service.UpdateFlashStatsRequest.class, dev.freggy.stats.service.Service.UpdateFlashStatsRequest.Builder.class);
       }
@@ -2992,7 +2992,7 @@ public final class Service {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsRequest_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_service_UpdateFlashStatsRequest_descriptor;
       }
 
       @java.lang.Override
@@ -3226,10 +3226,10 @@ public final class Service {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UpdateFlashStatsRequest)
+      // @@protoc_insertion_point(builder_scope:service.UpdateFlashStatsRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:UpdateFlashStatsRequest)
+    // @@protoc_insertion_point(class_scope:service.UpdateFlashStatsRequest)
     private static final dev.freggy.stats.service.Service.UpdateFlashStatsRequest DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.UpdateFlashStatsRequest();
@@ -3267,15 +3267,15 @@ public final class Service {
   }
 
   public interface UpdateFlashStatsResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UpdateFlashStatsResponse)
+      // @@protoc_insertion_point(interface_extends:service.UpdateFlashStatsResponse)
       com.google.protobuf.MessageOrBuilder {
   }
   /**
-   * Protobuf type {@code UpdateFlashStatsResponse}
+   * Protobuf type {@code service.UpdateFlashStatsResponse}
    */
   public  static final class UpdateFlashStatsResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UpdateFlashStatsResponse)
+      // @@protoc_insertion_point(message_implements:service.UpdateFlashStatsResponse)
       UpdateFlashStatsResponseOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use UpdateFlashStatsResponse.newBuilder() to construct.
@@ -3329,13 +3329,13 @@ public final class Service {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsResponse_descriptor;
+      return dev.freggy.stats.service.Service.internal_static_service_UpdateFlashStatsResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsResponse_fieldAccessorTable
+      return dev.freggy.stats.service.Service.internal_static_service_UpdateFlashStatsResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               dev.freggy.stats.service.Service.UpdateFlashStatsResponse.class, dev.freggy.stats.service.Service.UpdateFlashStatsResponse.Builder.class);
     }
@@ -3486,21 +3486,21 @@ public final class Service {
       return builder;
     }
     /**
-     * Protobuf type {@code UpdateFlashStatsResponse}
+     * Protobuf type {@code service.UpdateFlashStatsResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UpdateFlashStatsResponse)
+        // @@protoc_insertion_point(builder_implements:service.UpdateFlashStatsResponse)
         dev.freggy.stats.service.Service.UpdateFlashStatsResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsResponse_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_service_UpdateFlashStatsResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsResponse_fieldAccessorTable
+        return dev.freggy.stats.service.Service.internal_static_service_UpdateFlashStatsResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 dev.freggy.stats.service.Service.UpdateFlashStatsResponse.class, dev.freggy.stats.service.Service.UpdateFlashStatsResponse.Builder.class);
       }
@@ -3529,7 +3529,7 @@ public final class Service {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.freggy.stats.service.Service.internal_static_UpdateFlashStatsResponse_descriptor;
+        return dev.freggy.stats.service.Service.internal_static_service_UpdateFlashStatsResponse_descriptor;
       }
 
       @java.lang.Override
@@ -3638,10 +3638,10 @@ public final class Service {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UpdateFlashStatsResponse)
+      // @@protoc_insertion_point(builder_scope:service.UpdateFlashStatsResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:UpdateFlashStatsResponse)
+    // @@protoc_insertion_point(class_scope:service.UpdateFlashStatsResponse)
     private static final dev.freggy.stats.service.Service.UpdateFlashStatsResponse DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new dev.freggy.stats.service.Service.UpdateFlashStatsResponse();
@@ -3679,35 +3679,35 @@ public final class Service {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GetFlashStatsResponse_descriptor;
+    internal_static_service_GetFlashStatsResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GetFlashStatsResponse_fieldAccessorTable;
+      internal_static_service_GetFlashStatsResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GetFlashMapStatsRequest_descriptor;
+    internal_static_service_GetFlashMapStatsRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GetFlashMapStatsRequest_fieldAccessorTable;
+      internal_static_service_GetFlashMapStatsRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GetFlashGameStatsRequest_descriptor;
+    internal_static_service_GetFlashGameStatsRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GetFlashGameStatsRequest_fieldAccessorTable;
+      internal_static_service_GetFlashGameStatsRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GetFlashStatsCompoundRequest_descriptor;
+    internal_static_service_GetFlashStatsCompoundRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GetFlashStatsCompoundRequest_fieldAccessorTable;
+      internal_static_service_GetFlashStatsCompoundRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UpdateFlashStatsRequest_descriptor;
+    internal_static_service_UpdateFlashStatsRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UpdateFlashStatsRequest_fieldAccessorTable;
+      internal_static_service_UpdateFlashStatsRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UpdateFlashStatsResponse_descriptor;
+    internal_static_service_UpdateFlashStatsResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UpdateFlashStatsResponse_fieldAccessorTable;
+      internal_static_service_UpdateFlashStatsResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3717,24 +3717,26 @@ public final class Service {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rservice.proto\032\013flash.proto\"?\n\025GetFlash" +
-      "StatsResponse\022&\n\005stats\030\001 \001(\0132\027.FlashStat" +
-      "isticCompound\"9\n\027GetFlashMapStatsRequest" +
-      "\022\020\n\010playerId\030\001 \001(\t\022\014\n\004maps\030\002 \003(\t\",\n\030GetF" +
-      "lashGameStatsRequest\022\020\n\010playerId\030\001 \001(\t\">" +
-      "\n\034GetFlashStatsCompoundRequest\022\020\n\010player" +
-      "Id\030\001 \001(\t\022\014\n\004maps\030\002 \003(\t\"A\n\027UpdateFlashSta" +
-      "tsRequest\022&\n\005stats\030\001 \001(\0132\027.FlashStatisti" +
-      "cCompound\"\032\n\030UpdateFlashStatsResponse2\255\002" +
-      "\n\014StatsService\022D\n\020GetFlashMapStats\022\030.Get" +
-      "FlashMapStatsRequest\032\026.GetFlashStatsResp" +
-      "onse\022F\n\021GetFlashGameStats\022\031.GetFlashGame" +
-      "StatsRequest\032\026.GetFlashStatsResponse\022F\n\r" +
-      "GetFlashStats\022\035.GetFlashStatsCompoundReq" +
-      "uest\032\026.GetFlashStatsResponse\022G\n\020UpdateFl" +
-      "ashStats\022\030.UpdateFlashStatsRequest\032\031.Upd" +
-      "ateFlashStatsResponseB#\n\030dev.freggy.stat" +
-      "s.serviceZ\007serviceb\006proto3"
+      "\n\rservice.proto\022\007service\032\021model/flash.pr" +
+      "oto\"?\n\025GetFlashStatsResponse\022&\n\005stats\030\001 " +
+      "\001(\0132\027.FlashStatisticCompound\"9\n\027GetFlash" +
+      "MapStatsRequest\022\020\n\010playerId\030\001 \001(\t\022\014\n\004map" +
+      "s\030\002 \003(\t\",\n\030GetFlashGameStatsRequest\022\020\n\010p" +
+      "layerId\030\001 \001(\t\">\n\034GetFlashStatsCompoundRe" +
+      "quest\022\020\n\010playerId\030\001 \001(\t\022\014\n\004maps\030\002 \003(\t\"A\n" +
+      "\027UpdateFlashStatsRequest\022&\n\005stats\030\001 \001(\0132" +
+      "\027.FlashStatisticCompound\"\032\n\030UpdateFlashS" +
+      "tatsResponse2\355\002\n\014StatsService\022T\n\020GetFlas" +
+      "hMapStats\022 .service.GetFlashMapStatsRequ" +
+      "est\032\036.service.GetFlashStatsResponse\022V\n\021G" +
+      "etFlashGameStats\022!.service.GetFlashGameS" +
+      "tatsRequest\032\036.service.GetFlashStatsRespo" +
+      "nse\022V\n\rGetFlashStats\022%.service.GetFlashS" +
+      "tatsCompoundRequest\032\036.service.GetFlashSt" +
+      "atsResponse\022W\n\020UpdateFlashStats\022 .servic" +
+      "e.UpdateFlashStatsRequest\032!.service.Upda" +
+      "teFlashStatsResponseB#\n\030dev.freggy.stats" +
+      ".serviceZ\007serviceb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3749,41 +3751,41 @@ public final class Service {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           dev.freggy.stats.model.Flash.getDescriptor(),
         }, assigner);
-    internal_static_GetFlashStatsResponse_descriptor =
+    internal_static_service_GetFlashStatsResponse_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_GetFlashStatsResponse_fieldAccessorTable = new
+    internal_static_service_GetFlashStatsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GetFlashStatsResponse_descriptor,
+        internal_static_service_GetFlashStatsResponse_descriptor,
         new java.lang.String[] { "Stats", });
-    internal_static_GetFlashMapStatsRequest_descriptor =
+    internal_static_service_GetFlashMapStatsRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_GetFlashMapStatsRequest_fieldAccessorTable = new
+    internal_static_service_GetFlashMapStatsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GetFlashMapStatsRequest_descriptor,
+        internal_static_service_GetFlashMapStatsRequest_descriptor,
         new java.lang.String[] { "PlayerId", "Maps", });
-    internal_static_GetFlashGameStatsRequest_descriptor =
+    internal_static_service_GetFlashGameStatsRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_GetFlashGameStatsRequest_fieldAccessorTable = new
+    internal_static_service_GetFlashGameStatsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GetFlashGameStatsRequest_descriptor,
+        internal_static_service_GetFlashGameStatsRequest_descriptor,
         new java.lang.String[] { "PlayerId", });
-    internal_static_GetFlashStatsCompoundRequest_descriptor =
+    internal_static_service_GetFlashStatsCompoundRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_GetFlashStatsCompoundRequest_fieldAccessorTable = new
+    internal_static_service_GetFlashStatsCompoundRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GetFlashStatsCompoundRequest_descriptor,
+        internal_static_service_GetFlashStatsCompoundRequest_descriptor,
         new java.lang.String[] { "PlayerId", "Maps", });
-    internal_static_UpdateFlashStatsRequest_descriptor =
+    internal_static_service_UpdateFlashStatsRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_UpdateFlashStatsRequest_fieldAccessorTable = new
+    internal_static_service_UpdateFlashStatsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UpdateFlashStatsRequest_descriptor,
+        internal_static_service_UpdateFlashStatsRequest_descriptor,
         new java.lang.String[] { "Stats", });
-    internal_static_UpdateFlashStatsResponse_descriptor =
+    internal_static_service_UpdateFlashStatsResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
-    internal_static_UpdateFlashStatsResponse_fieldAccessorTable = new
+    internal_static_service_UpdateFlashStatsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UpdateFlashStatsResponse_descriptor,
+        internal_static_service_UpdateFlashStatsResponse_descriptor,
         new java.lang.String[] { });
     dev.freggy.stats.model.Flash.getDescriptor();
   }
@@ -3852,7 +3854,7 @@ public final class Service {
           }
   }
   
-  @javax.ws.rs.Path( "/StatsService" )
+  @javax.ws.rs.Path( "/service.StatsService" )
   public interface StatsService {
     @javax.ws.rs.POST
     @javax.ws.rs.Path( "/GetFlashMapStats" )
@@ -3880,7 +3882,7 @@ public final class Service {
     private final javax.ws.rs.client.WebTarget target;
   
     public StatsServiceClient(javax.ws.rs.client.WebTarget target) {
-      this.target = target.path("StatsService");
+      this.target = target.path("service.StatsService");
       this.target.register(new dev.freggy.stats.service.Service.ProtoBufMessageProvider());
     }
   
