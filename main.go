@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"flag"
+)
 
 func main() {
-	fmt.Println("Hello!")
+	flag.String("config", "/etc/lbwl-stats/config.json", "Config")
+	flag.Parse()
+
 }
