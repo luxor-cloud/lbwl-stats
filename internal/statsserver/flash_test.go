@@ -141,7 +141,7 @@ func TestServer_GetFlashMapStats_Empty_Map_Should_Throw_Error(t *testing.T) {
 
 	_, err := s.GetFlashMapStats(nil, req)
 
-	assert.EqualError(t, err, InvalidMapError.Error())
+	assert.EqualError(t, err, EmptyMapError.Error())
 }
 
 func TestServer_GetFlashMapStats_Empty_ID_Should_Throw_Error(t *testing.T) {
@@ -152,7 +152,7 @@ func TestServer_GetFlashMapStats_Empty_ID_Should_Throw_Error(t *testing.T) {
 
 	_, err := s.GetFlashMapStats(nil, req)
 
-	assert.EqualError(t, err, InvalidIDError.Error())
+	assert.EqualError(t, err, EmptyIDError.Error())
 }
 
 
@@ -187,7 +187,7 @@ func TestServer_GetFlashGameStats_Empty_ID_Should_Throw_Error(t *testing.T) {
 	req := &service.GetFlashGameStatsRequest{}
 	_, err := s.GetFlashGameStats(nil, req)
 
-	assert.EqualError(t, err, InvalidIDError.Error())
+	assert.EqualError(t, err, EmptyIDError.Error())
 }
 
 //
@@ -241,7 +241,7 @@ func TestServer_GetFlashStats_Empty_ID_Should_Throw_Error(t *testing.T) {
 	}
 
 	_, err := s.GetFlashStats(nil, req)
-	assert.EqualError(t, err, InvalidIDError.Error())
+	assert.EqualError(t, err, EmptyIDError.Error())
 }
 
 func TestServer_GetFlashStats_Empty_Map_Should_Throw_Error(t *testing.T) {
@@ -252,5 +252,27 @@ func TestServer_GetFlashStats_Empty_Map_Should_Throw_Error(t *testing.T) {
 	}
 
 	_, err := s.GetFlashStats(nil, req)
-	assert.EqualError(t, err, InvalidMapError.Error())
+	assert.EqualError(t, err, EmptyMapError.Error())
+}
+
+//
+// Update stats
+//
+
+func TestServer_UpdateFlashStats_Empty_Compound_Should_Throw_Error(t *testing.T) {
+	s := getMockServer()
+	req := &service.UpdateFlashStatsRequest{
+		PlayerId:             "92de217b-8b2b-403b-86a5-fe26fa3a9b5f",
+	}
+
+	_, err := s.UpdateFlashStats(nil, req)
+	assert.EqualError(t, err, EmptyCompoundError.Error())
+}
+
+func TestServer_UpdateFlashStats_Empty_ID_Should_Throw_Error(t *testing.T) {
+	s := getMockServer()
+	req := &service.UpdateFlashStatsRequest{}
+
+	_, err := s.UpdateFlashStats(nil, req)
+	assert.EqualError(t, err, EmptyIDError.Error())
 }

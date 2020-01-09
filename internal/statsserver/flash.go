@@ -8,17 +8,18 @@ import (
 )
 
 var (
-	InvalidIDError = twirp.InvalidArgumentError("playerId", "cannot be empty")
-	InvalidMapError = twirp.InvalidArgumentError("maps", "cannot be empty")
+	EmptyIDError  = twirp.InvalidArgumentError("playerId", "cannot be empty")
+	EmptyMapError = twirp.InvalidArgumentError("maps", "cannot be empty")
+	EmptyCompoundError = twirp.InvalidArgumentError("stats", "cannot be empty")
 )
 
 func (s *Server) GetFlashMapStats(ctx context.Context, mapReq *service.GetFlashMapStatsRequest) (*service.GetFlashStatsResponse, error) {
 	if mapReq.GetPlayerId() == "" {
-		return nil, InvalidIDError
+		return nil, EmptyIDError
 	}
 
 	if len(mapReq.GetMaps()) == 0 {
-		return nil, InvalidMapError
+		return nil, EmptyMapError
 	}
 
 	maps, err := s.getMapStats(mapReq.GetPlayerId(), mapReq.GetMaps())
@@ -35,7 +36,7 @@ func (s *Server) GetFlashMapStats(ctx context.Context, mapReq *service.GetFlashM
 
 func (s *Server) GetFlashGameStats(ctx context.Context, gameReq *service.GetFlashGameStatsRequest) (*service.GetFlashStatsResponse, error) {
 	if gameReq.GetPlayerId() == "" {
-		return nil, InvalidIDError
+		return nil, EmptyIDError
 	}
 
 	stats, err := s.flashDAO.GetGameStatistic(gameReq.GetPlayerId())
@@ -52,11 +53,11 @@ func (s *Server) GetFlashGameStats(ctx context.Context, gameReq *service.GetFlas
 
 func (s *Server) GetFlashStats(ctx context.Context, compReq *service.GetFlashStatsCompoundRequest) (*service.GetFlashStatsResponse, error) {
 	if compReq.GetPlayerId() == "" {
-		return nil, InvalidIDError
+		return nil, EmptyIDError
 	}
 
 	if len(compReq.GetMaps()) == 0 {
-		return nil, InvalidMapError
+		return nil, EmptyMapError
 	}
 
 	gameStats, err := s.flashDAO.GetGameStatistic(compReq.GetPlayerId())
@@ -79,12 +80,12 @@ func (s *Server) GetFlashStats(ctx context.Context, compReq *service.GetFlashSta
 
 func (s *Server) UpdateFlashStats(ctx context.Context, req *service.UpdateFlashStatsRequest) (*service.UpdateFlashStatsResponse, error) {
 	if req.GetPlayerId() == "" {
-		return nil, InvalidIDError
+		return nil, EmptyIDError
 	}
 
 	cmp := req.GetStats()
 	if cmp == nil {
-		return nil, twirp.InvalidArgumentError("stats", "cannot be empty")
+		return nil, EmptyCompoundError
 	}
 
 	if cmp.GetGameSummary() != nil {
@@ -95,9 +96,11 @@ func (s *Server) UpdateFlashStats(ctx context.Context, req *service.UpdateFlashS
 	}
 
 	if cmp.GetMapSummary() != nil {
-		//maps := cmp.GetMapSummary()
-		if err := s.flashDAO.UpdateMapStatistic(req.GetPlayerId(), cmp.GetMapSummary()); err != nil {
-			return nil, err
+		maps := cmp.GetMapSummary()
+		for _, m := range maps {
+			if err := s.flashDAO.UpdateMapStatistic(req.GetPlayerId(), m); err != nil {
+				return nil, err
+			}
 		}
 	}
 
