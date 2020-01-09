@@ -78,7 +78,7 @@ func (flashDataAccessMock) UpdateMapStatistic(id string, stats *model.FlashMapSt
 
 func getMockServer() *Server {
 	return &Server{
-		flashDAO: NewFlashMockDAO(),
+		FlashDAO: NewFlashMockDAO(),
 	}
 }
 

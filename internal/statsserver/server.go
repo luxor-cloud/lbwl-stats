@@ -5,11 +5,11 @@ import (
 )
 
 type Server struct {
-	flashDAO flash.DataAccess
+	FlashDAO flash.DataAccess
 }
 
 func NewServer(flashDAO flash.DataAccess) *Server {
-	return &Server{flashDAO: flashDAO}
+	return &Server{FlashDAO: flashDAO}
 }
 
 /*

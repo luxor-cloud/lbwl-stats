@@ -39,7 +39,7 @@ func (s *Server) GetFlashGameStats(ctx context.Context, gameReq *service.GetFlas
 		return nil, EmptyIDError
 	}
 
-	stats, err := s.flashDAO.GetGameStatistic(gameReq.GetPlayerId())
+	stats, err := s.FlashDAO.GetGameStatistic(gameReq.GetPlayerId())
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func (s *Server) GetFlashStats(ctx context.Context, compReq *service.GetFlashSta
 		return nil, EmptyMapError
 	}
 
-	gameStats, err := s.flashDAO.GetGameStatistic(compReq.GetPlayerId())
+	gameStats, err := s.FlashDAO.GetGameStatistic(compReq.GetPlayerId())
 	if err != nil {
 		return nil, err
 	}
@@ -90,7 +90,7 @@ func (s *Server) UpdateFlashStats(ctx context.Context, req *service.UpdateFlashS
 
 	if cmp.GetGameSummary() != nil {
 		game := cmp.GetGameSummary()
-		if err := s.flashDAO.UpdateGameStatistic(req.GetPlayerId(), game); err != nil {
+		if err := s.FlashDAO.UpdateGameStatistic(req.GetPlayerId(), game); err != nil {
 			return nil, err
 		}
 	}
@@ -98,7 +98,7 @@ func (s *Server) UpdateFlashStats(ctx context.Context, req *service.UpdateFlashS
 	if cmp.GetMapSummary() != nil {
 		maps := cmp.GetMapSummary()
 		for _, m := range maps {
-			if err := s.flashDAO.UpdateMapStatistic(req.GetPlayerId(), m); err != nil {
+			if err := s.FlashDAO.UpdateMapStatistic(req.GetPlayerId(), m); err != nil {
 				return nil, err
 			}
 		}
@@ -113,7 +113,7 @@ func (s *Server) getMapStats(id string, mapNames []string) ([]*model.FlashMapSta
 	// but we just leave it like this for now.
 	maps := make([]*model.FlashMapStatistic, 0)
 	for _, m := range mapNames {
-		stats, err := s.flashDAO.GetMapStatistic(id, m)
+		stats, err := s.FlashDAO.GetMapStatistic(id, m)
 		if err != nil {
 			return nil, err
 		}
