@@ -4,7 +4,6 @@ import (
 	"freggy.dev/stats/rpc/go/model"
 	"freggy.dev/stats/rpc/go/service"
 	"github.com/stretchr/testify/assert"
-	"log"
 	"testing"
 )
 
@@ -20,9 +19,6 @@ func NewFlashMockDAO() *flashDataAccessMock {
 		mapStats: make(map[string]map[string]*model.FlashMapStatistic),
 		gameStats: make(map[string]*model.FlashGameStatistic),
 	}
-
-	log.Println(mock.mapStats)
-	log.Println(mock.gameStats)
 
 	mock.gameStats["92de217b-8b2b-403b-86a5-fe26fa3a9b5f"] = &model.FlashGameStatistic{
 		Wins:          1200,
@@ -86,6 +82,10 @@ func getMockServer() *Server {
 	}
 }
 
+//
+// Map stats
+//
+
 func TestServer_GetFlashMapStats_Valid_Response(t *testing.T) {
 	s := getMockServer()
 	req := &service.GetFlashMapStatsRequest{
@@ -132,6 +132,34 @@ func TestServer_GetFlashMapStats_Invalid_Map(t *testing.T) {
 	assert.Empty(t, resp.GetStats().GetMapSummary())
 }
 
+func TestServer_GetFlashMapStats_Empty_Map_Should_Throw_Error(t *testing.T) {
+	s := getMockServer()
+	req := &service.GetFlashMapStatsRequest{
+		PlayerId: "92de217b-8b2b-403b-86a5-fe26fa3a9b5f",
+		Maps: []string{},
+	}
+
+	_, err := s.GetFlashMapStats(nil, req)
+
+	assert.EqualError(t, err, "twirp error invalid_argument: maps cannot be empty")
+}
+
+func TestServer_GetFlashMapStats_Empty_ID_Should_Throw_Error(t *testing.T) {
+	s := getMockServer()
+	req := &service.GetFlashMapStatsRequest{
+		Maps: []string{"Map1"},
+	}
+
+	_, err := s.GetFlashMapStats(nil, req)
+
+	assert.EqualError(t, err, "twirp error invalid_argument: playerId cannot be empty")
+}
+
+
+//
+// Game stats
+//
+
 func TestServer_GetFlashGameStats_Valid_Response(t *testing.T) {
 	s := getMockServer()
 
@@ -147,9 +175,25 @@ func TestServer_GetFlashGameStats_Valid_Response(t *testing.T) {
 	g := resp.GetStats().GetGameSummary()
 
 	assert.NotNil(t, g)
-	assert.Equal(t, 1200, g.GetWins())
-	assert.Equal(t, 1337, g.GetDeaths())
-	assert.Equal(t, 200, g.GetGamesPlayed())
-	assert.Equal(t, 200, g.GetInstantDeaths())
-	assert.Equal(t, 500, g.GetCheckpoints())
+	assert.Equal(t, uint32(1200), g.GetWins())
+	assert.Equal(t, uint32(1337), g.GetDeaths())
+	assert.Equal(t, uint32(200), g.GetGamesPlayed())
+	assert.Equal(t, uint32(200), g.GetInstantDeaths())
+	assert.Equal(t, uint32(500), g.GetCheckpoints())
+}
+
+func TestServer_GetFlashGameStats_Empty_ID_Should_Throw_Error(t *testing.T) {
+	s := getMockServer()
+	req := &service.GetFlashGameStatsRequest{}
+	_, err := s.GetFlashGameStats(nil, req)
+
+	assert.EqualError(t, err, "twirp error invalid_argument: playerId cannot be empty")
+}
+
+//
+// Get all stats
+//
+
+func TestServer_GetFlashStats_Valid_Response(t *testing.T) {
+
 }
