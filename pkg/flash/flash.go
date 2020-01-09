@@ -2,7 +2,10 @@ package flash
 
 import (
 	"database/sql"
+	"fmt"
 	"freggy.dev/stats/rpc/go/model"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type DataAccess interface {
@@ -13,10 +16,10 @@ type DataAccess interface {
 	UpdateMapStatistic(id string, stats *model.FlashMapStatistic) error
 }
 
-// Add function which contain database connection logic here
+// Add functions which contain database connection logic here
 
 func ConnectSQL(addr string) (*sql.DB, error) {
-	db, err := sql.Open("mysql", "root:secret@/test?parseTime=true")
+	db, err := sql.Open("mysql", fmt.Sprintf("%s?parseTime=true", addr))
 	if err != nil {
 		return nil, err
 	}
@@ -26,4 +29,3 @@ func ConnectSQL(addr string) (*sql.DB, error) {
 func ConnectMongoDB(addr string) {
 
 }
-
