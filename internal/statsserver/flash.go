@@ -77,6 +77,34 @@ func (s *Server) GetFlashStats(ctx context.Context, compReq *service.GetFlashSta
 	}, nil
 }
 
+func (s *Server) UpdateFlashStats(ctx context.Context, req *service.UpdateFlashStatsRequest) (*service.UpdateFlashStatsResponse, error) {
+	if req.GetPlayerId() == "" {
+		return nil, InvalidIDError
+	}
+
+	cmp := req.GetStats()
+	if cmp == nil {
+		return nil, twirp.InvalidArgumentError("stats", "cannot be empty")
+	}
+
+	if cmp.GetGameSummary() != nil {
+		game := cmp.GetGameSummary()
+		if err := s.flashDAO.UpdateGameStatistic(req.GetPlayerId(), game); err != nil {
+			return nil, err
+		}
+	}
+
+	if cmp.GetMapSummary() != nil {
+		//maps := cmp.GetMapSummary()
+		if err := s.flashDAO.UpdateMapStatistic(req.GetPlayerId(), cmp.GetMapSummary()); err != nil {
+			return nil, err
+		}
+	}
+
+	return &service.UpdateFlashStatsResponse{}, nil
+}
+
+
 func (s *Server) getMapStats(id string, mapNames []string) ([]*model.FlashMapStatistic, error) {
 	// We could compute all of them in their own goroutine which would make this part faster,
 	// but we just leave it like this for now.

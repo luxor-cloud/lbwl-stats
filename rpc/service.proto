@@ -29,7 +29,8 @@ message GetFlashStatsCompoundRequest {
 }
 
 message UpdateFlashStatsRequest {
-    FlashStatisticCompound stats = 1;
+    string playerId = 1;
+    FlashStatisticCompound stats = 2;
 }
 
 message UpdateFlashStatsResponse {}

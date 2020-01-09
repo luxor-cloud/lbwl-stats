@@ -8,11 +8,9 @@ type Server struct {
 	flashDAO flash.DataAccess
 }
 
-
 func NewServer(flashDAO flash.DataAccess) *Server {
 	return &Server{flashDAO: flashDAO}
 }
-
 
 /*
 type handler interface {

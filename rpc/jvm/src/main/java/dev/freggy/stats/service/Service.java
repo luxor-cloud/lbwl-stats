@@ -2664,15 +2664,25 @@ public final class Service {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.FlashStatisticCompound stats = 1;</code>
+     * <code>string playerId = 1;</code>
+     */
+    java.lang.String getPlayerId();
+    /**
+     * <code>string playerId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getPlayerIdBytes();
+
+    /**
+     * <code>.FlashStatisticCompound stats = 2;</code>
      */
     boolean hasStats();
     /**
-     * <code>.FlashStatisticCompound stats = 1;</code>
+     * <code>.FlashStatisticCompound stats = 2;</code>
      */
     dev.freggy.stats.model.Flash.FlashStatisticCompound getStats();
     /**
-     * <code>.FlashStatisticCompound stats = 1;</code>
+     * <code>.FlashStatisticCompound stats = 2;</code>
      */
     dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder getStatsOrBuilder();
   }
@@ -2689,6 +2699,7 @@ public final class Service {
       super(builder);
     }
     private UpdateFlashStatsRequest() {
+      playerId_ = "";
     }
 
     @java.lang.Override
@@ -2716,6 +2727,12 @@ public final class Service {
               done = true;
               break;
             case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              playerId_ = s;
+              break;
+            }
+            case 18: {
               dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder subBuilder = null;
               if (stats_ != null) {
                 subBuilder = stats_.toBuilder();
@@ -2760,22 +2777,56 @@ public final class Service {
               dev.freggy.stats.service.Service.UpdateFlashStatsRequest.class, dev.freggy.stats.service.Service.UpdateFlashStatsRequest.Builder.class);
     }
 
-    public static final int STATS_FIELD_NUMBER = 1;
+    public static final int PLAYERID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object playerId_;
+    /**
+     * <code>string playerId = 1;</code>
+     */
+    public java.lang.String getPlayerId() {
+      java.lang.Object ref = playerId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        playerId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string playerId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPlayerIdBytes() {
+      java.lang.Object ref = playerId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        playerId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STATS_FIELD_NUMBER = 2;
     private dev.freggy.stats.model.Flash.FlashStatisticCompound stats_;
     /**
-     * <code>.FlashStatisticCompound stats = 1;</code>
+     * <code>.FlashStatisticCompound stats = 2;</code>
      */
     public boolean hasStats() {
       return stats_ != null;
     }
     /**
-     * <code>.FlashStatisticCompound stats = 1;</code>
+     * <code>.FlashStatisticCompound stats = 2;</code>
      */
     public dev.freggy.stats.model.Flash.FlashStatisticCompound getStats() {
       return stats_ == null ? dev.freggy.stats.model.Flash.FlashStatisticCompound.getDefaultInstance() : stats_;
     }
     /**
-     * <code>.FlashStatisticCompound stats = 1;</code>
+     * <code>.FlashStatisticCompound stats = 2;</code>
      */
     public dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder getStatsOrBuilder() {
       return getStats();
@@ -2795,8 +2846,11 @@ public final class Service {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (!getPlayerIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerId_);
+      }
       if (stats_ != null) {
-        output.writeMessage(1, getStats());
+        output.writeMessage(2, getStats());
       }
       unknownFields.writeTo(output);
     }
@@ -2807,9 +2861,12 @@ public final class Service {
       if (size != -1) return size;
 
       size = 0;
+      if (!getPlayerIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerId_);
+      }
       if (stats_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getStats());
+          .computeMessageSize(2, getStats());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2827,6 +2884,8 @@ public final class Service {
       dev.freggy.stats.service.Service.UpdateFlashStatsRequest other = (dev.freggy.stats.service.Service.UpdateFlashStatsRequest) obj;
 
       boolean result = true;
+      result = result && getPlayerId()
+          .equals(other.getPlayerId());
       result = result && (hasStats() == other.hasStats());
       if (hasStats()) {
         result = result && getStats()
@@ -2843,6 +2902,8 @@ public final class Service {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerId().hashCode();
       if (hasStats()) {
         hash = (37 * hash) + STATS_FIELD_NUMBER;
         hash = (53 * hash) + getStats().hashCode();
@@ -2980,6 +3041,8 @@ public final class Service {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        playerId_ = "";
+
         if (statsBuilder_ == null) {
           stats_ = null;
         } else {
@@ -3012,6 +3075,7 @@ public final class Service {
       @java.lang.Override
       public dev.freggy.stats.service.Service.UpdateFlashStatsRequest buildPartial() {
         dev.freggy.stats.service.Service.UpdateFlashStatsRequest result = new dev.freggy.stats.service.Service.UpdateFlashStatsRequest(this);
+        result.playerId_ = playerId_;
         if (statsBuilder_ == null) {
           result.stats_ = stats_;
         } else {
@@ -3065,6 +3129,10 @@ public final class Service {
 
       public Builder mergeFrom(dev.freggy.stats.service.Service.UpdateFlashStatsRequest other) {
         if (other == dev.freggy.stats.service.Service.UpdateFlashStatsRequest.getDefaultInstance()) return this;
+        if (!other.getPlayerId().isEmpty()) {
+          playerId_ = other.playerId_;
+          onChanged();
+        }
         if (other.hasStats()) {
           mergeStats(other.getStats());
         }
@@ -3097,17 +3165,86 @@ public final class Service {
         return this;
       }
 
+      private java.lang.Object playerId_ = "";
+      /**
+       * <code>string playerId = 1;</code>
+       */
+      public java.lang.String getPlayerId() {
+        java.lang.Object ref = playerId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          playerId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string playerId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPlayerIdBytes() {
+        java.lang.Object ref = playerId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          playerId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string playerId = 1;</code>
+       */
+      public Builder setPlayerId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        playerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string playerId = 1;</code>
+       */
+      public Builder clearPlayerId() {
+        
+        playerId_ = getDefaultInstance().getPlayerId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string playerId = 1;</code>
+       */
+      public Builder setPlayerIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        playerId_ = value;
+        onChanged();
+        return this;
+      }
+
       private dev.freggy.stats.model.Flash.FlashStatisticCompound stats_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
           dev.freggy.stats.model.Flash.FlashStatisticCompound, dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder, dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder> statsBuilder_;
       /**
-       * <code>.FlashStatisticCompound stats = 1;</code>
+       * <code>.FlashStatisticCompound stats = 2;</code>
        */
       public boolean hasStats() {
         return statsBuilder_ != null || stats_ != null;
       }
       /**
-       * <code>.FlashStatisticCompound stats = 1;</code>
+       * <code>.FlashStatisticCompound stats = 2;</code>
        */
       public dev.freggy.stats.model.Flash.FlashStatisticCompound getStats() {
         if (statsBuilder_ == null) {
@@ -3117,7 +3254,7 @@ public final class Service {
         }
       }
       /**
-       * <code>.FlashStatisticCompound stats = 1;</code>
+       * <code>.FlashStatisticCompound stats = 2;</code>
        */
       public Builder setStats(dev.freggy.stats.model.Flash.FlashStatisticCompound value) {
         if (statsBuilder_ == null) {
@@ -3133,7 +3270,7 @@ public final class Service {
         return this;
       }
       /**
-       * <code>.FlashStatisticCompound stats = 1;</code>
+       * <code>.FlashStatisticCompound stats = 2;</code>
        */
       public Builder setStats(
           dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder builderForValue) {
@@ -3147,7 +3284,7 @@ public final class Service {
         return this;
       }
       /**
-       * <code>.FlashStatisticCompound stats = 1;</code>
+       * <code>.FlashStatisticCompound stats = 2;</code>
        */
       public Builder mergeStats(dev.freggy.stats.model.Flash.FlashStatisticCompound value) {
         if (statsBuilder_ == null) {
@@ -3165,7 +3302,7 @@ public final class Service {
         return this;
       }
       /**
-       * <code>.FlashStatisticCompound stats = 1;</code>
+       * <code>.FlashStatisticCompound stats = 2;</code>
        */
       public Builder clearStats() {
         if (statsBuilder_ == null) {
@@ -3179,7 +3316,7 @@ public final class Service {
         return this;
       }
       /**
-       * <code>.FlashStatisticCompound stats = 1;</code>
+       * <code>.FlashStatisticCompound stats = 2;</code>
        */
       public dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder getStatsBuilder() {
         
@@ -3187,7 +3324,7 @@ public final class Service {
         return getStatsFieldBuilder().getBuilder();
       }
       /**
-       * <code>.FlashStatisticCompound stats = 1;</code>
+       * <code>.FlashStatisticCompound stats = 2;</code>
        */
       public dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder getStatsOrBuilder() {
         if (statsBuilder_ != null) {
@@ -3198,7 +3335,7 @@ public final class Service {
         }
       }
       /**
-       * <code>.FlashStatisticCompound stats = 1;</code>
+       * <code>.FlashStatisticCompound stats = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           dev.freggy.stats.model.Flash.FlashStatisticCompound, dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder, dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder> 
@@ -3723,20 +3860,21 @@ public final class Service {
       "MapStatsRequest\022\020\n\010playerId\030\001 \001(\t\022\014\n\004map" +
       "s\030\002 \003(\t\",\n\030GetFlashGameStatsRequest\022\020\n\010p" +
       "layerId\030\001 \001(\t\">\n\034GetFlashStatsCompoundRe" +
-      "quest\022\020\n\010playerId\030\001 \001(\t\022\014\n\004maps\030\002 \003(\t\"A\n" +
-      "\027UpdateFlashStatsRequest\022&\n\005stats\030\001 \001(\0132" +
-      "\027.FlashStatisticCompound\"\032\n\030UpdateFlashS" +
-      "tatsResponse2\355\002\n\014StatsService\022T\n\020GetFlas" +
-      "hMapStats\022 .service.GetFlashMapStatsRequ" +
-      "est\032\036.service.GetFlashStatsResponse\022V\n\021G" +
-      "etFlashGameStats\022!.service.GetFlashGameS" +
-      "tatsRequest\032\036.service.GetFlashStatsRespo" +
-      "nse\022V\n\rGetFlashStats\022%.service.GetFlashS" +
-      "tatsCompoundRequest\032\036.service.GetFlashSt" +
-      "atsResponse\022W\n\020UpdateFlashStats\022 .servic" +
-      "e.UpdateFlashStatsRequest\032!.service.Upda" +
-      "teFlashStatsResponseB#\n\030dev.freggy.stats" +
-      ".serviceZ\007serviceb\006proto3"
+      "quest\022\020\n\010playerId\030\001 \001(\t\022\014\n\004maps\030\002 \003(\t\"S\n" +
+      "\027UpdateFlashStatsRequest\022\020\n\010playerId\030\001 \001" +
+      "(\t\022&\n\005stats\030\002 \001(\0132\027.FlashStatisticCompou" +
+      "nd\"\032\n\030UpdateFlashStatsResponse2\355\002\n\014Stats" +
+      "Service\022T\n\020GetFlashMapStats\022 .service.Ge" +
+      "tFlashMapStatsRequest\032\036.service.GetFlash" +
+      "StatsResponse\022V\n\021GetFlashGameStats\022!.ser" +
+      "vice.GetFlashGameStatsRequest\032\036.service." +
+      "GetFlashStatsResponse\022V\n\rGetFlashStats\022%" +
+      ".service.GetFlashStatsCompoundRequest\032\036." +
+      "service.GetFlashStatsResponse\022W\n\020UpdateF" +
+      "lashStats\022 .service.UpdateFlashStatsRequ" +
+      "est\032!.service.UpdateFlashStatsResponseB#" +
+      "\n\030dev.freggy.stats.serviceZ\007serviceb\006pro" +
+      "to3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3780,7 +3918,7 @@ public final class Service {
     internal_static_service_UpdateFlashStatsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_service_UpdateFlashStatsRequest_descriptor,
-        new java.lang.String[] { "Stats", });
+        new java.lang.String[] { "PlayerId", "Stats", });
     internal_static_service_UpdateFlashStatsResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_service_UpdateFlashStatsResponse_fieldAccessorTable = new
