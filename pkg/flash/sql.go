@@ -3,20 +3,21 @@ package flash
 import (
 	"database/sql"
 	"fmt"
-	"freggy.dev/stats/rpc/go/model"
 	"log"
 	"strings"
 	"time"
+
+	"freggy.dev/stats/rpc/go/model"
 )
 
 // Maybe read queries from files provided in the container?
 // This way we would not have to rebuild the entire application if we make database changes
 const (
-	GetCheckpointStats   = `SELECT checkpoint, record_time, accomplished_at FROM checkpoint_records WHERE uuid = ? AND map = ?`
+	GetCheckpointStats = `SELECT checkpoint, record_time, accomplished_at FROM checkpoint_records WHERE uuid = ? AND map = ?`
 
-	GetMapStatistics     = `SELECT record_time, accomplished_at FROM map_records WHERE uuid = ? AND map = ?`
+	GetMapStatistics = `SELECT record_time, accomplished_at FROM map_records WHERE uuid = ? AND map = ?`
 
-	GetGameStatistics    = `SELECT wins, deaths, checkpoints, games_played, instant_deaths FROM global_game_data WHERE uuid = ?`
+	GetGameStatistics = `SELECT wins, deaths, checkpoints, games_played, instant_deaths FROM global_game_data WHERE uuid = ?`
 
 	UpdateGameStatistics = `
 		INSERT INTO global_game_data (uuid, wins, deaths, instant_deaths, checkpoints, games_played)
@@ -28,7 +29,7 @@ const (
                         		checkpoints     = checkpoints + VALUES(checkpoints)
 	`
 
-	UpdateMapStatistics  = `
+	UpdateMapStatistics = `
 		INSERT INTO map_records (uuid, map, record_time, accomplished_at)
 		VALUES (?, ?, ?, ?)
 		ON DUPLICATE KEY UPDATE record_time      = VALUES(record_time),
@@ -37,8 +38,8 @@ const (
 )
 
 // TODO: pass context to functions
-
-const SqlDateTimeLayout = "2006-01-02 15:04:05"
+￿
+const SqlDateTimeLayout = "2006-01-02 15:04:05"￿
 
 type SQLDataAccess struct {
 	Conn *sql.DB
@@ -155,7 +156,6 @@ func (sda *SQLDataAccess) UpdateMapStatistic(id string, stats *model.FlashMapSta
 	); err != nil {
 		return err
 	}
-
 
 	if len(stats.GetCheckpoints()) <= 0 {
 		return nil
