@@ -37,9 +37,8 @@ const (
 	`
 )
 
+const SqlDateTimeLayout = "2006-01-02 15:04:05"
 // TODO: pass context to functions
-￿
-const SqlDateTimeLayout = "2006-01-02 15:04:05"￿
 
 type SQLDataAccess struct {
 	Conn *sql.DB

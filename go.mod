@@ -7,6 +7,7 @@ require (
 	github.com/gogo/protobuf v1.3.1
 	github.com/golang/protobuf v1.3.2
 	github.com/google/pprof v0.0.0-20191218002539-d4f498aebedc // indirect
+	github.com/jinzhu/gorm v1.9.12
 	github.com/jmoiron/sqlx v1.2.0
 	github.com/pkg/errors v0.8.1 // indirect
 	github.com/stretchr/testify v1.4.0
