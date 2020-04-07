@@ -16,4 +16,5 @@ require (
 	golang.org/x/text v0.3.2
 	golang.org/x/tools v0.0.0-20200103221440-774c71fcf114 // indirect
 	google.golang.org/appengine v1.6.5 // indirect
+	upper.io/db.v3 v3.6.4+incompatible
 )

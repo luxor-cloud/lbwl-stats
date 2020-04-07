@@ -87,3 +87,6 @@ gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8
 gopkg.in/yaml.v2 v2.2.2 h1:ZCJp+EgiOT7lHqUV2J862kp8Qj64Jo6az82+3Td9dZw=
 gopkg.in/yaml.v2 v2.2.2/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
 rsc.io/pdf v0.1.1/go.mod h1:n8OzWcQ6Sp37PL01nO98y4iUCRdTGarVfzxY20ICaU4=
+upper.io/db.v3 v1.0.1 h1:oWahxQdW+oh7/jn/dIbXqaXMiI0jNdjVza6E93SvJeE=
+upper.io/db.v3 v3.6.4+incompatible h1:ZWpoGpfyvRDxMW1lYLBwwSurzodIvAUP4aYBsH/ePiY=
+upper.io/db.v3 v3.6.4+incompatible/go.mod h1:FgTdD24eBjJAbPKsQSiHUNgXjOR4Lub3u1UMHSIh82Y=
