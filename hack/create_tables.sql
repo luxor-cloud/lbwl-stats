@@ -23,7 +23,7 @@ CREATE TABLE player_map_scores
     accomplished_at DATETIME        NOT NULL,
     INDEX duration (time_needed),
     PRIMARY KEY (uuid, map, accomplished_at),
-    FOREIGN KEY (uuid) REFERENCES global_game_data (uuid)
+    FOREIGN KEY (uuid) REFERENCES player_stats (uuid)
 )
     COLLATE = utf8_general_ci
     ENGINE = InnoDB;

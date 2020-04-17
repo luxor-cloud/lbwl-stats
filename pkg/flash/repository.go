@@ -58,6 +58,7 @@ type PlayerCheckpointScoresRepository interface {
 	Add(score PlayerCheckpointScore) error
 }
 
+
 type PlayerMapScoreRepository interface {
 
 	// GetHighscoresPerMapByUUID gets the highscore for every distinct map a given player has played.
