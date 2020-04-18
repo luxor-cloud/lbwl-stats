@@ -3,17 +3,17 @@ package flash
 import (
 	"database/sql"
 	"fmt"
-	"freggy.dev/stats/rpc/go/model"
 
 	_ "github.com/go-sql-driver/mysql"
 )
 
 type DataAccess interface {
-	GetMapStatistic(id string, mapName string) (*model.FlashMapStatistic, error)
-	GetGameStatistic(id string) (*model.FlashGameStatistic, error)
 
-	UpdateGameStatistic(id string, stats *model.FlashGameStatistic) error
-	UpdateMapStatistic(id string, stats *model.FlashMapStatistic) error
+	GetPlayerRepository() PlayerStatsRepository
+
+	GetCheckpointScoresRepository() PlayerCheckpointScoresRepository
+
+	GetPlayerMapScoresRepository() PlayerMapScoresRepository
 }
 
 // Add functions which contain database connection logic here
