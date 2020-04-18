@@ -8,8 +8,8 @@ import (
 )
 
 var (
-	EmptyIDError  = twirp.InvalidArgumentError("playerId", "cannot be empty")
-	EmptyMapError = twirp.InvalidArgumentError("maps", "cannot be empty")
+	EmptyIDError       = twirp.InvalidArgumentError("playerId", "cannot be empty")
+	EmptyMapError      = twirp.InvalidArgumentError("maps", "cannot be empty")
 	EmptyCompoundError = twirp.InvalidArgumentError("stats", "cannot be empty")
 )
 
@@ -106,7 +106,6 @@ func (s *Server) UpdateFlashStats(ctx context.Context, req *service.UpdateFlashS
 
 	return &service.UpdateFlashStatsResponse{}, nil
 }
-
 
 func (s *Server) getMapStats(id string, mapNames []string) ([]*model.FlashMapStatistic, error) {
 	// We could compute all of them in their own goroutine which would make this part faster,

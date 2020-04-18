@@ -16,7 +16,7 @@ type flashDataAccessMock struct {
 
 func NewFlashMockDAO() *flashDataAccessMock {
 	mock := flashDataAccessMock{
-		mapStats: make(map[string]map[string]*model.FlashMapStatistic),
+		mapStats:  make(map[string]map[string]*model.FlashMapStatistic),
 		gameStats: make(map[string]*model.FlashGameStatistic),
 	}
 
@@ -90,7 +90,7 @@ func TestServer_GetFlashMapStats_Valid_Response(t *testing.T) {
 	s := getMockServer()
 	req := &service.GetFlashMapStatsRequest{
 		PlayerId: "92de217b-8b2b-403b-86a5-fe26fa3a9b5f",
-		Maps: []string{"Map1"},
+		Maps:     []string{"Map1"},
 	}
 
 	resp, err := s.GetFlashMapStats(nil, req)
@@ -121,7 +121,7 @@ func TestServer_GetFlashMapStats_Invalid_Map(t *testing.T) {
 	s := getMockServer()
 	req := &service.GetFlashMapStatsRequest{
 		PlayerId: "92de217b-8b2b-403b-86a5-fe26fa3a9b5f",
-		Maps: []string{"Map42"},
+		Maps:     []string{"Map42"},
 	}
 
 	resp, err := s.GetFlashMapStats(nil, req)
@@ -136,7 +136,7 @@ func TestServer_GetFlashMapStats_Empty_Map_Should_Throw_Error(t *testing.T) {
 	s := getMockServer()
 	req := &service.GetFlashMapStatsRequest{
 		PlayerId: "92de217b-8b2b-403b-86a5-fe26fa3a9b5f",
-		Maps: []string{},
+		Maps:     []string{},
 	}
 
 	_, err := s.GetFlashMapStats(nil, req)
@@ -154,7 +154,6 @@ func TestServer_GetFlashMapStats_Empty_ID_Should_Throw_Error(t *testing.T) {
 
 	assert.EqualError(t, err, EmptyIDError.Error())
 }
-
 
 //
 // Game stats
@@ -197,8 +196,8 @@ func TestServer_GetFlashGameStats_Empty_ID_Should_Throw_Error(t *testing.T) {
 func TestServer_GetFlashStats_Valid_Response(t *testing.T) {
 	s := getMockServer()
 	req := &service.GetFlashStatsCompoundRequest{
-		PlayerId:             "92de217b-8b2b-403b-86a5-fe26fa3a9b5f",
-		Maps:                 []string{ "Map1" },
+		PlayerId: "92de217b-8b2b-403b-86a5-fe26fa3a9b5f",
+		Maps:     []string{"Map1"},
 	}
 
 	resp, err := s.GetFlashStats(nil, req)
@@ -236,8 +235,8 @@ func TestServer_GetFlashStats_Valid_Response(t *testing.T) {
 func TestServer_GetFlashStats_Empty_ID_Should_Throw_Error(t *testing.T) {
 	s := getMockServer()
 	req := &service.GetFlashStatsCompoundRequest{
-		PlayerId:             "",
-		Maps:                 []string{ "Map1" },
+		PlayerId: "",
+		Maps:     []string{"Map1"},
 	}
 
 	_, err := s.GetFlashStats(nil, req)
@@ -247,8 +246,8 @@ func TestServer_GetFlashStats_Empty_ID_Should_Throw_Error(t *testing.T) {
 func TestServer_GetFlashStats_Empty_Map_Should_Throw_Error(t *testing.T) {
 	s := getMockServer()
 	req := &service.GetFlashStatsCompoundRequest{
-		PlayerId:             "92de217b-8b2b-403b-86a5-fe26fa3a9b5f",
-		Maps:                 []string{},
+		PlayerId: "92de217b-8b2b-403b-86a5-fe26fa3a9b5f",
+		Maps:     []string{},
 	}
 
 	_, err := s.GetFlashStats(nil, req)
@@ -262,7 +261,7 @@ func TestServer_GetFlashStats_Empty_Map_Should_Throw_Error(t *testing.T) {
 func TestServer_UpdateFlashStats_Empty_Compound_Should_Throw_Error(t *testing.T) {
 	s := getMockServer()
 	req := &service.UpdateFlashStatsRequest{
-		PlayerId:             "92de217b-8b2b-403b-86a5-fe26fa3a9b5f",
+		PlayerId: "92de217b-8b2b-403b-86a5-fe26fa3a9b5f",
 	}
 
 	_, err := s.UpdateFlashStats(nil, req)

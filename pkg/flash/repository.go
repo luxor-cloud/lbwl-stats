@@ -30,7 +30,7 @@ type PlayerCheckpointScore struct {
 }
 
 type Player struct {
-	Stats             PlayerStats
+	Stats            PlayerStats
 	CheckpointScores []PlayerCheckpointScore
 	MapScores        []PlayerMapScore
 }
@@ -58,7 +58,6 @@ type PlayerCheckpointScoresRepository interface {
 	Add(score PlayerCheckpointScore) error
 }
 
-
 type PlayerMapScoreRepository interface {
 
 	// GetHighscoresPerMapByUUID gets the highscore for every distinct map a given player has played.
@@ -81,48 +80,48 @@ type PlayerMapScoreRepository interface {
 
 func display() {
 	/*
-	settings := mysql.ConnectionURL{
-		User:     "root",
-		Password: "secret",
-		Database: "test",
-		Host:     "localhost",
-	}
-
-	session, err := mysql.Open(settings)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer session.Close()
-
-	var l GlobalGameData
-	if err := session.SelectFrom("global_game_data").
-		Where("uuid = ?", "92de217b-8b2b-403b-86a5-fe26fa3a9b5f").
-		One(&l); err != nil {
-		log.Fatal(err)
-	}
-
-	//for _, p := range l {
-
-	log.Printf("UUID: %v\n", l.UUID)
-	log.Printf("GamesPlayed: %v\n", l.GamesPlayed)
-	log.Printf("Wins: %v\n", l.Wins)
-	log.Printf("Deaths: %v\n", l.Deaths)
-	log.Printf("Instant: %v\n", l.InstantDeaths)
-	log.Printf("Check: %v\n", l.Checkpoints)
-
-
-
-		for _, mr := range l.MapRecords {
-			log.Printf("  Map: %v\n", mr.Map)
-			log.Printf("  Accomp: %v\n", mr.AccomplishedAt)
-			log.Printf("  Rec: %v\n", mr.RecordTime)
-
-			for _, cr := range mr.Checkpoints {
-				log.Printf("    Accomp: %v\n", cr.AccomplishedAt)
-				log.Printf("    Rec: %v\n", cr.RecordTime)
-			}
+		settings := mysql.ConnectionURL{
+			User:     "root",
+			Password: "secret",
+			Database: "test",
+			Host:     "localhost",
 		}
 
-	//}*/
+		session, err := mysql.Open(settings)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		defer session.Close()
+
+		var l GlobalGameData
+		if err := session.SelectFrom("global_game_data").
+			Where("uuid = ?", "92de217b-8b2b-403b-86a5-fe26fa3a9b5f").
+			One(&l); err != nil {
+			log.Fatal(err)
+		}
+
+		//for _, p := range l {
+
+		log.Printf("UUID: %v\n", l.UUID)
+		log.Printf("GamesPlayed: %v\n", l.GamesPlayed)
+		log.Printf("Wins: %v\n", l.Wins)
+		log.Printf("Deaths: %v\n", l.Deaths)
+		log.Printf("Instant: %v\n", l.InstantDeaths)
+		log.Printf("Check: %v\n", l.Checkpoints)
+
+
+
+			for _, mr := range l.MapRecords {
+				log.Printf("  Map: %v\n", mr.Map)
+				log.Printf("  Accomp: %v\n", mr.AccomplishedAt)
+				log.Printf("  Rec: %v\n", mr.RecordTime)
+
+				for _, cr := range mr.Checkpoints {
+					log.Printf("    Accomp: %v\n", cr.AccomplishedAt)
+					log.Printf("    Rec: %v\n", cr.RecordTime)
+				}
+			}
+
+		//}*/
 }
