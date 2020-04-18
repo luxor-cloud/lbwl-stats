@@ -10,6 +10,9 @@ import "model/flash.proto";
 // Flash
 //
 
+
+// TODO: revamp requests, be more explicit even if that there will be some duplication.
+
 message GetFlashStatsResponse {
     FlashStatisticCompound stats = 1;
 }
@@ -43,8 +46,19 @@ message UpdateFlashStatsResponse {}
 
 
 service StatsService {
-    rpc GetFlashMapStats (GetFlashMapStatsRequest) returns (GetFlashStatsResponse);
-    rpc GetFlashGameStats (GetFlashGameStatsRequest) returns (GetFlashStatsResponse);
-    rpc GetFlashStats (GetFlashStatsCompoundRequest) returns (GetFlashStatsResponse);
-    rpc UpdateFlashStats (UpdateFlashStatsRequest) returns (UpdateFlashStatsResponse);
+
+    // Returns the map highscore for a specific player
+    rpc GetFlashMapHighscore (GetFlashMapStatsRequest) returns (GetFlashStatsResponse)
+
+    // Returns the global map highscore
+    rpc GetGlobalFlashMapHighscore (GetFlashMapStatsRequest) returns (GetFlashStatsResponse)
+
+    rpc GetTopFlashMapHighscores (GetFlashMapStatsRequest) returns (GetFlashStatsResponse)
+
+
+
+    //rpc GetFlashMapHighscore (GetFlashMapStatsRequest) returns (GetFlashStatsResponse);
+    //rpc GetFlashGameStats (GetFlashGameStatsRequest) returns (GetFlashStatsResponse);
+    //rpc GetFlashStats (GetFlashStatsCompoundRequest) returns (GetFlashStatsResponse);
+    //rpc UpdateFlashStats (UpdateFlashStatsRequest) returns (UpdateFlashStatsResponse);
 }

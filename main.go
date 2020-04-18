@@ -1,15 +1,7 @@
 package main
 
-import (
-	"flag"
-	"freggy.dev/stats/internal/statsserver"
-	"freggy.dev/stats/pkg/flash"
-	"freggy.dev/stats/rpc/go/service"
-	"log"
-	"net/http"
-)
-
 func main() {
+	/*
 	path := flag.String("config", "/etc/lbwl-stats/config.json", "Config")
 	flag.Parse()
 
@@ -37,5 +29,5 @@ func main() {
 		log.Fatal(http.ListenAndServeTLS(config.Address, config.TLSCert, config.TLSKey, server))
 	} else {
 		log.Fatal(http.ListenAndServe(config.Address, server))
-	}
+	}*/
 }

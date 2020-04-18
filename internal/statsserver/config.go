@@ -7,7 +7,7 @@ import (
 
 var DefaultConfig = Config{
 	Address: "127.0.0.1",
-	FlashDB: map[string]string{ "type": "SQL", "address": "root:secret@/test"},
+	FlashDB: map[string]string{"type": "SQL", "address": "root:secret@/test"},
 	UseTLS:  false,
 	TLSKey:  "",
 	TLSCert: "",

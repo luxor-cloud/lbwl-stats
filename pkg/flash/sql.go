@@ -1,195 +1,141 @@
 package flash
 
 import (
-	"database/sql"
-	"fmt"
-	"freggy.dev/stats/rpc/go/model"
-	"log"
-	"strings"
-	"time"
+	"upper.io/db.v3"
+	"upper.io/db.v3/lib/sqlbuilder"
 )
 
-// Maybe read queries from files provided in the container?
-// This way we would not have to rebuild the entire application if we make database changes
-const (
-	GetCheckpointStats   = `SELECT checkpoint, record_time, accomplished_at FROM checkpoint_records WHERE uuid = ? AND map = ?`
-
-	GetMapStatistics     = `SELECT record_time, accomplished_at FROM map_records WHERE uuid = ? AND map = ?`
-
-	GetGameStatistics    = `SELECT wins, deaths, checkpoints, games_played, instant_deaths FROM global_game_data WHERE uuid = ?`
-
-	UpdateGameStatistics = `
-		INSERT INTO global_game_data (uuid, wins, deaths, instant_deaths, checkpoints, games_played)
-		VALUES (?, ?, ?, ?, ?, ?)
-		ON DUPLICATE KEY UPDATE wins            = wins + 1,
-                        	    games_played    = games_played + 1,
-								deaths          = deaths + VALUES(deaths),
-                        		instant_deaths  = instant_deaths + VALUES(instant_deaths),
-                        		checkpoints     = checkpoints + VALUES(checkpoints)
-	`
-
-	UpdateMapStatistics  = `
-		INSERT INTO map_records (uuid, map, record_time, accomplished_at)
-		VALUES (?, ?, ?, ?)
-		ON DUPLICATE KEY UPDATE record_time      = VALUES(record_time),
-                        		accomplished_at  = VALUES(accomplished_at)
-	`
-)
-
-// TODO: pass context to functions
-
-const SqlDateTimeLayout = "2006-01-02 15:04:05"
-
-type SQLDataAccess struct {
-	Conn *sql.DB
+type SQLPlayerStatsRepository struct {
+	session sqlbuilder.Database
 }
 
-func (sda *SQLDataAccess) GetMapStatistic(id string, mapName string) (*model.FlashMapStatistic, error) {
-	rows, err := sda.Conn.Query(GetCheckpointStats, id, mapName)
-	if err != nil {
+func (repo *SQLPlayerStatsRepository) Get(uuid string) (*PlayerStats, error) {
+	var stats PlayerStats
+	if err := repo.session.
+		SelectFrom("player_stats").
+		Where("uuid = ?", uuid).
+		One(&stats); err != nil {
 		return nil, err
 	}
 
-	defer rows.Close()
-	checkpoints := make([]*model.FlashCheckpointStatistic, 0)
+	return &stats, nil
+}
 
-	for {
-		if !rows.Next() {
-			break
-		}
+func (repo *SQLPlayerStatsRepository) Update(diff *PlayerStats) error {
+	_, err := repo.session.Update("player_stats").
+		Set("wins = ? + wins", diff.Wins).
+		Set("deaths = ? + deaths", diff.Deaths).
+		Set("checkpoints = ? + checkpoints", diff.Checkpoints).
+		Set("games_played = ? + games_played", diff.GamesPlayed).
+		Set("instant_deaths = ? + instant_deaths", diff.InstantDeaths).
+		Set("points = ? + points", diff.Points).
+		Where("uuid = ?", diff.UUID).
+		Exec()
+	return err
+}
 
-		var recordTime uint64
-		var checkpoint int32
-		var accomplishedAt time.Time
+func (repo *SQLPlayerStatsRepository) Exists(uuid string) (bool, error) {
+	stats, err := repo.Get(uuid)
+	if err != nil {
+		return false, err
+	}
 
-		if err := rows.Scan(&checkpoint, &recordTime, &accomplishedAt); err != nil {
+	if stats == nil {
+		return false, nil
+	}
+	return true, nil
+}
+
+type SQLPlayerCheckpointScoresRepository struct {
+	Session sqlbuilder.Database
+}
+
+func (repo *SQLPlayerCheckpointScoresRepository) GetHighscorePerCheckpointForMapAndUUID(uuid, mapName string) ([]PlayerCheckpointScore, error) {
+	var highscores []PlayerCheckpointScore
+	if err := repo.Session.Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+		From("player_checkpoint_score").
+		Where("uuid = ? AND map = ?", uuid, mapName).
+		GroupBy("checkpoint").
+		All(&highscores); err != nil {
 			return nil, err
-		}
-
-		checkpoints = append(checkpoints, &model.FlashCheckpointStatistic{
-			Checkpoint:     checkpoint,
-			AccomplishedAt: accomplishedAt.Format(SqlDateTimeLayout),
-			TimeNeeded:     0,
-			RecordTime:     recordTime,
-		})
 	}
-
-	var recordTime uint64
-	var accomplishedAt time.Time
-
-	if err := sda.Conn.QueryRow(GetMapStatistics, id, mapName).Scan(&recordTime, &accomplishedAt);
-		err != nil && err != sql.ErrNoRows {
-		return nil, err
-	}
-
-	return &model.FlashMapStatistic{
-		Name:           mapName,
-		RecordTime:     recordTime,
-		AccomplishedAt: accomplishedAt.Format(SqlDateTimeLayout),
-		Checkpoints:    checkpoints,
-	}, nil
+	return highscores, nil
 }
 
-func (sda *SQLDataAccess) GetGameStatistic(id string) (*model.FlashGameStatistic, error) {
-	var (
-		wins          uint32
-		deaths        uint32
-		checkpoints   uint32
-		gamesPlayed   uint32
-		instantDeaths uint32
-	)
-
-	if err := sda.Conn.QueryRow(GetGameStatistics, id).Scan(&wins, &deaths, &checkpoints, &gamesPlayed, &instantDeaths);
-		err != nil && err != sql.ErrNoRows {
-		return nil, err
+func (repo *SQLPlayerCheckpointScoresRepository) GetBestHighscorePerCheckpointForMap(mapName string) ([]PlayerCheckpointScore, error) {
+	var highscores []PlayerCheckpointScore
+	if err := repo.Session.Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+		From("player_checkpoint_score").
+		Where("map = ?", mapName).
+		GroupBy("uuid").
+		All(&highscores); err != nil {
+			return nil, err
 	}
-
-	return &model.FlashGameStatistic{
-		Wins:          wins,
-		Deaths:        deaths,
-		GamesPlayed:   gamesPlayed,
-		InstantDeaths: instantDeaths,
-		Checkpoints:   checkpoints,
-	}, nil
+	return highscores, nil
 }
 
-func (sda *SQLDataAccess) UpdateGameStatistic(id string, stats *model.FlashGameStatistic) error {
-	if _, err := sda.Conn.Exec(
-		UpdateGameStatistics,
-		id,
-		stats.GetWins(),
-		stats.GetDeaths(),
-		stats.GetInstantDeaths(),
-		stats.GetCheckpoints(),
-		stats.GetGamesPlayed(),
-	); err != nil {
-		return err
-	}
-	return nil
+func (repo *SQLPlayerCheckpointScoresRepository) Add(score PlayerCheckpointScore) error {
+	_, err := repo.Session.InsertInto("player_checkpoint_score").
+		Columns("uuid", "map", "time_needed", "accomplished_at").
+		Values(score.UUID, score.Map, score.TimeNeeded, score.AccomplishedAt).
+		Exec()
+	return err
 }
 
-func (sda *SQLDataAccess) UpdateMapStatistic(id string, stats *model.FlashMapStatistic) (err error) {
-	tx, err := sda.Conn.Begin()
-	if err != nil {
-		return err
-	}
-
-	defer func() {
-		if err != nil {
-			if err := tx.Rollback(); err != nil {
-				log.Printf("Could not rollback transaction: %v", err)
-				return
-			}
-		}
-		if err := tx.Commit(); err != nil {
-			log.Printf("Could not commit transaction: %v", err)
-		}
-	}()
-
-	if _, err = tx.Exec(
-		UpdateMapStatistics,
-		id,
-		stats.GetName(),
-		stats.GetRecordTime(),
-		stats.GetAccomplishedAt(),
-	); err != nil {
-		return err
-	}
-
-
-	if len(stats.GetCheckpoints()) <= 0 {
-		return nil
-	}
-
-	// The string that will be built must have the following format.
-	// This way we can insert multiple rows at once.
-	// INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at)
-	// VALUES
-	//	      (?, ?, ?, ?, ?),
-	//	      (?, ?, ?, ?, ?),
-	//	      (?, ?, ?, ?, ?)
-	// ON DUPLICATE KEY UPDATE record_time      = VALUES(record_time),
-	//	                       accomplished_at  = VALUES(accomplished_at)
-	query := new(strings.Builder)
-	query.WriteString("INSERT INTO checkpoint_records (uuid, map, checkpoint, record_time, accomplished_at) VALUES")
-
-	for i, checkpoint := range stats.GetCheckpoints() {
-		s := "('%s', '%s', %d, %d, '%s'),"
-		if i == len(stats.GetCheckpoints())-1 { // last entry must not have a comma at the end
-			s = "('%s', '%s', %d, %d, '%s')"
-		}
-		query.WriteString(
-			fmt.Sprintf(s, id, stats.GetName(), checkpoint.GetCheckpoint(), checkpoint.GetRecordTime(), checkpoint.GetAccomplishedAt()),
-		)
-	}
-
-	query.WriteString(" ON DUPLICATE KEY UPDATE record_time = VALUES(record_time), accomplished_at = VALUES(accomplished_at)")
-
-	log.Println(query.String())
-
-	if _, err := tx.Exec(query.String()); err != nil {
-		return err
-	}
-
-	return nil
+type SQLPlayerMapScoreRepository struct {
+	Session sqlbuilder.Database
 }
+
+func (repo *SQLPlayerMapScoreRepository) GetHighscorePerMapByUUID(uuid string) ([]PlayerMapScore, error) {
+	var highscores []PlayerMapScore
+	if err := repo.Session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+		From("player_map_scores").
+		Where("uuid = ?", uuid).
+		GroupBy("map").
+		All(&highscores); err != nil {
+			return nil, err
+	}
+	return highscores, nil
+}
+
+func (repo *SQLPlayerMapScoreRepository) GetHighscoreForMapByUUID(uuid, mapName string) (PlayerMapScore, error) {
+	var highscore PlayerMapScore
+	if err := repo.Session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+		From("player_map_scores").
+		Where("uuid = ?", uuid).
+		And("map = ?", mapName).
+		GroupBy("map").
+		One(&highscore); err != nil {
+			return PlayerMapScore{}, err
+	}
+	return highscore, nil
+}
+
+func (repo *SQLPlayerMapScoreRepository) GetBestHighscore(mapName string) (PlayerMapScore, error) {
+	var highscore PlayerMapScore
+	if err := repo.Session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+		From("player_map_score").
+		Where("map = ?", mapName).
+		GroupBy("uuid").
+		Limit(1).
+		One(&highscore); err != nil {
+			return PlayerMapScore{}, err
+	}
+	return highscore, nil
+}
+
+func (repo *SQLPlayerMapScoreRepository) GetTopHighscores(mapName string, limit int) ([]PlayerMapScore, error) {
+	var highscores []PlayerMapScore
+	if err := repo.Session.SelectFrom("player_map_scores").
+		Where("map = ?", mapName).
+		OrderBy("time_needed ASC").
+		Limit(limit).
+		All(&highscores); err != nil {
+			return nil, err
+	}
+	return highscores, nil
+}
+
+
+
+
