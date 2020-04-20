@@ -24,7 +24,8 @@ message GetFlashMapHighscoreForPlayerResponse {
 // rpc GetGlobalFlashMapHighscore
 
 message GetGlobalFlashMapHighscoreRequest {
-    bool withCheckpoints = 1;
+    string mapName = 1;
+    bool withCheckpoints = 2;
 }
 
 message GetGlobalFlashMapHighscoreResponse {
