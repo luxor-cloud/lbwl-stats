@@ -10,33 +10,60 @@ import "model/flash.proto";
 // Flash
 //
 
+// rpc GetFlashMapHighscoreForPlayer
 
-// TODO: revamp requests, be more explicit even if that there will be some duplication.
-
-message GetFlashStatsResponse {
-    FlashStatisticCompound stats = 1;
-}
-
-message GetFlashMapStatsRequest {
+message GetFlashMapHighscoreForPlayerRequest {
     string playerId = 1;
-    repeated string maps = 2;
+    bool withCheckpoints = 2;
 }
 
-message GetFlashGameStatsRequest {
+message GetFlashMapHighscoreForPlayerResponse {
+    FlashMapStatisticCollection highscores = 1;
+}
+
+// rpc GetGlobalFlashMapHighscore
+
+message GetGlobalFlashMapHighscoreRequest {
+    bool withCheckpoints = 1;
+}
+
+message GetGlobalFlashMapHighscoreResponse {
+    FlashMapStatistic highscore = 1;
+}
+
+// rpc GetTopFlashMapHighscores
+
+message GetTopFlashMapHighscoresRequest {
+    uint32 limit = 1;
+    bool withCheckpoints = 2;
+}
+
+message GetTopFlashMapHighscoresResponse {
+    FlashMapStatisticCollection highscores = 1;
+}
+
+// GetTopPlayersByPoints
+
+message GetTopPlayersByPointsRequest {
+    bool playerStats = 1;
+    bool mapStats = 2;
+    bool withCheckpoints = 3;
+    bool limit = 4;
+}
+
+message GetTopPlayersByPointsResponse {
+    repeated FlashAllStatistics topPlayers = 1;
+}
+
+// UpdateFlashStatistics
+
+message UpdateFlashStatisticsRequests {
     string playerId = 1;
+    FlashAllStatistics stats = 2;
 }
 
-message GetFlashStatsCompoundRequest {
-    string playerId = 1;
-    repeated string maps = 2;
+message UpdateFlashStatisticsResponse {
 }
-
-message UpdateFlashStatsRequest {
-    string playerId = 1;
-    FlashStatisticCompound stats = 2;
-}
-
-message UpdateFlashStatsResponse {}
 
 //
 // TryJump
@@ -44,21 +71,14 @@ message UpdateFlashStatsResponse {}
 
 // ...
 
-
 service StatsService {
+    rpc GetFlashMapHighscoreForPlayer (GetFlashMapHighscoreForPlayerRequest) returns (GetFlashMapHighscoreForPlayerResponse)
 
-    // Returns the map highscore for a specific player
-    rpc GetFlashMapHighscore (GetFlashMapStatsRequest) returns (GetFlashStatsResponse)
+    rpc GetGlobalFlashMapHighscore (GetGlobalFlashMapHighscoreRequest) returns (GetGlobalFlashMapHighscoreResponse)
 
-    // Returns the global map highscore
-    rpc GetGlobalFlashMapHighscore (GetFlashMapStatsRequest) returns (GetFlashStatsResponse)
+    rpc GetTopFlashMapHighscores (GetTopFlashMapHighscoresRequest) returns (GetTopFlashMapHighscoresResponse)
 
-    rpc GetTopFlashMapHighscores (GetFlashMapStatsRequest) returns (GetFlashStatsResponse)
+    rpc GetTopPlayersByPoints (GetTopPlayersByPointsRequest) returns (GetTopPlayersByPointsResponse)
 
-
-
-    //rpc GetFlashMapHighscore (GetFlashMapStatsRequest) returns (GetFlashStatsResponse);
-    //rpc GetFlashGameStats (GetFlashGameStatsRequest) returns (GetFlashStatsResponse);
-    //rpc GetFlashStats (GetFlashStatsCompoundRequest) returns (GetFlashStatsResponse);
-    //rpc UpdateFlashStats (UpdateFlashStatsRequest) returns (UpdateFlashStatsResponse);
+    rpc UpdateFlashStatistics (UpdateFlashStatisticsRequests) returns (UpdateFlashStatisticsResponse)
 }
