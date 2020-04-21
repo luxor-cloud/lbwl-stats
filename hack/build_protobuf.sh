@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 # Get parent directory
-DIR=$(dirname $(dirname $(readlink -fm $0)))
+DIR=$(dirname -- $(dirname -- "$0"))
+
+echo $DIR
+
+#exit 1
 
 # Generate data models
 protoc -I=$DIR/rpc/model --java_out=$DIR/rpc/jvm/src/main/java flash.proto

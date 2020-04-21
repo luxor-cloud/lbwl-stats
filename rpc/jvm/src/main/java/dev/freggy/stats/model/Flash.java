@@ -14,22 +14,21 @@ public final class Flash {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface FlashStatisticCompoundOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:FlashStatisticCompound)
+  public interface FlashMapStatisticCollectionOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:FlashMapStatisticCollection)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.FlashGameStatistic gameSummary = 1;</code>
+     * <code>string playerId = 1;</code>
+     * @return The playerId.
      */
-    boolean hasGameSummary();
+    java.lang.String getPlayerId();
     /**
-     * <code>.FlashGameStatistic gameSummary = 1;</code>
+     * <code>string playerId = 1;</code>
+     * @return The bytes for playerId.
      */
-    dev.freggy.stats.model.Flash.FlashGameStatistic getGameSummary();
-    /**
-     * <code>.FlashGameStatistic gameSummary = 1;</code>
-     */
-    dev.freggy.stats.model.Flash.FlashGameStatisticOrBuilder getGameSummaryOrBuilder();
+    com.google.protobuf.ByteString
+        getPlayerIdBytes();
 
     /**
      * <code>repeated .FlashMapStatistic mapSummary = 2;</code>
@@ -56,19 +55,27 @@ public final class Flash {
         int index);
   }
   /**
-   * Protobuf type {@code FlashStatisticCompound}
+   * Protobuf type {@code FlashMapStatisticCollection}
    */
-  public  static final class FlashStatisticCompound extends
+  public static final class FlashMapStatisticCollection extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:FlashStatisticCompound)
-      FlashStatisticCompoundOrBuilder {
+      // @@protoc_insertion_point(message_implements:FlashMapStatisticCollection)
+      FlashMapStatisticCollectionOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use FlashStatisticCompound.newBuilder() to construct.
-    private FlashStatisticCompound(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use FlashMapStatisticCollection.newBuilder() to construct.
+    private FlashMapStatisticCollection(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private FlashStatisticCompound() {
+    private FlashMapStatisticCollection() {
+      playerId_ = "";
       mapSummary_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FlashMapStatisticCollection();
     }
 
     @java.lang.Override
@@ -76,7 +83,7 @@ public final class Flash {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private FlashStatisticCompound(
+    private FlashMapStatisticCollection(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -96,29 +103,22 @@ public final class Flash {
               done = true;
               break;
             case 10: {
-              dev.freggy.stats.model.Flash.FlashGameStatistic.Builder subBuilder = null;
-              if (gameSummary_ != null) {
-                subBuilder = gameSummary_.toBuilder();
-              }
-              gameSummary_ = input.readMessage(dev.freggy.stats.model.Flash.FlashGameStatistic.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(gameSummary_);
-                gameSummary_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              playerId_ = s;
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 mapSummary_ = new java.util.ArrayList<dev.freggy.stats.model.Flash.FlashMapStatistic>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               mapSummary_.add(
                   input.readMessage(dev.freggy.stats.model.Flash.FlashMapStatistic.parser(), extensionRegistry));
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -132,7 +132,7 @@ public final class Flash {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           mapSummary_ = java.util.Collections.unmodifiableList(mapSummary_);
         }
         this.unknownFields = unknownFields.build();
@@ -141,37 +141,53 @@ public final class Flash {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.freggy.stats.model.Flash.internal_static_FlashStatisticCompound_descriptor;
+      return dev.freggy.stats.model.Flash.internal_static_FlashMapStatisticCollection_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.freggy.stats.model.Flash.internal_static_FlashStatisticCompound_fieldAccessorTable
+      return dev.freggy.stats.model.Flash.internal_static_FlashMapStatisticCollection_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              dev.freggy.stats.model.Flash.FlashStatisticCompound.class, dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder.class);
+              dev.freggy.stats.model.Flash.FlashMapStatisticCollection.class, dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int GAMESUMMARY_FIELD_NUMBER = 1;
-    private dev.freggy.stats.model.Flash.FlashGameStatistic gameSummary_;
+    public static final int PLAYERID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object playerId_;
     /**
-     * <code>.FlashGameStatistic gameSummary = 1;</code>
+     * <code>string playerId = 1;</code>
+     * @return The playerId.
      */
-    public boolean hasGameSummary() {
-      return gameSummary_ != null;
+    @java.lang.Override
+    public java.lang.String getPlayerId() {
+      java.lang.Object ref = playerId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        playerId_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.FlashGameStatistic gameSummary = 1;</code>
+     * <code>string playerId = 1;</code>
+     * @return The bytes for playerId.
      */
-    public dev.freggy.stats.model.Flash.FlashGameStatistic getGameSummary() {
-      return gameSummary_ == null ? dev.freggy.stats.model.Flash.FlashGameStatistic.getDefaultInstance() : gameSummary_;
-    }
-    /**
-     * <code>.FlashGameStatistic gameSummary = 1;</code>
-     */
-    public dev.freggy.stats.model.Flash.FlashGameStatisticOrBuilder getGameSummaryOrBuilder() {
-      return getGameSummary();
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPlayerIdBytes() {
+      java.lang.Object ref = playerId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        playerId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int MAPSUMMARY_FIELD_NUMBER = 2;
@@ -179,12 +195,14 @@ public final class Flash {
     /**
      * <code>repeated .FlashMapStatistic mapSummary = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<dev.freggy.stats.model.Flash.FlashMapStatistic> getMapSummaryList() {
       return mapSummary_;
     }
     /**
      * <code>repeated .FlashMapStatistic mapSummary = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder> 
         getMapSummaryOrBuilderList() {
       return mapSummary_;
@@ -192,18 +210,21 @@ public final class Flash {
     /**
      * <code>repeated .FlashMapStatistic mapSummary = 2;</code>
      */
+    @java.lang.Override
     public int getMapSummaryCount() {
       return mapSummary_.size();
     }
     /**
      * <code>repeated .FlashMapStatistic mapSummary = 2;</code>
      */
+    @java.lang.Override
     public dev.freggy.stats.model.Flash.FlashMapStatistic getMapSummary(int index) {
       return mapSummary_.get(index);
     }
     /**
      * <code>repeated .FlashMapStatistic mapSummary = 2;</code>
      */
+    @java.lang.Override
     public dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder getMapSummaryOrBuilder(
         int index) {
       return mapSummary_.get(index);
@@ -223,8 +244,8 @@ public final class Flash {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (gameSummary_ != null) {
-        output.writeMessage(1, getGameSummary());
+      if (!getPlayerIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerId_);
       }
       for (int i = 0; i < mapSummary_.size(); i++) {
         output.writeMessage(2, mapSummary_.get(i));
@@ -238,9 +259,8 @@ public final class Flash {
       if (size != -1) return size;
 
       size = 0;
-      if (gameSummary_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getGameSummary());
+      if (!getPlayerIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerId_);
       }
       for (int i = 0; i < mapSummary_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -256,21 +276,17 @@ public final class Flash {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof dev.freggy.stats.model.Flash.FlashStatisticCompound)) {
+      if (!(obj instanceof dev.freggy.stats.model.Flash.FlashMapStatisticCollection)) {
         return super.equals(obj);
       }
-      dev.freggy.stats.model.Flash.FlashStatisticCompound other = (dev.freggy.stats.model.Flash.FlashStatisticCompound) obj;
+      dev.freggy.stats.model.Flash.FlashMapStatisticCollection other = (dev.freggy.stats.model.Flash.FlashMapStatisticCollection) obj;
 
-      boolean result = true;
-      result = result && (hasGameSummary() == other.hasGameSummary());
-      if (hasGameSummary()) {
-        result = result && getGameSummary()
-            .equals(other.getGameSummary());
-      }
-      result = result && getMapSummaryList()
-          .equals(other.getMapSummaryList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getPlayerId()
+          .equals(other.getPlayerId())) return false;
+      if (!getMapSummaryList()
+          .equals(other.getMapSummaryList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -280,10 +296,8 @@ public final class Flash {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasGameSummary()) {
-        hash = (37 * hash) + GAMESUMMARY_FIELD_NUMBER;
-        hash = (53 * hash) + getGameSummary().hashCode();
-      }
+      hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerId().hashCode();
       if (getMapSummaryCount() > 0) {
         hash = (37 * hash) + MAPSUMMARY_FIELD_NUMBER;
         hash = (53 * hash) + getMapSummaryList().hashCode();
@@ -293,69 +307,69 @@ public final class Flash {
       return hash;
     }
 
-    public static dev.freggy.stats.model.Flash.FlashStatisticCompound parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashMapStatisticCollection parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.model.Flash.FlashStatisticCompound parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashMapStatisticCollection parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.model.Flash.FlashStatisticCompound parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashMapStatisticCollection parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.model.Flash.FlashStatisticCompound parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashMapStatisticCollection parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.model.Flash.FlashStatisticCompound parseFrom(byte[] data)
+    public static dev.freggy.stats.model.Flash.FlashMapStatisticCollection parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.model.Flash.FlashStatisticCompound parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashMapStatisticCollection parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.model.Flash.FlashStatisticCompound parseFrom(java.io.InputStream input)
+    public static dev.freggy.stats.model.Flash.FlashMapStatisticCollection parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.model.Flash.FlashStatisticCompound parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashMapStatisticCollection parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.model.Flash.FlashStatisticCompound parseDelimitedFrom(java.io.InputStream input)
+    public static dev.freggy.stats.model.Flash.FlashMapStatisticCollection parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.model.Flash.FlashStatisticCompound parseDelimitedFrom(
+    public static dev.freggy.stats.model.Flash.FlashMapStatisticCollection parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.model.Flash.FlashStatisticCompound parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashMapStatisticCollection parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.model.Flash.FlashStatisticCompound parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashMapStatisticCollection parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -368,7 +382,7 @@ public final class Flash {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(dev.freggy.stats.model.Flash.FlashStatisticCompound prototype) {
+    public static Builder newBuilder(dev.freggy.stats.model.Flash.FlashMapStatisticCollection prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -384,26 +398,26 @@ public final class Flash {
       return builder;
     }
     /**
-     * Protobuf type {@code FlashStatisticCompound}
+     * Protobuf type {@code FlashMapStatisticCollection}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:FlashStatisticCompound)
-        dev.freggy.stats.model.Flash.FlashStatisticCompoundOrBuilder {
+        // @@protoc_insertion_point(builder_implements:FlashMapStatisticCollection)
+        dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.freggy.stats.model.Flash.internal_static_FlashStatisticCompound_descriptor;
+        return dev.freggy.stats.model.Flash.internal_static_FlashMapStatisticCollection_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.freggy.stats.model.Flash.internal_static_FlashStatisticCompound_fieldAccessorTable
+        return dev.freggy.stats.model.Flash.internal_static_FlashMapStatisticCollection_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                dev.freggy.stats.model.Flash.FlashStatisticCompound.class, dev.freggy.stats.model.Flash.FlashStatisticCompound.Builder.class);
+                dev.freggy.stats.model.Flash.FlashMapStatisticCollection.class, dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder.class);
       }
 
-      // Construct using dev.freggy.stats.model.Flash.FlashStatisticCompound.newBuilder()
+      // Construct using dev.freggy.stats.model.Flash.FlashMapStatisticCollection.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -422,15 +436,11 @@ public final class Flash {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (gameSummaryBuilder_ == null) {
-          gameSummary_ = null;
-        } else {
-          gameSummary_ = null;
-          gameSummaryBuilder_ = null;
-        }
+        playerId_ = "";
+
         if (mapSummaryBuilder_ == null) {
           mapSummary_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           mapSummaryBuilder_.clear();
         }
@@ -440,17 +450,17 @@ public final class Flash {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.freggy.stats.model.Flash.internal_static_FlashStatisticCompound_descriptor;
+        return dev.freggy.stats.model.Flash.internal_static_FlashMapStatisticCollection_descriptor;
       }
 
       @java.lang.Override
-      public dev.freggy.stats.model.Flash.FlashStatisticCompound getDefaultInstanceForType() {
-        return dev.freggy.stats.model.Flash.FlashStatisticCompound.getDefaultInstance();
+      public dev.freggy.stats.model.Flash.FlashMapStatisticCollection getDefaultInstanceForType() {
+        return dev.freggy.stats.model.Flash.FlashMapStatisticCollection.getDefaultInstance();
       }
 
       @java.lang.Override
-      public dev.freggy.stats.model.Flash.FlashStatisticCompound build() {
-        dev.freggy.stats.model.Flash.FlashStatisticCompound result = buildPartial();
+      public dev.freggy.stats.model.Flash.FlashMapStatisticCollection build() {
+        dev.freggy.stats.model.Flash.FlashMapStatisticCollection result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -458,81 +468,76 @@ public final class Flash {
       }
 
       @java.lang.Override
-      public dev.freggy.stats.model.Flash.FlashStatisticCompound buildPartial() {
-        dev.freggy.stats.model.Flash.FlashStatisticCompound result = new dev.freggy.stats.model.Flash.FlashStatisticCompound(this);
+      public dev.freggy.stats.model.Flash.FlashMapStatisticCollection buildPartial() {
+        dev.freggy.stats.model.Flash.FlashMapStatisticCollection result = new dev.freggy.stats.model.Flash.FlashMapStatisticCollection(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (gameSummaryBuilder_ == null) {
-          result.gameSummary_ = gameSummary_;
-        } else {
-          result.gameSummary_ = gameSummaryBuilder_.build();
-        }
+        result.playerId_ = playerId_;
         if (mapSummaryBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             mapSummary_ = java.util.Collections.unmodifiableList(mapSummary_);
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.mapSummary_ = mapSummary_;
         } else {
           result.mapSummary_ = mapSummaryBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof dev.freggy.stats.model.Flash.FlashStatisticCompound) {
-          return mergeFrom((dev.freggy.stats.model.Flash.FlashStatisticCompound)other);
+        if (other instanceof dev.freggy.stats.model.Flash.FlashMapStatisticCollection) {
+          return mergeFrom((dev.freggy.stats.model.Flash.FlashMapStatisticCollection)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(dev.freggy.stats.model.Flash.FlashStatisticCompound other) {
-        if (other == dev.freggy.stats.model.Flash.FlashStatisticCompound.getDefaultInstance()) return this;
-        if (other.hasGameSummary()) {
-          mergeGameSummary(other.getGameSummary());
+      public Builder mergeFrom(dev.freggy.stats.model.Flash.FlashMapStatisticCollection other) {
+        if (other == dev.freggy.stats.model.Flash.FlashMapStatisticCollection.getDefaultInstance()) return this;
+        if (!other.getPlayerId().isEmpty()) {
+          playerId_ = other.playerId_;
+          onChanged();
         }
         if (mapSummaryBuilder_ == null) {
           if (!other.mapSummary_.isEmpty()) {
             if (mapSummary_.isEmpty()) {
               mapSummary_ = other.mapSummary_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureMapSummaryIsMutable();
               mapSummary_.addAll(other.mapSummary_);
@@ -545,7 +550,7 @@ public final class Flash {
               mapSummaryBuilder_.dispose();
               mapSummaryBuilder_ = null;
               mapSummary_ = other.mapSummary_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
               mapSummaryBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getMapSummaryFieldBuilder() : null;
@@ -569,11 +574,11 @@ public final class Flash {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        dev.freggy.stats.model.Flash.FlashStatisticCompound parsedMessage = null;
+        dev.freggy.stats.model.Flash.FlashMapStatisticCollection parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (dev.freggy.stats.model.Flash.FlashStatisticCompound) e.getUnfinishedMessage();
+          parsedMessage = (dev.freggy.stats.model.Flash.FlashMapStatisticCollection) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -584,129 +589,88 @@ public final class Flash {
       }
       private int bitField0_;
 
-      private dev.freggy.stats.model.Flash.FlashGameStatistic gameSummary_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          dev.freggy.stats.model.Flash.FlashGameStatistic, dev.freggy.stats.model.Flash.FlashGameStatistic.Builder, dev.freggy.stats.model.Flash.FlashGameStatisticOrBuilder> gameSummaryBuilder_;
+      private java.lang.Object playerId_ = "";
       /**
-       * <code>.FlashGameStatistic gameSummary = 1;</code>
+       * <code>string playerId = 1;</code>
+       * @return The playerId.
        */
-      public boolean hasGameSummary() {
-        return gameSummaryBuilder_ != null || gameSummary_ != null;
-      }
-      /**
-       * <code>.FlashGameStatistic gameSummary = 1;</code>
-       */
-      public dev.freggy.stats.model.Flash.FlashGameStatistic getGameSummary() {
-        if (gameSummaryBuilder_ == null) {
-          return gameSummary_ == null ? dev.freggy.stats.model.Flash.FlashGameStatistic.getDefaultInstance() : gameSummary_;
+      public java.lang.String getPlayerId() {
+        java.lang.Object ref = playerId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          playerId_ = s;
+          return s;
         } else {
-          return gameSummaryBuilder_.getMessage();
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.FlashGameStatistic gameSummary = 1;</code>
+       * <code>string playerId = 1;</code>
+       * @return The bytes for playerId.
        */
-      public Builder setGameSummary(dev.freggy.stats.model.Flash.FlashGameStatistic value) {
-        if (gameSummaryBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          gameSummary_ = value;
-          onChanged();
+      public com.google.protobuf.ByteString
+          getPlayerIdBytes() {
+        java.lang.Object ref = playerId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          playerId_ = b;
+          return b;
         } else {
-          gameSummaryBuilder_.setMessage(value);
+          return (com.google.protobuf.ByteString) ref;
         }
-
-        return this;
       }
       /**
-       * <code>.FlashGameStatistic gameSummary = 1;</code>
+       * <code>string playerId = 1;</code>
+       * @param value The playerId to set.
+       * @return This builder for chaining.
        */
-      public Builder setGameSummary(
-          dev.freggy.stats.model.Flash.FlashGameStatistic.Builder builderForValue) {
-        if (gameSummaryBuilder_ == null) {
-          gameSummary_ = builderForValue.build();
-          onChanged();
-        } else {
-          gameSummaryBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.FlashGameStatistic gameSummary = 1;</code>
-       */
-      public Builder mergeGameSummary(dev.freggy.stats.model.Flash.FlashGameStatistic value) {
-        if (gameSummaryBuilder_ == null) {
-          if (gameSummary_ != null) {
-            gameSummary_ =
-              dev.freggy.stats.model.Flash.FlashGameStatistic.newBuilder(gameSummary_).mergeFrom(value).buildPartial();
-          } else {
-            gameSummary_ = value;
-          }
-          onChanged();
-        } else {
-          gameSummaryBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.FlashGameStatistic gameSummary = 1;</code>
-       */
-      public Builder clearGameSummary() {
-        if (gameSummaryBuilder_ == null) {
-          gameSummary_ = null;
-          onChanged();
-        } else {
-          gameSummary_ = null;
-          gameSummaryBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.FlashGameStatistic gameSummary = 1;</code>
-       */
-      public dev.freggy.stats.model.Flash.FlashGameStatistic.Builder getGameSummaryBuilder() {
-        
+      public Builder setPlayerId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        playerId_ = value;
         onChanged();
-        return getGameSummaryFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>.FlashGameStatistic gameSummary = 1;</code>
+       * <code>string playerId = 1;</code>
+       * @return This builder for chaining.
        */
-      public dev.freggy.stats.model.Flash.FlashGameStatisticOrBuilder getGameSummaryOrBuilder() {
-        if (gameSummaryBuilder_ != null) {
-          return gameSummaryBuilder_.getMessageOrBuilder();
-        } else {
-          return gameSummary_ == null ?
-              dev.freggy.stats.model.Flash.FlashGameStatistic.getDefaultInstance() : gameSummary_;
-        }
+      public Builder clearPlayerId() {
+        
+        playerId_ = getDefaultInstance().getPlayerId();
+        onChanged();
+        return this;
       }
       /**
-       * <code>.FlashGameStatistic gameSummary = 1;</code>
+       * <code>string playerId = 1;</code>
+       * @param value The bytes for playerId to set.
+       * @return This builder for chaining.
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          dev.freggy.stats.model.Flash.FlashGameStatistic, dev.freggy.stats.model.Flash.FlashGameStatistic.Builder, dev.freggy.stats.model.Flash.FlashGameStatisticOrBuilder> 
-          getGameSummaryFieldBuilder() {
-        if (gameSummaryBuilder_ == null) {
-          gameSummaryBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              dev.freggy.stats.model.Flash.FlashGameStatistic, dev.freggy.stats.model.Flash.FlashGameStatistic.Builder, dev.freggy.stats.model.Flash.FlashGameStatisticOrBuilder>(
-                  getGameSummary(),
-                  getParentForChildren(),
-                  isClean());
-          gameSummary_ = null;
-        }
-        return gameSummaryBuilder_;
+      public Builder setPlayerIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        playerId_ = value;
+        onChanged();
+        return this;
       }
 
       private java.util.List<dev.freggy.stats.model.Flash.FlashMapStatistic> mapSummary_ =
         java.util.Collections.emptyList();
       private void ensureMapSummaryIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           mapSummary_ = new java.util.ArrayList<dev.freggy.stats.model.Flash.FlashMapStatistic>(mapSummary_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000001;
          }
       }
 
@@ -856,7 +820,7 @@ public final class Flash {
       public Builder clearMapSummary() {
         if (mapSummaryBuilder_ == null) {
           mapSummary_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           mapSummaryBuilder_.clear();
@@ -933,7 +897,7 @@ public final class Flash {
           mapSummaryBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               dev.freggy.stats.model.Flash.FlashMapStatistic, dev.freggy.stats.model.Flash.FlashMapStatistic.Builder, dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder>(
                   mapSummary_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           mapSummary_ = null;
@@ -943,7 +907,7 @@ public final class Flash {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -953,93 +917,110 @@ public final class Flash {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:FlashStatisticCompound)
+      // @@protoc_insertion_point(builder_scope:FlashMapStatisticCollection)
     }
 
-    // @@protoc_insertion_point(class_scope:FlashStatisticCompound)
-    private static final dev.freggy.stats.model.Flash.FlashStatisticCompound DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:FlashMapStatisticCollection)
+    private static final dev.freggy.stats.model.Flash.FlashMapStatisticCollection DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new dev.freggy.stats.model.Flash.FlashStatisticCompound();
+      DEFAULT_INSTANCE = new dev.freggy.stats.model.Flash.FlashMapStatisticCollection();
     }
 
-    public static dev.freggy.stats.model.Flash.FlashStatisticCompound getDefaultInstance() {
+    public static dev.freggy.stats.model.Flash.FlashMapStatisticCollection getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<FlashStatisticCompound>
-        PARSER = new com.google.protobuf.AbstractParser<FlashStatisticCompound>() {
+    private static final com.google.protobuf.Parser<FlashMapStatisticCollection>
+        PARSER = new com.google.protobuf.AbstractParser<FlashMapStatisticCollection>() {
       @java.lang.Override
-      public FlashStatisticCompound parsePartialFrom(
+      public FlashMapStatisticCollection parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new FlashStatisticCompound(input, extensionRegistry);
+        return new FlashMapStatisticCollection(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<FlashStatisticCompound> parser() {
+    public static com.google.protobuf.Parser<FlashMapStatisticCollection> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<FlashStatisticCompound> getParserForType() {
+    public com.google.protobuf.Parser<FlashMapStatisticCollection> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public dev.freggy.stats.model.Flash.FlashStatisticCompound getDefaultInstanceForType() {
+    public dev.freggy.stats.model.Flash.FlashMapStatisticCollection getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface FlashGameStatisticOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:FlashGameStatistic)
+  public interface FlashAllStatisticsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:FlashAllStatistics)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>uint32 wins = 1;</code>
+     * <code>.FlashPlayerStatistic playerStats = 1;</code>
+     * @return Whether the playerStats field is set.
      */
-    int getWins();
+    boolean hasPlayerStats();
+    /**
+     * <code>.FlashPlayerStatistic playerStats = 1;</code>
+     * @return The playerStats.
+     */
+    dev.freggy.stats.model.Flash.FlashPlayerStatistic getPlayerStats();
+    /**
+     * <code>.FlashPlayerStatistic playerStats = 1;</code>
+     */
+    dev.freggy.stats.model.Flash.FlashPlayerStatisticOrBuilder getPlayerStatsOrBuilder();
 
     /**
-     * <code>uint32 deaths = 2;</code>
+     * <code>repeated .FlashMapStatistic mapStats = 2;</code>
      */
-    int getDeaths();
-
+    java.util.List<dev.freggy.stats.model.Flash.FlashMapStatistic> 
+        getMapStatsList();
     /**
-     * <code>uint32 games_played = 3;</code>
+     * <code>repeated .FlashMapStatistic mapStats = 2;</code>
      */
-    int getGamesPlayed();
-
+    dev.freggy.stats.model.Flash.FlashMapStatistic getMapStats(int index);
     /**
-     * <code>uint32 instant_deaths = 4;</code>
+     * <code>repeated .FlashMapStatistic mapStats = 2;</code>
      */
-    int getInstantDeaths();
-
+    int getMapStatsCount();
     /**
-     * <code>uint32 checkpoints = 5;</code>
+     * <code>repeated .FlashMapStatistic mapStats = 2;</code>
      */
-    int getCheckpoints();
+    java.util.List<? extends dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder> 
+        getMapStatsOrBuilderList();
+    /**
+     * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+     */
+    dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder getMapStatsOrBuilder(
+        int index);
   }
   /**
-   * Protobuf type {@code FlashGameStatistic}
+   * Protobuf type {@code FlashAllStatistics}
    */
-  public  static final class FlashGameStatistic extends
+  public static final class FlashAllStatistics extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:FlashGameStatistic)
-      FlashGameStatisticOrBuilder {
+      // @@protoc_insertion_point(message_implements:FlashAllStatistics)
+      FlashAllStatisticsOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use FlashGameStatistic.newBuilder() to construct.
-    private FlashGameStatistic(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use FlashAllStatistics.newBuilder() to construct.
+    private FlashAllStatistics(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private FlashGameStatistic() {
-      wins_ = 0;
-      deaths_ = 0;
-      gamesPlayed_ = 0;
-      instantDeaths_ = 0;
-      checkpoints_ = 0;
+    private FlashAllStatistics() {
+      mapStats_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FlashAllStatistics();
     }
 
     @java.lang.Override
@@ -1047,7 +1028,7 @@ public final class Flash {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private FlashGameStatistic(
+    private FlashAllStatistics(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1056,6 +1037,997 @@ public final class Flash {
         throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              dev.freggy.stats.model.Flash.FlashPlayerStatistic.Builder subBuilder = null;
+              if (playerStats_ != null) {
+                subBuilder = playerStats_.toBuilder();
+              }
+              playerStats_ = input.readMessage(dev.freggy.stats.model.Flash.FlashPlayerStatistic.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(playerStats_);
+                playerStats_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                mapStats_ = new java.util.ArrayList<dev.freggy.stats.model.Flash.FlashMapStatistic>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              mapStats_.add(
+                  input.readMessage(dev.freggy.stats.model.Flash.FlashMapStatistic.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          mapStats_ = java.util.Collections.unmodifiableList(mapStats_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return dev.freggy.stats.model.Flash.internal_static_FlashAllStatistics_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return dev.freggy.stats.model.Flash.internal_static_FlashAllStatistics_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              dev.freggy.stats.model.Flash.FlashAllStatistics.class, dev.freggy.stats.model.Flash.FlashAllStatistics.Builder.class);
+    }
+
+    public static final int PLAYERSTATS_FIELD_NUMBER = 1;
+    private dev.freggy.stats.model.Flash.FlashPlayerStatistic playerStats_;
+    /**
+     * <code>.FlashPlayerStatistic playerStats = 1;</code>
+     * @return Whether the playerStats field is set.
+     */
+    @java.lang.Override
+    public boolean hasPlayerStats() {
+      return playerStats_ != null;
+    }
+    /**
+     * <code>.FlashPlayerStatistic playerStats = 1;</code>
+     * @return The playerStats.
+     */
+    @java.lang.Override
+    public dev.freggy.stats.model.Flash.FlashPlayerStatistic getPlayerStats() {
+      return playerStats_ == null ? dev.freggy.stats.model.Flash.FlashPlayerStatistic.getDefaultInstance() : playerStats_;
+    }
+    /**
+     * <code>.FlashPlayerStatistic playerStats = 1;</code>
+     */
+    @java.lang.Override
+    public dev.freggy.stats.model.Flash.FlashPlayerStatisticOrBuilder getPlayerStatsOrBuilder() {
+      return getPlayerStats();
+    }
+
+    public static final int MAPSTATS_FIELD_NUMBER = 2;
+    private java.util.List<dev.freggy.stats.model.Flash.FlashMapStatistic> mapStats_;
+    /**
+     * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<dev.freggy.stats.model.Flash.FlashMapStatistic> getMapStatsList() {
+      return mapStats_;
+    }
+    /**
+     * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder> 
+        getMapStatsOrBuilderList() {
+      return mapStats_;
+    }
+    /**
+     * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+     */
+    @java.lang.Override
+    public int getMapStatsCount() {
+      return mapStats_.size();
+    }
+    /**
+     * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+     */
+    @java.lang.Override
+    public dev.freggy.stats.model.Flash.FlashMapStatistic getMapStats(int index) {
+      return mapStats_.get(index);
+    }
+    /**
+     * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+     */
+    @java.lang.Override
+    public dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder getMapStatsOrBuilder(
+        int index) {
+      return mapStats_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (playerStats_ != null) {
+        output.writeMessage(1, getPlayerStats());
+      }
+      for (int i = 0; i < mapStats_.size(); i++) {
+        output.writeMessage(2, mapStats_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (playerStats_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getPlayerStats());
+      }
+      for (int i = 0; i < mapStats_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, mapStats_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof dev.freggy.stats.model.Flash.FlashAllStatistics)) {
+        return super.equals(obj);
+      }
+      dev.freggy.stats.model.Flash.FlashAllStatistics other = (dev.freggy.stats.model.Flash.FlashAllStatistics) obj;
+
+      if (hasPlayerStats() != other.hasPlayerStats()) return false;
+      if (hasPlayerStats()) {
+        if (!getPlayerStats()
+            .equals(other.getPlayerStats())) return false;
+      }
+      if (!getMapStatsList()
+          .equals(other.getMapStatsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasPlayerStats()) {
+        hash = (37 * hash) + PLAYERSTATS_FIELD_NUMBER;
+        hash = (53 * hash) + getPlayerStats().hashCode();
+      }
+      if (getMapStatsCount() > 0) {
+        hash = (37 * hash) + MAPSTATS_FIELD_NUMBER;
+        hash = (53 * hash) + getMapStatsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static dev.freggy.stats.model.Flash.FlashAllStatistics parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.model.Flash.FlashAllStatistics parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.model.Flash.FlashAllStatistics parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.model.Flash.FlashAllStatistics parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.model.Flash.FlashAllStatistics parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static dev.freggy.stats.model.Flash.FlashAllStatistics parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static dev.freggy.stats.model.Flash.FlashAllStatistics parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.model.Flash.FlashAllStatistics parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static dev.freggy.stats.model.Flash.FlashAllStatistics parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.model.Flash.FlashAllStatistics parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static dev.freggy.stats.model.Flash.FlashAllStatistics parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static dev.freggy.stats.model.Flash.FlashAllStatistics parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(dev.freggy.stats.model.Flash.FlashAllStatistics prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code FlashAllStatistics}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:FlashAllStatistics)
+        dev.freggy.stats.model.Flash.FlashAllStatisticsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return dev.freggy.stats.model.Flash.internal_static_FlashAllStatistics_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return dev.freggy.stats.model.Flash.internal_static_FlashAllStatistics_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                dev.freggy.stats.model.Flash.FlashAllStatistics.class, dev.freggy.stats.model.Flash.FlashAllStatistics.Builder.class);
+      }
+
+      // Construct using dev.freggy.stats.model.Flash.FlashAllStatistics.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getMapStatsFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (playerStatsBuilder_ == null) {
+          playerStats_ = null;
+        } else {
+          playerStats_ = null;
+          playerStatsBuilder_ = null;
+        }
+        if (mapStatsBuilder_ == null) {
+          mapStats_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          mapStatsBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return dev.freggy.stats.model.Flash.internal_static_FlashAllStatistics_descriptor;
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.model.Flash.FlashAllStatistics getDefaultInstanceForType() {
+        return dev.freggy.stats.model.Flash.FlashAllStatistics.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.model.Flash.FlashAllStatistics build() {
+        dev.freggy.stats.model.Flash.FlashAllStatistics result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public dev.freggy.stats.model.Flash.FlashAllStatistics buildPartial() {
+        dev.freggy.stats.model.Flash.FlashAllStatistics result = new dev.freggy.stats.model.Flash.FlashAllStatistics(this);
+        int from_bitField0_ = bitField0_;
+        if (playerStatsBuilder_ == null) {
+          result.playerStats_ = playerStats_;
+        } else {
+          result.playerStats_ = playerStatsBuilder_.build();
+        }
+        if (mapStatsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            mapStats_ = java.util.Collections.unmodifiableList(mapStats_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.mapStats_ = mapStats_;
+        } else {
+          result.mapStats_ = mapStatsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof dev.freggy.stats.model.Flash.FlashAllStatistics) {
+          return mergeFrom((dev.freggy.stats.model.Flash.FlashAllStatistics)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(dev.freggy.stats.model.Flash.FlashAllStatistics other) {
+        if (other == dev.freggy.stats.model.Flash.FlashAllStatistics.getDefaultInstance()) return this;
+        if (other.hasPlayerStats()) {
+          mergePlayerStats(other.getPlayerStats());
+        }
+        if (mapStatsBuilder_ == null) {
+          if (!other.mapStats_.isEmpty()) {
+            if (mapStats_.isEmpty()) {
+              mapStats_ = other.mapStats_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureMapStatsIsMutable();
+              mapStats_.addAll(other.mapStats_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.mapStats_.isEmpty()) {
+            if (mapStatsBuilder_.isEmpty()) {
+              mapStatsBuilder_.dispose();
+              mapStatsBuilder_ = null;
+              mapStats_ = other.mapStats_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              mapStatsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getMapStatsFieldBuilder() : null;
+            } else {
+              mapStatsBuilder_.addAllMessages(other.mapStats_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        dev.freggy.stats.model.Flash.FlashAllStatistics parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (dev.freggy.stats.model.Flash.FlashAllStatistics) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private dev.freggy.stats.model.Flash.FlashPlayerStatistic playerStats_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          dev.freggy.stats.model.Flash.FlashPlayerStatistic, dev.freggy.stats.model.Flash.FlashPlayerStatistic.Builder, dev.freggy.stats.model.Flash.FlashPlayerStatisticOrBuilder> playerStatsBuilder_;
+      /**
+       * <code>.FlashPlayerStatistic playerStats = 1;</code>
+       * @return Whether the playerStats field is set.
+       */
+      public boolean hasPlayerStats() {
+        return playerStatsBuilder_ != null || playerStats_ != null;
+      }
+      /**
+       * <code>.FlashPlayerStatistic playerStats = 1;</code>
+       * @return The playerStats.
+       */
+      public dev.freggy.stats.model.Flash.FlashPlayerStatistic getPlayerStats() {
+        if (playerStatsBuilder_ == null) {
+          return playerStats_ == null ? dev.freggy.stats.model.Flash.FlashPlayerStatistic.getDefaultInstance() : playerStats_;
+        } else {
+          return playerStatsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.FlashPlayerStatistic playerStats = 1;</code>
+       */
+      public Builder setPlayerStats(dev.freggy.stats.model.Flash.FlashPlayerStatistic value) {
+        if (playerStatsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          playerStats_ = value;
+          onChanged();
+        } else {
+          playerStatsBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.FlashPlayerStatistic playerStats = 1;</code>
+       */
+      public Builder setPlayerStats(
+          dev.freggy.stats.model.Flash.FlashPlayerStatistic.Builder builderForValue) {
+        if (playerStatsBuilder_ == null) {
+          playerStats_ = builderForValue.build();
+          onChanged();
+        } else {
+          playerStatsBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.FlashPlayerStatistic playerStats = 1;</code>
+       */
+      public Builder mergePlayerStats(dev.freggy.stats.model.Flash.FlashPlayerStatistic value) {
+        if (playerStatsBuilder_ == null) {
+          if (playerStats_ != null) {
+            playerStats_ =
+              dev.freggy.stats.model.Flash.FlashPlayerStatistic.newBuilder(playerStats_).mergeFrom(value).buildPartial();
+          } else {
+            playerStats_ = value;
+          }
+          onChanged();
+        } else {
+          playerStatsBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.FlashPlayerStatistic playerStats = 1;</code>
+       */
+      public Builder clearPlayerStats() {
+        if (playerStatsBuilder_ == null) {
+          playerStats_ = null;
+          onChanged();
+        } else {
+          playerStats_ = null;
+          playerStatsBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.FlashPlayerStatistic playerStats = 1;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashPlayerStatistic.Builder getPlayerStatsBuilder() {
+        
+        onChanged();
+        return getPlayerStatsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.FlashPlayerStatistic playerStats = 1;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashPlayerStatisticOrBuilder getPlayerStatsOrBuilder() {
+        if (playerStatsBuilder_ != null) {
+          return playerStatsBuilder_.getMessageOrBuilder();
+        } else {
+          return playerStats_ == null ?
+              dev.freggy.stats.model.Flash.FlashPlayerStatistic.getDefaultInstance() : playerStats_;
+        }
+      }
+      /**
+       * <code>.FlashPlayerStatistic playerStats = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          dev.freggy.stats.model.Flash.FlashPlayerStatistic, dev.freggy.stats.model.Flash.FlashPlayerStatistic.Builder, dev.freggy.stats.model.Flash.FlashPlayerStatisticOrBuilder> 
+          getPlayerStatsFieldBuilder() {
+        if (playerStatsBuilder_ == null) {
+          playerStatsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              dev.freggy.stats.model.Flash.FlashPlayerStatistic, dev.freggy.stats.model.Flash.FlashPlayerStatistic.Builder, dev.freggy.stats.model.Flash.FlashPlayerStatisticOrBuilder>(
+                  getPlayerStats(),
+                  getParentForChildren(),
+                  isClean());
+          playerStats_ = null;
+        }
+        return playerStatsBuilder_;
+      }
+
+      private java.util.List<dev.freggy.stats.model.Flash.FlashMapStatistic> mapStats_ =
+        java.util.Collections.emptyList();
+      private void ensureMapStatsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          mapStats_ = new java.util.ArrayList<dev.freggy.stats.model.Flash.FlashMapStatistic>(mapStats_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          dev.freggy.stats.model.Flash.FlashMapStatistic, dev.freggy.stats.model.Flash.FlashMapStatistic.Builder, dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder> mapStatsBuilder_;
+
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public java.util.List<dev.freggy.stats.model.Flash.FlashMapStatistic> getMapStatsList() {
+        if (mapStatsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(mapStats_);
+        } else {
+          return mapStatsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public int getMapStatsCount() {
+        if (mapStatsBuilder_ == null) {
+          return mapStats_.size();
+        } else {
+          return mapStatsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashMapStatistic getMapStats(int index) {
+        if (mapStatsBuilder_ == null) {
+          return mapStats_.get(index);
+        } else {
+          return mapStatsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public Builder setMapStats(
+          int index, dev.freggy.stats.model.Flash.FlashMapStatistic value) {
+        if (mapStatsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMapStatsIsMutable();
+          mapStats_.set(index, value);
+          onChanged();
+        } else {
+          mapStatsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public Builder setMapStats(
+          int index, dev.freggy.stats.model.Flash.FlashMapStatistic.Builder builderForValue) {
+        if (mapStatsBuilder_ == null) {
+          ensureMapStatsIsMutable();
+          mapStats_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          mapStatsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public Builder addMapStats(dev.freggy.stats.model.Flash.FlashMapStatistic value) {
+        if (mapStatsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMapStatsIsMutable();
+          mapStats_.add(value);
+          onChanged();
+        } else {
+          mapStatsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public Builder addMapStats(
+          int index, dev.freggy.stats.model.Flash.FlashMapStatistic value) {
+        if (mapStatsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMapStatsIsMutable();
+          mapStats_.add(index, value);
+          onChanged();
+        } else {
+          mapStatsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public Builder addMapStats(
+          dev.freggy.stats.model.Flash.FlashMapStatistic.Builder builderForValue) {
+        if (mapStatsBuilder_ == null) {
+          ensureMapStatsIsMutable();
+          mapStats_.add(builderForValue.build());
+          onChanged();
+        } else {
+          mapStatsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public Builder addMapStats(
+          int index, dev.freggy.stats.model.Flash.FlashMapStatistic.Builder builderForValue) {
+        if (mapStatsBuilder_ == null) {
+          ensureMapStatsIsMutable();
+          mapStats_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          mapStatsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public Builder addAllMapStats(
+          java.lang.Iterable<? extends dev.freggy.stats.model.Flash.FlashMapStatistic> values) {
+        if (mapStatsBuilder_ == null) {
+          ensureMapStatsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, mapStats_);
+          onChanged();
+        } else {
+          mapStatsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public Builder clearMapStats() {
+        if (mapStatsBuilder_ == null) {
+          mapStats_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          mapStatsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public Builder removeMapStats(int index) {
+        if (mapStatsBuilder_ == null) {
+          ensureMapStatsIsMutable();
+          mapStats_.remove(index);
+          onChanged();
+        } else {
+          mapStatsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashMapStatistic.Builder getMapStatsBuilder(
+          int index) {
+        return getMapStatsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder getMapStatsOrBuilder(
+          int index) {
+        if (mapStatsBuilder_ == null) {
+          return mapStats_.get(index);  } else {
+          return mapStatsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public java.util.List<? extends dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder> 
+           getMapStatsOrBuilderList() {
+        if (mapStatsBuilder_ != null) {
+          return mapStatsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(mapStats_);
+        }
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashMapStatistic.Builder addMapStatsBuilder() {
+        return getMapStatsFieldBuilder().addBuilder(
+            dev.freggy.stats.model.Flash.FlashMapStatistic.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashMapStatistic.Builder addMapStatsBuilder(
+          int index) {
+        return getMapStatsFieldBuilder().addBuilder(
+            index, dev.freggy.stats.model.Flash.FlashMapStatistic.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .FlashMapStatistic mapStats = 2;</code>
+       */
+      public java.util.List<dev.freggy.stats.model.Flash.FlashMapStatistic.Builder> 
+           getMapStatsBuilderList() {
+        return getMapStatsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          dev.freggy.stats.model.Flash.FlashMapStatistic, dev.freggy.stats.model.Flash.FlashMapStatistic.Builder, dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder> 
+          getMapStatsFieldBuilder() {
+        if (mapStatsBuilder_ == null) {
+          mapStatsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              dev.freggy.stats.model.Flash.FlashMapStatistic, dev.freggy.stats.model.Flash.FlashMapStatistic.Builder, dev.freggy.stats.model.Flash.FlashMapStatisticOrBuilder>(
+                  mapStats_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          mapStats_ = null;
+        }
+        return mapStatsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:FlashAllStatistics)
+    }
+
+    // @@protoc_insertion_point(class_scope:FlashAllStatistics)
+    private static final dev.freggy.stats.model.Flash.FlashAllStatistics DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new dev.freggy.stats.model.Flash.FlashAllStatistics();
+    }
+
+    public static dev.freggy.stats.model.Flash.FlashAllStatistics getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FlashAllStatistics>
+        PARSER = new com.google.protobuf.AbstractParser<FlashAllStatistics>() {
+      @java.lang.Override
+      public FlashAllStatistics parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FlashAllStatistics(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<FlashAllStatistics> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FlashAllStatistics> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public dev.freggy.stats.model.Flash.FlashAllStatistics getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FlashPlayerStatisticOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:FlashPlayerStatistic)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 wins = 1;</code>
+     * @return The wins.
+     */
+    int getWins();
+
+    /**
+     * <code>uint32 deaths = 2;</code>
+     * @return The deaths.
+     */
+    int getDeaths();
+
+    /**
+     * <code>uint32 games_played = 3;</code>
+     * @return The gamesPlayed.
+     */
+    int getGamesPlayed();
+
+    /**
+     * <code>uint32 instant_deaths = 4;</code>
+     * @return The instantDeaths.
+     */
+    int getInstantDeaths();
+
+    /**
+     * <code>uint32 checkpoints = 5;</code>
+     * @return The checkpoints.
+     */
+    int getCheckpoints();
+
+    /**
+     * <code>uint32 points = 6;</code>
+     * @return The points.
+     */
+    int getPoints();
+  }
+  /**
+   * Protobuf type {@code FlashPlayerStatistic}
+   */
+  public static final class FlashPlayerStatistic extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:FlashPlayerStatistic)
+      FlashPlayerStatisticOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FlashPlayerStatistic.newBuilder() to construct.
+    private FlashPlayerStatistic(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FlashPlayerStatistic() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FlashPlayerStatistic();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FlashPlayerStatistic(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1091,8 +2063,13 @@ public final class Flash {
               checkpoints_ = input.readUInt32();
               break;
             }
+            case 48: {
+
+              points_ = input.readUInt32();
+              break;
+            }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -1112,22 +2089,24 @@ public final class Flash {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return dev.freggy.stats.model.Flash.internal_static_FlashGameStatistic_descriptor;
+      return dev.freggy.stats.model.Flash.internal_static_FlashPlayerStatistic_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return dev.freggy.stats.model.Flash.internal_static_FlashGameStatistic_fieldAccessorTable
+      return dev.freggy.stats.model.Flash.internal_static_FlashPlayerStatistic_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              dev.freggy.stats.model.Flash.FlashGameStatistic.class, dev.freggy.stats.model.Flash.FlashGameStatistic.Builder.class);
+              dev.freggy.stats.model.Flash.FlashPlayerStatistic.class, dev.freggy.stats.model.Flash.FlashPlayerStatistic.Builder.class);
     }
 
     public static final int WINS_FIELD_NUMBER = 1;
     private int wins_;
     /**
      * <code>uint32 wins = 1;</code>
+     * @return The wins.
      */
+    @java.lang.Override
     public int getWins() {
       return wins_;
     }
@@ -1136,7 +2115,9 @@ public final class Flash {
     private int deaths_;
     /**
      * <code>uint32 deaths = 2;</code>
+     * @return The deaths.
      */
+    @java.lang.Override
     public int getDeaths() {
       return deaths_;
     }
@@ -1145,7 +2126,9 @@ public final class Flash {
     private int gamesPlayed_;
     /**
      * <code>uint32 games_played = 3;</code>
+     * @return The gamesPlayed.
      */
+    @java.lang.Override
     public int getGamesPlayed() {
       return gamesPlayed_;
     }
@@ -1154,7 +2137,9 @@ public final class Flash {
     private int instantDeaths_;
     /**
      * <code>uint32 instant_deaths = 4;</code>
+     * @return The instantDeaths.
      */
+    @java.lang.Override
     public int getInstantDeaths() {
       return instantDeaths_;
     }
@@ -1163,9 +2148,22 @@ public final class Flash {
     private int checkpoints_;
     /**
      * <code>uint32 checkpoints = 5;</code>
+     * @return The checkpoints.
      */
+    @java.lang.Override
     public int getCheckpoints() {
       return checkpoints_;
+    }
+
+    public static final int POINTS_FIELD_NUMBER = 6;
+    private int points_;
+    /**
+     * <code>uint32 points = 6;</code>
+     * @return The points.
+     */
+    @java.lang.Override
+    public int getPoints() {
+      return points_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1197,6 +2195,9 @@ public final class Flash {
       if (checkpoints_ != 0) {
         output.writeUInt32(5, checkpoints_);
       }
+      if (points_ != 0) {
+        output.writeUInt32(6, points_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1226,6 +2227,10 @@ public final class Flash {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(5, checkpoints_);
       }
+      if (points_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(6, points_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1236,24 +2241,25 @@ public final class Flash {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof dev.freggy.stats.model.Flash.FlashGameStatistic)) {
+      if (!(obj instanceof dev.freggy.stats.model.Flash.FlashPlayerStatistic)) {
         return super.equals(obj);
       }
-      dev.freggy.stats.model.Flash.FlashGameStatistic other = (dev.freggy.stats.model.Flash.FlashGameStatistic) obj;
+      dev.freggy.stats.model.Flash.FlashPlayerStatistic other = (dev.freggy.stats.model.Flash.FlashPlayerStatistic) obj;
 
-      boolean result = true;
-      result = result && (getWins()
-          == other.getWins());
-      result = result && (getDeaths()
-          == other.getDeaths());
-      result = result && (getGamesPlayed()
-          == other.getGamesPlayed());
-      result = result && (getInstantDeaths()
-          == other.getInstantDeaths());
-      result = result && (getCheckpoints()
-          == other.getCheckpoints());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getWins()
+          != other.getWins()) return false;
+      if (getDeaths()
+          != other.getDeaths()) return false;
+      if (getGamesPlayed()
+          != other.getGamesPlayed()) return false;
+      if (getInstantDeaths()
+          != other.getInstantDeaths()) return false;
+      if (getCheckpoints()
+          != other.getCheckpoints()) return false;
+      if (getPoints()
+          != other.getPoints()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -1273,74 +2279,76 @@ public final class Flash {
       hash = (53 * hash) + getInstantDeaths();
       hash = (37 * hash) + CHECKPOINTS_FIELD_NUMBER;
       hash = (53 * hash) + getCheckpoints();
+      hash = (37 * hash) + POINTS_FIELD_NUMBER;
+      hash = (53 * hash) + getPoints();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static dev.freggy.stats.model.Flash.FlashGameStatistic parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashPlayerStatistic parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.model.Flash.FlashGameStatistic parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashPlayerStatistic parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.model.Flash.FlashGameStatistic parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashPlayerStatistic parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.model.Flash.FlashGameStatistic parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashPlayerStatistic parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.model.Flash.FlashGameStatistic parseFrom(byte[] data)
+    public static dev.freggy.stats.model.Flash.FlashPlayerStatistic parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static dev.freggy.stats.model.Flash.FlashGameStatistic parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashPlayerStatistic parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static dev.freggy.stats.model.Flash.FlashGameStatistic parseFrom(java.io.InputStream input)
+    public static dev.freggy.stats.model.Flash.FlashPlayerStatistic parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.model.Flash.FlashGameStatistic parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashPlayerStatistic parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.model.Flash.FlashGameStatistic parseDelimitedFrom(java.io.InputStream input)
+    public static dev.freggy.stats.model.Flash.FlashPlayerStatistic parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.model.Flash.FlashGameStatistic parseDelimitedFrom(
+    public static dev.freggy.stats.model.Flash.FlashPlayerStatistic parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static dev.freggy.stats.model.Flash.FlashGameStatistic parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashPlayerStatistic parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static dev.freggy.stats.model.Flash.FlashGameStatistic parseFrom(
+    public static dev.freggy.stats.model.Flash.FlashPlayerStatistic parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1353,7 +2361,7 @@ public final class Flash {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(dev.freggy.stats.model.Flash.FlashGameStatistic prototype) {
+    public static Builder newBuilder(dev.freggy.stats.model.Flash.FlashPlayerStatistic prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1369,26 +2377,26 @@ public final class Flash {
       return builder;
     }
     /**
-     * Protobuf type {@code FlashGameStatistic}
+     * Protobuf type {@code FlashPlayerStatistic}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:FlashGameStatistic)
-        dev.freggy.stats.model.Flash.FlashGameStatisticOrBuilder {
+        // @@protoc_insertion_point(builder_implements:FlashPlayerStatistic)
+        dev.freggy.stats.model.Flash.FlashPlayerStatisticOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return dev.freggy.stats.model.Flash.internal_static_FlashGameStatistic_descriptor;
+        return dev.freggy.stats.model.Flash.internal_static_FlashPlayerStatistic_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return dev.freggy.stats.model.Flash.internal_static_FlashGameStatistic_fieldAccessorTable
+        return dev.freggy.stats.model.Flash.internal_static_FlashPlayerStatistic_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                dev.freggy.stats.model.Flash.FlashGameStatistic.class, dev.freggy.stats.model.Flash.FlashGameStatistic.Builder.class);
+                dev.freggy.stats.model.Flash.FlashPlayerStatistic.class, dev.freggy.stats.model.Flash.FlashPlayerStatistic.Builder.class);
       }
 
-      // Construct using dev.freggy.stats.model.Flash.FlashGameStatistic.newBuilder()
+      // Construct using dev.freggy.stats.model.Flash.FlashPlayerStatistic.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1416,23 +2424,25 @@ public final class Flash {
 
         checkpoints_ = 0;
 
+        points_ = 0;
+
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return dev.freggy.stats.model.Flash.internal_static_FlashGameStatistic_descriptor;
+        return dev.freggy.stats.model.Flash.internal_static_FlashPlayerStatistic_descriptor;
       }
 
       @java.lang.Override
-      public dev.freggy.stats.model.Flash.FlashGameStatistic getDefaultInstanceForType() {
-        return dev.freggy.stats.model.Flash.FlashGameStatistic.getDefaultInstance();
+      public dev.freggy.stats.model.Flash.FlashPlayerStatistic getDefaultInstanceForType() {
+        return dev.freggy.stats.model.Flash.FlashPlayerStatistic.getDefaultInstance();
       }
 
       @java.lang.Override
-      public dev.freggy.stats.model.Flash.FlashGameStatistic build() {
-        dev.freggy.stats.model.Flash.FlashGameStatistic result = buildPartial();
+      public dev.freggy.stats.model.Flash.FlashPlayerStatistic build() {
+        dev.freggy.stats.model.Flash.FlashPlayerStatistic result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1440,61 +2450,62 @@ public final class Flash {
       }
 
       @java.lang.Override
-      public dev.freggy.stats.model.Flash.FlashGameStatistic buildPartial() {
-        dev.freggy.stats.model.Flash.FlashGameStatistic result = new dev.freggy.stats.model.Flash.FlashGameStatistic(this);
+      public dev.freggy.stats.model.Flash.FlashPlayerStatistic buildPartial() {
+        dev.freggy.stats.model.Flash.FlashPlayerStatistic result = new dev.freggy.stats.model.Flash.FlashPlayerStatistic(this);
         result.wins_ = wins_;
         result.deaths_ = deaths_;
         result.gamesPlayed_ = gamesPlayed_;
         result.instantDeaths_ = instantDeaths_;
         result.checkpoints_ = checkpoints_;
+        result.points_ = points_;
         onBuilt();
         return result;
       }
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof dev.freggy.stats.model.Flash.FlashGameStatistic) {
-          return mergeFrom((dev.freggy.stats.model.Flash.FlashGameStatistic)other);
+        if (other instanceof dev.freggy.stats.model.Flash.FlashPlayerStatistic) {
+          return mergeFrom((dev.freggy.stats.model.Flash.FlashPlayerStatistic)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(dev.freggy.stats.model.Flash.FlashGameStatistic other) {
-        if (other == dev.freggy.stats.model.Flash.FlashGameStatistic.getDefaultInstance()) return this;
+      public Builder mergeFrom(dev.freggy.stats.model.Flash.FlashPlayerStatistic other) {
+        if (other == dev.freggy.stats.model.Flash.FlashPlayerStatistic.getDefaultInstance()) return this;
         if (other.getWins() != 0) {
           setWins(other.getWins());
         }
@@ -1509,6 +2520,9 @@ public final class Flash {
         }
         if (other.getCheckpoints() != 0) {
           setCheckpoints(other.getCheckpoints());
+        }
+        if (other.getPoints() != 0) {
+          setPoints(other.getPoints());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1525,11 +2539,11 @@ public final class Flash {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        dev.freggy.stats.model.Flash.FlashGameStatistic parsedMessage = null;
+        dev.freggy.stats.model.Flash.FlashPlayerStatistic parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (dev.freggy.stats.model.Flash.FlashGameStatistic) e.getUnfinishedMessage();
+          parsedMessage = (dev.freggy.stats.model.Flash.FlashPlayerStatistic) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1542,12 +2556,16 @@ public final class Flash {
       private int wins_ ;
       /**
        * <code>uint32 wins = 1;</code>
+       * @return The wins.
        */
+      @java.lang.Override
       public int getWins() {
         return wins_;
       }
       /**
        * <code>uint32 wins = 1;</code>
+       * @param value The wins to set.
+       * @return This builder for chaining.
        */
       public Builder setWins(int value) {
         
@@ -1557,6 +2575,7 @@ public final class Flash {
       }
       /**
        * <code>uint32 wins = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearWins() {
         
@@ -1568,12 +2587,16 @@ public final class Flash {
       private int deaths_ ;
       /**
        * <code>uint32 deaths = 2;</code>
+       * @return The deaths.
        */
+      @java.lang.Override
       public int getDeaths() {
         return deaths_;
       }
       /**
        * <code>uint32 deaths = 2;</code>
+       * @param value The deaths to set.
+       * @return This builder for chaining.
        */
       public Builder setDeaths(int value) {
         
@@ -1583,6 +2606,7 @@ public final class Flash {
       }
       /**
        * <code>uint32 deaths = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearDeaths() {
         
@@ -1594,12 +2618,16 @@ public final class Flash {
       private int gamesPlayed_ ;
       /**
        * <code>uint32 games_played = 3;</code>
+       * @return The gamesPlayed.
        */
+      @java.lang.Override
       public int getGamesPlayed() {
         return gamesPlayed_;
       }
       /**
        * <code>uint32 games_played = 3;</code>
+       * @param value The gamesPlayed to set.
+       * @return This builder for chaining.
        */
       public Builder setGamesPlayed(int value) {
         
@@ -1609,6 +2637,7 @@ public final class Flash {
       }
       /**
        * <code>uint32 games_played = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearGamesPlayed() {
         
@@ -1620,12 +2649,16 @@ public final class Flash {
       private int instantDeaths_ ;
       /**
        * <code>uint32 instant_deaths = 4;</code>
+       * @return The instantDeaths.
        */
+      @java.lang.Override
       public int getInstantDeaths() {
         return instantDeaths_;
       }
       /**
        * <code>uint32 instant_deaths = 4;</code>
+       * @param value The instantDeaths to set.
+       * @return This builder for chaining.
        */
       public Builder setInstantDeaths(int value) {
         
@@ -1635,6 +2668,7 @@ public final class Flash {
       }
       /**
        * <code>uint32 instant_deaths = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearInstantDeaths() {
         
@@ -1646,12 +2680,16 @@ public final class Flash {
       private int checkpoints_ ;
       /**
        * <code>uint32 checkpoints = 5;</code>
+       * @return The checkpoints.
        */
+      @java.lang.Override
       public int getCheckpoints() {
         return checkpoints_;
       }
       /**
        * <code>uint32 checkpoints = 5;</code>
+       * @param value The checkpoints to set.
+       * @return This builder for chaining.
        */
       public Builder setCheckpoints(int value) {
         
@@ -1661,6 +2699,7 @@ public final class Flash {
       }
       /**
        * <code>uint32 checkpoints = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearCheckpoints() {
         
@@ -1668,10 +2707,41 @@ public final class Flash {
         onChanged();
         return this;
       }
+
+      private int points_ ;
+      /**
+       * <code>uint32 points = 6;</code>
+       * @return The points.
+       */
+      @java.lang.Override
+      public int getPoints() {
+        return points_;
+      }
+      /**
+       * <code>uint32 points = 6;</code>
+       * @param value The points to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPoints(int value) {
+        
+        points_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 points = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPoints() {
+        
+        points_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1681,41 +2751,41 @@ public final class Flash {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:FlashGameStatistic)
+      // @@protoc_insertion_point(builder_scope:FlashPlayerStatistic)
     }
 
-    // @@protoc_insertion_point(class_scope:FlashGameStatistic)
-    private static final dev.freggy.stats.model.Flash.FlashGameStatistic DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:FlashPlayerStatistic)
+    private static final dev.freggy.stats.model.Flash.FlashPlayerStatistic DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new dev.freggy.stats.model.Flash.FlashGameStatistic();
+      DEFAULT_INSTANCE = new dev.freggy.stats.model.Flash.FlashPlayerStatistic();
     }
 
-    public static dev.freggy.stats.model.Flash.FlashGameStatistic getDefaultInstance() {
+    public static dev.freggy.stats.model.Flash.FlashPlayerStatistic getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<FlashGameStatistic>
-        PARSER = new com.google.protobuf.AbstractParser<FlashGameStatistic>() {
+    private static final com.google.protobuf.Parser<FlashPlayerStatistic>
+        PARSER = new com.google.protobuf.AbstractParser<FlashPlayerStatistic>() {
       @java.lang.Override
-      public FlashGameStatistic parsePartialFrom(
+      public FlashPlayerStatistic parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new FlashGameStatistic(input, extensionRegistry);
+        return new FlashPlayerStatistic(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<FlashGameStatistic> parser() {
+    public static com.google.protobuf.Parser<FlashPlayerStatistic> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<FlashGameStatistic> getParserForType() {
+    public com.google.protobuf.Parser<FlashPlayerStatistic> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public dev.freggy.stats.model.Flash.FlashGameStatistic getDefaultInstanceForType() {
+    public dev.freggy.stats.model.Flash.FlashPlayerStatistic getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1727,30 +2797,36 @@ public final class Flash {
 
     /**
      * <code>string name = 1;</code>
+     * @return The name.
      */
     java.lang.String getName();
     /**
      * <code>string name = 1;</code>
+     * @return The bytes for name.
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
      * <code>uint64 time_needed = 2;</code>
+     * @return The timeNeeded.
      */
     long getTimeNeeded();
 
     /**
      * <code>uint64 record_time = 3;</code>
+     * @return The recordTime.
      */
     long getRecordTime();
 
     /**
      * <code>string accomplished_at = 4;</code>
+     * @return The accomplishedAt.
      */
     java.lang.String getAccomplishedAt();
     /**
      * <code>string accomplished_at = 4;</code>
+     * @return The bytes for accomplishedAt.
      */
     com.google.protobuf.ByteString
         getAccomplishedAtBytes();
@@ -1782,7 +2858,7 @@ public final class Flash {
   /**
    * Protobuf type {@code FlashMapStatistic}
    */
-  public  static final class FlashMapStatistic extends
+  public static final class FlashMapStatistic extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:FlashMapStatistic)
       FlashMapStatisticOrBuilder {
@@ -1793,10 +2869,15 @@ public final class Flash {
     }
     private FlashMapStatistic() {
       name_ = "";
-      timeNeeded_ = 0L;
-      recordTime_ = 0L;
       accomplishedAt_ = "";
       checkpoints_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FlashMapStatistic();
     }
 
     @java.lang.Override
@@ -1846,16 +2927,16 @@ public final class Flash {
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 checkpoints_ = new java.util.ArrayList<dev.freggy.stats.model.Flash.FlashCheckpointStatistic>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000001;
               }
               checkpoints_.add(
                   input.readMessage(dev.freggy.stats.model.Flash.FlashCheckpointStatistic.parser(), extensionRegistry));
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -1869,7 +2950,7 @@ public final class Flash {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           checkpoints_ = java.util.Collections.unmodifiableList(checkpoints_);
         }
         this.unknownFields = unknownFields.build();
@@ -1889,12 +2970,13 @@ public final class Flash {
               dev.freggy.stats.model.Flash.FlashMapStatistic.class, dev.freggy.stats.model.Flash.FlashMapStatistic.Builder.class);
     }
 
-    private int bitField0_;
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
      * <code>string name = 1;</code>
+     * @return The name.
      */
+    @java.lang.Override
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
@@ -1909,7 +2991,9 @@ public final class Flash {
     }
     /**
      * <code>string name = 1;</code>
+     * @return The bytes for name.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getNameBytes() {
       java.lang.Object ref = name_;
@@ -1928,7 +3012,9 @@ public final class Flash {
     private long timeNeeded_;
     /**
      * <code>uint64 time_needed = 2;</code>
+     * @return The timeNeeded.
      */
+    @java.lang.Override
     public long getTimeNeeded() {
       return timeNeeded_;
     }
@@ -1937,7 +3023,9 @@ public final class Flash {
     private long recordTime_;
     /**
      * <code>uint64 record_time = 3;</code>
+     * @return The recordTime.
      */
+    @java.lang.Override
     public long getRecordTime() {
       return recordTime_;
     }
@@ -1946,7 +3034,9 @@ public final class Flash {
     private volatile java.lang.Object accomplishedAt_;
     /**
      * <code>string accomplished_at = 4;</code>
+     * @return The accomplishedAt.
      */
+    @java.lang.Override
     public java.lang.String getAccomplishedAt() {
       java.lang.Object ref = accomplishedAt_;
       if (ref instanceof java.lang.String) {
@@ -1961,7 +3051,9 @@ public final class Flash {
     }
     /**
      * <code>string accomplished_at = 4;</code>
+     * @return The bytes for accomplishedAt.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getAccomplishedAtBytes() {
       java.lang.Object ref = accomplishedAt_;
@@ -1981,12 +3073,14 @@ public final class Flash {
     /**
      * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
      */
+    @java.lang.Override
     public java.util.List<dev.freggy.stats.model.Flash.FlashCheckpointStatistic> getCheckpointsList() {
       return checkpoints_;
     }
     /**
      * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends dev.freggy.stats.model.Flash.FlashCheckpointStatisticOrBuilder> 
         getCheckpointsOrBuilderList() {
       return checkpoints_;
@@ -1994,18 +3088,21 @@ public final class Flash {
     /**
      * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
      */
+    @java.lang.Override
     public int getCheckpointsCount() {
       return checkpoints_.size();
     }
     /**
      * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
      */
+    @java.lang.Override
     public dev.freggy.stats.model.Flash.FlashCheckpointStatistic getCheckpoints(int index) {
       return checkpoints_.get(index);
     }
     /**
      * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
      */
+    @java.lang.Override
     public dev.freggy.stats.model.Flash.FlashCheckpointStatisticOrBuilder getCheckpointsOrBuilder(
         int index) {
       return checkpoints_.get(index);
@@ -2082,19 +3179,18 @@ public final class Flash {
       }
       dev.freggy.stats.model.Flash.FlashMapStatistic other = (dev.freggy.stats.model.Flash.FlashMapStatistic) obj;
 
-      boolean result = true;
-      result = result && getName()
-          .equals(other.getName());
-      result = result && (getTimeNeeded()
-          == other.getTimeNeeded());
-      result = result && (getRecordTime()
-          == other.getRecordTime());
-      result = result && getAccomplishedAt()
-          .equals(other.getAccomplishedAt());
-      result = result && getCheckpointsList()
-          .equals(other.getCheckpointsList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (getTimeNeeded()
+          != other.getTimeNeeded()) return false;
+      if (getRecordTime()
+          != other.getRecordTime()) return false;
+      if (!getAccomplishedAt()
+          .equals(other.getAccomplishedAt())) return false;
+      if (!getCheckpointsList()
+          .equals(other.getCheckpointsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -2262,7 +3358,7 @@ public final class Flash {
 
         if (checkpointsBuilder_ == null) {
           checkpoints_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           checkpointsBuilder_.clear();
         }
@@ -2293,56 +3389,54 @@ public final class Flash {
       public dev.freggy.stats.model.Flash.FlashMapStatistic buildPartial() {
         dev.freggy.stats.model.Flash.FlashMapStatistic result = new dev.freggy.stats.model.Flash.FlashMapStatistic(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.name_ = name_;
         result.timeNeeded_ = timeNeeded_;
         result.recordTime_ = recordTime_;
         result.accomplishedAt_ = accomplishedAt_;
         if (checkpointsBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             checkpoints_ = java.util.Collections.unmodifiableList(checkpoints_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.checkpoints_ = checkpoints_;
         } else {
           result.checkpoints_ = checkpointsBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -2374,7 +3468,7 @@ public final class Flash {
           if (!other.checkpoints_.isEmpty()) {
             if (checkpoints_.isEmpty()) {
               checkpoints_ = other.checkpoints_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureCheckpointsIsMutable();
               checkpoints_.addAll(other.checkpoints_);
@@ -2387,7 +3481,7 @@ public final class Flash {
               checkpointsBuilder_.dispose();
               checkpointsBuilder_ = null;
               checkpoints_ = other.checkpoints_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000001);
               checkpointsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getCheckpointsFieldBuilder() : null;
@@ -2429,6 +3523,7 @@ public final class Flash {
       private java.lang.Object name_ = "";
       /**
        * <code>string name = 1;</code>
+       * @return The name.
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -2444,6 +3539,7 @@ public final class Flash {
       }
       /**
        * <code>string name = 1;</code>
+       * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -2460,6 +3556,8 @@ public final class Flash {
       }
       /**
        * <code>string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
        */
       public Builder setName(
           java.lang.String value) {
@@ -2473,6 +3571,7 @@ public final class Flash {
       }
       /**
        * <code>string name = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearName() {
         
@@ -2482,6 +3581,8 @@ public final class Flash {
       }
       /**
        * <code>string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -2498,12 +3599,16 @@ public final class Flash {
       private long timeNeeded_ ;
       /**
        * <code>uint64 time_needed = 2;</code>
+       * @return The timeNeeded.
        */
+      @java.lang.Override
       public long getTimeNeeded() {
         return timeNeeded_;
       }
       /**
        * <code>uint64 time_needed = 2;</code>
+       * @param value The timeNeeded to set.
+       * @return This builder for chaining.
        */
       public Builder setTimeNeeded(long value) {
         
@@ -2513,6 +3618,7 @@ public final class Flash {
       }
       /**
        * <code>uint64 time_needed = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearTimeNeeded() {
         
@@ -2524,12 +3630,16 @@ public final class Flash {
       private long recordTime_ ;
       /**
        * <code>uint64 record_time = 3;</code>
+       * @return The recordTime.
        */
+      @java.lang.Override
       public long getRecordTime() {
         return recordTime_;
       }
       /**
        * <code>uint64 record_time = 3;</code>
+       * @param value The recordTime to set.
+       * @return This builder for chaining.
        */
       public Builder setRecordTime(long value) {
         
@@ -2539,6 +3649,7 @@ public final class Flash {
       }
       /**
        * <code>uint64 record_time = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearRecordTime() {
         
@@ -2550,6 +3661,7 @@ public final class Flash {
       private java.lang.Object accomplishedAt_ = "";
       /**
        * <code>string accomplished_at = 4;</code>
+       * @return The accomplishedAt.
        */
       public java.lang.String getAccomplishedAt() {
         java.lang.Object ref = accomplishedAt_;
@@ -2565,6 +3677,7 @@ public final class Flash {
       }
       /**
        * <code>string accomplished_at = 4;</code>
+       * @return The bytes for accomplishedAt.
        */
       public com.google.protobuf.ByteString
           getAccomplishedAtBytes() {
@@ -2581,6 +3694,8 @@ public final class Flash {
       }
       /**
        * <code>string accomplished_at = 4;</code>
+       * @param value The accomplishedAt to set.
+       * @return This builder for chaining.
        */
       public Builder setAccomplishedAt(
           java.lang.String value) {
@@ -2594,6 +3709,7 @@ public final class Flash {
       }
       /**
        * <code>string accomplished_at = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearAccomplishedAt() {
         
@@ -2603,6 +3719,8 @@ public final class Flash {
       }
       /**
        * <code>string accomplished_at = 4;</code>
+       * @param value The bytes for accomplishedAt to set.
+       * @return This builder for chaining.
        */
       public Builder setAccomplishedAtBytes(
           com.google.protobuf.ByteString value) {
@@ -2619,9 +3737,9 @@ public final class Flash {
       private java.util.List<dev.freggy.stats.model.Flash.FlashCheckpointStatistic> checkpoints_ =
         java.util.Collections.emptyList();
       private void ensureCheckpointsIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           checkpoints_ = new java.util.ArrayList<dev.freggy.stats.model.Flash.FlashCheckpointStatistic>(checkpoints_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000001;
          }
       }
 
@@ -2771,7 +3889,7 @@ public final class Flash {
       public Builder clearCheckpoints() {
         if (checkpointsBuilder_ == null) {
           checkpoints_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           checkpointsBuilder_.clear();
@@ -2848,7 +3966,7 @@ public final class Flash {
           checkpointsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               dev.freggy.stats.model.Flash.FlashCheckpointStatistic, dev.freggy.stats.model.Flash.FlashCheckpointStatistic.Builder, dev.freggy.stats.model.Flash.FlashCheckpointStatisticOrBuilder>(
                   checkpoints_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           checkpoints_ = null;
@@ -2858,7 +3976,7 @@ public final class Flash {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -2914,33 +4032,38 @@ public final class Flash {
 
     /**
      * <code>sfixed32 checkpoint = 1;</code>
+     * @return The checkpoint.
      */
     int getCheckpoint();
 
     /**
      * <code>uint64 time_needed = 2;</code>
+     * @return The timeNeeded.
      */
     long getTimeNeeded();
 
     /**
      * <code>string accomplished_at = 3;</code>
+     * @return The accomplishedAt.
      */
     java.lang.String getAccomplishedAt();
     /**
      * <code>string accomplished_at = 3;</code>
+     * @return The bytes for accomplishedAt.
      */
     com.google.protobuf.ByteString
         getAccomplishedAtBytes();
 
     /**
      * <code>uint64 record_time = 4;</code>
+     * @return The recordTime.
      */
     long getRecordTime();
   }
   /**
    * Protobuf type {@code FlashCheckpointStatistic}
    */
-  public  static final class FlashCheckpointStatistic extends
+  public static final class FlashCheckpointStatistic extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:FlashCheckpointStatistic)
       FlashCheckpointStatisticOrBuilder {
@@ -2950,10 +4073,14 @@ public final class Flash {
       super(builder);
     }
     private FlashCheckpointStatistic() {
-      checkpoint_ = 0;
-      timeNeeded_ = 0L;
       accomplishedAt_ = "";
-      recordTime_ = 0L;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FlashCheckpointStatistic();
     }
 
     @java.lang.Override
@@ -2969,7 +4096,6 @@ public final class Flash {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -3002,7 +4128,7 @@ public final class Flash {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -3037,7 +4163,9 @@ public final class Flash {
     private int checkpoint_;
     /**
      * <code>sfixed32 checkpoint = 1;</code>
+     * @return The checkpoint.
      */
+    @java.lang.Override
     public int getCheckpoint() {
       return checkpoint_;
     }
@@ -3046,7 +4174,9 @@ public final class Flash {
     private long timeNeeded_;
     /**
      * <code>uint64 time_needed = 2;</code>
+     * @return The timeNeeded.
      */
+    @java.lang.Override
     public long getTimeNeeded() {
       return timeNeeded_;
     }
@@ -3055,7 +4185,9 @@ public final class Flash {
     private volatile java.lang.Object accomplishedAt_;
     /**
      * <code>string accomplished_at = 3;</code>
+     * @return The accomplishedAt.
      */
+    @java.lang.Override
     public java.lang.String getAccomplishedAt() {
       java.lang.Object ref = accomplishedAt_;
       if (ref instanceof java.lang.String) {
@@ -3070,7 +4202,9 @@ public final class Flash {
     }
     /**
      * <code>string accomplished_at = 3;</code>
+     * @return The bytes for accomplishedAt.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getAccomplishedAtBytes() {
       java.lang.Object ref = accomplishedAt_;
@@ -3089,7 +4223,9 @@ public final class Flash {
     private long recordTime_;
     /**
      * <code>uint64 record_time = 4;</code>
+     * @return The recordTime.
      */
+    @java.lang.Override
     public long getRecordTime() {
       return recordTime_;
     }
@@ -3159,17 +4295,16 @@ public final class Flash {
       }
       dev.freggy.stats.model.Flash.FlashCheckpointStatistic other = (dev.freggy.stats.model.Flash.FlashCheckpointStatistic) obj;
 
-      boolean result = true;
-      result = result && (getCheckpoint()
-          == other.getCheckpoint());
-      result = result && (getTimeNeeded()
-          == other.getTimeNeeded());
-      result = result && getAccomplishedAt()
-          .equals(other.getAccomplishedAt());
-      result = result && (getRecordTime()
-          == other.getRecordTime());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (getCheckpoint()
+          != other.getCheckpoint()) return false;
+      if (getTimeNeeded()
+          != other.getTimeNeeded()) return false;
+      if (!getAccomplishedAt()
+          .equals(other.getAccomplishedAt())) return false;
+      if (getRecordTime()
+          != other.getRecordTime()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -3366,35 +4501,35 @@ public final class Flash {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -3453,12 +4588,16 @@ public final class Flash {
       private int checkpoint_ ;
       /**
        * <code>sfixed32 checkpoint = 1;</code>
+       * @return The checkpoint.
        */
+      @java.lang.Override
       public int getCheckpoint() {
         return checkpoint_;
       }
       /**
        * <code>sfixed32 checkpoint = 1;</code>
+       * @param value The checkpoint to set.
+       * @return This builder for chaining.
        */
       public Builder setCheckpoint(int value) {
         
@@ -3468,6 +4607,7 @@ public final class Flash {
       }
       /**
        * <code>sfixed32 checkpoint = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearCheckpoint() {
         
@@ -3479,12 +4619,16 @@ public final class Flash {
       private long timeNeeded_ ;
       /**
        * <code>uint64 time_needed = 2;</code>
+       * @return The timeNeeded.
        */
+      @java.lang.Override
       public long getTimeNeeded() {
         return timeNeeded_;
       }
       /**
        * <code>uint64 time_needed = 2;</code>
+       * @param value The timeNeeded to set.
+       * @return This builder for chaining.
        */
       public Builder setTimeNeeded(long value) {
         
@@ -3494,6 +4638,7 @@ public final class Flash {
       }
       /**
        * <code>uint64 time_needed = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearTimeNeeded() {
         
@@ -3505,6 +4650,7 @@ public final class Flash {
       private java.lang.Object accomplishedAt_ = "";
       /**
        * <code>string accomplished_at = 3;</code>
+       * @return The accomplishedAt.
        */
       public java.lang.String getAccomplishedAt() {
         java.lang.Object ref = accomplishedAt_;
@@ -3520,6 +4666,7 @@ public final class Flash {
       }
       /**
        * <code>string accomplished_at = 3;</code>
+       * @return The bytes for accomplishedAt.
        */
       public com.google.protobuf.ByteString
           getAccomplishedAtBytes() {
@@ -3536,6 +4683,8 @@ public final class Flash {
       }
       /**
        * <code>string accomplished_at = 3;</code>
+       * @param value The accomplishedAt to set.
+       * @return This builder for chaining.
        */
       public Builder setAccomplishedAt(
           java.lang.String value) {
@@ -3549,6 +4698,7 @@ public final class Flash {
       }
       /**
        * <code>string accomplished_at = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearAccomplishedAt() {
         
@@ -3558,6 +4708,8 @@ public final class Flash {
       }
       /**
        * <code>string accomplished_at = 3;</code>
+       * @param value The bytes for accomplishedAt to set.
+       * @return This builder for chaining.
        */
       public Builder setAccomplishedAtBytes(
           com.google.protobuf.ByteString value) {
@@ -3574,12 +4726,16 @@ public final class Flash {
       private long recordTime_ ;
       /**
        * <code>uint64 record_time = 4;</code>
+       * @return The recordTime.
        */
+      @java.lang.Override
       public long getRecordTime() {
         return recordTime_;
       }
       /**
        * <code>uint64 record_time = 4;</code>
+       * @param value The recordTime to set.
+       * @return This builder for chaining.
        */
       public Builder setRecordTime(long value) {
         
@@ -3589,6 +4745,7 @@ public final class Flash {
       }
       /**
        * <code>uint64 record_time = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearRecordTime() {
         
@@ -3599,7 +4756,7 @@ public final class Flash {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -3650,15 +4807,20 @@ public final class Flash {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_FlashStatisticCompound_descriptor;
+    internal_static_FlashMapStatisticCollection_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_FlashStatisticCompound_fieldAccessorTable;
+      internal_static_FlashMapStatisticCollection_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_FlashGameStatistic_descriptor;
+    internal_static_FlashAllStatistics_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_FlashGameStatistic_fieldAccessorTable;
+      internal_static_FlashAllStatistics_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_FlashPlayerStatistic_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_FlashPlayerStatistic_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_FlashMapStatistic_descriptor;
   private static final 
@@ -3678,54 +4840,54 @@ public final class Flash {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013flash.proto\"j\n\026FlashStatisticCompound\022" +
-      "(\n\013gameSummary\030\001 \001(\0132\023.FlashGameStatisti" +
-      "c\022&\n\nmapSummary\030\002 \003(\0132\022.FlashMapStatisti" +
-      "c\"u\n\022FlashGameStatistic\022\014\n\004wins\030\001 \001(\r\022\016\n" +
-      "\006deaths\030\002 \001(\r\022\024\n\014games_played\030\003 \001(\r\022\026\n\016i" +
-      "nstant_deaths\030\004 \001(\r\022\023\n\013checkpoints\030\005 \001(\r" +
-      "\"\224\001\n\021FlashMapStatistic\022\014\n\004name\030\001 \001(\t\022\023\n\013" +
-      "time_needed\030\002 \001(\004\022\023\n\013record_time\030\003 \001(\004\022\027" +
-      "\n\017accomplished_at\030\004 \001(\t\022.\n\013checkpoints\030\005" +
-      " \003(\0132\031.FlashCheckpointStatistic\"q\n\030Flash" +
-      "CheckpointStatistic\022\022\n\ncheckpoint\030\001 \001(\017\022" +
-      "\023\n\013time_needed\030\002 \001(\004\022\027\n\017accomplished_at\030" +
-      "\003 \001(\t\022\023\n\013record_time\030\004 \001(\004B7\n\026dev.freggy" +
-      ".stats.modelZ\035freggy.dev/stats/rpc/go/mo" +
-      "delb\006proto3"
+      "\n\013flash.proto\"W\n\033FlashMapStatisticCollec" +
+      "tion\022\020\n\010playerId\030\001 \001(\t\022&\n\nmapSummary\030\002 \003" +
+      "(\0132\022.FlashMapStatistic\"f\n\022FlashAllStatis" +
+      "tics\022*\n\013playerStats\030\001 \001(\0132\025.FlashPlayerS" +
+      "tatistic\022$\n\010mapStats\030\002 \003(\0132\022.FlashMapSta" +
+      "tistic\"\207\001\n\024FlashPlayerStatistic\022\014\n\004wins\030" +
+      "\001 \001(\r\022\016\n\006deaths\030\002 \001(\r\022\024\n\014games_played\030\003 " +
+      "\001(\r\022\026\n\016instant_deaths\030\004 \001(\r\022\023\n\013checkpoin" +
+      "ts\030\005 \001(\r\022\016\n\006points\030\006 \001(\r\"\224\001\n\021FlashMapSta" +
+      "tistic\022\014\n\004name\030\001 \001(\t\022\023\n\013time_needed\030\002 \001(" +
+      "\004\022\023\n\013record_time\030\003 \001(\004\022\027\n\017accomplished_a" +
+      "t\030\004 \001(\t\022.\n\013checkpoints\030\005 \003(\0132\031.FlashChec" +
+      "kpointStatistic\"q\n\030FlashCheckpointStatis" +
+      "tic\022\022\n\ncheckpoint\030\001 \001(\017\022\023\n\013time_needed\030\002" +
+      " \001(\004\022\027\n\017accomplished_at\030\003 \001(\t\022\023\n\013record_" +
+      "time\030\004 \001(\004B7\n\026dev.freggy.stats.modelZ\035fr" +
+      "eggy.dev/stats/rpc/go/modelb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
-    internal_static_FlashStatisticCompound_descriptor =
+        });
+    internal_static_FlashMapStatisticCollection_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_FlashStatisticCompound_fieldAccessorTable = new
+    internal_static_FlashMapStatisticCollection_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_FlashStatisticCompound_descriptor,
-        new java.lang.String[] { "GameSummary", "MapSummary", });
-    internal_static_FlashGameStatistic_descriptor =
+        internal_static_FlashMapStatisticCollection_descriptor,
+        new java.lang.String[] { "PlayerId", "MapSummary", });
+    internal_static_FlashAllStatistics_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_FlashGameStatistic_fieldAccessorTable = new
+    internal_static_FlashAllStatistics_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_FlashGameStatistic_descriptor,
-        new java.lang.String[] { "Wins", "Deaths", "GamesPlayed", "InstantDeaths", "Checkpoints", });
-    internal_static_FlashMapStatistic_descriptor =
+        internal_static_FlashAllStatistics_descriptor,
+        new java.lang.String[] { "PlayerStats", "MapStats", });
+    internal_static_FlashPlayerStatistic_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_FlashPlayerStatistic_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_FlashPlayerStatistic_descriptor,
+        new java.lang.String[] { "Wins", "Deaths", "GamesPlayed", "InstantDeaths", "Checkpoints", "Points", });
+    internal_static_FlashMapStatistic_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_FlashMapStatistic_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FlashMapStatistic_descriptor,
         new java.lang.String[] { "Name", "TimeNeeded", "RecordTime", "AccomplishedAt", "Checkpoints", });
     internal_static_FlashCheckpointStatistic_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_FlashCheckpointStatistic_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FlashCheckpointStatistic_descriptor,
