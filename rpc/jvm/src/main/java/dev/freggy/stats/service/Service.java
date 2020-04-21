@@ -6478,7 +6478,7 @@ public final class Service {
       "U\n\035UpdateFlashStatisticsRequests\022\020\n\010play" +
       "erId\030\001 \001(\t\022\"\n\005stats\030\002 \001(\0132\023.FlashAllStat" +
       "istics\"\037\n\035UpdateFlashStatisticsResponse2" +
-      "\307\004\n\014StatsService\022~\n\035GetFlashMapHighscore" +
+      "\314\004\n\014StatsService\022~\n\035GetFlashMapHighscore" +
       "ForPlayer\022-.service.GetFlashMapHighscore" +
       "ForPlayerRequest\032..service.GetFlashMapHi" +
       "ghscoreForPlayerResponse\022u\n\032GetGlobalFla" +
@@ -6487,13 +6487,13 @@ public final class Service {
       "ashMapHighscoreResponse\022o\n\030GetTopFlashMa" +
       "pHighscores\022(.service.GetTopFlashMapHigh" +
       "scoresRequest\032).service.GetTopFlashMapHi" +
-      "ghscoresResponse\022f\n\025GetTopPlayersByPoint" +
-      "s\022%.service.GetTopPlayersByPointsRequest" +
-      "\032&.service.GetTopPlayersByPointsResponse" +
-      "\022g\n\025UpdateFlashStatistics\022&.service.Upda" +
-      "teFlashStatisticsRequests\032&.service.Upda" +
-      "teFlashStatisticsResponseB%\n\030dev.freggy." +
-      "stats.serviceZ\t.;serviceb\006proto3"
+      "ghscoresResponse\022k\n\032GetTopFlashPlayersBy" +
+      "Points\022%.service.GetTopPlayersByPointsRe" +
+      "quest\032&.service.GetTopPlayersByPointsRes" +
+      "ponse\022g\n\025UpdateFlashStatistics\022&.service" +
+      ".UpdateFlashStatisticsRequests\032&.service" +
+      ".UpdateFlashStatisticsResponseB#\n\030dev.fr" +
+      "eggy.stats.serviceZ\007serviceb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6645,10 +6645,10 @@ public final class Service {
     @javax.ws.rs.Produces({"application/protobuf", "application/json"})
     dev.freggy.stats.service.Service.GetTopFlashMapHighscoresResponse getTopFlashMapHighscores(dev.freggy.stats.service.Service.GetTopFlashMapHighscoresRequest request);
     @javax.ws.rs.POST
-    @javax.ws.rs.Path( "/GetTopPlayersByPoints" )
+    @javax.ws.rs.Path( "/GetTopFlashPlayersByPoints" )
     @javax.ws.rs.Consumes({"application/protobuf", "application/json"})
     @javax.ws.rs.Produces({"application/protobuf", "application/json"})
-    dev.freggy.stats.service.Service.GetTopPlayersByPointsResponse getTopPlayersByPoints(dev.freggy.stats.service.Service.GetTopPlayersByPointsRequest request);
+    dev.freggy.stats.service.Service.GetTopPlayersByPointsResponse getTopFlashPlayersByPoints(dev.freggy.stats.service.Service.GetTopPlayersByPointsRequest request);
     @javax.ws.rs.POST
     @javax.ws.rs.Path( "/UpdateFlashStatistics" )
     @javax.ws.rs.Consumes({"application/protobuf", "application/json"})
@@ -6694,8 +6694,8 @@ public final class Service {
     }
   
     @Override
-    public dev.freggy.stats.service.Service.GetTopPlayersByPointsResponse getTopPlayersByPoints(dev.freggy.stats.service.Service.GetTopPlayersByPointsRequest request) {
-      return call("/GetTopPlayersByPoints", request, dev.freggy.stats.service.Service.GetTopPlayersByPointsResponse.class);
+    public dev.freggy.stats.service.Service.GetTopPlayersByPointsResponse getTopFlashPlayersByPoints(dev.freggy.stats.service.Service.GetTopPlayersByPointsRequest request) {
+      return call("/GetTopFlashPlayersByPoints", request, dev.freggy.stats.service.Service.GetTopPlayersByPointsResponse.class);
     }
   
     @Override

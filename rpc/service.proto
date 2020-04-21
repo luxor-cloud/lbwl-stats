@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package service;
 option java_package = "dev.freggy.stats.service";
-option go_package = ".;service";
+option go_package = "service";
 
 import "model/flash.proto";
 
@@ -79,7 +79,7 @@ service StatsService {
 
     rpc GetTopFlashMapHighscores (GetTopFlashMapHighscoresRequest) returns (GetTopFlashMapHighscoresResponse);
 
-    rpc GetTopPlayersByPoints (GetTopPlayersByPointsRequest) returns (GetTopPlayersByPointsResponse);
+    rpc GetTopFlashPlayersByPoints (GetTopPlayersByPointsRequest) returns (GetTopPlayersByPointsResponse);
 
     rpc UpdateFlashStatistics (UpdateFlashStatisticsRequests) returns (UpdateFlashStatisticsResponse);
 }
