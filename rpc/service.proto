@@ -19,7 +19,7 @@ message GetFlashMapHighscoreForPlayerRequest {
 }
 
 message GetFlashMapHighscoreForPlayerResponse {
-    FlashMapStatisticCollection highscores = 1;
+    FlashMapStatistic highscore = 1;
 }
 
 // rpc GetGlobalFlashMapHighscore
