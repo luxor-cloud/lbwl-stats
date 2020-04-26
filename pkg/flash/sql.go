@@ -34,6 +34,10 @@ func (sda *sqlDataAccess)  GetPlayerMapScoresRepository() PlayerMapScoresReposit
 	return sda.mStatsRepo
 }
 
+func (sda *sqlDataAccess) Close() error {
+	return sda.session.Close()
+}
+
 
 type sqlPlayerStatsRepository struct {
 	session sqlbuilder.Database

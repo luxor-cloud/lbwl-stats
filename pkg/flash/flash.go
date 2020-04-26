@@ -12,6 +12,8 @@ type DataAccess interface {
 	GetCheckpointScoresRepository() PlayerCheckpointScoresRepository
 
 	GetPlayerMapScoresRepository() PlayerMapScoresRepository
+
+	Close() error
 }
 
 
