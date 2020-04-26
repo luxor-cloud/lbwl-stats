@@ -1,10 +1,8 @@
 package flash
 
 import (
-	"database/sql"
-	"fmt"
-
 	_ "github.com/go-sql-driver/mysql"
+	"upper.io/db.v3/mysql"
 )
 
 type DataAccess interface {
@@ -16,16 +14,20 @@ type DataAccess interface {
 	GetPlayerMapScoresRepository() PlayerMapScoresRepository
 }
 
+
 // Add functions which contain database connection logic here
 
-func ConnectSQL(addr string) (*sql.DB, error) {
-	db, err := sql.Open("mysql", fmt.Sprintf("%s?parseTime=true", addr))
+func ConnectSQL(user, password, host, database string) (DataAccess, error) {
+	settings := mysql.ConnectionURL{
+		User:     user,
+		Password: password,
+		Host:     host,
+		Database: database,
+	}
+
+	session, err := mysql.Open(settings)
 	if err != nil {
 		return nil, err
 	}
-	return db, nil
-}
-
-func ConnectMongoDB(addr string) {
-
+	return newSQLDataAccess(session), nil
 }

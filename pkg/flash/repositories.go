@@ -75,5 +75,5 @@ type PlayerMapScoresRepository interface {
 	// TODO: add retrieval for all scores
 
 	// Add adds a score to the repository.
-	Add(score PlayerMapScore)
+	Add(score PlayerMapScore) error
 }
