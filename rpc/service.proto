@@ -15,6 +15,7 @@ import "model/flash.proto";
 message GetFlashMapHighscoreForPlayerRequest {
     string playerId = 1;
     bool withCheckpoints = 2;
+    string mapName = 3;
 }
 
 message GetFlashMapHighscoreForPlayerResponse {

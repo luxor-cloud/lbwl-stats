@@ -2814,43 +2814,37 @@ public final class Flash {
     long getTimeNeeded();
 
     /**
-     * <code>uint64 record_time = 3;</code>
-     * @return The recordTime.
-     */
-    long getRecordTime();
-
-    /**
-     * <code>string accomplished_at = 4;</code>
+     * <code>string accomplished_at = 3;</code>
      * @return The accomplishedAt.
      */
     java.lang.String getAccomplishedAt();
     /**
-     * <code>string accomplished_at = 4;</code>
+     * <code>string accomplished_at = 3;</code>
      * @return The bytes for accomplishedAt.
      */
     com.google.protobuf.ByteString
         getAccomplishedAtBytes();
 
     /**
-     * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+     * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
      */
     java.util.List<dev.freggy.stats.model.Flash.FlashCheckpointStatistic> 
         getCheckpointsList();
     /**
-     * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+     * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
      */
     dev.freggy.stats.model.Flash.FlashCheckpointStatistic getCheckpoints(int index);
     /**
-     * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+     * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
      */
     int getCheckpointsCount();
     /**
-     * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+     * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
      */
     java.util.List<? extends dev.freggy.stats.model.Flash.FlashCheckpointStatisticOrBuilder> 
         getCheckpointsOrBuilderList();
     /**
-     * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+     * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
      */
     dev.freggy.stats.model.Flash.FlashCheckpointStatisticOrBuilder getCheckpointsOrBuilder(
         int index);
@@ -2915,18 +2909,13 @@ public final class Flash {
               timeNeeded_ = input.readUInt64();
               break;
             }
-            case 24: {
-
-              recordTime_ = input.readUInt64();
-              break;
-            }
-            case 34: {
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               accomplishedAt_ = s;
               break;
             }
-            case 42: {
+            case 34: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 checkpoints_ = new java.util.ArrayList<dev.freggy.stats.model.Flash.FlashCheckpointStatistic>();
                 mutable_bitField0_ |= 0x00000001;
@@ -3019,21 +3008,10 @@ public final class Flash {
       return timeNeeded_;
     }
 
-    public static final int RECORD_TIME_FIELD_NUMBER = 3;
-    private long recordTime_;
-    /**
-     * <code>uint64 record_time = 3;</code>
-     * @return The recordTime.
-     */
-    @java.lang.Override
-    public long getRecordTime() {
-      return recordTime_;
-    }
-
-    public static final int ACCOMPLISHED_AT_FIELD_NUMBER = 4;
+    public static final int ACCOMPLISHED_AT_FIELD_NUMBER = 3;
     private volatile java.lang.Object accomplishedAt_;
     /**
-     * <code>string accomplished_at = 4;</code>
+     * <code>string accomplished_at = 3;</code>
      * @return The accomplishedAt.
      */
     @java.lang.Override
@@ -3050,7 +3028,7 @@ public final class Flash {
       }
     }
     /**
-     * <code>string accomplished_at = 4;</code>
+     * <code>string accomplished_at = 3;</code>
      * @return The bytes for accomplishedAt.
      */
     @java.lang.Override
@@ -3068,17 +3046,17 @@ public final class Flash {
       }
     }
 
-    public static final int CHECKPOINTS_FIELD_NUMBER = 5;
+    public static final int CHECKPOINTS_FIELD_NUMBER = 4;
     private java.util.List<dev.freggy.stats.model.Flash.FlashCheckpointStatistic> checkpoints_;
     /**
-     * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+     * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
      */
     @java.lang.Override
     public java.util.List<dev.freggy.stats.model.Flash.FlashCheckpointStatistic> getCheckpointsList() {
       return checkpoints_;
     }
     /**
-     * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+     * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
      */
     @java.lang.Override
     public java.util.List<? extends dev.freggy.stats.model.Flash.FlashCheckpointStatisticOrBuilder> 
@@ -3086,21 +3064,21 @@ public final class Flash {
       return checkpoints_;
     }
     /**
-     * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+     * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
      */
     @java.lang.Override
     public int getCheckpointsCount() {
       return checkpoints_.size();
     }
     /**
-     * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+     * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
      */
     @java.lang.Override
     public dev.freggy.stats.model.Flash.FlashCheckpointStatistic getCheckpoints(int index) {
       return checkpoints_.get(index);
     }
     /**
-     * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+     * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
      */
     @java.lang.Override
     public dev.freggy.stats.model.Flash.FlashCheckpointStatisticOrBuilder getCheckpointsOrBuilder(
@@ -3128,14 +3106,11 @@ public final class Flash {
       if (timeNeeded_ != 0L) {
         output.writeUInt64(2, timeNeeded_);
       }
-      if (recordTime_ != 0L) {
-        output.writeUInt64(3, recordTime_);
-      }
       if (!getAccomplishedAtBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, accomplishedAt_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, accomplishedAt_);
       }
       for (int i = 0; i < checkpoints_.size(); i++) {
-        output.writeMessage(5, checkpoints_.get(i));
+        output.writeMessage(4, checkpoints_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -3153,16 +3128,12 @@ public final class Flash {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(2, timeNeeded_);
       }
-      if (recordTime_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(3, recordTime_);
-      }
       if (!getAccomplishedAtBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, accomplishedAt_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, accomplishedAt_);
       }
       for (int i = 0; i < checkpoints_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, checkpoints_.get(i));
+          .computeMessageSize(4, checkpoints_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3183,8 +3154,6 @@ public final class Flash {
           .equals(other.getName())) return false;
       if (getTimeNeeded()
           != other.getTimeNeeded()) return false;
-      if (getRecordTime()
-          != other.getRecordTime()) return false;
       if (!getAccomplishedAt()
           .equals(other.getAccomplishedAt())) return false;
       if (!getCheckpointsList()
@@ -3205,9 +3174,6 @@ public final class Flash {
       hash = (37 * hash) + TIME_NEEDED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimeNeeded());
-      hash = (37 * hash) + RECORD_TIME_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getRecordTime());
       hash = (37 * hash) + ACCOMPLISHED_AT_FIELD_NUMBER;
       hash = (53 * hash) + getAccomplishedAt().hashCode();
       if (getCheckpointsCount() > 0) {
@@ -3352,8 +3318,6 @@ public final class Flash {
 
         timeNeeded_ = 0L;
 
-        recordTime_ = 0L;
-
         accomplishedAt_ = "";
 
         if (checkpointsBuilder_ == null) {
@@ -3391,7 +3355,6 @@ public final class Flash {
         int from_bitField0_ = bitField0_;
         result.name_ = name_;
         result.timeNeeded_ = timeNeeded_;
-        result.recordTime_ = recordTime_;
         result.accomplishedAt_ = accomplishedAt_;
         if (checkpointsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
@@ -3456,9 +3419,6 @@ public final class Flash {
         }
         if (other.getTimeNeeded() != 0L) {
           setTimeNeeded(other.getTimeNeeded());
-        }
-        if (other.getRecordTime() != 0L) {
-          setRecordTime(other.getRecordTime());
         }
         if (!other.getAccomplishedAt().isEmpty()) {
           accomplishedAt_ = other.accomplishedAt_;
@@ -3627,40 +3587,9 @@ public final class Flash {
         return this;
       }
 
-      private long recordTime_ ;
-      /**
-       * <code>uint64 record_time = 3;</code>
-       * @return The recordTime.
-       */
-      @java.lang.Override
-      public long getRecordTime() {
-        return recordTime_;
-      }
-      /**
-       * <code>uint64 record_time = 3;</code>
-       * @param value The recordTime to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRecordTime(long value) {
-        
-        recordTime_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint64 record_time = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRecordTime() {
-        
-        recordTime_ = 0L;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object accomplishedAt_ = "";
       /**
-       * <code>string accomplished_at = 4;</code>
+       * <code>string accomplished_at = 3;</code>
        * @return The accomplishedAt.
        */
       public java.lang.String getAccomplishedAt() {
@@ -3676,7 +3605,7 @@ public final class Flash {
         }
       }
       /**
-       * <code>string accomplished_at = 4;</code>
+       * <code>string accomplished_at = 3;</code>
        * @return The bytes for accomplishedAt.
        */
       public com.google.protobuf.ByteString
@@ -3693,7 +3622,7 @@ public final class Flash {
         }
       }
       /**
-       * <code>string accomplished_at = 4;</code>
+       * <code>string accomplished_at = 3;</code>
        * @param value The accomplishedAt to set.
        * @return This builder for chaining.
        */
@@ -3708,7 +3637,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>string accomplished_at = 4;</code>
+       * <code>string accomplished_at = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearAccomplishedAt() {
@@ -3718,7 +3647,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>string accomplished_at = 4;</code>
+       * <code>string accomplished_at = 3;</code>
        * @param value The bytes for accomplishedAt to set.
        * @return This builder for chaining.
        */
@@ -3747,7 +3676,7 @@ public final class Flash {
           dev.freggy.stats.model.Flash.FlashCheckpointStatistic, dev.freggy.stats.model.Flash.FlashCheckpointStatistic.Builder, dev.freggy.stats.model.Flash.FlashCheckpointStatisticOrBuilder> checkpointsBuilder_;
 
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public java.util.List<dev.freggy.stats.model.Flash.FlashCheckpointStatistic> getCheckpointsList() {
         if (checkpointsBuilder_ == null) {
@@ -3757,7 +3686,7 @@ public final class Flash {
         }
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public int getCheckpointsCount() {
         if (checkpointsBuilder_ == null) {
@@ -3767,7 +3696,7 @@ public final class Flash {
         }
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public dev.freggy.stats.model.Flash.FlashCheckpointStatistic getCheckpoints(int index) {
         if (checkpointsBuilder_ == null) {
@@ -3777,7 +3706,7 @@ public final class Flash {
         }
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public Builder setCheckpoints(
           int index, dev.freggy.stats.model.Flash.FlashCheckpointStatistic value) {
@@ -3794,7 +3723,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public Builder setCheckpoints(
           int index, dev.freggy.stats.model.Flash.FlashCheckpointStatistic.Builder builderForValue) {
@@ -3808,7 +3737,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public Builder addCheckpoints(dev.freggy.stats.model.Flash.FlashCheckpointStatistic value) {
         if (checkpointsBuilder_ == null) {
@@ -3824,7 +3753,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public Builder addCheckpoints(
           int index, dev.freggy.stats.model.Flash.FlashCheckpointStatistic value) {
@@ -3841,7 +3770,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public Builder addCheckpoints(
           dev.freggy.stats.model.Flash.FlashCheckpointStatistic.Builder builderForValue) {
@@ -3855,7 +3784,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public Builder addCheckpoints(
           int index, dev.freggy.stats.model.Flash.FlashCheckpointStatistic.Builder builderForValue) {
@@ -3869,7 +3798,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public Builder addAllCheckpoints(
           java.lang.Iterable<? extends dev.freggy.stats.model.Flash.FlashCheckpointStatistic> values) {
@@ -3884,7 +3813,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public Builder clearCheckpoints() {
         if (checkpointsBuilder_ == null) {
@@ -3897,7 +3826,7 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public Builder removeCheckpoints(int index) {
         if (checkpointsBuilder_ == null) {
@@ -3910,14 +3839,14 @@ public final class Flash {
         return this;
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public dev.freggy.stats.model.Flash.FlashCheckpointStatistic.Builder getCheckpointsBuilder(
           int index) {
         return getCheckpointsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public dev.freggy.stats.model.Flash.FlashCheckpointStatisticOrBuilder getCheckpointsOrBuilder(
           int index) {
@@ -3927,7 +3856,7 @@ public final class Flash {
         }
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public java.util.List<? extends dev.freggy.stats.model.Flash.FlashCheckpointStatisticOrBuilder> 
            getCheckpointsOrBuilderList() {
@@ -3938,14 +3867,14 @@ public final class Flash {
         }
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public dev.freggy.stats.model.Flash.FlashCheckpointStatistic.Builder addCheckpointsBuilder() {
         return getCheckpointsFieldBuilder().addBuilder(
             dev.freggy.stats.model.Flash.FlashCheckpointStatistic.getDefaultInstance());
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public dev.freggy.stats.model.Flash.FlashCheckpointStatistic.Builder addCheckpointsBuilder(
           int index) {
@@ -3953,7 +3882,7 @@ public final class Flash {
             index, dev.freggy.stats.model.Flash.FlashCheckpointStatistic.getDefaultInstance());
       }
       /**
-       * <code>repeated .FlashCheckpointStatistic checkpoints = 5;</code>
+       * <code>repeated .FlashCheckpointStatistic checkpoints = 4;</code>
        */
       public java.util.List<dev.freggy.stats.model.Flash.FlashCheckpointStatistic.Builder> 
            getCheckpointsBuilderList() {
@@ -4053,12 +3982,6 @@ public final class Flash {
      */
     com.google.protobuf.ByteString
         getAccomplishedAtBytes();
-
-    /**
-     * <code>uint64 record_time = 4;</code>
-     * @return The recordTime.
-     */
-    long getRecordTime();
   }
   /**
    * Protobuf type {@code FlashCheckpointStatistic}
@@ -4120,11 +4043,6 @@ public final class Flash {
               java.lang.String s = input.readStringRequireUtf8();
 
               accomplishedAt_ = s;
-              break;
-            }
-            case 32: {
-
-              recordTime_ = input.readUInt64();
               break;
             }
             default: {
@@ -4219,17 +4137,6 @@ public final class Flash {
       }
     }
 
-    public static final int RECORD_TIME_FIELD_NUMBER = 4;
-    private long recordTime_;
-    /**
-     * <code>uint64 record_time = 4;</code>
-     * @return The recordTime.
-     */
-    @java.lang.Override
-    public long getRecordTime() {
-      return recordTime_;
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -4253,9 +4160,6 @@ public final class Flash {
       if (!getAccomplishedAtBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, accomplishedAt_);
       }
-      if (recordTime_ != 0L) {
-        output.writeUInt64(4, recordTime_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -4275,10 +4179,6 @@ public final class Flash {
       }
       if (!getAccomplishedAtBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, accomplishedAt_);
-      }
-      if (recordTime_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(4, recordTime_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4301,8 +4201,6 @@ public final class Flash {
           != other.getTimeNeeded()) return false;
       if (!getAccomplishedAt()
           .equals(other.getAccomplishedAt())) return false;
-      if (getRecordTime()
-          != other.getRecordTime()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4321,9 +4219,6 @@ public final class Flash {
           getTimeNeeded());
       hash = (37 * hash) + ACCOMPLISHED_AT_FIELD_NUMBER;
       hash = (53 * hash) + getAccomplishedAt().hashCode();
-      hash = (37 * hash) + RECORD_TIME_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getRecordTime());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4463,8 +4358,6 @@ public final class Flash {
 
         accomplishedAt_ = "";
 
-        recordTime_ = 0L;
-
         return this;
       }
 
@@ -4494,7 +4387,6 @@ public final class Flash {
         result.checkpoint_ = checkpoint_;
         result.timeNeeded_ = timeNeeded_;
         result.accomplishedAt_ = accomplishedAt_;
-        result.recordTime_ = recordTime_;
         onBuilt();
         return result;
       }
@@ -4552,9 +4444,6 @@ public final class Flash {
         if (!other.getAccomplishedAt().isEmpty()) {
           accomplishedAt_ = other.accomplishedAt_;
           onChanged();
-        }
-        if (other.getRecordTime() != 0L) {
-          setRecordTime(other.getRecordTime());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4722,37 +4611,6 @@ public final class Flash {
         onChanged();
         return this;
       }
-
-      private long recordTime_ ;
-      /**
-       * <code>uint64 record_time = 4;</code>
-       * @return The recordTime.
-       */
-      @java.lang.Override
-      public long getRecordTime() {
-        return recordTime_;
-      }
-      /**
-       * <code>uint64 record_time = 4;</code>
-       * @param value The recordTime to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRecordTime(long value) {
-        
-        recordTime_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint64 record_time = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRecordTime() {
-        
-        recordTime_ = 0L;
-        onChanged();
-        return this;
-      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4848,15 +4706,14 @@ public final class Flash {
       "tistic\"\207\001\n\024FlashPlayerStatistic\022\014\n\004wins\030" +
       "\001 \001(\r\022\016\n\006deaths\030\002 \001(\r\022\024\n\014games_played\030\003 " +
       "\001(\r\022\026\n\016instant_deaths\030\004 \001(\r\022\023\n\013checkpoin" +
-      "ts\030\005 \001(\r\022\016\n\006points\030\006 \001(\r\"\224\001\n\021FlashMapSta" +
-      "tistic\022\014\n\004name\030\001 \001(\t\022\023\n\013time_needed\030\002 \001(" +
-      "\004\022\023\n\013record_time\030\003 \001(\004\022\027\n\017accomplished_a" +
-      "t\030\004 \001(\t\022.\n\013checkpoints\030\005 \003(\0132\031.FlashChec" +
-      "kpointStatistic\"q\n\030FlashCheckpointStatis" +
-      "tic\022\022\n\ncheckpoint\030\001 \001(\017\022\023\n\013time_needed\030\002" +
-      " \001(\004\022\027\n\017accomplished_at\030\003 \001(\t\022\023\n\013record_" +
-      "time\030\004 \001(\004B7\n\026dev.freggy.stats.modelZ\035fr" +
-      "eggy.dev/stats/rpc/go/modelb\006proto3"
+      "ts\030\005 \001(\r\022\016\n\006points\030\006 \001(\r\"\177\n\021FlashMapStat" +
+      "istic\022\014\n\004name\030\001 \001(\t\022\023\n\013time_needed\030\002 \001(\004" +
+      "\022\027\n\017accomplished_at\030\003 \001(\t\022.\n\013checkpoints" +
+      "\030\004 \003(\0132\031.FlashCheckpointStatistic\"\\\n\030Fla" +
+      "shCheckpointStatistic\022\022\n\ncheckpoint\030\001 \001(" +
+      "\017\022\023\n\013time_needed\030\002 \001(\004\022\027\n\017accomplished_a" +
+      "t\030\003 \001(\tB7\n\026dev.freggy.stats.modelZ\035fregg" +
+      "y.dev/stats/rpc/go/modelb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4885,13 +4742,13 @@ public final class Flash {
     internal_static_FlashMapStatistic_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FlashMapStatistic_descriptor,
-        new java.lang.String[] { "Name", "TimeNeeded", "RecordTime", "AccomplishedAt", "Checkpoints", });
+        new java.lang.String[] { "Name", "TimeNeeded", "AccomplishedAt", "Checkpoints", });
     internal_static_FlashCheckpointStatistic_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_FlashCheckpointStatistic_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FlashCheckpointStatistic_descriptor,
-        new java.lang.String[] { "Checkpoint", "TimeNeeded", "AccomplishedAt", "RecordTime", });
+        new java.lang.String[] { "Checkpoint", "TimeNeeded", "AccomplishedAt", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

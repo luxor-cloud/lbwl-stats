@@ -35,6 +35,18 @@ public final class Service {
      * @return The withCheckpoints.
      */
     boolean getWithCheckpoints();
+
+    /**
+     * <code>string mapName = 3;</code>
+     * @return The mapName.
+     */
+    java.lang.String getMapName();
+    /**
+     * <code>string mapName = 3;</code>
+     * @return The bytes for mapName.
+     */
+    com.google.protobuf.ByteString
+        getMapNameBytes();
   }
   /**
    * Protobuf type {@code service.GetFlashMapHighscoreForPlayerRequest}
@@ -50,6 +62,7 @@ public final class Service {
     }
     private GetFlashMapHighscoreForPlayerRequest() {
       playerId_ = "";
+      mapName_ = "";
     }
 
     @java.lang.Override
@@ -91,6 +104,12 @@ public final class Service {
             case 16: {
 
               withCheckpoints_ = input.readBool();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              mapName_ = s;
               break;
             }
             default: {
@@ -174,6 +193,44 @@ public final class Service {
       return withCheckpoints_;
     }
 
+    public static final int MAPNAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object mapName_;
+    /**
+     * <code>string mapName = 3;</code>
+     * @return The mapName.
+     */
+    @java.lang.Override
+    public java.lang.String getMapName() {
+      java.lang.Object ref = mapName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        mapName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string mapName = 3;</code>
+     * @return The bytes for mapName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMapNameBytes() {
+      java.lang.Object ref = mapName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        mapName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -194,6 +251,9 @@ public final class Service {
       if (withCheckpoints_ != false) {
         output.writeBool(2, withCheckpoints_);
       }
+      if (!getMapNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, mapName_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -209,6 +269,9 @@ public final class Service {
       if (withCheckpoints_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, withCheckpoints_);
+      }
+      if (!getMapNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, mapName_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -229,6 +292,8 @@ public final class Service {
           .equals(other.getPlayerId())) return false;
       if (getWithCheckpoints()
           != other.getWithCheckpoints()) return false;
+      if (!getMapName()
+          .equals(other.getMapName())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -245,6 +310,8 @@ public final class Service {
       hash = (37 * hash) + WITHCHECKPOINTS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getWithCheckpoints());
+      hash = (37 * hash) + MAPNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getMapName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -382,6 +449,8 @@ public final class Service {
 
         withCheckpoints_ = false;
 
+        mapName_ = "";
+
         return this;
       }
 
@@ -410,6 +479,7 @@ public final class Service {
         dev.freggy.stats.service.Service.GetFlashMapHighscoreForPlayerRequest result = new dev.freggy.stats.service.Service.GetFlashMapHighscoreForPlayerRequest(this);
         result.playerId_ = playerId_;
         result.withCheckpoints_ = withCheckpoints_;
+        result.mapName_ = mapName_;
         onBuilt();
         return result;
       }
@@ -464,6 +534,10 @@ public final class Service {
         }
         if (other.getWithCheckpoints() != false) {
           setWithCheckpoints(other.getWithCheckpoints());
+        }
+        if (!other.getMapName().isEmpty()) {
+          mapName_ = other.mapName_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -597,6 +671,82 @@ public final class Service {
       public Builder clearWithCheckpoints() {
         
         withCheckpoints_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object mapName_ = "";
+      /**
+       * <code>string mapName = 3;</code>
+       * @return The mapName.
+       */
+      public java.lang.String getMapName() {
+        java.lang.Object ref = mapName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          mapName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string mapName = 3;</code>
+       * @return The bytes for mapName.
+       */
+      public com.google.protobuf.ByteString
+          getMapNameBytes() {
+        java.lang.Object ref = mapName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          mapName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string mapName = 3;</code>
+       * @param value The mapName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMapName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        mapName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string mapName = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMapName() {
+        
+        mapName_ = getDefaultInstance().getMapName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string mapName = 3;</code>
+       * @param value The bytes for mapName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMapNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        mapName_ = value;
         onChanged();
         return this;
       }
@@ -6458,42 +6608,43 @@ public final class Service {
   static {
     java.lang.String[] descriptorData = {
       "\n\rservice.proto\022\007service\032\021model/flash.pr" +
-      "oto\"Q\n$GetFlashMapHighscoreForPlayerRequ" +
+      "oto\"b\n$GetFlashMapHighscoreForPlayerRequ" +
       "est\022\020\n\010playerId\030\001 \001(\t\022\027\n\017withCheckpoints" +
-      "\030\002 \001(\010\"Y\n%GetFlashMapHighscoreForPlayerR" +
-      "esponse\0220\n\nhighscores\030\001 \001(\0132\034.FlashMapSt" +
-      "atisticCollection\"M\n!GetGlobalFlashMapHi" +
-      "ghscoreRequest\022\017\n\007mapName\030\001 \001(\t\022\027\n\017withC" +
-      "heckpoints\030\002 \001(\010\"K\n\"GetGlobalFlashMapHig" +
-      "hscoreResponse\022%\n\thighscore\030\001 \001(\0132\022.Flas" +
-      "hMapStatistic\"I\n\037GetTopFlashMapHighscore" +
-      "sRequest\022\r\n\005limit\030\001 \001(\r\022\027\n\017withCheckpoin" +
-      "ts\030\002 \001(\010\"T\n GetTopFlashMapHighscoresResp" +
-      "onse\0220\n\nhighscores\030\001 \001(\0132\034.FlashMapStati" +
-      "sticCollection\"m\n\034GetTopPlayersByPointsR" +
-      "equest\022\023\n\013playerStats\030\001 \001(\010\022\020\n\010mapStats\030" +
-      "\002 \001(\010\022\027\n\017withCheckpoints\030\003 \001(\010\022\r\n\005limit\030" +
-      "\004 \001(\010\"H\n\035GetTopPlayersByPointsResponse\022\'" +
-      "\n\ntopPlayers\030\001 \003(\0132\023.FlashAllStatistics\"" +
-      "U\n\035UpdateFlashStatisticsRequests\022\020\n\010play" +
-      "erId\030\001 \001(\t\022\"\n\005stats\030\002 \001(\0132\023.FlashAllStat" +
-      "istics\"\037\n\035UpdateFlashStatisticsResponse2" +
-      "\314\004\n\014StatsService\022~\n\035GetFlashMapHighscore" +
-      "ForPlayer\022-.service.GetFlashMapHighscore" +
-      "ForPlayerRequest\032..service.GetFlashMapHi" +
-      "ghscoreForPlayerResponse\022u\n\032GetGlobalFla" +
-      "shMapHighscore\022*.service.GetGlobalFlashM" +
-      "apHighscoreRequest\032+.service.GetGlobalFl" +
-      "ashMapHighscoreResponse\022o\n\030GetTopFlashMa" +
-      "pHighscores\022(.service.GetTopFlashMapHigh" +
-      "scoresRequest\032).service.GetTopFlashMapHi" +
-      "ghscoresResponse\022k\n\032GetTopFlashPlayersBy" +
-      "Points\022%.service.GetTopPlayersByPointsRe" +
-      "quest\032&.service.GetTopPlayersByPointsRes" +
-      "ponse\022g\n\025UpdateFlashStatistics\022&.service" +
-      ".UpdateFlashStatisticsRequests\032&.service" +
-      ".UpdateFlashStatisticsResponseB#\n\030dev.fr" +
-      "eggy.stats.serviceZ\007serviceb\006proto3"
+      "\030\002 \001(\010\022\017\n\007mapName\030\003 \001(\t\"Y\n%GetFlashMapHi" +
+      "ghscoreForPlayerResponse\0220\n\nhighscores\030\001" +
+      " \001(\0132\034.FlashMapStatisticCollection\"M\n!Ge" +
+      "tGlobalFlashMapHighscoreRequest\022\017\n\007mapNa" +
+      "me\030\001 \001(\t\022\027\n\017withCheckpoints\030\002 \001(\010\"K\n\"Get" +
+      "GlobalFlashMapHighscoreResponse\022%\n\thighs" +
+      "core\030\001 \001(\0132\022.FlashMapStatistic\"I\n\037GetTop" +
+      "FlashMapHighscoresRequest\022\r\n\005limit\030\001 \001(\r" +
+      "\022\027\n\017withCheckpoints\030\002 \001(\010\"T\n GetTopFlash" +
+      "MapHighscoresResponse\0220\n\nhighscores\030\001 \001(" +
+      "\0132\034.FlashMapStatisticCollection\"m\n\034GetTo" +
+      "pPlayersByPointsRequest\022\023\n\013playerStats\030\001" +
+      " \001(\010\022\020\n\010mapStats\030\002 \001(\010\022\027\n\017withCheckpoint" +
+      "s\030\003 \001(\010\022\r\n\005limit\030\004 \001(\010\"H\n\035GetTopPlayersB" +
+      "yPointsResponse\022\'\n\ntopPlayers\030\001 \003(\0132\023.Fl" +
+      "ashAllStatistics\"U\n\035UpdateFlashStatistic" +
+      "sRequests\022\020\n\010playerId\030\001 \001(\t\022\"\n\005stats\030\002 \001" +
+      "(\0132\023.FlashAllStatistics\"\037\n\035UpdateFlashSt" +
+      "atisticsResponse2\314\004\n\014StatsService\022~\n\035Get" +
+      "FlashMapHighscoreForPlayer\022-.service.Get" +
+      "FlashMapHighscoreForPlayerRequest\032..serv" +
+      "ice.GetFlashMapHighscoreForPlayerRespons" +
+      "e\022u\n\032GetGlobalFlashMapHighscore\022*.servic" +
+      "e.GetGlobalFlashMapHighscoreRequest\032+.se" +
+      "rvice.GetGlobalFlashMapHighscoreResponse" +
+      "\022o\n\030GetTopFlashMapHighscores\022(.service.G" +
+      "etTopFlashMapHighscoresRequest\032).service" +
+      ".GetTopFlashMapHighscoresResponse\022k\n\032Get" +
+      "TopFlashPlayersByPoints\022%.service.GetTop" +
+      "PlayersByPointsRequest\032&.service.GetTopP" +
+      "layersByPointsResponse\022g\n\025UpdateFlashSta" +
+      "tistics\022&.service.UpdateFlashStatisticsR" +
+      "equests\032&.service.UpdateFlashStatisticsR" +
+      "esponseB#\n\030dev.freggy.stats.serviceZ\007ser" +
+      "viceb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6505,7 +6656,7 @@ public final class Service {
     internal_static_service_GetFlashMapHighscoreForPlayerRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_service_GetFlashMapHighscoreForPlayerRequest_descriptor,
-        new java.lang.String[] { "PlayerId", "WithCheckpoints", });
+        new java.lang.String[] { "PlayerId", "WithCheckpoints", "MapName", });
     internal_static_service_GetFlashMapHighscoreForPlayerResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_service_GetFlashMapHighscoreForPlayerResponse_fieldAccessorTable = new

@@ -26,14 +26,12 @@ message FlashPlayerStatistic {
 message FlashMapStatistic {
     string name = 1;
     uint64 time_needed = 2;
-    uint64 record_time = 3;
-    string accomplished_at = 4;
-    repeated FlashCheckpointStatistic checkpoints = 5;
+    string accomplished_at = 3;
+    repeated FlashCheckpointStatistic checkpoints = 4;
 }
 
 message FlashCheckpointStatistic {
     sfixed32 checkpoint = 1;
     uint64 time_needed = 2;
     string accomplished_at = 3;
-    uint64 record_time = 4;
 }

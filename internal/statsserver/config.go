@@ -6,23 +6,31 @@ import (
 )
 
 var DefaultConfig = Config{
-	Address: "127.0.0.1",
-	FlashDB: map[string]string{"type": "SQL", "address": "root:secret@/test"},
+	Address: "127.0.0.1:1337",
+	FlashDBConnection: DatabaseConfig{
+		Host:     "localhost:3306",
+		Username: "root",
+		Password: "secret",
+		Database: "test",
+	},
 	UseTLS:  false,
 	TLSKey:  "",
 	TLSCert: "",
 }
 
 type Config struct {
-	Address string            `json:"address"`
-	FlashDB map[string]string `json:"flash_db"`
-	UseTLS  bool              `json:"use_tls,omitempty"`
-	TLSKey  string            `json:"tls_key_path,omitempty"`
-	TLSCert string            `json:"tls_cert_path,omitempty"`
+	Address           string         `json:"address"`
+	FlashDBConnection DatabaseConfig `json:"flash_db_connection"`
+	UseTLS            bool           `json:"use_tls,omitempty"`
+	TLSKey            string         `json:"tls_key_path,omitempty"`
+	TLSCert           string         `json:"tls_cert_path,omitempty"`
 }
 
-type SQLConfig struct {
-	Address string `json:"address"`
+type DatabaseConfig struct {
+	Host     string `json:"address"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Database string `json:"database"`
 }
 
 func ReadConfig(path string) (Config, error) {
