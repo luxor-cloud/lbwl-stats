@@ -38,6 +38,7 @@ message GetGlobalFlashMapHighscoreResponse {
 message GetTopFlashMapHighscoresRequest {
     uint32 limit = 1;
     bool withCheckpoints = 2;
+    string mapName = 3;
 }
 
 message GetTopFlashMapHighscoresResponse {
@@ -47,10 +48,9 @@ message GetTopFlashMapHighscoresResponse {
 // GetTopPlayersByPoints
 
 message GetTopPlayersByPointsRequest {
-    bool playerStats = 1;
-    bool mapStats = 2;
-    bool withCheckpoints = 3;
-    bool limit = 4;
+    bool withMapStats = 1;
+    bool withCheckpoints = 2;
+    bool limit = 3;
 }
 
 message GetTopPlayersByPointsResponse {
