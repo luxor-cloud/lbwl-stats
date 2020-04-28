@@ -1,43 +1,36 @@
-CREATE DATABASE test;
-USE test;
+CREATE SCHEMA flash;
 
-CREATE TABLE player_stats
+CREATE TABLE flash.player_stats
 (
-    uuid           VARCHAR(36)  NOT NULL,
-    wins           INT UNSIGNED NOT NULL,
-    deaths         INT UNSIGNED NOT NULL,
-    checkpoints    INT UNSIGNED NOT NULL,
-    games_played   INT UNSIGNED NOT NULL,
-    instant_deaths INT UNSIGNED NOT NULL,
-    points         INT UNSIGNED NOT NULL,
-    PRIMARY KEY (uuid)
-)
-    COLLATE = utf8_general_ci
-    ENGINE = InnoDB;
+    uuid           UUID PRIMARY KEY NOT NULL,
+    wins           INT  NOT NULL,
+    deaths         INT  NOT NULL,
+    checkpoints    INT  NOT NULL,
+    games_played   INT  NOT NULL,
+    instant_deaths INT  NOT NULL,
+    points         INT  NOT NULL
+);
 
-CREATE TABLE player_map_scores
+CREATE TABLE flash.player_map_scores
 (
-    uuid            VARCHAR(36)     NOT NULL,
-    map             VARCHAR(100)    NOT NULL,
-    time_needed     BIGINT UNSIGNED NOT NULL,
-    accomplished_at DATETIME        NOT NULL,
-    INDEX duration (time_needed),
+    uuid            UUID                        NOT NULL,
+    map             VARCHAR(100)                NOT NULL,
+    time_needed     BIGINT                      NOT NULL,
+    accomplished_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     PRIMARY KEY (uuid, map, accomplished_at),
-    FOREIGN KEY (uuid) REFERENCES player_stats (uuid)
-)
-    COLLATE = utf8_general_ci
-    ENGINE = InnoDB;
+    FOREIGN KEY (uuid) REFERENCES flash.player_stats (uuid)
+);
 
-CREATE TABLE player_checkpoint_score
+CREATE TABLE flash.player_checkpoint_scores
 (
-    uuid            VARCHAR(36)      NOT NULL,
-    map             VARCHAR(100)     NOT NULL,
-    checkpoint      TINYINT UNSIGNED NOT NULL,
-    time_needed     BIGINT UNSIGNED  NOT NULL,
-    accomplished_at DATETIME         NOT NULL,
-    INDEX time_needed_per_checkpoint (time_needed, checkpoint),
+    uuid            UUID                        NOT NULL,
+    map             VARCHAR(100)                NOT NULL,
+    checkpoint      SMALLINT                    NOT NULL,
+    time_needed     BIGINT                      NOT NULL,
+    accomplished_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     PRIMARY KEY (uuid, map, accomplished_at),
-    FOREIGN KEY (uuid) REFERENCES player_map_scores (uuid)
-)
-    COLLATE = utf8_general_ci
-    ENGINE = InnoDB;
+    FOREIGN KEY (uuid) REFERENCES flash.player_stats (uuid)
+);
+
+CREATE INDEX duration ON flash.player_map_scores (time_needed);
+CREATE INDEX time_needed_per_checkpoint ON flash.player_checkpoint_scores (time_needed, checkpoint);
