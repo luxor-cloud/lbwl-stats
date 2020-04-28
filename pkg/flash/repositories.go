@@ -35,6 +35,8 @@ type Player struct {
 	MapScores        []PlayerMapScore
 }
 
+// TODO: implement WithTX(sql.Transaction)
+
 type PlayerStatsRepository interface {
 
 	// Get gets the player stats for a given player.

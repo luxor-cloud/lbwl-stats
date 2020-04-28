@@ -8,8 +8,8 @@ import (
 var DefaultConfig = Config{
 	Address: "127.0.0.1:1337",
 	FlashDBConnection: DatabaseConfig{
-		Host:     "localhost:3306",
-		Username: "root",
+		Host:     "localhost:5432",
+		Username: "postgres",
 		Password: "secret",
 		Database: "test",
 	},

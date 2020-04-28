@@ -46,7 +46,7 @@ type sqlPlayerStatsRepository struct {
 func (repo *sqlPlayerStatsRepository) Get(uuid string) (PlayerStats, error) {
 	var stats PlayerStats
 	if err := repo.session.
-		SelectFrom("player_stats").
+		SelectFrom("flash.player_stats").
 		Where("uuid = ?", uuid).
 		One(&stats); err != nil {
 		return PlayerStats{}, err
@@ -56,7 +56,7 @@ func (repo *sqlPlayerStatsRepository) Get(uuid string) (PlayerStats, error) {
 }
 
 func (repo *sqlPlayerStatsRepository) Update(diff PlayerStats) error {
-	_, err := repo.session.Update("player_stats").
+	_, err := repo.session.Update("flash.player_stats").
 		Set("wins = ? + wins", diff.Wins).
 		Set("deaths = ? + deaths", diff.Deaths).
 		Set("checkpoints = ? + checkpoints", diff.Checkpoints).
@@ -87,7 +87,7 @@ type sqlPlayerCheckpointScoresRepository struct {
 func (repo *sqlPlayerCheckpointScoresRepository) GetHighscorePerCheckpointForMapAndUUID(uuid, mapName string) ([]PlayerCheckpointScore, error) {
 	var highscores []PlayerCheckpointScore
 	if err := repo.session.Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
-		From("player_checkpoint_score").
+		From("flash.player_checkpoint_score").
 		Where("uuid = ? AND map = ?", uuid, mapName).
 		GroupBy("checkpoint").
 		All(&highscores); err != nil {
@@ -99,7 +99,7 @@ func (repo *sqlPlayerCheckpointScoresRepository) GetHighscorePerCheckpointForMap
 func (repo *sqlPlayerCheckpointScoresRepository) GetBestHighscorePerCheckpointForMap(mapName string) ([]PlayerCheckpointScore, error) {
 	var highscores []PlayerCheckpointScore
 	if err := repo.session.Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
-		From("player_checkpoint_score").
+		From("flash.player_checkpoint_score").
 		Where("map = ?", mapName).
 		GroupBy("uuid").
 		All(&highscores); err != nil {
@@ -109,7 +109,7 @@ func (repo *sqlPlayerCheckpointScoresRepository) GetBestHighscorePerCheckpointFo
 }
 
 func (repo *sqlPlayerCheckpointScoresRepository) Add(score PlayerCheckpointScore) error {
-	_, err := repo.session.InsertInto("player_checkpoint_score").
+	_, err := repo.session.InsertInto("flash.player_checkpoint_score").
 		Columns("uuid", "map", "time_needed", "accomplished_at").
 		Values(score.UUID, score.Map, score.TimeNeeded, score.AccomplishedAt).
 		Exec()
@@ -123,7 +123,7 @@ type sqlPlayerMapScoreRepository struct {
 func (repo *sqlPlayerMapScoreRepository) GetHighscorePerMapByUUID(uuid string) ([]PlayerMapScore, error) {
 	var highscores []PlayerMapScore
 	if err := repo.session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
-		From("player_map_scores").
+		From("flash.player_map_scores").
 		Where("uuid = ?", uuid).
 		GroupBy("map").
 		All(&highscores); err != nil {
@@ -135,7 +135,7 @@ func (repo *sqlPlayerMapScoreRepository) GetHighscorePerMapByUUID(uuid string) (
 func (repo *sqlPlayerMapScoreRepository) GetHighscoreForMapByUUID(uuid, mapName string) (PlayerMapScore, error) {
 	var highscore PlayerMapScore
 	if err := repo.session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
-		From("player_map_scores").
+		From("flash.player_map_scores").
 		Where("uuid = ?", uuid).
 		And("map = ?", mapName).
 		GroupBy("map").
@@ -148,7 +148,7 @@ func (repo *sqlPlayerMapScoreRepository) GetHighscoreForMapByUUID(uuid, mapName 
 func (repo *sqlPlayerMapScoreRepository) GetBestHighscore(mapName string) (PlayerMapScore, error) {
 	var highscore PlayerMapScore
 	if err := repo.session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
-		From("player_map_score").
+		From("flash.player_map_score").
 		Where("map = ?", mapName).
 		GroupBy("uuid").
 		Limit(1).
@@ -160,7 +160,7 @@ func (repo *sqlPlayerMapScoreRepository) GetBestHighscore(mapName string) (Playe
 
 func (repo *sqlPlayerMapScoreRepository) GetTopHighscores(mapName string, limit int) ([]PlayerMapScore, error) {
 	var highscores []PlayerMapScore
-	if err := repo.session.SelectFrom("player_map_scores").
+	if err := repo.session.SelectFrom("flash.player_map_scores").
 		Where("map = ?", mapName).
 		OrderBy("time_needed ASC").
 		Limit(limit).

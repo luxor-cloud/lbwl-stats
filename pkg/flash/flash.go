@@ -3,10 +3,10 @@ package flash
 import (
 	_ "github.com/go-sql-driver/mysql"
 	"upper.io/db.v3/mysql"
+	"upper.io/db.v3/postgresql"
 )
 
 type DataAccess interface {
-
 	GetPlayerRepository() PlayerStatsRepository
 
 	GetCheckpointScoresRepository() PlayerCheckpointScoresRepository
@@ -16,11 +16,10 @@ type DataAccess interface {
 	Close() error
 }
 
-
 // Add functions which contain database connection logic here
 
 func ConnectSQL(user, password, host, database string) (DataAccess, error) {
-	settings := mysql.ConnectionURL{
+	settings := postgresql.ConnectionURL{
 		User:     user,
 		Password: password,
 		Host:     host,
