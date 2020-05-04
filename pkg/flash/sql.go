@@ -1,6 +1,9 @@
 package flash
 
 import (
+	"context"
+
+	"github.com/pkg/errors"
 	"upper.io/db.v3"
 	"upper.io/db.v3/lib/sqlbuilder"
 )
@@ -34,13 +37,37 @@ func (sda *sqlDataAccess)  GetPlayerMapScoresRepository() PlayerMapScoresReposit
 	return sda.mStatsRepo
 }
 
-func (sda *sqlDataAccess) Close() error {
+func (sda *sqlDataAccess)  WithTX(ctx context.Context) (DataAccess, error) {
+	tx, err := sda.session.NewTx(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return &txSQLDataAccess{
+		DataAccess: sda,
+		tx: tx,
+	}, nil
+}
+
+func (sda *sqlDataAccess) Close(_ error) error {
 	return sda.session.Close()
+}
+
+type txSQLDataAccess struct {
+	DataAccess
+	tx sqlbuilder.Tx
+}
+
+// Close commits the transaction or rolls it back if there was an error
+func (sda *txSQLDataAccess) Close(err error) error {
+	if err != nil {
+		return errors.Wrap(err, sda.tx.Rollback().Error())
+	}
+	return sda.tx.Commit()
 }
 
 
 type sqlPlayerStatsRepository struct {
-	session sqlbuilder.Database
+	session sqlbuilder.SQLBuilder
 }
 
 func (repo *sqlPlayerStatsRepository) Get(uuid string) (PlayerStats, error) {
@@ -80,8 +107,9 @@ func (repo *sqlPlayerStatsRepository) Exists(uuid string) (bool, error) {
 	return true, nil
 }
 
+
 type sqlPlayerCheckpointScoresRepository struct {
-	session sqlbuilder.Database
+	session sqlbuilder.SQLBuilder
 }
 
 func (repo *sqlPlayerCheckpointScoresRepository) GetHighscorePerCheckpointForMapAndUUID(uuid, mapName string) ([]PlayerCheckpointScore, error) {
@@ -117,7 +145,7 @@ func (repo *sqlPlayerCheckpointScoresRepository) Add(score PlayerCheckpointScore
 }
 
 type sqlPlayerMapScoreRepository struct {
-	session sqlbuilder.Database
+	session sqlbuilder.SQLBuilder
 }
 
 func (repo *sqlPlayerMapScoreRepository) GetHighscorePerMapByUUID(uuid string) ([]PlayerMapScore, error) {
