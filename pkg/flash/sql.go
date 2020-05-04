@@ -171,7 +171,11 @@ func (repo *sqlPlayerMapScoreRepository) GetTopHighscores(mapName string, limit 
 }
 
 func (repo *sqlPlayerMapScoreRepository) Add(score PlayerMapScore) error {
-	return nil
+	_, err := repo.session.InsertInto("flash.player_map_scores").
+		Columns("uuid", "map", "time_needed", "accomplished_at").
+		Values(score.UUID, score.Map, score.TimeNeeded, score.AccomplishedAt).
+		Exec()
+	return err
 }
 
 
