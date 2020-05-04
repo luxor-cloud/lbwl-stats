@@ -43,7 +43,12 @@ func (sda *sqlDataAccess)  WithTX(ctx context.Context) (DataAccess, error) {
 		return nil, err
 	}
 	return &txSQLDataAccess{
-		DataAccess: sda,
+		DataAccess: &sqlDataAccess{
+			session:    nil,
+			pStatsRepo: &sqlPlayerStatsRepository{session: tx},
+			mStatsRepo: &sqlPlayerMapScoreRepository{session: tx},
+			cStatsRepo: &sqlPlayerCheckpointScoresRepository{session: tx},
+		},
 		tx: tx,
 	}, nil
 }
