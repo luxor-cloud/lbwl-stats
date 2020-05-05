@@ -8,26 +8,26 @@ import (
 	"upper.io/db.v3/lib/sqlbuilder"
 )
 
-
 type sqlDataAccess struct {
-	db sqlbuilder.Database
+	db      sqlbuilder.Database
 	session sqlbuilder.SQLBuilder
 }
 
-func newSQLDataAccess(session sqlbuilder.Database) DataAccess {
+func newSQLDataAccess(db sqlbuilder.Database) DataAccess {
 	return &sqlDataAccess{
-		session:    session,
+		db:      db,
+		session: db,
 	}
 }
 
-func (sda *sqlDataAccess)  WithTX(ctx context.Context) (DataAccess, error) {
+func (sda *sqlDataAccess) WithTX(ctx context.Context) (DataAccess, error) {
 	tx, err := sda.db.NewTx(ctx)
 	if err != nil {
 		return nil, err
 	}
 	return &txSQLDataAccess{
 		DataAccess: &sqlDataAccess{
-			db: sda.db,
+			db:      sda.db,
 			session: sda.session,
 		},
 		tx: tx,
@@ -51,10 +51,21 @@ func (sda *txSQLDataAccess) Close(err error) error {
 	return sda.tx.Commit()
 }
 
+// context creates
+func (sda *sqlDataAccess) context(ctx context.Context) sqlbuilder.SQLBuilder {
+	if dbSession, ok := sda.session.(sqlbuilder.Database); ok {
+		return dbSession.WithContext(ctx)
+	}
 
-func (sda *sqlDataAccess) GetPlayerStats(uuid string) (PlayerStats, error) {
+	if txSession, ok := sda.session.(sqlbuilder.Tx); ok {
+		return txSession.WithContext(ctx)
+	}
+	return sda.session
+}
+
+func (sda *sqlDataAccess) GetPlayerStats(ctx context.Context, uuid string) (PlayerStats, error) {
 	var stats PlayerStats
-	if err := sda.session.
+	if err := sda.context(ctx).
 		SelectFrom("flash.player_stats").
 		Where("uuid = ?", uuid).
 		One(&stats); err != nil {
@@ -64,8 +75,21 @@ func (sda *sqlDataAccess) GetPlayerStats(uuid string) (PlayerStats, error) {
 	return stats, nil
 }
 
-func (sda *sqlDataAccess) UpdatePlayerStats(diff PlayerStats) error {
-	_, err := sda.session.Update("flash.player_stats").
+func (sda *sqlDataAccess) GetTopPlayerByPoints(ctx context.Context, limit int) ([]Player, error) {
+	var players []Player
+	if err := sda.context(ctx).
+		SelectFrom("flash.player_stats").
+		OrderBy("points DESC").
+		Limit(limit).
+		All(&players); err != nil {
+			return nil, err
+	}
+	return players, nil
+}
+
+func (sda *sqlDataAccess) UpdatePlayerStats(ctx context.Context, diff PlayerStats) error {
+	_, err := sda.context(ctx).
+		Update("flash.player_stats").
 		Set("wins = ? + wins", diff.Wins).
 		Set("deaths = ? + deaths", diff.Deaths).
 		Set("checkpoints = ? + checkpoints", diff.Checkpoints).
@@ -77,108 +101,100 @@ func (sda *sqlDataAccess) UpdatePlayerStats(diff PlayerStats) error {
 	return err
 }
 
-func (sda *sqlDataAccess) Exists(uuid string) (bool, error) {
-	stats, err := sda.GetPlayerStats(uuid)
-	if err != nil {
-		return false, err
-	}
-
-	if stats == (PlayerStats{}) {
-		return false, nil
-	}
-	return true, nil
-}
-
-func (sda *sqlDataAccess) GetHighscorePerCheckpointForMapAndUUID(uuid, mapName string) ([]PlayerCheckpointScore, error) {
+func (sda *sqlDataAccess) GetHighscorePerCheckpointForMapAndUUID(ctx context.Context, uuid, mapName string) ([]PlayerCheckpointScore, error) {
 	var highscores []PlayerCheckpointScore
-	if err := sda.session.Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+	if err := sda.context(ctx).
+		Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_checkpoint_score").
 		Where("uuid = ? AND map = ?", uuid, mapName).
 		GroupBy("checkpoint").
 		All(&highscores); err != nil {
-			return nil, err
+		return nil, err
 	}
 	return highscores, nil
 }
 
-func (sda *sqlDataAccess) GetBestHighscorePerCheckpointForMap(mapName string) ([]PlayerCheckpointScore, error) {
+func (sda *sqlDataAccess) GetBestHighscorePerCheckpointForMap(ctx context.Context, mapName string) ([]PlayerCheckpointScore, error) {
 	var highscores []PlayerCheckpointScore
-	if err := sda.session.Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+	if err := sda.context(ctx).
+		Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_checkpoint_score").
 		Where("map = ?", mapName).
 		GroupBy("uuid").
 		All(&highscores); err != nil {
-			return nil, err
+		return nil, err
 	}
 	return highscores, nil
 }
 
-func (sda *sqlDataAccess) AddCheckpointScore(score PlayerCheckpointScore) error {
-	_, err := sda.session.InsertInto("flash.player_checkpoint_score").
+func (sda *sqlDataAccess) AddCheckpointScore(ctx context.Context, score PlayerCheckpointScore) error {
+	_, err := sda.context(ctx).
+		InsertInto("flash.player_checkpoint_score").
 		Columns("uuid", "map", "time_needed", "accomplished_at").
 		Values(score.UUID, score.Map, score.TimeNeeded, score.AccomplishedAt).
 		Exec()
 	return err
 }
 
-func (sda *sqlDataAccess) GetHighscorePerMapByUUID(uuid string) ([]PlayerMapScore, error) {
+func (sda *sqlDataAccess) GetHighscorePerMapByUUID(ctx context.Context, uuid string) ([]PlayerMapScore, error) {
 	var highscores []PlayerMapScore
-	if err := sda.session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+	if err := sda.context(ctx).
+		Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_map_scores").
 		Where("uuid = ?", uuid).
 		GroupBy("map").
 		All(&highscores); err != nil {
-			return nil, err
+		return nil, err
 	}
 	return highscores, nil
 }
 
-func (sda *sqlDataAccess) GetHighscoreForMapByUUID(uuid, mapName string) (PlayerMapScore, error) {
+func (sda *sqlDataAccess) GetHighscoreForMapByUUID(ctx context.Context, uuid, mapName string) (PlayerMapScore, error) {
 	var highscore PlayerMapScore
-	if err := sda.session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+	if err := sda.context(ctx).
+		Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_map_scores").
 		Where("uuid = ?", uuid).
 		And("map = ?", mapName).
 		GroupBy("map").
 		One(&highscore); err != nil {
-			return PlayerMapScore{}, err
+		return PlayerMapScore{}, err
 	}
 	return highscore, nil
 }
 
-func (sda *sqlDataAccess) GetBestHighscore(mapName string) (PlayerMapScore, error) {
+func (sda *sqlDataAccess) GetBestHighscore(ctx context.Context, mapName string) (PlayerMapScore, error) {
 	var highscore PlayerMapScore
-	if err := sda.session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+	if err := sda.context(ctx).
+		Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_map_score").
 		Where("map = ?", mapName).
 		GroupBy("uuid").
 		Limit(1).
 		One(&highscore); err != nil {
-			return PlayerMapScore{}, err
+		return PlayerMapScore{}, err
 	}
 	return highscore, nil
 }
 
-func (sda *sqlDataAccess) GetTopHighscores(mapName string, limit int) ([]PlayerMapScore, error) {
+func (sda *sqlDataAccess) GetTopHighscores(ctx context.Context, mapName string, limit int) ([]PlayerMapScore, error) {
 	var highscores []PlayerMapScore
-	if err := sda.session.SelectFrom("flash.player_map_scores").
+	if err := sda.context(ctx).
+		SelectFrom("flash.player_map_scores").
 		Where("map = ?", mapName).
 		OrderBy("time_needed ASC").
 		Limit(limit).
 		All(&highscores); err != nil {
-			return nil, err
+		return nil, err
 	}
 	return highscores, nil
 }
 
-func (sda *sqlDataAccess) AddMapScore(score PlayerMapScore) error {
-	_, err := sda.session.InsertInto("flash.player_map_scores").
+func (sda *sqlDataAccess) AddMapScore(ctx context.Context, score PlayerMapScore) error {
+	_, err := sda.context(ctx).
+		InsertInto("flash.player_map_scores").
 		Columns("uuid", "map", "time_needed", "accomplished_at").
 		Values(score.UUID, score.Map, score.TimeNeeded, score.AccomplishedAt).
 		Exec()
 	return err
 }
-
-
-
-

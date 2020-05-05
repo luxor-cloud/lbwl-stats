@@ -4,7 +4,6 @@ import (
 	"context"
 
 	_ "github.com/go-sql-driver/mysql"
-	"upper.io/db.v3/mysql"
 	"upper.io/db.v3/postgresql"
 )
 
@@ -31,7 +30,7 @@ func ConnectSQL(user, password, host, database string) (DataAccess, error) {
 		Database: database,
 	}
 
-	session, err := mysql.Open(settings)
+	session, err := postgresql.Open(settings)
 	if err != nil {
 		return nil, err
 	}
