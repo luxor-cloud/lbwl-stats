@@ -10,51 +10,32 @@ import (
 
 
 type sqlDataAccess struct {
-	session sqlbuilder.Database
-	pStatsRepo *sqlPlayerStatsRepository
-	mStatsRepo *sqlPlayerMapScoreRepository
-	cStatsRepo *sqlPlayerCheckpointScoresRepository
+	db sqlbuilder.Database
+	session sqlbuilder.SQLBuilder
 }
 
 func newSQLDataAccess(session sqlbuilder.Database) DataAccess {
 	return &sqlDataAccess{
 		session:    session,
-		pStatsRepo: &sqlPlayerStatsRepository{session: session},
-		mStatsRepo: &sqlPlayerMapScoreRepository{session: session},
-		cStatsRepo: &sqlPlayerCheckpointScoresRepository{session: session},
 	}
 }
 
-func (sda *sqlDataAccess)  GetPlayerRepository() PlayerStatsRepository {
-	return sda.pStatsRepo
-}
-
-func (sda *sqlDataAccess)  GetCheckpointScoresRepository() PlayerCheckpointScoresRepository {
-	return sda.cStatsRepo
-}
-
-func (sda *sqlDataAccess)  GetPlayerMapScoresRepository() PlayerMapScoresRepository {
-	return sda.mStatsRepo
-}
-
 func (sda *sqlDataAccess)  WithTX(ctx context.Context) (DataAccess, error) {
-	tx, err := sda.session.NewTx(ctx)
+	tx, err := sda.db.NewTx(ctx)
 	if err != nil {
 		return nil, err
 	}
 	return &txSQLDataAccess{
 		DataAccess: &sqlDataAccess{
-			session:    nil,
-			pStatsRepo: &sqlPlayerStatsRepository{session: tx},
-			mStatsRepo: &sqlPlayerMapScoreRepository{session: tx},
-			cStatsRepo: &sqlPlayerCheckpointScoresRepository{session: tx},
+			db: sda.db,
+			session: sda.session,
 		},
 		tx: tx,
 	}, nil
 }
 
 func (sda *sqlDataAccess) Close(_ error) error {
-	return sda.session.Close()
+	return sda.db.Close()
 }
 
 type txSQLDataAccess struct {
@@ -71,13 +52,9 @@ func (sda *txSQLDataAccess) Close(err error) error {
 }
 
 
-type sqlPlayerStatsRepository struct {
-	session sqlbuilder.SQLBuilder
-}
-
-func (repo *sqlPlayerStatsRepository) Get(uuid string) (PlayerStats, error) {
+func (sda *sqlDataAccess) GetPlayerStats(uuid string) (PlayerStats, error) {
 	var stats PlayerStats
-	if err := repo.session.
+	if err := sda.session.
 		SelectFrom("flash.player_stats").
 		Where("uuid = ?", uuid).
 		One(&stats); err != nil {
@@ -87,8 +64,8 @@ func (repo *sqlPlayerStatsRepository) Get(uuid string) (PlayerStats, error) {
 	return stats, nil
 }
 
-func (repo *sqlPlayerStatsRepository) Update(diff PlayerStats) error {
-	_, err := repo.session.Update("flash.player_stats").
+func (sda *sqlDataAccess) UpdatePlayerStats(diff PlayerStats) error {
+	_, err := sda.session.Update("flash.player_stats").
 		Set("wins = ? + wins", diff.Wins).
 		Set("deaths = ? + deaths", diff.Deaths).
 		Set("checkpoints = ? + checkpoints", diff.Checkpoints).
@@ -100,8 +77,8 @@ func (repo *sqlPlayerStatsRepository) Update(diff PlayerStats) error {
 	return err
 }
 
-func (repo *sqlPlayerStatsRepository) Exists(uuid string) (bool, error) {
-	stats, err := repo.Get(uuid)
+func (sda *sqlDataAccess) Exists(uuid string) (bool, error) {
+	stats, err := sda.GetPlayerStats(uuid)
 	if err != nil {
 		return false, err
 	}
@@ -112,14 +89,9 @@ func (repo *sqlPlayerStatsRepository) Exists(uuid string) (bool, error) {
 	return true, nil
 }
 
-
-type sqlPlayerCheckpointScoresRepository struct {
-	session sqlbuilder.SQLBuilder
-}
-
-func (repo *sqlPlayerCheckpointScoresRepository) GetHighscorePerCheckpointForMapAndUUID(uuid, mapName string) ([]PlayerCheckpointScore, error) {
+func (sda *sqlDataAccess) GetHighscorePerCheckpointForMapAndUUID(uuid, mapName string) ([]PlayerCheckpointScore, error) {
 	var highscores []PlayerCheckpointScore
-	if err := repo.session.Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+	if err := sda.session.Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_checkpoint_score").
 		Where("uuid = ? AND map = ?", uuid, mapName).
 		GroupBy("checkpoint").
@@ -129,9 +101,9 @@ func (repo *sqlPlayerCheckpointScoresRepository) GetHighscorePerCheckpointForMap
 	return highscores, nil
 }
 
-func (repo *sqlPlayerCheckpointScoresRepository) GetBestHighscorePerCheckpointForMap(mapName string) ([]PlayerCheckpointScore, error) {
+func (sda *sqlDataAccess) GetBestHighscorePerCheckpointForMap(mapName string) ([]PlayerCheckpointScore, error) {
 	var highscores []PlayerCheckpointScore
-	if err := repo.session.Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+	if err := sda.session.Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_checkpoint_score").
 		Where("map = ?", mapName).
 		GroupBy("uuid").
@@ -141,21 +113,17 @@ func (repo *sqlPlayerCheckpointScoresRepository) GetBestHighscorePerCheckpointFo
 	return highscores, nil
 }
 
-func (repo *sqlPlayerCheckpointScoresRepository) Add(score PlayerCheckpointScore) error {
-	_, err := repo.session.InsertInto("flash.player_checkpoint_score").
+func (sda *sqlDataAccess) AddCheckpointScore(score PlayerCheckpointScore) error {
+	_, err := sda.session.InsertInto("flash.player_checkpoint_score").
 		Columns("uuid", "map", "time_needed", "accomplished_at").
 		Values(score.UUID, score.Map, score.TimeNeeded, score.AccomplishedAt).
 		Exec()
 	return err
 }
 
-type sqlPlayerMapScoreRepository struct {
-	session sqlbuilder.SQLBuilder
-}
-
-func (repo *sqlPlayerMapScoreRepository) GetHighscorePerMapByUUID(uuid string) ([]PlayerMapScore, error) {
+func (sda *sqlDataAccess) GetHighscorePerMapByUUID(uuid string) ([]PlayerMapScore, error) {
 	var highscores []PlayerMapScore
-	if err := repo.session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+	if err := sda.session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_map_scores").
 		Where("uuid = ?", uuid).
 		GroupBy("map").
@@ -165,9 +133,9 @@ func (repo *sqlPlayerMapScoreRepository) GetHighscorePerMapByUUID(uuid string) (
 	return highscores, nil
 }
 
-func (repo *sqlPlayerMapScoreRepository) GetHighscoreForMapByUUID(uuid, mapName string) (PlayerMapScore, error) {
+func (sda *sqlDataAccess) GetHighscoreForMapByUUID(uuid, mapName string) (PlayerMapScore, error) {
 	var highscore PlayerMapScore
-	if err := repo.session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+	if err := sda.session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_map_scores").
 		Where("uuid = ?", uuid).
 		And("map = ?", mapName).
@@ -178,9 +146,9 @@ func (repo *sqlPlayerMapScoreRepository) GetHighscoreForMapByUUID(uuid, mapName 
 	return highscore, nil
 }
 
-func (repo *sqlPlayerMapScoreRepository) GetBestHighscore(mapName string) (PlayerMapScore, error) {
+func (sda *sqlDataAccess) GetBestHighscore(mapName string) (PlayerMapScore, error) {
 	var highscore PlayerMapScore
-	if err := repo.session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
+	if err := sda.session.Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_map_score").
 		Where("map = ?", mapName).
 		GroupBy("uuid").
@@ -191,9 +159,9 @@ func (repo *sqlPlayerMapScoreRepository) GetBestHighscore(mapName string) (Playe
 	return highscore, nil
 }
 
-func (repo *sqlPlayerMapScoreRepository) GetTopHighscores(mapName string, limit int) ([]PlayerMapScore, error) {
+func (sda *sqlDataAccess) GetTopHighscores(mapName string, limit int) ([]PlayerMapScore, error) {
 	var highscores []PlayerMapScore
-	if err := repo.session.SelectFrom("flash.player_map_scores").
+	if err := sda.session.SelectFrom("flash.player_map_scores").
 		Where("map = ?", mapName).
 		OrderBy("time_needed ASC").
 		Limit(limit).
@@ -203,8 +171,8 @@ func (repo *sqlPlayerMapScoreRepository) GetTopHighscores(mapName string, limit 
 	return highscores, nil
 }
 
-func (repo *sqlPlayerMapScoreRepository) Add(score PlayerMapScore) error {
-	_, err := repo.session.InsertInto("flash.player_map_scores").
+func (sda *sqlDataAccess) AddMapScore(score PlayerMapScore) error {
+	_, err := sda.session.InsertInto("flash.player_map_scores").
 		Columns("uuid", "map", "time_needed", "accomplished_at").
 		Values(score.UUID, score.Map, score.TimeNeeded, score.AccomplishedAt).
 		Exec()

@@ -9,15 +9,9 @@ import (
 )
 
 type DataAccess interface {
-
-	// GetPlayerRepository returns the PlayerStatsRepository
-	GetPlayerRepository() PlayerStatsRepository
-
-	// GetCheckpointScoresRepository returns the PlayerCheckpointScoresRepository
-	GetCheckpointScoresRepository() PlayerCheckpointScoresRepository
-
-	// GetPlayerMapScoresRepository returns the PlayerMapScoresRepository
-	GetPlayerMapScoresRepository() PlayerMapScoresRepository
+	PlayerStatsRepository
+	PlayerCheckpointScoresRepository
+	PlayerMapScoresRepository
 
 	// Creates a new data access using a transaction as underlying mechanism.
 	WithTX(ctx context.Context) (DataAccess, error)
@@ -27,7 +21,7 @@ type DataAccess interface {
 	Close(err error) error
 }
 
-// Add functions which contain database connection logic here
+// AddCheckpointScore functions which contain database connection logic here
 
 func ConnectSQL(user, password, host, database string) (DataAccess, error) {
 	settings := postgresql.ConnectionURL{

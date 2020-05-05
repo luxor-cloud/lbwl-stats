@@ -35,15 +35,13 @@ type Player struct {
 	MapScores        []PlayerMapScore
 }
 
-// TODO: implement WithTX(sql.Transaction)
-
 type PlayerStatsRepository interface {
 
-	// Get gets the player stats for a given player.
-	Get(uuid string) (PlayerStats, error)
+	// GetPlayerStats gets the player stats for a given player.
+	GetPlayerStats(uuid string) (PlayerStats, error)
 
-	// Update updates the stats for a given player.
-	Update(stats PlayerStats) error
+	// UpdatePlayerStats updates the stats for a given player.
+	UpdatePlayerStats(stats PlayerStats) error
 }
 
 type PlayerCheckpointScoresRepository interface {
@@ -56,8 +54,8 @@ type PlayerCheckpointScoresRepository interface {
 	// Sorted from best to worst.
 	GetBestHighscorePerCheckpointForMap(mapName string) ([]PlayerCheckpointScore, error)
 
-	// Add adds a score to the repository.
-	Add(score PlayerCheckpointScore) error
+	// AddCheckpointScore adds a score to the repository.
+	AddCheckpointScore(score PlayerCheckpointScore) error
 }
 
 type PlayerMapScoresRepository interface {
@@ -76,6 +74,6 @@ type PlayerMapScoresRepository interface {
 
 	// TODO: add retrieval for all scores
 
-	// Add adds a score to the repository.
-	Add(score PlayerMapScore) error
+	// AddCheckpointScore adds a score to the repository.
+	AddMapScore(score PlayerMapScore) error
 }
