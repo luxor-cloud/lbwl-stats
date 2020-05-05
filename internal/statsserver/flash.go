@@ -2,6 +2,7 @@ package statsserver
 
 import (
 	"context"
+	"time"
 
 	"github.com/twitchtv/twirp"
 
@@ -20,16 +21,21 @@ func (server *Server) GetFlashMapHighscoreForPlayer(
 	ctx context.Context, r *service.GetFlashMapHighscoreForPlayerRequest,
 ) (*service.GetFlashMapHighscoreForPlayerResponse, error) {
 	var cScores []flash.PlayerCheckpointScore
-
 	if r.WithCheckpoints {
-		scores, err := server.FlashDAO.GetCheckpointScoresRepository().GetHighscorePerCheckpointForMapAndUUID(r.PlayerId, r.MapName)
+		timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
+		defer cancel()
+
+		scores, err := server.FlashDAO.GetHighscorePerCheckpointForMapAndUUID(timeout, r.PlayerId, r.MapName)
 		if err != nil {
 			return nil, err
 		}
 		cScores = scores
 	}
 
-	mScores, err := server.FlashDAO.GetPlayerMapScoresRepository().GetHighscoreForMapByUUID(r.PlayerId, r.MapName)
+	timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+
+	mScores, err := server.FlashDAO.GetHighscoreForMapByUUID(timeout, r.PlayerId, r.MapName)
 	if err != nil {
 		return nil, err
 	}
@@ -42,14 +48,20 @@ func (server *Server) GetFlashMapHighscoreForPlayer(
 func (server *Server) GetGlobalFlashMapHighscore(
 	ctx context.Context, r *service.GetGlobalFlashMapHighscoreRequest,
 ) (*service.GetGlobalFlashMapHighscoreResponse, error) {
+	timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+
 	var cScores []flash.PlayerCheckpointScore
-	mScore, err := server.FlashDAO.GetPlayerMapScoresRepository().GetBestHighscore(r.MapName)
+	mScore, err := server.FlashDAO.GetBestHighscore(timeout, r.MapName)
 	if err != nil {
 		return nil, err
 	}
 
 	if r.WithCheckpoints {
-		scores, err := server.FlashDAO.GetCheckpointScoresRepository().GetHighscorePerCheckpointForMapAndUUID(mScore.UUID, mScore.Map)
+		timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
+		defer cancel()
+
+		scores, err := server.FlashDAO.GetHighscorePerCheckpointForMapAndUUID(timeout, mScore.UUID, mScore.Map)
 		if err != nil {
 			return nil, err
 		}
@@ -64,47 +76,174 @@ func (server *Server) GetGlobalFlashMapHighscore(
 func (server *Server) GetTopFlashMapHighscores(
 	ctx context.Context, r *service.GetTopFlashMapHighscoresRequest,
 ) (*service.GetTopFlashMapHighscoresResponse, error) {
+	timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+
 	// Array index corresponds to the players placement.
 	// 1. entry best highscore
 	// 2. entry second best highscore
 	// etc.
-	mScores, err := server.FlashDAO.GetPlayerMapScoresRepository().GetTopHighscores(r.MapName, int(r.Limit))
+	mScores, err := server.FlashDAO.GetTopHighscores(timeout, r.MapName, int(r.Limit))
 	if err != nil {
 		return nil, err
 	}
 
-	stats := &model.FlashMapStatisticCollection{MapSummary: nil}
+	stats := make([]*model.FlashMapStatisticCollection, 0)
 
-	for _, mScore := range mScores {
-		stats.MapSummary = append(stats.MapSummary, wrapPlayerMapScore(mScore, nil))
-	}
+	for i, mScore := range mScores {
+		stats = append(stats, &model.FlashMapStatisticCollection{
+			PlayerId: mScore.UUID, Maps: make([]*model.FlashMapStatistic, 0),
+		})
+		var cScores []flash.PlayerCheckpointScore
+		if r.WithCheckpoints {
+			timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
+			cs, err := server.FlashDAO.GetHighscorePerCheckpointForMapAndUUID(timeout, mScore.UUID, mScore.Map)
+			cancel()
 
-	if r.WithCheckpoints {
-		for i := 0; i < len(mScores); i++ {
-			cs, err := server.FlashDAO.GetCheckpointScoresRepository().GetHighscorePerCheckpointForMapAndUUID(mScores[i].UUID, mScores[i].Map)
 			if err != nil {
 				return nil, err
 			}
-			// -> see comment above
-			// applies for cs as well
-			stats.MapSummary[i].Checkpoints = wrapPlayerCheckpointScore(cs)
+			cScores = cs
 		}
+		stats[i].Maps = append(stats[i].Maps, wrapPlayerMapScore(mScore, cScores))
 	}
 
-	return nil, nil
+	return &service.GetTopFlashMapHighscoresResponse{Highscores: stats}, nil
 }
 
 func (server *Server) GetTopFlashPlayersByPoints(
 	ctx context.Context, r *service.GetTopPlayersByPointsRequest,
 ) (*service.GetTopPlayersByPointsResponse, error) {
-	// TODO: implement
-	return nil, nil
+
+	timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+
+	// Array index corresponds to the players placement.
+	// 1. entry most points
+	// 2. entry second most points
+	// etc.
+	players, err := server.FlashDAO.GetTopPlayerByPoints(timeout, int(r.Limit))
+	if err != nil {
+		return nil, err
+	}
+
+	stats := make([]*model.FlashAllStatistics, 0)
+
+	for _, player := range players {
+		stats = append(stats, &model.FlashAllStatistics{
+			PlayerId:    player.Stats.UUID,
+			PlayerStats: wrapPlayerStats(player.Stats),
+			MapStats:    nil,
+		})
+	}
+
+	if r.WithMapStats {
+		for i := 0; i < len(players); i++ {
+			timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
+			mScores, err := server.FlashDAO.GetHighscorePerMapByUUID(timeout, players[i].Stats.UUID)
+			cancel()
+			if err != nil {
+				return nil, err
+			}
+			stats[i].MapStats = make([]*model.FlashMapStatistic, 0)
+			for _, mScore := range mScores {
+				var cScores []flash.PlayerCheckpointScore
+				if r.WithCheckpoints {
+					timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
+					cScores, err = server.FlashDAO.GetHighscorePerCheckpointForMapAndUUID(timeout, players[i].Stats.UUID, mScore.Map)
+					cancel()
+					if err != nil {
+						return nil, err
+					}
+				}
+				stats[i].MapStats = append(stats[i].MapStats, wrapPlayerMapScore(mScore, cScores))
+			}
+		}
+	}
+
+	return &service.GetTopPlayersByPointsResponse{TopPlayers: stats}, nil
 }
 
 func (server *Server) UpdateFlashStatistics(
 	ctx context.Context, r *service.UpdateFlashStatisticsRequests,
-) (*service.UpdateFlashStatisticsResponse, error) {
-	return nil, nil
+) (resp *service.UpdateFlashStatisticsResponse, err error) {
+	dao, err := server.FlashDAO.WithTX(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
+
+	defer func() {
+		cancel()
+		err = dao.Close(err)
+	}()
+
+	if err := dao.UpdatePlayerStats(timeout, flash.PlayerStats{
+		UUID:          r.PlayerId,
+		Wins:          r.Stats.PlayerStats.Wins,
+		Deaths:        r.Stats.PlayerStats.Deaths,
+		Checkpoints:   r.Stats.PlayerStats.Checkpoints,
+		GamesPlayed:   r.Stats.PlayerStats.GamesPlayed,
+		InstantDeaths: r.Stats.PlayerStats.InstantDeaths,
+		Points:        r.Stats.PlayerStats.Points,
+	}); err != nil {
+		return nil, dao.Close(err)
+	}
+
+	for _, mScore := range r.Stats.MapStats {
+		t, err := time.Parse("2006-01-02 15:04:05", mScore.AccomplishedAt)
+		if err != nil {
+			return nil, err
+		}
+
+		timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
+
+		if err := dao.AddMapScore(timeout, flash.PlayerMapScore{
+			UUID:           r.PlayerId,
+			Map:            mScore.Name,
+			TimeNeeded:     mScore.TimeNeeded,
+			AccomplishedAt: t,
+		}); err != nil {
+			cancel()
+			return nil, err
+		}
+		cancel()
+
+		for _, cScore := range mScore.Checkpoints {
+			t, err := time.Parse("2006-01-02 15:04:05", cScore.AccomplishedAt)
+			if err != nil {
+				return nil, err
+			}
+
+			timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
+
+			if err := dao.AddCheckpointScore(timeout, flash.PlayerCheckpointScore{
+				UUID:           r.PlayerId,
+				Map:            mScore.Name,
+				Checkpoint:     byte(cScore.Checkpoint),
+				TimeNeeded:     cScore.TimeNeeded,
+				AccomplishedAt: t,
+			}); err != nil {
+				cancel()
+				return nil, err
+			}
+			cancel()
+		}
+	}
+
+	return &service.UpdateFlashStatisticsResponse{}, nil
+}
+
+func wrapPlayerStats(stats flash.PlayerStats) *model.FlashPlayerStatistic {
+	return &model.FlashPlayerStatistic{
+		Wins:          stats.Wins,
+		Deaths:        stats.Deaths,
+		GamesPlayed:   stats.GamesPlayed,
+		InstantDeaths: stats.InstantDeaths,
+		Checkpoints:   stats.Checkpoints,
+		Points:        stats.Points,
+	}
 }
 
 func wrapPlayerMapScore(mScore flash.PlayerMapScore, cScores []flash.PlayerCheckpointScore) *model.FlashMapStatistic {
