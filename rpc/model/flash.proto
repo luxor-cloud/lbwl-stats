@@ -6,12 +6,13 @@ option go_package = "freggy.dev/stats/rpc/go/model";
 
 message FlashMapStatisticCollection {
     string playerId = 1;
-    repeated FlashMapStatistic mapSummary = 2;
+    repeated FlashMapStatistic maps = 2;
 }
 
 message FlashAllStatistics {
-    FlashPlayerStatistic playerStats = 1;
-    repeated FlashMapStatistic mapStats = 2;
+    string playerId = 1;
+    FlashPlayerStatistic playerStats = 2;
+    repeated FlashMapStatistic mapStats = 3;
 }
 
 message FlashPlayerStatistic {

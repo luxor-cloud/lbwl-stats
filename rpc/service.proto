@@ -42,7 +42,7 @@ message GetTopFlashMapHighscoresRequest {
 }
 
 message GetTopFlashMapHighscoresResponse {
-    FlashMapStatisticCollection highscores = 1;
+    repeated FlashMapStatisticCollection highscores = 1;
 }
 
 // GetTopPlayersByPoints
@@ -50,7 +50,7 @@ message GetTopFlashMapHighscoresResponse {
 message GetTopPlayersByPointsRequest {
     bool withMapStats = 1;
     bool withCheckpoints = 2;
-    bool limit = 3;
+    uint32 limit = 3;
 }
 
 message GetTopPlayersByPointsResponse {
