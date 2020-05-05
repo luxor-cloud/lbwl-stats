@@ -3398,19 +3398,28 @@ public final class Service {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.FlashMapStatisticCollection highscores = 1;</code>
-     * @return Whether the highscores field is set.
+     * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
      */
-    boolean hasHighscores();
+    java.util.List<dev.freggy.stats.model.Flash.FlashMapStatisticCollection> 
+        getHighscoresList();
     /**
-     * <code>.FlashMapStatisticCollection highscores = 1;</code>
-     * @return The highscores.
+     * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
      */
-    dev.freggy.stats.model.Flash.FlashMapStatisticCollection getHighscores();
+    dev.freggy.stats.model.Flash.FlashMapStatisticCollection getHighscores(int index);
     /**
-     * <code>.FlashMapStatisticCollection highscores = 1;</code>
+     * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
      */
-    dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder getHighscoresOrBuilder();
+    int getHighscoresCount();
+    /**
+     * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+     */
+    java.util.List<? extends dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder> 
+        getHighscoresOrBuilderList();
+    /**
+     * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+     */
+    dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder getHighscoresOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code service.GetTopFlashMapHighscoresResponse}
@@ -3425,6 +3434,7 @@ public final class Service {
       super(builder);
     }
     private GetTopFlashMapHighscoresResponse() {
+      highscores_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -3447,6 +3457,7 @@ public final class Service {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -3458,16 +3469,12 @@ public final class Service {
               done = true;
               break;
             case 10: {
-              dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder subBuilder = null;
-              if (highscores_ != null) {
-                subBuilder = highscores_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                highscores_ = new java.util.ArrayList<dev.freggy.stats.model.Flash.FlashMapStatisticCollection>();
+                mutable_bitField0_ |= 0x00000001;
               }
-              highscores_ = input.readMessage(dev.freggy.stats.model.Flash.FlashMapStatisticCollection.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(highscores_);
-                highscores_ = subBuilder.buildPartial();
-              }
-
+              highscores_.add(
+                  input.readMessage(dev.freggy.stats.model.Flash.FlashMapStatisticCollection.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -3485,6 +3492,9 @@ public final class Service {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          highscores_ = java.util.Collections.unmodifiableList(highscores_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -3503,29 +3513,43 @@ public final class Service {
     }
 
     public static final int HIGHSCORES_FIELD_NUMBER = 1;
-    private dev.freggy.stats.model.Flash.FlashMapStatisticCollection highscores_;
+    private java.util.List<dev.freggy.stats.model.Flash.FlashMapStatisticCollection> highscores_;
     /**
-     * <code>.FlashMapStatisticCollection highscores = 1;</code>
-     * @return Whether the highscores field is set.
+     * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
      */
     @java.lang.Override
-    public boolean hasHighscores() {
-      return highscores_ != null;
+    public java.util.List<dev.freggy.stats.model.Flash.FlashMapStatisticCollection> getHighscoresList() {
+      return highscores_;
     }
     /**
-     * <code>.FlashMapStatisticCollection highscores = 1;</code>
-     * @return The highscores.
+     * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
      */
     @java.lang.Override
-    public dev.freggy.stats.model.Flash.FlashMapStatisticCollection getHighscores() {
-      return highscores_ == null ? dev.freggy.stats.model.Flash.FlashMapStatisticCollection.getDefaultInstance() : highscores_;
+    public java.util.List<? extends dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder> 
+        getHighscoresOrBuilderList() {
+      return highscores_;
     }
     /**
-     * <code>.FlashMapStatisticCollection highscores = 1;</code>
+     * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
      */
     @java.lang.Override
-    public dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder getHighscoresOrBuilder() {
-      return getHighscores();
+    public int getHighscoresCount() {
+      return highscores_.size();
+    }
+    /**
+     * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+     */
+    @java.lang.Override
+    public dev.freggy.stats.model.Flash.FlashMapStatisticCollection getHighscores(int index) {
+      return highscores_.get(index);
+    }
+    /**
+     * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+     */
+    @java.lang.Override
+    public dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder getHighscoresOrBuilder(
+        int index) {
+      return highscores_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3542,8 +3566,8 @@ public final class Service {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (highscores_ != null) {
-        output.writeMessage(1, getHighscores());
+      for (int i = 0; i < highscores_.size(); i++) {
+        output.writeMessage(1, highscores_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -3554,9 +3578,9 @@ public final class Service {
       if (size != -1) return size;
 
       size = 0;
-      if (highscores_ != null) {
+      for (int i = 0; i < highscores_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getHighscores());
+          .computeMessageSize(1, highscores_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3573,11 +3597,8 @@ public final class Service {
       }
       dev.freggy.stats.service.Service.GetTopFlashMapHighscoresResponse other = (dev.freggy.stats.service.Service.GetTopFlashMapHighscoresResponse) obj;
 
-      if (hasHighscores() != other.hasHighscores()) return false;
-      if (hasHighscores()) {
-        if (!getHighscores()
-            .equals(other.getHighscores())) return false;
-      }
+      if (!getHighscoresList()
+          .equals(other.getHighscoresList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3589,9 +3610,9 @@ public final class Service {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasHighscores()) {
+      if (getHighscoresCount() > 0) {
         hash = (37 * hash) + HIGHSCORES_FIELD_NUMBER;
-        hash = (53 * hash) + getHighscores().hashCode();
+        hash = (53 * hash) + getHighscoresList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -3721,16 +3742,17 @@ public final class Service {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getHighscoresFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
         if (highscoresBuilder_ == null) {
-          highscores_ = null;
+          highscores_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          highscores_ = null;
-          highscoresBuilder_ = null;
+          highscoresBuilder_.clear();
         }
         return this;
       }
@@ -3758,7 +3780,12 @@ public final class Service {
       @java.lang.Override
       public dev.freggy.stats.service.Service.GetTopFlashMapHighscoresResponse buildPartial() {
         dev.freggy.stats.service.Service.GetTopFlashMapHighscoresResponse result = new dev.freggy.stats.service.Service.GetTopFlashMapHighscoresResponse(this);
+        int from_bitField0_ = bitField0_;
         if (highscoresBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            highscores_ = java.util.Collections.unmodifiableList(highscores_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
           result.highscores_ = highscores_;
         } else {
           result.highscores_ = highscoresBuilder_.build();
@@ -3811,8 +3838,31 @@ public final class Service {
 
       public Builder mergeFrom(dev.freggy.stats.service.Service.GetTopFlashMapHighscoresResponse other) {
         if (other == dev.freggy.stats.service.Service.GetTopFlashMapHighscoresResponse.getDefaultInstance()) return this;
-        if (other.hasHighscores()) {
-          mergeHighscores(other.getHighscores());
+        if (highscoresBuilder_ == null) {
+          if (!other.highscores_.isEmpty()) {
+            if (highscores_.isEmpty()) {
+              highscores_ = other.highscores_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureHighscoresIsMutable();
+              highscores_.addAll(other.highscores_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.highscores_.isEmpty()) {
+            if (highscoresBuilder_.isEmpty()) {
+              highscoresBuilder_.dispose();
+              highscoresBuilder_ = null;
+              highscores_ = other.highscores_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              highscoresBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getHighscoresFieldBuilder() : null;
+            } else {
+              highscoresBuilder_.addAllMessages(other.highscores_);
+            }
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3842,119 +3892,241 @@ public final class Service {
         }
         return this;
       }
+      private int bitField0_;
 
-      private dev.freggy.stats.model.Flash.FlashMapStatisticCollection highscores_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          dev.freggy.stats.model.Flash.FlashMapStatisticCollection, dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder, dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder> highscoresBuilder_;
-      /**
-       * <code>.FlashMapStatisticCollection highscores = 1;</code>
-       * @return Whether the highscores field is set.
-       */
-      public boolean hasHighscores() {
-        return highscoresBuilder_ != null || highscores_ != null;
+      private java.util.List<dev.freggy.stats.model.Flash.FlashMapStatisticCollection> highscores_ =
+        java.util.Collections.emptyList();
+      private void ensureHighscoresIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          highscores_ = new java.util.ArrayList<dev.freggy.stats.model.Flash.FlashMapStatisticCollection>(highscores_);
+          bitField0_ |= 0x00000001;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          dev.freggy.stats.model.Flash.FlashMapStatisticCollection, dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder, dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder> highscoresBuilder_;
+
       /**
-       * <code>.FlashMapStatisticCollection highscores = 1;</code>
-       * @return The highscores.
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
        */
-      public dev.freggy.stats.model.Flash.FlashMapStatisticCollection getHighscores() {
+      public java.util.List<dev.freggy.stats.model.Flash.FlashMapStatisticCollection> getHighscoresList() {
         if (highscoresBuilder_ == null) {
-          return highscores_ == null ? dev.freggy.stats.model.Flash.FlashMapStatisticCollection.getDefaultInstance() : highscores_;
+          return java.util.Collections.unmodifiableList(highscores_);
         } else {
-          return highscoresBuilder_.getMessage();
+          return highscoresBuilder_.getMessageList();
         }
       }
       /**
-       * <code>.FlashMapStatisticCollection highscores = 1;</code>
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
        */
-      public Builder setHighscores(dev.freggy.stats.model.Flash.FlashMapStatisticCollection value) {
+      public int getHighscoresCount() {
+        if (highscoresBuilder_ == null) {
+          return highscores_.size();
+        } else {
+          return highscoresBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashMapStatisticCollection getHighscores(int index) {
+        if (highscoresBuilder_ == null) {
+          return highscores_.get(index);
+        } else {
+          return highscoresBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+       */
+      public Builder setHighscores(
+          int index, dev.freggy.stats.model.Flash.FlashMapStatisticCollection value) {
         if (highscoresBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          highscores_ = value;
+          ensureHighscoresIsMutable();
+          highscores_.set(index, value);
           onChanged();
         } else {
-          highscoresBuilder_.setMessage(value);
+          highscoresBuilder_.setMessage(index, value);
         }
-
         return this;
       }
       /**
-       * <code>.FlashMapStatisticCollection highscores = 1;</code>
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
        */
       public Builder setHighscores(
+          int index, dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder builderForValue) {
+        if (highscoresBuilder_ == null) {
+          ensureHighscoresIsMutable();
+          highscores_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          highscoresBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+       */
+      public Builder addHighscores(dev.freggy.stats.model.Flash.FlashMapStatisticCollection value) {
+        if (highscoresBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHighscoresIsMutable();
+          highscores_.add(value);
+          onChanged();
+        } else {
+          highscoresBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+       */
+      public Builder addHighscores(
+          int index, dev.freggy.stats.model.Flash.FlashMapStatisticCollection value) {
+        if (highscoresBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHighscoresIsMutable();
+          highscores_.add(index, value);
+          onChanged();
+        } else {
+          highscoresBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+       */
+      public Builder addHighscores(
           dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder builderForValue) {
         if (highscoresBuilder_ == null) {
-          highscores_ = builderForValue.build();
+          ensureHighscoresIsMutable();
+          highscores_.add(builderForValue.build());
           onChanged();
         } else {
-          highscoresBuilder_.setMessage(builderForValue.build());
+          highscoresBuilder_.addMessage(builderForValue.build());
         }
-
         return this;
       }
       /**
-       * <code>.FlashMapStatisticCollection highscores = 1;</code>
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
        */
-      public Builder mergeHighscores(dev.freggy.stats.model.Flash.FlashMapStatisticCollection value) {
+      public Builder addHighscores(
+          int index, dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder builderForValue) {
         if (highscoresBuilder_ == null) {
-          if (highscores_ != null) {
-            highscores_ =
-              dev.freggy.stats.model.Flash.FlashMapStatisticCollection.newBuilder(highscores_).mergeFrom(value).buildPartial();
-          } else {
-            highscores_ = value;
-          }
+          ensureHighscoresIsMutable();
+          highscores_.add(index, builderForValue.build());
           onChanged();
         } else {
-          highscoresBuilder_.mergeFrom(value);
+          highscoresBuilder_.addMessage(index, builderForValue.build());
         }
-
         return this;
       }
       /**
-       * <code>.FlashMapStatisticCollection highscores = 1;</code>
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+       */
+      public Builder addAllHighscores(
+          java.lang.Iterable<? extends dev.freggy.stats.model.Flash.FlashMapStatisticCollection> values) {
+        if (highscoresBuilder_ == null) {
+          ensureHighscoresIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, highscores_);
+          onChanged();
+        } else {
+          highscoresBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
        */
       public Builder clearHighscores() {
         if (highscoresBuilder_ == null) {
-          highscores_ = null;
+          highscores_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          highscores_ = null;
-          highscoresBuilder_ = null;
+          highscoresBuilder_.clear();
         }
-
         return this;
       }
       /**
-       * <code>.FlashMapStatisticCollection highscores = 1;</code>
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
        */
-      public dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder getHighscoresBuilder() {
-        
-        onChanged();
-        return getHighscoresFieldBuilder().getBuilder();
+      public Builder removeHighscores(int index) {
+        if (highscoresBuilder_ == null) {
+          ensureHighscoresIsMutable();
+          highscores_.remove(index);
+          onChanged();
+        } else {
+          highscoresBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>.FlashMapStatisticCollection highscores = 1;</code>
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
        */
-      public dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder getHighscoresOrBuilder() {
-        if (highscoresBuilder_ != null) {
-          return highscoresBuilder_.getMessageOrBuilder();
-        } else {
-          return highscores_ == null ?
-              dev.freggy.stats.model.Flash.FlashMapStatisticCollection.getDefaultInstance() : highscores_;
+      public dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder getHighscoresBuilder(
+          int index) {
+        return getHighscoresFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder getHighscoresOrBuilder(
+          int index) {
+        if (highscoresBuilder_ == null) {
+          return highscores_.get(index);  } else {
+          return highscoresBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>.FlashMapStatisticCollection highscores = 1;</code>
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      public java.util.List<? extends dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder> 
+           getHighscoresOrBuilderList() {
+        if (highscoresBuilder_ != null) {
+          return highscoresBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(highscores_);
+        }
+      }
+      /**
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder addHighscoresBuilder() {
+        return getHighscoresFieldBuilder().addBuilder(
+            dev.freggy.stats.model.Flash.FlashMapStatisticCollection.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+       */
+      public dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder addHighscoresBuilder(
+          int index) {
+        return getHighscoresFieldBuilder().addBuilder(
+            index, dev.freggy.stats.model.Flash.FlashMapStatisticCollection.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .FlashMapStatisticCollection highscores = 1;</code>
+       */
+      public java.util.List<dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder> 
+           getHighscoresBuilderList() {
+        return getHighscoresFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           dev.freggy.stats.model.Flash.FlashMapStatisticCollection, dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder, dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder> 
           getHighscoresFieldBuilder() {
         if (highscoresBuilder_ == null) {
-          highscoresBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          highscoresBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               dev.freggy.stats.model.Flash.FlashMapStatisticCollection, dev.freggy.stats.model.Flash.FlashMapStatisticCollection.Builder, dev.freggy.stats.model.Flash.FlashMapStatisticCollectionOrBuilder>(
-                  getHighscores(),
+                  highscores_,
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           highscores_ = null;
@@ -4019,28 +4191,22 @@ public final class Service {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bool withPlayerStats = 1;</code>
-     * @return The withPlayerStats.
-     */
-    boolean getWithPlayerStats();
-
-    /**
-     * <code>bool withMapStats = 2;</code>
+     * <code>bool withMapStats = 1;</code>
      * @return The withMapStats.
      */
     boolean getWithMapStats();
 
     /**
-     * <code>bool withCheckpoints = 3;</code>
+     * <code>bool withCheckpoints = 2;</code>
      * @return The withCheckpoints.
      */
     boolean getWithCheckpoints();
 
     /**
-     * <code>bool limit = 4;</code>
+     * <code>uint32 limit = 3;</code>
      * @return The limit.
      */
-    boolean getLimit();
+    int getLimit();
   }
   /**
    * Protobuf type {@code service.GetTopPlayersByPointsRequest}
@@ -4089,22 +4255,17 @@ public final class Service {
               break;
             case 8: {
 
-              withPlayerStats_ = input.readBool();
+              withMapStats_ = input.readBool();
               break;
             }
             case 16: {
 
-              withMapStats_ = input.readBool();
+              withCheckpoints_ = input.readBool();
               break;
             }
             case 24: {
 
-              withCheckpoints_ = input.readBool();
-              break;
-            }
-            case 32: {
-
-              limit_ = input.readBool();
+              limit_ = input.readUInt32();
               break;
             }
             default: {
@@ -4139,21 +4300,10 @@ public final class Service {
               dev.freggy.stats.service.Service.GetTopPlayersByPointsRequest.class, dev.freggy.stats.service.Service.GetTopPlayersByPointsRequest.Builder.class);
     }
 
-    public static final int WITHPLAYERSTATS_FIELD_NUMBER = 1;
-    private boolean withPlayerStats_;
-    /**
-     * <code>bool withPlayerStats = 1;</code>
-     * @return The withPlayerStats.
-     */
-    @java.lang.Override
-    public boolean getWithPlayerStats() {
-      return withPlayerStats_;
-    }
-
-    public static final int WITHMAPSTATS_FIELD_NUMBER = 2;
+    public static final int WITHMAPSTATS_FIELD_NUMBER = 1;
     private boolean withMapStats_;
     /**
-     * <code>bool withMapStats = 2;</code>
+     * <code>bool withMapStats = 1;</code>
      * @return The withMapStats.
      */
     @java.lang.Override
@@ -4161,10 +4311,10 @@ public final class Service {
       return withMapStats_;
     }
 
-    public static final int WITHCHECKPOINTS_FIELD_NUMBER = 3;
+    public static final int WITHCHECKPOINTS_FIELD_NUMBER = 2;
     private boolean withCheckpoints_;
     /**
-     * <code>bool withCheckpoints = 3;</code>
+     * <code>bool withCheckpoints = 2;</code>
      * @return The withCheckpoints.
      */
     @java.lang.Override
@@ -4172,14 +4322,14 @@ public final class Service {
       return withCheckpoints_;
     }
 
-    public static final int LIMIT_FIELD_NUMBER = 4;
-    private boolean limit_;
+    public static final int LIMIT_FIELD_NUMBER = 3;
+    private int limit_;
     /**
-     * <code>bool limit = 4;</code>
+     * <code>uint32 limit = 3;</code>
      * @return The limit.
      */
     @java.lang.Override
-    public boolean getLimit() {
+    public int getLimit() {
       return limit_;
     }
 
@@ -4197,17 +4347,14 @@ public final class Service {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (withPlayerStats_ != false) {
-        output.writeBool(1, withPlayerStats_);
-      }
       if (withMapStats_ != false) {
-        output.writeBool(2, withMapStats_);
+        output.writeBool(1, withMapStats_);
       }
       if (withCheckpoints_ != false) {
-        output.writeBool(3, withCheckpoints_);
+        output.writeBool(2, withCheckpoints_);
       }
-      if (limit_ != false) {
-        output.writeBool(4, limit_);
+      if (limit_ != 0) {
+        output.writeUInt32(3, limit_);
       }
       unknownFields.writeTo(output);
     }
@@ -4218,21 +4365,17 @@ public final class Service {
       if (size != -1) return size;
 
       size = 0;
-      if (withPlayerStats_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(1, withPlayerStats_);
-      }
       if (withMapStats_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, withMapStats_);
+          .computeBoolSize(1, withMapStats_);
       }
       if (withCheckpoints_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, withCheckpoints_);
+          .computeBoolSize(2, withCheckpoints_);
       }
-      if (limit_ != false) {
+      if (limit_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(4, limit_);
+          .computeUInt32Size(3, limit_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4249,8 +4392,6 @@ public final class Service {
       }
       dev.freggy.stats.service.Service.GetTopPlayersByPointsRequest other = (dev.freggy.stats.service.Service.GetTopPlayersByPointsRequest) obj;
 
-      if (getWithPlayerStats()
-          != other.getWithPlayerStats()) return false;
       if (getWithMapStats()
           != other.getWithMapStats()) return false;
       if (getWithCheckpoints()
@@ -4268,9 +4409,6 @@ public final class Service {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + WITHPLAYERSTATS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getWithPlayerStats());
       hash = (37 * hash) + WITHMAPSTATS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getWithMapStats());
@@ -4278,8 +4416,7 @@ public final class Service {
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getWithCheckpoints());
       hash = (37 * hash) + LIMIT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getLimit());
+      hash = (53 * hash) + getLimit();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4413,13 +4550,11 @@ public final class Service {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        withPlayerStats_ = false;
-
         withMapStats_ = false;
 
         withCheckpoints_ = false;
 
-        limit_ = false;
+        limit_ = 0;
 
         return this;
       }
@@ -4447,7 +4582,6 @@ public final class Service {
       @java.lang.Override
       public dev.freggy.stats.service.Service.GetTopPlayersByPointsRequest buildPartial() {
         dev.freggy.stats.service.Service.GetTopPlayersByPointsRequest result = new dev.freggy.stats.service.Service.GetTopPlayersByPointsRequest(this);
-        result.withPlayerStats_ = withPlayerStats_;
         result.withMapStats_ = withMapStats_;
         result.withCheckpoints_ = withCheckpoints_;
         result.limit_ = limit_;
@@ -4499,16 +4633,13 @@ public final class Service {
 
       public Builder mergeFrom(dev.freggy.stats.service.Service.GetTopPlayersByPointsRequest other) {
         if (other == dev.freggy.stats.service.Service.GetTopPlayersByPointsRequest.getDefaultInstance()) return this;
-        if (other.getWithPlayerStats() != false) {
-          setWithPlayerStats(other.getWithPlayerStats());
-        }
         if (other.getWithMapStats() != false) {
           setWithMapStats(other.getWithMapStats());
         }
         if (other.getWithCheckpoints() != false) {
           setWithCheckpoints(other.getWithCheckpoints());
         }
-        if (other.getLimit() != false) {
+        if (other.getLimit() != 0) {
           setLimit(other.getLimit());
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -4540,40 +4671,9 @@ public final class Service {
         return this;
       }
 
-      private boolean withPlayerStats_ ;
-      /**
-       * <code>bool withPlayerStats = 1;</code>
-       * @return The withPlayerStats.
-       */
-      @java.lang.Override
-      public boolean getWithPlayerStats() {
-        return withPlayerStats_;
-      }
-      /**
-       * <code>bool withPlayerStats = 1;</code>
-       * @param value The withPlayerStats to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWithPlayerStats(boolean value) {
-        
-        withPlayerStats_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool withPlayerStats = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearWithPlayerStats() {
-        
-        withPlayerStats_ = false;
-        onChanged();
-        return this;
-      }
-
       private boolean withMapStats_ ;
       /**
-       * <code>bool withMapStats = 2;</code>
+       * <code>bool withMapStats = 1;</code>
        * @return The withMapStats.
        */
       @java.lang.Override
@@ -4581,7 +4681,7 @@ public final class Service {
         return withMapStats_;
       }
       /**
-       * <code>bool withMapStats = 2;</code>
+       * <code>bool withMapStats = 1;</code>
        * @param value The withMapStats to set.
        * @return This builder for chaining.
        */
@@ -4592,7 +4692,7 @@ public final class Service {
         return this;
       }
       /**
-       * <code>bool withMapStats = 2;</code>
+       * <code>bool withMapStats = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearWithMapStats() {
@@ -4604,7 +4704,7 @@ public final class Service {
 
       private boolean withCheckpoints_ ;
       /**
-       * <code>bool withCheckpoints = 3;</code>
+       * <code>bool withCheckpoints = 2;</code>
        * @return The withCheckpoints.
        */
       @java.lang.Override
@@ -4612,7 +4712,7 @@ public final class Service {
         return withCheckpoints_;
       }
       /**
-       * <code>bool withCheckpoints = 3;</code>
+       * <code>bool withCheckpoints = 2;</code>
        * @param value The withCheckpoints to set.
        * @return This builder for chaining.
        */
@@ -4623,7 +4723,7 @@ public final class Service {
         return this;
       }
       /**
-       * <code>bool withCheckpoints = 3;</code>
+       * <code>bool withCheckpoints = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearWithCheckpoints() {
@@ -4633,33 +4733,33 @@ public final class Service {
         return this;
       }
 
-      private boolean limit_ ;
+      private int limit_ ;
       /**
-       * <code>bool limit = 4;</code>
+       * <code>uint32 limit = 3;</code>
        * @return The limit.
        */
       @java.lang.Override
-      public boolean getLimit() {
+      public int getLimit() {
         return limit_;
       }
       /**
-       * <code>bool limit = 4;</code>
+       * <code>uint32 limit = 3;</code>
        * @param value The limit to set.
        * @return This builder for chaining.
        */
-      public Builder setLimit(boolean value) {
+      public Builder setLimit(int value) {
         
         limit_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>bool limit = 4;</code>
+       * <code>uint32 limit = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearLimit() {
         
-        limit_ = false;
+        limit_ = 0;
         onChanged();
         return this;
       }
@@ -6770,31 +6870,31 @@ public final class Service {
       "hscoresRequest\022\r\n\005limit\030\001 \001(\r\022\027\n\017withChe" +
       "ckpoints\030\002 \001(\010\022\017\n\007mapName\030\003 \001(\t\"T\n GetTo" +
       "pFlashMapHighscoresResponse\0220\n\nhighscore" +
-      "s\030\001 \001(\0132\034.FlashMapStatisticCollection\"u\n" +
-      "\034GetTopPlayersByPointsRequest\022\027\n\017withPla" +
-      "yerStats\030\001 \001(\010\022\024\n\014withMapStats\030\002 \001(\010\022\027\n\017" +
-      "withCheckpoints\030\003 \001(\010\022\r\n\005limit\030\004 \001(\010\"H\n\035" +
-      "GetTopPlayersByPointsResponse\022\'\n\ntopPlay" +
-      "ers\030\001 \003(\0132\023.FlashAllStatistics\"U\n\035Update" +
-      "FlashStatisticsRequests\022\020\n\010playerId\030\001 \001(" +
-      "\t\022\"\n\005stats\030\002 \001(\0132\023.FlashAllStatistics\"\037\n" +
-      "\035UpdateFlashStatisticsResponse2\314\004\n\014Stats" +
-      "Service\022~\n\035GetFlashMapHighscoreForPlayer" +
-      "\022-.service.GetFlashMapHighscoreForPlayer" +
-      "Request\032..service.GetFlashMapHighscoreFo" +
-      "rPlayerResponse\022u\n\032GetGlobalFlashMapHigh" +
-      "score\022*.service.GetGlobalFlashMapHighsco" +
-      "reRequest\032+.service.GetGlobalFlashMapHig" +
-      "hscoreResponse\022o\n\030GetTopFlashMapHighscor" +
-      "es\022(.service.GetTopFlashMapHighscoresReq" +
-      "uest\032).service.GetTopFlashMapHighscoresR" +
-      "esponse\022k\n\032GetTopFlashPlayersByPoints\022%." +
-      "service.GetTopPlayersByPointsRequest\032&.s" +
-      "ervice.GetTopPlayersByPointsResponse\022g\n\025" +
-      "UpdateFlashStatistics\022&.service.UpdateFl" +
-      "ashStatisticsRequests\032&.service.UpdateFl" +
-      "ashStatisticsResponseB#\n\030dev.freggy.stat" +
-      "s.serviceZ\007serviceb\006proto3"
+      "s\030\001 \003(\0132\034.FlashMapStatisticCollection\"\\\n" +
+      "\034GetTopPlayersByPointsRequest\022\024\n\014withMap" +
+      "Stats\030\001 \001(\010\022\027\n\017withCheckpoints\030\002 \001(\010\022\r\n\005" +
+      "limit\030\003 \001(\r\"H\n\035GetTopPlayersByPointsResp" +
+      "onse\022\'\n\ntopPlayers\030\001 \003(\0132\023.FlashAllStati" +
+      "stics\"U\n\035UpdateFlashStatisticsRequests\022\020" +
+      "\n\010playerId\030\001 \001(\t\022\"\n\005stats\030\002 \001(\0132\023.FlashA" +
+      "llStatistics\"\037\n\035UpdateFlashStatisticsRes" +
+      "ponse2\314\004\n\014StatsService\022~\n\035GetFlashMapHig" +
+      "hscoreForPlayer\022-.service.GetFlashMapHig" +
+      "hscoreForPlayerRequest\032..service.GetFlas" +
+      "hMapHighscoreForPlayerResponse\022u\n\032GetGlo" +
+      "balFlashMapHighscore\022*.service.GetGlobal" +
+      "FlashMapHighscoreRequest\032+.service.GetGl" +
+      "obalFlashMapHighscoreResponse\022o\n\030GetTopF" +
+      "lashMapHighscores\022(.service.GetTopFlashM" +
+      "apHighscoresRequest\032).service.GetTopFlas" +
+      "hMapHighscoresResponse\022k\n\032GetTopFlashPla" +
+      "yersByPoints\022%.service.GetTopPlayersByPo" +
+      "intsRequest\032&.service.GetTopPlayersByPoi" +
+      "ntsResponse\022g\n\025UpdateFlashStatistics\022&.s" +
+      "ervice.UpdateFlashStatisticsRequests\032&.s" +
+      "ervice.UpdateFlashStatisticsResponseB#\n\030" +
+      "dev.freggy.stats.serviceZ\007serviceb\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6842,7 +6942,7 @@ public final class Service {
     internal_static_service_GetTopPlayersByPointsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_service_GetTopPlayersByPointsRequest_descriptor,
-        new java.lang.String[] { "WithPlayerStats", "WithMapStats", "WithCheckpoints", "Limit", });
+        new java.lang.String[] { "WithMapStats", "WithCheckpoints", "Limit", });
     internal_static_service_GetTopPlayersByPointsResponse_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_service_GetTopPlayersByPointsResponse_fieldAccessorTable = new
