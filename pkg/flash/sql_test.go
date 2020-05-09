@@ -3,6 +3,7 @@
 package flash
 
 import (
+	"context"
 	"database/sql"
 	"freggy.dev/stats/rpc/go/model"
 	"github.com/stretchr/testify/assert"
@@ -23,11 +24,11 @@ const UpdateUuid = "aabb023c-66ef-4168-9bf9-b898bee9f73f"
 //
 
 func connectMariaDB(t *testing.T) (DataAccess, *sql.DB) {
-	db, err := sql.Open("mysql", "root:secret@/test?parseTime=true")
+	db, err := sql.Open("mysql", "postgres:secret@/test?parseTime=true")
 	if err != nil {
 		t.Errorf("%v", err)
 	}
-	return &SQLDataAccess{db}, db
+	return &sqlDataAccess{db, db}, db
 }
 
 //
@@ -35,9 +36,17 @@ func connectMariaDB(t *testing.T) (DataAccess, *sql.DB) {
 //
 
 func TestSQLDataAccess_Get_MapStatistic_Successfully(t *testing.T) {
+
 	access, db := connectMariaDB(t)
 	defer db.Close()
-	checkMapStatisticPlayloadSuccessfully(t, access)
+
+	d, err := access.GetTopHighscores(context.Background(), "Map1", 1)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+
+	//checkMapStatisticPlayloadSuccessfully(t, access)
 }
 
 func TestSQLDataAccess_GetMapStatistic_ID_Non_Existent(t *testing.T) {

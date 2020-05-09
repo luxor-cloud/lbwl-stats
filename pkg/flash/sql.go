@@ -154,9 +154,9 @@ func (sda *sqlDataAccess) GetHighscoreForMapByUUID(ctx context.Context, uuid, ma
 	if err := sda.context(ctx).
 		Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_map_scores").
-		Where("uuid = ?", uuid).
-		And("map = ?", mapName).
-		GroupBy("map").
+		Where("player_map_scores.uuid = ?", uuid).
+		And("player_map_scores.map = ?", mapName).
+		GroupBy("player_map_scores.map").
 		One(&highscore); err != nil {
 		return PlayerMapScore{}, err
 	}

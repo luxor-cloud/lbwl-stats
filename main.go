@@ -33,14 +33,9 @@ func main() {
 		log.Fatalf("%v", err)
 	}
 
-	defer conn.Close()
+	defer conn.Close(nil)
 
 	handler := &statsserver.Server{FlashDAO: conn}
 	server := service.NewStatsServiceServer(handler, nil)
-
-	if config.UseTLS {
-		log.Fatal(http.ListenAndServeTLS(config.Address, config.TLSCert, config.TLSKey, server))
-	} else {
-		log.Fatal(http.ListenAndServe(config.Address, server))
-	}
+	log.Fatal(http.ListenAndServe(config.Address, server))
 }

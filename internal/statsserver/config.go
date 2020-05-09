@@ -11,19 +11,13 @@ var DefaultConfig = Config{
 		Host:     "localhost:5432",
 		Username: "postgres",
 		Password: "secret",
-		Database: "test",
+		Database: "postgres",
 	},
-	UseTLS:  false,
-	TLSKey:  "",
-	TLSCert: "",
 }
 
 type Config struct {
 	Address           string         `json:"address"`
-	FlashDBConnection DatabaseConfig `json:"flash_db_connection"`
-	UseTLS            bool           `json:"use_tls,omitempty"`
-	TLSKey            string         `json:"tls_key_path,omitempty"`
-	TLSCert           string         `json:"tls_cert_path,omitempty"`
+	FlashDBConnection DatabaseConfig `json:"flash_db"`
 }
 
 type DatabaseConfig struct {
