@@ -180,7 +180,7 @@ func (server *Server) UpdateFlashStatistics(
 	}()
 
 	if err := dao.UpdatePlayerStats(timeout, flash.PlayerStats{
-		UUID:          r.PlayerId,
+		UUID:          r.Stats.PlayerId,
 		Wins:          r.Stats.PlayerStats.Wins,
 		Deaths:        r.Stats.PlayerStats.Deaths,
 		Checkpoints:   r.Stats.PlayerStats.Checkpoints,
@@ -200,7 +200,7 @@ func (server *Server) UpdateFlashStatistics(
 		timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
 
 		if err := dao.AddMapScore(timeout, flash.PlayerMapScore{
-			UUID:           r.PlayerId,
+			UUID:           r.Stats.PlayerId,
 			Map:            mScore.Name,
 			TimeNeeded:     mScore.TimeNeeded,
 			AccomplishedAt: t,
@@ -219,7 +219,7 @@ func (server *Server) UpdateFlashStatistics(
 			timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
 
 			if err := dao.AddCheckpointScore(timeout, flash.PlayerCheckpointScore{
-				UUID:           r.PlayerId,
+				UUID:           r.Stats.PlayerId,
 				Map:            mScore.Name,
 				Checkpoint:     byte(cScore.Checkpoint),
 				TimeNeeded:     cScore.TimeNeeded,

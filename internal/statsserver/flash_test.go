@@ -632,3 +632,89 @@ func TestServer_GetTopFlashPlayersByPoints_WithAllStats_Successfully(t *testing.
 
 	assert.ElementsMatch(t, top.TopPlayers, r)
 }
+
+//
+// UpdateFlashStatistics
+//
+
+func TestServer_UpdateFlashStatistics_Successfully(t *testing.T) {
+	ctrl := gomock.NewController(t)
+	defer ctrl.Finish()
+
+	acc, _ := time.Parse("2006-01-02 15:04:05", "2016-12-10 14:30:23.145890")
+
+	playerStats := flash.PlayerStats{
+		UUID:          "1",
+		Wins:          1,
+		Deaths:        2,
+		Checkpoints:   3,
+		GamesPlayed:   4,
+		InstantDeaths: 5,
+		Points:        6,
+	}
+	
+	mapStats := flash.PlayerMapScore{
+		UUID:           "1",
+		Map:            "some-map",
+		TimeNeeded:     1,
+		AccomplishedAt: acc,
+	}
+	
+	checkpointStats := flash.PlayerCheckpointScore{
+		UUID:           "1",
+		Map:            "some-map",
+		Checkpoint:     1,
+		TimeNeeded:     1,
+		AccomplishedAt: acc,
+	}
+
+	damock := mock.NewMockDataAccess(ctrl)
+	txmock := mock.NewMockDataAccess(ctrl)
+
+	damock.EXPECT().WithTX(gomock.Any()).Return(txmock, nil)
+	txmock.EXPECT().Close(gomock.Any())
+	updatePlayerStats := txmock.EXPECT().UpdatePlayerStats(gomock.Any(), playerStats).Times(1)
+	addMapScore := txmock.EXPECT().AddMapScore(gomock.Any(), mapStats).Times(1).After(updatePlayerStats)
+	txmock.EXPECT().AddCheckpointScore(gomock.Any(), checkpointStats).Times(1).After(addMapScore)
+
+	s := &Server{FlashDAO: damock}
+	req := &service.UpdateFlashStatisticsRequests{
+		Stats: &model.FlashAllStatistics{
+			PlayerId:    playerStats.UUID,
+			PlayerStats: &model.FlashPlayerStatistic{
+				Wins:          playerStats.Wins,
+				Deaths:        playerStats.Deaths,
+				GamesPlayed:   playerStats.GamesPlayed,
+				InstantDeaths: playerStats.InstantDeaths,
+				Checkpoints:   playerStats.Checkpoints,
+				Points:        playerStats.Points,
+			},
+			MapStats:    []*model.FlashMapStatistic{
+				{
+					Name:           mapStats.Map,
+					TimeNeeded:     mapStats.TimeNeeded,
+					AccomplishedAt: "2016-12-10 14:30:23.145890",
+					Checkpoints:    []*model.FlashCheckpointStatistic{
+						{
+							Checkpoint:     int32(checkpointStats.Checkpoint),
+							TimeNeeded:     checkpointStats.TimeNeeded,
+							AccomplishedAt: "2016-12-10 14:30:23.145890",
+						},
+					},
+				},
+			},
+		},
+	}
+
+	_, err := s.UpdateFlashStatistics(context.Background(), req)
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+
+
+
+
+
+
