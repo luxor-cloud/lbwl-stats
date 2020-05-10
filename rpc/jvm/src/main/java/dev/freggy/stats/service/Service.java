@@ -5614,18 +5614,6 @@ public final class Service {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string playerId = 1;</code>
-     * @return The playerId.
-     */
-    java.lang.String getPlayerId();
-    /**
-     * <code>string playerId = 1;</code>
-     * @return The bytes for playerId.
-     */
-    com.google.protobuf.ByteString
-        getPlayerIdBytes();
-
-    /**
      * <code>.FlashAllStatistics stats = 2;</code>
      * @return Whether the stats field is set.
      */
@@ -5653,7 +5641,6 @@ public final class Service {
       super(builder);
     }
     private UpdateFlashStatisticsRequests() {
-      playerId_ = "";
     }
 
     @java.lang.Override
@@ -5686,12 +5673,6 @@ public final class Service {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              playerId_ = s;
-              break;
-            }
             case 18: {
               dev.freggy.stats.model.Flash.FlashAllStatistics.Builder subBuilder = null;
               if (stats_ != null) {
@@ -5737,44 +5718,6 @@ public final class Service {
               dev.freggy.stats.service.Service.UpdateFlashStatisticsRequests.class, dev.freggy.stats.service.Service.UpdateFlashStatisticsRequests.Builder.class);
     }
 
-    public static final int PLAYERID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object playerId_;
-    /**
-     * <code>string playerId = 1;</code>
-     * @return The playerId.
-     */
-    @java.lang.Override
-    public java.lang.String getPlayerId() {
-      java.lang.Object ref = playerId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        playerId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string playerId = 1;</code>
-     * @return The bytes for playerId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getPlayerIdBytes() {
-      java.lang.Object ref = playerId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        playerId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     public static final int STATS_FIELD_NUMBER = 2;
     private dev.freggy.stats.model.Flash.FlashAllStatistics stats_;
     /**
@@ -5815,9 +5758,6 @@ public final class Service {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getPlayerIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerId_);
-      }
       if (stats_ != null) {
         output.writeMessage(2, getStats());
       }
@@ -5830,9 +5770,6 @@ public final class Service {
       if (size != -1) return size;
 
       size = 0;
-      if (!getPlayerIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerId_);
-      }
       if (stats_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getStats());
@@ -5852,8 +5789,6 @@ public final class Service {
       }
       dev.freggy.stats.service.Service.UpdateFlashStatisticsRequests other = (dev.freggy.stats.service.Service.UpdateFlashStatisticsRequests) obj;
 
-      if (!getPlayerId()
-          .equals(other.getPlayerId())) return false;
       if (hasStats() != other.hasStats()) return false;
       if (hasStats()) {
         if (!getStats()
@@ -5870,8 +5805,6 @@ public final class Service {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
-      hash = (53 * hash) + getPlayerId().hashCode();
       if (hasStats()) {
         hash = (37 * hash) + STATS_FIELD_NUMBER;
         hash = (53 * hash) + getStats().hashCode();
@@ -6009,8 +5942,6 @@ public final class Service {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        playerId_ = "";
-
         if (statsBuilder_ == null) {
           stats_ = null;
         } else {
@@ -6043,7 +5974,6 @@ public final class Service {
       @java.lang.Override
       public dev.freggy.stats.service.Service.UpdateFlashStatisticsRequests buildPartial() {
         dev.freggy.stats.service.Service.UpdateFlashStatisticsRequests result = new dev.freggy.stats.service.Service.UpdateFlashStatisticsRequests(this);
-        result.playerId_ = playerId_;
         if (statsBuilder_ == null) {
           result.stats_ = stats_;
         } else {
@@ -6097,10 +6027,6 @@ public final class Service {
 
       public Builder mergeFrom(dev.freggy.stats.service.Service.UpdateFlashStatisticsRequests other) {
         if (other == dev.freggy.stats.service.Service.UpdateFlashStatisticsRequests.getDefaultInstance()) return this;
-        if (!other.getPlayerId().isEmpty()) {
-          playerId_ = other.playerId_;
-          onChanged();
-        }
         if (other.hasStats()) {
           mergeStats(other.getStats());
         }
@@ -6130,82 +6056,6 @@ public final class Service {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-
-      private java.lang.Object playerId_ = "";
-      /**
-       * <code>string playerId = 1;</code>
-       * @return The playerId.
-       */
-      public java.lang.String getPlayerId() {
-        java.lang.Object ref = playerId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          playerId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string playerId = 1;</code>
-       * @return The bytes for playerId.
-       */
-      public com.google.protobuf.ByteString
-          getPlayerIdBytes() {
-        java.lang.Object ref = playerId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          playerId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string playerId = 1;</code>
-       * @param value The playerId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPlayerId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        playerId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string playerId = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPlayerId() {
-        
-        playerId_ = getDefaultInstance().getPlayerId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string playerId = 1;</code>
-       * @param value The bytes for playerId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPlayerIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        playerId_ = value;
-        onChanged();
         return this;
       }
 
@@ -6875,26 +6725,25 @@ public final class Service {
       "Stats\030\001 \001(\010\022\027\n\017withCheckpoints\030\002 \001(\010\022\r\n\005" +
       "limit\030\003 \001(\r\"H\n\035GetTopPlayersByPointsResp" +
       "onse\022\'\n\ntopPlayers\030\001 \003(\0132\023.FlashAllStati" +
-      "stics\"U\n\035UpdateFlashStatisticsRequests\022\020" +
-      "\n\010playerId\030\001 \001(\t\022\"\n\005stats\030\002 \001(\0132\023.FlashA" +
-      "llStatistics\"\037\n\035UpdateFlashStatisticsRes" +
-      "ponse2\314\004\n\014StatsService\022~\n\035GetFlashMapHig" +
-      "hscoreForPlayer\022-.service.GetFlashMapHig" +
-      "hscoreForPlayerRequest\032..service.GetFlas" +
-      "hMapHighscoreForPlayerResponse\022u\n\032GetGlo" +
-      "balFlashMapHighscore\022*.service.GetGlobal" +
-      "FlashMapHighscoreRequest\032+.service.GetGl" +
-      "obalFlashMapHighscoreResponse\022o\n\030GetTopF" +
-      "lashMapHighscores\022(.service.GetTopFlashM" +
-      "apHighscoresRequest\032).service.GetTopFlas" +
-      "hMapHighscoresResponse\022k\n\032GetTopFlashPla" +
-      "yersByPoints\022%.service.GetTopPlayersByPo" +
-      "intsRequest\032&.service.GetTopPlayersByPoi" +
-      "ntsResponse\022g\n\025UpdateFlashStatistics\022&.s" +
-      "ervice.UpdateFlashStatisticsRequests\032&.s" +
-      "ervice.UpdateFlashStatisticsResponseB#\n\030" +
-      "dev.freggy.stats.serviceZ\007serviceb\006proto" +
-      "3"
+      "stics\"C\n\035UpdateFlashStatisticsRequests\022\"" +
+      "\n\005stats\030\002 \001(\0132\023.FlashAllStatistics\"\037\n\035Up" +
+      "dateFlashStatisticsResponse2\314\004\n\014StatsSer" +
+      "vice\022~\n\035GetFlashMapHighscoreForPlayer\022-." +
+      "service.GetFlashMapHighscoreForPlayerReq" +
+      "uest\032..service.GetFlashMapHighscoreForPl" +
+      "ayerResponse\022u\n\032GetGlobalFlashMapHighsco" +
+      "re\022*.service.GetGlobalFlashMapHighscoreR" +
+      "equest\032+.service.GetGlobalFlashMapHighsc" +
+      "oreResponse\022o\n\030GetTopFlashMapHighscores\022" +
+      "(.service.GetTopFlashMapHighscoresReques" +
+      "t\032).service.GetTopFlashMapHighscoresResp" +
+      "onse\022k\n\032GetTopFlashPlayersByPoints\022%.ser" +
+      "vice.GetTopPlayersByPointsRequest\032&.serv" +
+      "ice.GetTopPlayersByPointsResponse\022g\n\025Upd" +
+      "ateFlashStatistics\022&.service.UpdateFlash" +
+      "StatisticsRequests\032&.service.UpdateFlash" +
+      "StatisticsResponseB#\n\030dev.freggy.stats.s" +
+      "erviceZ\007serviceb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6954,7 +6803,7 @@ public final class Service {
     internal_static_service_UpdateFlashStatisticsRequests_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_service_UpdateFlashStatisticsRequests_descriptor,
-        new java.lang.String[] { "PlayerId", "Stats", });
+        new java.lang.String[] { "Stats", });
     internal_static_service_UpdateFlashStatisticsResponse_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_service_UpdateFlashStatisticsResponse_fieldAccessorTable = new
