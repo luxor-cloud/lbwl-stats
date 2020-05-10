@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-docker run --name pg \
+docker run --rm --name statspg \
+  -d \
   -p 5432:5432 \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=secret \
