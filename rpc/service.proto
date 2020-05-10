@@ -60,7 +60,6 @@ message GetTopPlayersByPointsResponse {
 // UpdateFlashStatistics
 
 message UpdateFlashStatisticsRequests {
-    string playerId = 1;
     FlashAllStatistics stats = 2;
 }
 
