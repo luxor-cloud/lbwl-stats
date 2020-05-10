@@ -82,32 +82,50 @@ func (sda *sqlDataAccess) GetTopPlayerByPoints(ctx context.Context, limit int) (
 		OrderBy("points DESC").
 		Limit(limit).
 		All(&players); err != nil {
-			return nil, err
+		return nil, err
 	}
 	return players, nil
 }
 
 func (sda *sqlDataAccess) UpdatePlayerStats(ctx context.Context, diff PlayerStats) error {
-	_, err := sda.context(ctx).
-		Update("flash.player_stats").
-		Set("wins = ? + wins", diff.Wins).
-		Set("deaths = ? + deaths", diff.Deaths).
-		Set("checkpoints = ? + checkpoints", diff.Checkpoints).
-		Set("games_played = ? + games_played", diff.GamesPlayed).
-		Set("instant_deaths = ? + instant_deaths", diff.InstantDeaths).
-		Set("points = ? + points", diff.Points).
-		Where("uuid = ?", diff.UUID).
-		Exec()
+	query := `
+		INSERT INTO flash.player_stats (uuid, wins, deaths, checkpoints, games_played, instant_deaths, points)
+		VALUES (?, ?, ?, ?, ?, ?, ?)
+		ON CONFLICT (uuid) DO UPDATE
+    	SET wins           = player_stats.wins + ?,
+        	deaths         = player_stats.deaths + ?,
+        	checkpoints    = player_stats.checkpoints + ?,
+        	games_played   = player_stats.games_played + 1,
+        	instant_deaths = player_stats.instant_deaths + ?,
+        	points         = player_stats.points + ?;
+	`
+	_, err := sda.context(ctx).Exec(
+		query,
+		diff.UUID,
+		diff.Wins,
+		diff.Deaths,
+		diff.Checkpoints,
+		diff.GamesPlayed,
+		diff.InstantDeaths,
+		diff.Points,
+
+		diff.Wins,
+		diff.Deaths,
+		diff.Checkpoints,
+		diff.InstantDeaths,
+		diff.Points,
+	)
 	return err
 }
 
 func (sda *sqlDataAccess) GetHighscorePerCheckpointForMapAndUUID(ctx context.Context, uuid, mapName string) ([]PlayerCheckpointScore, error) {
 	var highscores []PlayerCheckpointScore
 	if err := sda.context(ctx).
-		Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
-		From("flash.player_checkpoint_score").
+		Select(db.Raw("DISTINCT ON(checkpoint) checkpoint, uuid, map, accomplished_at, MIN(time_needed) AS time_needed")).
+		From("flash.player_checkpoint_scores").
 		Where("uuid = ? AND map = ?", uuid, mapName).
-		GroupBy("checkpoint").
+		GroupBy("accomplished_at", "checkpoint", "uuid", "map").
+		OrderBy("checkpoint", "time_needed").
 		All(&highscores); err != nil {
 		return nil, err
 	}
@@ -117,10 +135,11 @@ func (sda *sqlDataAccess) GetHighscorePerCheckpointForMapAndUUID(ctx context.Con
 func (sda *sqlDataAccess) GetBestHighscorePerCheckpointForMap(ctx context.Context, mapName string) ([]PlayerCheckpointScore, error) {
 	var highscores []PlayerCheckpointScore
 	if err := sda.context(ctx).
-		Select("checkpoint", "uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
-		From("flash.player_checkpoint_score").
+		Select(db.Raw("DISTINCT ON(checkpoint) checkpoint, uuid, map, accomplished_at, MIN(time_needed) AS time_needed")).
+		From("flash.player_checkpoint_scores").
 		Where("map = ?", mapName).
-		GroupBy("uuid").
+		GroupBy("accomplished_at", "uuid", "map").
+		OrderBy("checkpoint", "time_needed").
 		All(&highscores); err != nil {
 		return nil, err
 	}
@@ -142,7 +161,7 @@ func (sda *sqlDataAccess) GetHighscorePerMapByUUID(ctx context.Context, uuid str
 		Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_map_scores").
 		Where("uuid = ?", uuid).
-		GroupBy("map").
+		GroupBy("map, uuid, accomplished_at").
 		All(&highscores); err != nil {
 		return nil, err
 	}
@@ -154,9 +173,9 @@ func (sda *sqlDataAccess) GetHighscoreForMapByUUID(ctx context.Context, uuid, ma
 	if err := sda.context(ctx).
 		Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_map_scores").
-		Where("player_map_scores.uuid = ?", uuid).
-		And("player_map_scores.map = ?", mapName).
-		GroupBy("player_map_scores.map").
+		Where("uuid = ?", uuid).
+		And("map = ?", mapName).
+		GroupBy("map, uuid, accomplished_at").
 		One(&highscore); err != nil {
 		return PlayerMapScore{}, err
 	}
@@ -169,7 +188,7 @@ func (sda *sqlDataAccess) GetBestHighscore(ctx context.Context, mapName string) 
 		Select("uuid", "map", "accomplished_at", db.Raw("MIN(time_needed) as time_needed")).
 		From("flash.player_map_score").
 		Where("map = ?", mapName).
-		GroupBy("uuid").
+		GroupBy("uuid, map, accomplished_at").
 		Limit(1).
 		One(&highscore); err != nil {
 		return PlayerMapScore{}, err
