@@ -1,4 +1,4 @@
-package statsserver
+package v1
 
 import (
 	"context"
@@ -8,10 +8,9 @@ import (
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 
+	servicev1 "freggy.dev/stats/internal/service/v1"
 	"freggy.dev/stats/mock"
 	"freggy.dev/stats/pkg/flash"
-	"freggy.dev/stats/rpc/go/model"
-	"freggy.dev/stats/rpc/go/service"
 )
 
 //
@@ -28,7 +27,7 @@ func Test_GetFlashMapHighscoreForPlayer_WithoutCheckpoints_Successfuly(t *testin
 
 	s := &Server{FlashDAO: damock}
 
-	req := &service.GetFlashMapHighscoreForPlayerRequest{
+	req := &servicev1.GetFlashMapHighscoreForPlayerRequest{
 		PlayerId:        "1234",
 		WithCheckpoints: false,
 		MapName:         "some-map",
@@ -46,7 +45,7 @@ func TestServer_GetFlashMapHighscoreForPlayer_WithCheckpoints_Successfully(t *te
 	damock.EXPECT().GetHighscorePerCheckpointForMapAndUUID(gomock.Any(), "1234", "some-map")
 
 	s := &Server{FlashDAO: damock}
-	req := &service.GetFlashMapHighscoreForPlayerRequest{
+	req := &servicev1.GetFlashMapHighscoreForPlayerRequest{
 		PlayerId:        "1234",
 		WithCheckpoints: true,
 		MapName:         "some-map",
@@ -73,7 +72,7 @@ func TestServer_GetGlobalFlashMapHighscore_WithoutCheckpoints_Successfully(t *te
 	damock.EXPECT().GetHighscorePerCheckpointForMapAndUUID(gomock.Any(), "1234", "some-map").Times(0)
 
 	s := &Server{FlashDAO: damock}
-	req := &service.GetGlobalFlashMapHighscoreRequest{
+	req := &servicev1.GetGlobalFlashMapHighscoreRequest{
 		WithCheckpoints: false,
 		MapName:         "some-map",
 	}
@@ -94,7 +93,7 @@ func TestServer_GetGlobalFlashMapHighscore_WithCheckpoints_Successfully(t *testi
 	damock.EXPECT().GetHighscorePerCheckpointForMapAndUUID(gomock.Any(), "1234", "some-map").Times(1)
 
 	s := &Server{FlashDAO: damock}
-	req := &service.GetGlobalFlashMapHighscoreRequest{
+	req := &servicev1.GetGlobalFlashMapHighscoreRequest{
 		WithCheckpoints: true,
 		MapName:         "some-map",
 	}
@@ -147,7 +146,7 @@ func TestServer_GetTopFlashMapHighscores_WithoutCheckpoints_Successfully(t *test
 	damock.EXPECT().GetTopHighscores(gomock.Any(), "some-map", limit).Return(mScores, nil)
 
 	s := &Server{FlashDAO: damock}
-	req := &service.GetTopFlashMapHighscoresRequest{
+	req := &servicev1.GetTopFlashMapHighscoresRequest{
 		WithCheckpoints: false,
 		MapName:         "some-map",
 		Limit:           uint32(limit),
@@ -158,11 +157,11 @@ func TestServer_GetTopFlashMapHighscores_WithoutCheckpoints_Successfully(t *test
 		t.Fatal(err)
 	}
 
-	expected := make([]*model.FlashMapStatisticCollection, 0)
+	expected := make([]*servicev1.FlashMapStatisticCollection, 0)
 	for _, score := range mScores {
-		mstat := make([]*model.FlashMapStatistic, 0)
+		mstat := make([]*servicev1.FlashMapStatistic, 0)
 		mstat = append(mstat, wrapPlayerMapScore(score, nil))
-		expected = append(expected, &model.FlashMapStatisticCollection{
+		expected = append(expected, &servicev1.FlashMapStatisticCollection{
 			PlayerId: score.UUID,
 			Maps:     mstat,
 		})
@@ -256,7 +255,7 @@ func TestServer_GetTopFlashMapHighscores_WithCheckpoints_Successfully(t *testing
 	}
 
 	s := &Server{FlashDAO: damock}
-	req := &service.GetTopFlashMapHighscoresRequest{
+	req := &servicev1.GetTopFlashMapHighscoresRequest{
 		WithCheckpoints: true,
 		MapName:         "some-map",
 		Limit:           uint32(limit),
@@ -267,11 +266,11 @@ func TestServer_GetTopFlashMapHighscores_WithCheckpoints_Successfully(t *testing
 		t.Fatal(err)
 	}
 
-	expected := make([]*model.FlashMapStatisticCollection, 0)
+	expected := make([]*servicev1.FlashMapStatisticCollection, 0)
 	for _, score := range mScores {
-		mstat := make([]*model.FlashMapStatistic, 0)
+		mstat := make([]*servicev1.FlashMapStatistic, 0)
 		mstat = append(mstat, wrapPlayerMapScore(score, []flash.PlayerCheckpointScore{cScores[score.UUID]}))
-		expected = append(expected, &model.FlashMapStatisticCollection{
+		expected = append(expected, &servicev1.FlashMapStatisticCollection{
 			PlayerId: score.UUID,
 			Maps:     mstat,
 		})
@@ -434,12 +433,12 @@ func topPlayersByPoints() []flash.Player {
 	}
 }
 
-func allWithoutMapStats() []*model.FlashAllStatistics {
+func allWithoutMapStats() []*servicev1.FlashAllStatistics {
 	players := topPlayersByPoints()
-	return []*model.FlashAllStatistics{
+	return []*servicev1.FlashAllStatistics{
 		{
 			PlayerId:    "1",
-			PlayerStats: &model.FlashPlayerStatistic{
+			PlayerStats: &servicev1.FlashPlayerStatistic{
 				Wins:          players[0].Stats.Wins,
 				Deaths:        players[0].Stats.Deaths,
 				GamesPlayed:   players[0].Stats.GamesPlayed,
@@ -451,7 +450,7 @@ func allWithoutMapStats() []*model.FlashAllStatistics {
 		},
 		{
 			PlayerId:    "2",
-			PlayerStats: &model.FlashPlayerStatistic{
+			PlayerStats: &servicev1.FlashPlayerStatistic{
 				Wins:          players[1].Stats.Wins,
 				Deaths:        players[1].Stats.Deaths,
 				GamesPlayed:   players[1].Stats.GamesPlayed,
@@ -463,7 +462,7 @@ func allWithoutMapStats() []*model.FlashAllStatistics {
 		},
 		{
 			PlayerId:    "3",
-			PlayerStats: &model.FlashPlayerStatistic{
+			PlayerStats: &servicev1.FlashPlayerStatistic{
 				Wins:          players[2].Stats.Wins,
 				Deaths:        players[2].Stats.Deaths,
 				GamesPlayed:   players[2].Stats.GamesPlayed,
@@ -475,7 +474,7 @@ func allWithoutMapStats() []*model.FlashAllStatistics {
 		},
 		{
 			PlayerId:    "4",
-			PlayerStats: &model.FlashPlayerStatistic{
+			PlayerStats: &servicev1.FlashPlayerStatistic{
 				Wins:          players[3].Stats.Wins,
 				Deaths:        players[3].Stats.Deaths,
 				GamesPlayed:   players[3].Stats.GamesPlayed,
@@ -487,7 +486,7 @@ func allWithoutMapStats() []*model.FlashAllStatistics {
 		},
 		{
 			PlayerId:    "5",
-			PlayerStats: &model.FlashPlayerStatistic{
+			PlayerStats: &servicev1.FlashPlayerStatistic{
 				Wins:          players[4].Stats.Wins,
 				Deaths:        players[4].Stats.Deaths,
 				GamesPlayed:   players[4].Stats.GamesPlayed,
@@ -500,15 +499,15 @@ func allWithoutMapStats() []*model.FlashAllStatistics {
 	}
 }
 
-func allWithMapStatsWithouCheckpointStats() []*model.FlashAllStatistics {
+func allWithMapStatsWithouCheckpointStats() []*servicev1.FlashAllStatistics {
 	players := topPlayersByPoints()
 	mapStats := allWithoutMapStats()
 
-	mapStats[0].MapStats = make([]*model.FlashMapStatistic, 0)
-	mapStats[1].MapStats = make([]*model.FlashMapStatistic, 0)
-	mapStats[2].MapStats = make([]*model.FlashMapStatistic, 0)
-	mapStats[3].MapStats = make([]*model.FlashMapStatistic, 0)
-	mapStats[4].MapStats = make([]*model.FlashMapStatistic, 0)
+	mapStats[0].MapStats = make([]*servicev1.FlashMapStatistic, 0)
+	mapStats[1].MapStats = make([]*servicev1.FlashMapStatistic, 0)
+	mapStats[2].MapStats = make([]*servicev1.FlashMapStatistic, 0)
+	mapStats[3].MapStats = make([]*servicev1.FlashMapStatistic, 0)
+	mapStats[4].MapStats = make([]*servicev1.FlashMapStatistic, 0)
 
 	mapStats[0].MapStats = append(mapStats[0].MapStats, wrapPlayerMapScore(players[0].MapScores[0], nil))
 	mapStats[1].MapStats = append(mapStats[1].MapStats, wrapPlayerMapScore(players[1].MapScores[0], nil))
@@ -519,7 +518,7 @@ func allWithMapStatsWithouCheckpointStats() []*model.FlashAllStatistics {
 	return mapStats
 }
 
-func allStats() []*model.FlashAllStatistics {
+func allStats() []*servicev1.FlashAllStatistics {
 	players := topPlayersByPoints()
 	mapStats := allWithMapStatsWithouCheckpointStats()
 
@@ -544,7 +543,7 @@ func TestServer_GetTopFlashPlayersByPoints_WithoutMapStats_Successfully(t *testi
 	damock.EXPECT().GetHighscorePerCheckpointForMapAndUUID(gomock.Any(), gomock.Any(), gomock.Any()).Times(0)
 
 	s := &Server{FlashDAO: damock}
-	req := &service.GetTopPlayersByPointsRequest{
+	req := &servicev1.GetTopPlayersByPointsRequest{
 		WithMapStats:    false,
 		WithCheckpoints: false,
 		Limit:           uint32(len(players)),
@@ -577,7 +576,7 @@ func TestServer_GetTopFlashPlayersByPoints_WithMapStats_WithoutCheckpointStats_S
 	damock.EXPECT().GetHighscorePerCheckpointForMapAndUUID(gomock.Any(), gomock.Any(), gomock.Any()).Times(0)
 
 	s := &Server{FlashDAO: damock}
-	req := &service.GetTopPlayersByPointsRequest{
+	req := &servicev1.GetTopPlayersByPointsRequest{
 		WithMapStats:    true,
 		WithCheckpoints: false,
 		Limit:           uint32(len(players)),
@@ -617,7 +616,7 @@ func TestServer_GetTopFlashPlayersByPoints_WithAllStats_Successfully(t *testing.
 	}
 
 	s := &Server{FlashDAO: damock}
-	req := &service.GetTopPlayersByPointsRequest{
+	req := &servicev1.GetTopPlayersByPointsRequest{
 		WithMapStats:    true,
 		WithCheckpoints: true,
 		Limit:           uint32(len(players)),
@@ -678,10 +677,10 @@ func TestServer_UpdateFlashStatistics_Successfully(t *testing.T) {
 	txmock.EXPECT().AddCheckpointScore(gomock.Any(), checkpointStats).Times(1).After(addMapScore)
 
 	s := &Server{FlashDAO: damock}
-	req := &service.UpdateFlashStatisticsRequests{
-		Stats: &model.FlashAllStatistics{
+	req := &servicev1.UpdateFlashStatisticsRequests{
+		Stats: &servicev1.FlashAllStatistics{
 			PlayerId:    playerStats.UUID,
-			PlayerStats: &model.FlashPlayerStatistic{
+			PlayerStats: &servicev1.FlashPlayerStatistic{
 				Wins:          playerStats.Wins,
 				Deaths:        playerStats.Deaths,
 				GamesPlayed:   playerStats.GamesPlayed,
@@ -689,12 +688,12 @@ func TestServer_UpdateFlashStatistics_Successfully(t *testing.T) {
 				Checkpoints:   playerStats.Checkpoints,
 				Points:        playerStats.Points,
 			},
-			MapStats:    []*model.FlashMapStatistic{
+			MapStats:    []*servicev1.FlashMapStatistic{
 				{
 					Name:           mapStats.Map,
 					TimeNeeded:     mapStats.TimeNeeded,
 					AccomplishedAt: "2016-12-10 14:30:23.145890",
-					Checkpoints:    []*model.FlashCheckpointStatistic{
+					Checkpoints:    []*servicev1.FlashCheckpointStatistic{
 						{
 							Checkpoint:     int32(checkpointStats.Checkpoint),
 							TimeNeeded:     checkpointStats.TimeNeeded,
