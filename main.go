@@ -2,11 +2,9 @@ package main
 
 import (
 	"log"
-	"net/http"
 
 	"freggy.dev/stats/internal/statsserver"
 	"freggy.dev/stats/pkg/flash"
-	"freggy.dev/stats/rpc/go/service"
 )
 
 func main() {
@@ -34,8 +32,4 @@ func main() {
 	}
 
 	defer conn.Close(nil)
-
-	handler := &statsserver.Server{FlashDAO: conn}
-	server := service.NewStatsServiceServer(handler, nil)
-	log.Fatal(http.ListenAndServe(config.Address, server))
 }

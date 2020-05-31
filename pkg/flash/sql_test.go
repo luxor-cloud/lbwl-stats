@@ -2,13 +2,12 @@
 
 package flash
 
+/*
+
 import (
 	"context"
-	"database/sql"
-	"freggy.dev/stats/rpc/go/model"
-	"github.com/stretchr/testify/assert"
+	"log"
 	"testing"
-	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -23,32 +22,47 @@ const UpdateUuid = "aabb023c-66ef-4168-9bf9-b898bee9f73f"
 // Connect methods for different databases
 //
 
-func connectMariaDB(t *testing.T) (DataAccess, *sql.DB) {
-	db, err := sql.Open("mysql", "postgres:secret@/test?parseTime=true")
+func connectMariaDB(t *testing.T) (DataAccess) {
+
+	ac, err := ConnectSQL("postgres", "secret", "localhost", "postgres")
 	if err != nil {
-		t.Errorf("%v", err)
+		t.Fatal(err)
 	}
-	return &sqlDataAccess{db, db}, db
+	return ac
 }
 
 //
 // SQL specific checks
 //
 
+
 func TestSQLDataAccess_Get_MapStatistic_Successfully(t *testing.T) {
+	access := connectMariaDB(t)
+	defer access.Close(nil)
 
-	access, db := connectMariaDB(t)
-	defer db.Close()
+	err := access.UpdatePlayerStats(context.Background(), PlayerStats{
+		UUID:          "92de317b-8b2b-403b-86a5-fe26fa3a9b5f",
+		Wins:          1,
+		Deaths:        1,
+		Checkpoints:   1,
+		GamesPlayed:   200,
+		InstantDeaths: 1,
+		Points:        5,
+	})
 
-	d, err := access.GetTopHighscores(context.Background(), "Map1", 1)
+	p, err := access.GetHighscorePerCheckpointForMapAndUUID(context.Background(), "92de217b-8b2b-403b-86a5-fe26fa3a9b5f", "Map1")
 	if err != nil {
 		t.Fatal(err)
 	}
 
+	log.Println(p[0])
+	log.Println(p[1])
 
-	//checkMapStatisticPlayloadSuccessfully(t, access)
+
+
 }
-
+*/
+/*
 func TestSQLDataAccess_GetMapStatistic_ID_Non_Existent(t *testing.T) {
 	access, db := connectMariaDB(t)
 	defer db.Close()
@@ -270,4 +284,4 @@ func gameStatistic() *model.FlashGameStatistic {
 		InstantDeaths: 100,
 		Checkpoints:   10,
 	}
-}
+}*/
