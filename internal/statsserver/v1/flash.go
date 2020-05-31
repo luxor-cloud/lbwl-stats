@@ -4,22 +4,13 @@ import (
 	"context"
 	"time"
 
-	"github.com/twitchtv/twirp"
-
+	servicev1 "freggy.dev/stats/internal/service/v1"
 	"freggy.dev/stats/pkg/flash"
-	"freggy.dev/stats/rpc/go/model"
-	"freggy.dev/stats/rpc/go/service"
-)
-
-var (
-	EmptyIDError       = twirp.InvalidArgumentError("playerId", "cannot be empty")
-	EmptyMapError      = twirp.InvalidArgumentError("maps", "cannot be empty")
-	EmptyCompoundError = twirp.InvalidArgumentError("stats", "cannot be empty")
 )
 
 func (server *Server) GetFlashMapHighscoreForPlayer(
-	ctx context.Context, r *service.GetFlashMapHighscoreForPlayerRequest,
-) (*service.GetFlashMapHighscoreForPlayerResponse, error) {
+	ctx context.Context, r *servicev1.GetFlashMapHighscoreForPlayerRequest,
+) (*servicev1.GetFlashMapHighscoreForPlayerResponse, error) {
 	var cScores []flash.PlayerCheckpointScore
 	if r.WithCheckpoints {
 		timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
@@ -40,14 +31,14 @@ func (server *Server) GetFlashMapHighscoreForPlayer(
 		return nil, err
 	}
 
-	return &service.GetFlashMapHighscoreForPlayerResponse{
+	return &servicev1.GetFlashMapHighscoreForPlayerResponse{
 		Highscore: wrapPlayerMapScore(mScores, cScores),
 	}, nil
 }
 
 func (server *Server) GetGlobalFlashMapHighscore(
-	ctx context.Context, r *service.GetGlobalFlashMapHighscoreRequest,
-) (*service.GetGlobalFlashMapHighscoreResponse, error) {
+	ctx context.Context, r *servicev1.GetGlobalFlashMapHighscoreRequest,
+) (*servicev1.GetGlobalFlashMapHighscoreResponse, error) {
 	timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
@@ -68,14 +59,14 @@ func (server *Server) GetGlobalFlashMapHighscore(
 		cScores = scores
 	}
 
-	return &service.GetGlobalFlashMapHighscoreResponse{
+	return &servicev1.GetGlobalFlashMapHighscoreResponse{
 		Highscore: wrapPlayerMapScore(mScore, cScores),
 	}, nil
 }
 
 func (server *Server) GetTopFlashMapHighscores(
-	ctx context.Context, r *service.GetTopFlashMapHighscoresRequest,
-) (*service.GetTopFlashMapHighscoresResponse, error) {
+	ctx context.Context, r *servicev1.GetTopFlashMapHighscoresRequest,
+) (*servicev1.GetTopFlashMapHighscoresResponse, error) {
 	timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
@@ -88,11 +79,11 @@ func (server *Server) GetTopFlashMapHighscores(
 		return nil, err
 	}
 
-	stats := make([]*model.FlashMapStatisticCollection, 0)
+	stats := make([]*servicev1.FlashMapStatisticCollection, 0)
 
 	for i, mScore := range mScores {
-		stats = append(stats, &model.FlashMapStatisticCollection{
-			PlayerId: mScore.UUID, Maps: make([]*model.FlashMapStatistic, 0),
+		stats = append(stats, &servicev1.FlashMapStatisticCollection{
+			PlayerId: mScore.UUID, Maps: make([]*servicev1.FlashMapStatistic, 0),
 		})
 		var cScores []flash.PlayerCheckpointScore
 		if r.WithCheckpoints {
@@ -108,12 +99,12 @@ func (server *Server) GetTopFlashMapHighscores(
 		stats[i].Maps = append(stats[i].Maps, wrapPlayerMapScore(mScore, cScores))
 	}
 
-	return &service.GetTopFlashMapHighscoresResponse{Highscores: stats}, nil
+	return &servicev1.GetTopFlashMapHighscoresResponse{Highscores: stats}, nil
 }
 
 func (server *Server) GetTopFlashPlayersByPoints(
-	ctx context.Context, r *service.GetTopPlayersByPointsRequest,
-) (*service.GetTopPlayersByPointsResponse, error) {
+	ctx context.Context, r *servicev1.GetTopPlayersByPointsRequest,
+) (*servicev1.GetTopPlayersByPointsResponse, error) {
 
 	timeout, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
@@ -127,10 +118,10 @@ func (server *Server) GetTopFlashPlayersByPoints(
 		return nil, err
 	}
 
-	stats := make([]*model.FlashAllStatistics, 0)
+	stats := make([]*servicev1.FlashAllStatistics, 0)
 
 	for _, player := range players {
-		stats = append(stats, &model.FlashAllStatistics{
+		stats = append(stats, &servicev1.FlashAllStatistics{
 			PlayerId:    player.Stats.UUID,
 			PlayerStats: wrapPlayerStats(player.Stats),
 			MapStats:    nil,
@@ -145,7 +136,7 @@ func (server *Server) GetTopFlashPlayersByPoints(
 			if err != nil {
 				return nil, err
 			}
-			stats[i].MapStats = make([]*model.FlashMapStatistic, 0)
+			stats[i].MapStats = make([]*servicev1.FlashMapStatistic, 0)
 			for _, mScore := range mScores {
 				var cScores []flash.PlayerCheckpointScore
 				if r.WithCheckpoints {
@@ -161,12 +152,12 @@ func (server *Server) GetTopFlashPlayersByPoints(
 		}
 	}
 
-	return &service.GetTopPlayersByPointsResponse{TopPlayers: stats}, nil
+	return &servicev1.GetTopPlayersByPointsResponse{TopPlayers: stats}, nil
 }
 
 func (server *Server) UpdateFlashStatistics(
-	ctx context.Context, r *service.UpdateFlashStatisticsRequests,
-) (resp *service.UpdateFlashStatisticsResponse, err error) {
+	ctx context.Context, r *servicev1.UpdateFlashStatisticsRequests,
+) (resp *servicev1.UpdateFlashStatisticsResponse, err error) {
 	dao, err := server.FlashDAO.WithTX(ctx)
 	if err != nil {
 		return nil, err
@@ -232,11 +223,11 @@ func (server *Server) UpdateFlashStatistics(
 		}
 	}
 
-	return &service.UpdateFlashStatisticsResponse{}, nil
+	return &servicev1.UpdateFlashStatisticsResponse{}, nil
 }
 
-func wrapPlayerStats(stats flash.PlayerStats) *model.FlashPlayerStatistic {
-	return &model.FlashPlayerStatistic{
+func wrapPlayerStats(stats flash.PlayerStats) *servicev1.FlashPlayerStatistic {
+	return &servicev1.FlashPlayerStatistic{
 		Wins:          stats.Wins,
 		Deaths:        stats.Deaths,
 		GamesPlayed:   stats.GamesPlayed,
@@ -246,12 +237,12 @@ func wrapPlayerStats(stats flash.PlayerStats) *model.FlashPlayerStatistic {
 	}
 }
 
-func wrapPlayerMapScore(mScore flash.PlayerMapScore, cScores []flash.PlayerCheckpointScore) *model.FlashMapStatistic {
-	var checkpoints []*model.FlashCheckpointStatistic = nil
+func wrapPlayerMapScore(mScore flash.PlayerMapScore, cScores []flash.PlayerCheckpointScore) *servicev1.FlashMapStatistic {
+	var checkpoints []*servicev1.FlashCheckpointStatistic = nil
 	if cScores != nil {
 		checkpoints = wrapPlayerCheckpointScore(cScores)
 	}
-	return &model.FlashMapStatistic{
+	return &servicev1.FlashMapStatistic{
 		Name:           mScore.Map,
 		TimeNeeded:     mScore.TimeNeeded,
 		AccomplishedAt: mScore.AccomplishedAt.String(),
@@ -259,10 +250,10 @@ func wrapPlayerMapScore(mScore flash.PlayerMapScore, cScores []flash.PlayerCheck
 	}
 }
 
-func wrapPlayerCheckpointScore(scores []flash.PlayerCheckpointScore) []*model.FlashCheckpointStatistic {
-	checkpoints := make([]*model.FlashCheckpointStatistic, 0)
+func wrapPlayerCheckpointScore(scores []flash.PlayerCheckpointScore) []*servicev1.FlashCheckpointStatistic {
+	checkpoints := make([]*servicev1.FlashCheckpointStatistic, 0)
 	for _, c := range scores {
-		checkpoints = append(checkpoints, &model.FlashCheckpointStatistic{
+		checkpoints = append(checkpoints, &servicev1.FlashCheckpointStatistic{
 			Checkpoint:     int32(c.Checkpoint),
 			TimeNeeded:     c.TimeNeeded,
 			AccomplishedAt: c.AccomplishedAt.String(),

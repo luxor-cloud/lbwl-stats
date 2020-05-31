@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package stats.v1;
-
+option go_package = "v1";
 
 message FlashMapStatisticCollection {
     string playerId = 1;
