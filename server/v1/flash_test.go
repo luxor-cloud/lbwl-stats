@@ -8,9 +8,9 @@ import (
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 
-	servicev1 "freggy.dev/stats/internal/service/v1"
 	"freggy.dev/stats/mock"
 	"freggy.dev/stats/pkg/flash"
+	servicev1 "freggy.dev/stats/service/v1"
 )
 
 //

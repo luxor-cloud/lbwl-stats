@@ -2,9 +2,14 @@ package main
 
 import (
 	"log"
+	"net"
 
-	"freggy.dev/stats/internal/statsserver"
+	"google.golang.org/grpc"
+
 	"freggy.dev/stats/pkg/flash"
+	servicev1 "freggy.dev/stats/service/v1"
+	"freggy.dev/stats/server"
+	serverv1 "freggy.dev/stats/server/v1"
 )
 
 func main() {
@@ -18,7 +23,7 @@ func main() {
 	}*/
 
 
-	config := statsserver.DefaultConfig
+	config := server.DefaultConfig
 
 	conn, err := flash.ConnectSQL(
 		config.FlashDBConnection.Username,
@@ -32,4 +37,13 @@ func main() {
 	}
 
 	defer conn.Close(nil)
+
+	listener, err := net.Listen("tcp", ":1337")
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
+
+	grpcServer := grpc.NewServer()
+	servicev1.RegisterStatsServiceServer(grpcServer, serverv1.NewServer(conn))
+	log.Fatal(grpcServer.Serve(listener))
 }

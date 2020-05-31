@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	servicev1 "freggy.dev/stats/internal/service/v1"
 	"freggy.dev/stats/pkg/flash"
+	servicev1 "freggy.dev/stats/service/v1"
 )
 
 func (server *Server) GetFlashMapHighscoreForPlayer(

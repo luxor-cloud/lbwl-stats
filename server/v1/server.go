@@ -1,14 +1,13 @@
 package v1
 
 import (
-	servicev1 "freggy.dev/stats/internal/service/v1"
 	"freggy.dev/stats/pkg/flash"
+	servicev1 "freggy.dev/stats/service/v1"
 )
 
 type Server struct {
-	FlashDAO flash.DataAccess
 	servicev1.UnimplementedStatsServiceServer
-
+	FlashDAO flash.DataAccess
 }
 
 func NewServer(flashDAO flash.DataAccess) *Server {
