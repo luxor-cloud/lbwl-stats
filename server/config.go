@@ -1,4 +1,4 @@
-package statsserver
+package server
 
 import (
 	"encoding/json"
