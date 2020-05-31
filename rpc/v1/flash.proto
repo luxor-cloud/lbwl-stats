@@ -1,7 +1,6 @@
 syntax = "proto3";
 
-option java_package = "dev.freggy.stats.model";
-option go_package = "freggy.dev/stats/rpc/go/model";
+package stats.v1;
 
 
 message FlashMapStatisticCollection {
